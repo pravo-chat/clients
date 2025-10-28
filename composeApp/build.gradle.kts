@@ -6,7 +6,15 @@ plugins {
 
 kotlin {
     js {
-        browser()
+        browser {
+            commonWebpackConfig {
+                outputFileName = "composeApp.js"
+            }
+            @OptIn(org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalDistributionDsl::class)
+            distribution {
+                outputDirectory = file("$projectDir/build/dist/js/productionExecutable")
+            }
+        }
         binaries.executable()
     }
     

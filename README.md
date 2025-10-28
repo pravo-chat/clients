@@ -38,5 +38,32 @@ Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-mu
 [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
 [Kotlin/Wasm](https://kotl.in/wasm/)…
 
+## GitHub Pages Deployment
+
+This project is configured for automatic deployment to GitHub Pages. The application will be automatically built and deployed when you push changes to the `main` branch.
+
+### Setup Instructions
+
+1. **Enable GitHub Pages in your repository:**
+   - Go to your repository settings
+   - Navigate to "Pages" section
+   - Under "Source", select "GitHub Actions"
+
+2. **The deployment will happen automatically** when you push to the `main` branch.
+
+3. **Your app will be available at:** `https://[your-username].github.io/[repository-name]`
+
+### Manual Build
+
+To build the production version locally:
+
+```shell
+./gradlew :composeApp:jsBrowserDistribution
+```
+
+The built files will be in `composeApp/build/dist/js/productionExecutable/`
+
+---
+
 We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
 If you face any issues, please report them on [YouTrack](https://youtrack.jetbrains.com/newIssue?project=CMP).

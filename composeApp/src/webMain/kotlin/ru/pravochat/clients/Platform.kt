@@ -4,4 +4,8 @@ interface Platform {
     val name: String
 }
 
-expect fun getPlatform(): Platform
+class JsPlatform: Platform {
+    override val name: String = "Web with Kotlin/JS"
+}
+
+fun getPlatform(): Platform = JsPlatform()

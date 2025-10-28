@@ -1,11 +1,9 @@
 package ru.pravochat.clients
 
-import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.window.ComposeViewport
+import org.jetbrains.compose.web.renderComposable
 
-@OptIn(ExperimentalComposeUiApi::class)
 fun main() {
-    ComposeViewport {
+    renderComposable(rootElementId = "root") {
         App()
     }
 }

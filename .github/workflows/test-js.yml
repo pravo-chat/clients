@@ -1,4 +1,4 @@
-name: Test WASM
+name: Test JS Browser
 
 on:
   push:
@@ -37,6 +37,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Run WASM tests
-        run: ./gradlew :composeApp:wasmBrowserTest
+      - name: Run JS Browser tests
+        run: ./gradlew :composeApp:jsBrowserTest
 

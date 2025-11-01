@@ -11,9 +11,6 @@ permissions:
 
 jobs:
   test:
-    strategy:
-      matrix:
-        target: [js, wasm]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

@@ -1,4 +1,4 @@
-name: CI - Tests
+name: Test JS Browser
 
 on:
   push:
@@ -37,5 +37,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Run tests
-        run: ./gradlew check
+      - name: Run JS Browser tests
+        run: ./gradlew :composeApp:jsBrowserTest
+

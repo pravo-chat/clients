@@ -1,0 +1,40 @@
+# Cursor AI Rules for Pravochat Clients Project
+
+## Git Rules
+- NEVER push to remote repository automatically
+- NEVER use `git push` command without explicit user request
+- Always commit changes locally
+- Always ask user before pushing to remote
+- User will handle git push manually
+
+## Code Style
+- Use Kotlin coding conventions
+- Use Compose for Web best practices
+- Follow Russian language in UI and content
+- Maintain clean and readable code
+
+## Testing
+- Always run tests before committing: `./gradlew check`
+- Ensure all tests pass before deployment
+- Use descriptive test names in Russian when appropriate
+
+## Deployment
+- CI runs tests on PR pushes
+- Deployment happens only on main branch merge
+- Use separate workflows for different test targets (JS, WASM)
+
+## Analytics
+- Use Yandex.Metrika for tracking
+- Track all user interactions and conversions
+- Maintain analytics.js with proper event tracking
+
+## SEO
+- Always keep SEO content for search engines
+- Maintain hidden SEO blocks in HTML
+- Update sitemap and robots.txt appropriately
+- Use proper meta tags for Russian market
+
+## Dependencies
+- Keep dependencies up to date
+- Use version catalog (libs.versions.toml)
+- Document any major dependency changes

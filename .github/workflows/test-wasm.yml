@@ -1,4 +1,4 @@
-name: CI - Tests
+name: Test WASM
 
 on:
   push:
@@ -11,9 +11,6 @@ permissions:
 
 jobs:
   test:
-    strategy:
-      matrix:
-        target: [js, wasm]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -40,5 +37,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Run tests for ${{ matrix.target }}
-        run: ./gradlew :composeApp:${matrix.target}Test
+      - name: Run WASM tests
+        run: ./gradlew :composeApp:wasmBrowserTest
+

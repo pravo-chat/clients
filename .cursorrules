@@ -13,6 +13,12 @@
 - Follow Russian language in UI and content
 - Maintain clean and readable code
 
+## Design Reference
+- Primary design: https://www.figma.com/design/cuPAW7JfIhcpdoI3C0yJdt/Chat-AI?node-id=26-76&t=wObD9IK4BVcN74hU-0
+- Follow Figma design specifications for UI layout and components
+- Match colors, spacing, typography from design system
+- Implement chat interface according to Chat-AI design
+
 ## Testing
 - Always run tests before committing: `./gradlew check`
 - Ensure all tests pass before deployment

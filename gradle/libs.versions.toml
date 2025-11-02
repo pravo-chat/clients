@@ -1,6 +1,6 @@
 [versions]
 androidx-lifecycle = "2.9.4"
-composeMultiplatform = "1.9.0"
+composeMultiplatform = "1.9.2"
 junit = "4.13.2"
 kotlin = "2.2.20"
 

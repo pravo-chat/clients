@@ -30,42 +30,52 @@ fun App() {
             property("overflow", "hidden")
         }
     }) {
-
-        // Область сообщений с прокруткой
+        // Основной контент - вертикальный контейнер как в дизайне
         Div({
             style {
                 flex(1)
                 display(DisplayStyle.Flex)
                 flexDirection(FlexDirection.Row)
+                alignItems(AlignItems.Center) // Вертикальное центрирование
+                justifyContent(JustifyContent.Center) // Горизонтальное центрирование
             }
         }) {
             // Левый отступ (гибкий)
             Space()
             
-            // Контент с фиксированной шириной
+            // Frame 2 - контейнер с заголовком и Input (как в дизайне)
             Div({
                 style {
-                    width(800.px)
+                    width(740.px) // ✅ Размер из дизайна
                     maxWidth(100.percent)
-                    paddingTop(20.px)
-                    paddingBottom(20.px)
-                    property("overflow-y", "auto")
                     display(DisplayStyle.Flex)
                     flexDirection(FlexDirection.Column)
-                    gap(16.px)
+                    alignItems(AlignItems.Center) // ✅ Counter axis align: CENTER
+                    gap(24.px) // ✅ Item spacing: 24px между заголовком и Input
                 }
             }) {
-                chatMessages.forEach { message ->
-                    MessageBubble(message)
+                // Заголовок
+                H2({
+                    style {
+                        fontSize(24.px)
+                        fontWeight("700")
+                        property("line-height", "1.0") // 24px line height
+                        color(Colors.TextPrimary)
+                        margin(0.px)
+                        textAlign("center")
+                        width(100.percent) // Растягивается на всю ширину Frame 2
+                    }
+                }) {
+                    Text("Как я могу помочь?")
                 }
+                
+                // Input сразу под заголовком в том же контейнере
+                ChatInputCompact()
             }
             
             // Правый отступ (гибкий)
             Space()
         }
-        
-        // Поле ввода
-        ChatInput()
     }
 }
 
@@ -121,6 +131,75 @@ fun MessageBubble(message: Message) {
     }
 }
 
+// Компактная версия Input для использования внутри Frame 2
+@Composable
+fun ChatInputCompact() {
+    Div({
+        style {
+            width(100.percent) // Растягивается на всю ширину родителя (740px)
+            display(DisplayStyle.Flex)
+            gap(10.px)
+            alignItems(AlignItems.Center)
+        }
+    }) {
+        // Input контейнер
+        Div({
+            style {
+                flex(1)
+                display(DisplayStyle.Flex)
+                alignItems(AlignItems.Center)
+                backgroundColor(Colors.BackgroundWhite)
+                borderRadius(16.px)
+                paddingTop(20.px)
+                paddingRight(16.px)
+                paddingBottom(20.px)
+                paddingLeft(16.px)
+                property("border", "0.5px solid rgba(0, 0, 0, 0.1)")
+            }
+        }) {
+            Input(type = InputType.Text) {
+                style {
+                    flex(1)
+                    border(0.px)
+                    property("outline", "none")
+                    backgroundColor(Color.transparent)
+                    fontSize(16.px)
+                    fontWeight("400")
+                    property("line-height", "1.0")
+                    fontFamily(Colors.FontFamily)
+                    color(Colors.TextPrimary)
+                }
+                placeholder("Спросите что-нибудь...")
+            }
+        }
+        
+        // Кнопка отправки
+        Button(attrs = {
+            onClick { 
+                js("console.log('Send message clicked')")
+            }
+            style {
+                width(32.px)
+                height(32.px)
+                borderRadius(16.px)
+                backgroundColor(Colors.PrimaryBlue)
+                border(0.px)
+                display(DisplayStyle.Flex)
+                alignItems(AlignItems.Center)
+                justifyContent(JustifyContent.Center)
+                property("cursor", "pointer")
+                color(Colors.TextWhite)
+                fontSize(16.px)
+                fontWeight("400")
+                padding(6.px)
+                property("transition", "background-color 200ms")
+            }
+        }) {
+            Text("→")
+        }
+    }
+}
+
 @Composable
 fun ChatInput() {
     Div({
@@ -145,58 +224,65 @@ fun ChatInput() {
                 width(800.px)
                 maxWidth(100.percent)
                 display(DisplayStyle.Flex)
-                gap(12.px)
+                gap(10.px) // ✅ Исправлено: было 12px, должно быть 10px по дизайну
                 alignItems(AlignItems.Center)
             }
         }) {
-        Div({
-            style {
-                flex(1)
-                display(DisplayStyle.Flex)
-                alignItems(AlignItems.Center)
-                backgroundColor(Colors.BackgroundWhite)
-                borderRadius(24.px)
-                padding(12.px, 16.px)
-                property("border", "1px solid ${Colors.black10Alpha()}")
-            }
-        }) {
-            Input(type = InputType.Text) {
+            // Input контейнер
+            Div({
                 style {
                     flex(1)
-                    border(0.px)
-                    property("outline", "none")
-                    backgroundColor(Color.transparent)
-                    fontSize(16.px)
-                    fontWeight("400")
-                    property("line-height", "1.2") // 120% как в дизайне
-                    fontFamily(Colors.FontFamily)
+                    display(DisplayStyle.Flex)
+                    alignItems(AlignItems.Center)
+                    backgroundColor(Colors.BackgroundWhite)
+                    borderRadius(16.px) // ✅ Исправлено: было 24px, должно быть 16px по дизайну
+                    paddingTop(20.px) // ✅ Исправлено: было padding(12px, 16px), должно быть T=20 R=16 B=20 L=16
+                    paddingRight(16.px)
+                    paddingBottom(20.px)
+                    paddingLeft(16.px)
+                    property("border", "0.5px solid rgba(0, 0, 0, 0.1)") // ✅ Исправлено: stroke weight 0.5px, opacity 0.1
                 }
-                placeholder("Введите ваш вопрос...")
+            }) {
+                Input(type = InputType.Text) {
+                    style {
+                        flex(1)
+                        border(0.px)
+                        property("outline", "none")
+                        backgroundColor(Color.transparent)
+                        fontSize(16.px)
+                        fontWeight("400")
+                        property("line-height", "1.0") // ✅ Исправлено: было 1.2, должно быть 1.0 (16px) по дизайну
+                        fontFamily(Colors.FontFamily)
+                        color(Colors.TextPrimary)
+                    }
+                    placeholder("Спросите что-нибудь...") // ✅ Исправлено: было "Введите ваш вопрос...", должно быть "Спросите что-нибудь..."
+                }
             }
-        }
-        
-        Button(attrs = {
-            onClick { 
-                js("console.log('Send message clicked')")
+            
+            // Кнопка отправки
+            Button(attrs = {
+                onClick { 
+                    js("console.log('Send message clicked')")
+                }
+                style {
+                    width(32.px) // ✅ Исправлено: было 48px, должно быть 32px по дизайну
+                    height(32.px) // ✅ Исправлено: было 48px, должно быть 32px по дизайну
+                    borderRadius(16.px) // ✅ Исправлено: было 50% (круг), должно быть 16px по дизайну
+                    backgroundColor(Colors.PrimaryBlue) // ✅ Цвет правильный: #308CEF
+                    border(0.px)
+                    display(DisplayStyle.Flex)
+                    alignItems(AlignItems.Center)
+                    justifyContent(JustifyContent.Center)
+                    property("cursor", "pointer")
+                    color(Colors.TextWhite)
+                    fontSize(16.px) // ✅ Исправлено: было 20px
+                    fontWeight("400")
+                    padding(6.px) // ✅ Добавлено: padding 6px по дизайну
+                    property("transition", "background-color 200ms")
+                }
+            }) {
+                Text("→")
             }
-            style {
-                width(48.px)
-                height(48.px)
-                borderRadius(50.percent)
-                backgroundColor(Colors.PrimaryBlue)
-                border(0.px)
-                display(DisplayStyle.Flex)
-                alignItems(AlignItems.Center)
-                justifyContent(JustifyContent.Center)
-                property("cursor", "pointer")
-                color(Colors.TextWhite)
-                fontSize(20.px)
-                fontWeight("bold")
-                property("transition", "background-color 200ms")
-            }
-        }) {
-            Text("→")
-        }
         }
         
         // Правый отступ (гибкий)

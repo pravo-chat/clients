@@ -60,7 +60,10 @@ fun ChatHeader() {
         style {
             backgroundColor(Colors.PrimaryBlue)
             height(25.vh)
-            padding(0.px, 40.px)
+            paddingTop(0.px)
+            paddingBottom(0.px)
+            paddingLeft(25.vw)
+            paddingRight(25.vw)
             display(DisplayStyle.Flex)
             alignItems(AlignItems.Center)
             gap(12.px)

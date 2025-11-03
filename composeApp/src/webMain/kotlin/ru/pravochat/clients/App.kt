@@ -96,6 +96,9 @@ fun MessageBubble(message: Message) {
                 backgroundColor(if (message.isUser) Colors.PrimaryBlue else Colors.BackgroundWhite)
                 color(if (message.isUser) Colors.TextWhite else Colors.TextPrimary)
                 property("box-shadow", "0px 1px 3px rgba(0, 0, 0, 0.1)")
+                fontSize(16.px)
+                fontWeight("400")
+                property("line-height", "1.2") // 120% как в дизайне (16px * 1.2 = 19.2px для полужирного, 16px для обычного)
             }
         }) {
             Text(message.text)
@@ -103,7 +106,9 @@ fun MessageBubble(message: Message) {
         
         Span({
             style {
-                fontSize(12.px)
+                fontSize(14.px) // ✅ Исправлено: было 12px, должно быть 14px по дизайну
+                fontWeight("400")
+                property("line-height", "1.2") // 120% как в дизайне (14px * 1.2 = 16.8px)
                 property("color", Colors.black50Alpha())
                 marginTop(4.px)
                 marginLeft(if (message.isUser) 0.px else 0.px)
@@ -162,6 +167,8 @@ fun ChatInput() {
                     property("outline", "none")
                     backgroundColor(Color.transparent)
                     fontSize(16.px)
+                    fontWeight("400")
+                    property("line-height", "1.2") // 120% как в дизайне
                     fontFamily(Colors.FontFamily)
                 }
                 placeholder("Введите ваш вопрос...")

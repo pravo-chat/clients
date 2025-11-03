@@ -9,9 +9,9 @@ object Colors {
     val BackgroundWhite = Color("#FFFFFF")
     
     // Primary colors (from design palette)
-    val PrimaryBlue = Color("#308CEF") // Color 1 - 100%
+    val PrimaryBlue = Color("#308CEF") // Color 1 - 100% ✅ Из Figma
     val PrimaryBlue50 = Color("#308CEF") // Color 2 - 50% opacity
-    val AccentBlue = Color("#157EFF") // Color 6 - 100%
+    val AccentBlue = Color("#147EFF") // Color 6 - 100% ✅ Исправлено: было #157EFF, должно быть #147EFF
     
     // Text colors (from design palette - black with opacity)
     val TextPrimary = Color("#000000") // Color 3 - 100% black

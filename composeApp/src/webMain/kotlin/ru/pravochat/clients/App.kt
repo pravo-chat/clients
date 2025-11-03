@@ -21,10 +21,13 @@ fun App() {
         style {
             width(100.percent)
             height(100.vh)
+            margin(0.px)
+            padding(0.px)
             display(DisplayStyle.Flex)
             flexDirection(FlexDirection.Column)
             backgroundColor(Colors.BackgroundMain)
             fontFamily(Colors.FontFamily)
+            property("overflow", "hidden")
         }
     }) {
         // Заголовок чата

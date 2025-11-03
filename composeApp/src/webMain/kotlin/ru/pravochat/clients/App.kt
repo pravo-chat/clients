@@ -152,8 +152,10 @@ fun ChatInputCompact() {
             property("border", "0.5px solid rgba(0, 0, 0, 0.1)")
         }
     }) {
-        // Input поле
-        Input(type = InputType.Text) {
+        // TextArea для многострочного ввода
+        TextArea(attrs = {
+            placeholder("Спросите что-нибудь...")
+            rows(1)
             style {
                 flex(1)
                 border(0.px)
@@ -164,9 +166,17 @@ fun ChatInputCompact() {
                 property("line-height", "1.0")
                 fontFamily(Colors.FontFamily)
                 color(Colors.TextPrimary)
+                property("resize", "none") // Отключаем ручное изменение размера
+                property("overflow-y", "auto") // Показываем скролл при необходимости
+                property("overflow-x", "hidden") // Скрываем горизонтальный скролл
+                property("min-height", "24px") // Минимальная высота
+                property("max-height", "120px") // Максимальная высота (примерно 5 строк)
             }
-            placeholder("Спросите что-нибудь...")
-        }
+            onInput { event ->
+                // Автоматическое изменение высоты при вводе
+                js("var textarea = event.target; if (textarea) { textarea.style.height = 'auto'; var newHeight = Math.min(textarea.scrollHeight, 120); textarea.style.height = newHeight + 'px'; }")
+            }
+        })
         
         // Кнопка отправки внутри Input контейнера
         Button(attrs = {

@@ -181,21 +181,24 @@ fun ChatInputCompact() {
             style {
                 width(32.px)
                 height(32.px)
-                borderRadius(16.px)
-                backgroundColor(Colors.PrimaryBlue)
                 border(0.px)
+                backgroundColor(Color.transparent) // SVG содержит фон
                 display(DisplayStyle.Flex)
                 alignItems(AlignItems.Center)
                 justifyContent(JustifyContent.Center)
                 property("cursor", "pointer")
-                color(Colors.TextWhite)
-                fontSize(16.px)
-                fontWeight("400")
-                padding(6.px)
-                property("transition", "background-color 200ms")
+                padding(0.px)
+                property("transition", "opacity 200ms")
             }
         }) {
-            Text("→")
+            Img(src = "/images/button-default.svg", attrs = {
+                style {
+                    width(32.px)
+                    height(32.px)
+                    property("object-fit", "contain")
+                    property("display", "block")
+                }
+            })
         }
     }
 }
@@ -267,21 +270,24 @@ fun ChatInput() {
                 style {
                     width(32.px) // ✅ Исправлено: было 48px, должно быть 32px по дизайну
                     height(32.px) // ✅ Исправлено: было 48px, должно быть 32px по дизайну
-                    borderRadius(16.px) // ✅ Исправлено: было 50% (круг), должно быть 16px по дизайну
-                    backgroundColor(Colors.PrimaryBlue) // ✅ Цвет правильный: #308CEF
                     border(0.px)
+                    backgroundColor(Color.transparent) // SVG содержит фон
                     display(DisplayStyle.Flex)
                     alignItems(AlignItems.Center)
                     justifyContent(JustifyContent.Center)
                     property("cursor", "pointer")
-                    color(Colors.TextWhite)
-                    fontSize(16.px) // ✅ Исправлено: было 20px
-                    fontWeight("400")
-                    padding(6.px) // ✅ Добавлено: padding 6px по дизайну
-                    property("transition", "background-color 200ms")
+                    padding(0.px)
+                    property("transition", "opacity 200ms")
                 }
             }) {
-                Text("→")
+                Img(src = "/images/button-default.svg", attrs = {
+                    style {
+                        width(32.px)
+                        height(32.px)
+                        property("object-fit", "contain")
+                        property("display", "block")
+                    }
+                })
             }
         }
         

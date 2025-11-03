@@ -59,7 +59,8 @@ fun ChatHeader() {
     Div({
         style {
             backgroundColor(Colors.PrimaryBlue)
-            padding(20.px)
+            height(25.vh)
+            padding(0.px, 40.px)
             display(DisplayStyle.Flex)
             alignItems(AlignItems.Center)
             gap(12.px)

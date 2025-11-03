@@ -40,7 +40,7 @@ fun App() {
             }
         }) {
             // Левый отступ (гибкий)
-            SideMargin()
+            Space()
             
             // Контент с фиксированной шириной
             Div({
@@ -61,7 +61,7 @@ fun App() {
             }
             
             // Правый отступ (гибкий)
-            SideMargin()
+            Space()
         }
         
         // Поле ввода
@@ -70,7 +70,7 @@ fun App() {
 }
 
 @Composable
-fun SideMargin() {
+fun Space() {
     Div({
         style {
             flex(1)
@@ -132,7 +132,7 @@ fun ChatInput() {
         }
     }) {
         // Левый отступ (гибкий)
-        SideMargin()
+        Space()
         
         // Контент с фиксированной шириной
         Div({
@@ -193,6 +193,6 @@ fun ChatInput() {
         }
         
         // Правый отступ (гибкий)
-        SideMargin()
+        Space()
     }
 }

@@ -134,46 +134,41 @@ fun MessageBubble(message: Message) {
 // Компактная версия Input для использования внутри Frame 2
 @Composable
 fun ChatInputCompact() {
+    // Input контейнер с кнопкой внутри
     Div({
         style {
             width(100.percent) // Растягивается на всю ширину родителя (740px)
             display(DisplayStyle.Flex)
-            gap(10.px)
-            alignItems(AlignItems.Center)
+            flexDirection(FlexDirection.Row) // ✅ HORIZONTAL layout
+            alignItems(AlignItems.Center) // ✅ Counter axis align: CENTER
+            justifyContent(JustifyContent.SpaceBetween) // ✅ Primary axis align: MAX (кнопка справа)
+            gap(10.px) // ✅ Item spacing: 10px
+            backgroundColor(Colors.BackgroundWhite)
+            borderRadius(16.px)
+            paddingTop(20.px)
+            paddingRight(16.px)
+            paddingBottom(20.px)
+            paddingLeft(16.px)
+            property("border", "0.5px solid rgba(0, 0, 0, 0.1)")
         }
     }) {
-        // Input контейнер
-        Div({
+        // Input поле
+        Input(type = InputType.Text) {
             style {
                 flex(1)
-                display(DisplayStyle.Flex)
-                alignItems(AlignItems.Center)
-                backgroundColor(Colors.BackgroundWhite)
-                borderRadius(16.px)
-                paddingTop(20.px)
-                paddingRight(16.px)
-                paddingBottom(20.px)
-                paddingLeft(16.px)
-                property("border", "0.5px solid rgba(0, 0, 0, 0.1)")
+                border(0.px)
+                property("outline", "none")
+                backgroundColor(Color.transparent)
+                fontSize(16.px)
+                fontWeight("400")
+                property("line-height", "1.0")
+                fontFamily(Colors.FontFamily)
+                color(Colors.TextPrimary)
             }
-        }) {
-            Input(type = InputType.Text) {
-                style {
-                    flex(1)
-                    border(0.px)
-                    property("outline", "none")
-                    backgroundColor(Color.transparent)
-                    fontSize(16.px)
-                    fontWeight("400")
-                    property("line-height", "1.0")
-                    fontFamily(Colors.FontFamily)
-                    color(Colors.TextPrimary)
-                }
-                placeholder("Спросите что-нибудь...")
-            }
+            placeholder("Спросите что-нибудь...")
         }
         
-        // Кнопка отправки
+        // Кнопка отправки внутри Input контейнера
         Button(attrs = {
             onClick { 
                 js("console.log('Send message clicked')")
@@ -189,6 +184,7 @@ fun ChatInputCompact() {
                 property("cursor", "pointer")
                 padding(0.px)
                 property("transition", "opacity 200ms")
+                property("flex-shrink", "0") // Не сжимается
             }
         }) {
             Img(src = "/images/button-default.svg", attrs = {

@@ -23,7 +23,8 @@ fun App() {
             height(100.vh)
             display(DisplayStyle.Flex)
             flexDirection(FlexDirection.Column)
-            backgroundColor(Color("#f5f5f5"))
+            backgroundColor(Colors.BackgroundMain)
+            fontFamily(Colors.FontFamily)
         }
     }) {
         // Заголовок чата
@@ -54,7 +55,7 @@ fun App() {
 fun ChatHeader() {
     Div({
         style {
-            backgroundColor(Color("#308CEF"))
+            backgroundColor(Colors.PrimaryBlue)
             padding(20.px)
             display(DisplayStyle.Flex)
             alignItems(AlignItems.Center)
@@ -67,7 +68,7 @@ fun ChatHeader() {
                 width(40.px)
                 height(40.px)
                 borderRadius(50.percent)
-                backgroundColor(Color("#7FB9F7"))
+                property("background-color", Colors.blue50Alpha())
                 display(DisplayStyle.Flex)
                 alignItems(AlignItems.Center)
                 justifyContent(JustifyContent.Center)
@@ -87,7 +88,7 @@ fun ChatHeader() {
             H3({
                 style {
                     margin(0.px)
-                    color(Color.white)
+                    color(Colors.TextWhite)
                     fontSize(18.px)
                     fontWeight("600")
                 }
@@ -97,7 +98,7 @@ fun ChatHeader() {
             Span({
                 style {
                     fontSize(14.px)
-                    color(Color("#CCE3FC"))
+                    property("color", Colors.blue50Alpha())
                 }
             }) {
                 Text("Онлайн консультация юриста")
@@ -120,8 +121,8 @@ fun MessageBubble(message: Message) {
             style {
                 padding(12.px, 16.px)
                 borderRadius(16.px)
-                backgroundColor(if (message.isUser) Color("#308CEF") else Color.white)
-                color(if (message.isUser) Color.white else Color("#333"))
+                backgroundColor(if (message.isUser) Colors.PrimaryBlue else Colors.BackgroundWhite)
+                color(if (message.isUser) Colors.TextWhite else Colors.TextPrimary)
                 property("box-shadow", "0px 1px 3px rgba(0, 0, 0, 0.1)")
             }
         }) {
@@ -131,7 +132,7 @@ fun MessageBubble(message: Message) {
         Span({
             style {
                 fontSize(12.px)
-                color(Color("#999"))
+                property("color", Colors.black50Alpha())
                 marginTop(4.px)
                 marginLeft(if (message.isUser) 0.px else 0.px)
                 marginRight(if (message.isUser) 0.px else 0.px)
@@ -147,9 +148,9 @@ fun MessageBubble(message: Message) {
 fun ChatInput() {
     Div({
         style {
-            backgroundColor(Color.white)
+            backgroundColor(Colors.BackgroundWhite)
             padding(20.px)
-            property("border-top", "1px solid #e0e0e0")
+            property("border-top", "1px solid ${Colors.black10Alpha()}")
             property("border-left", "none")
             property("border-right", "none")
             property("border-bottom", "none")
@@ -163,10 +164,10 @@ fun ChatInput() {
                 flex(1)
                 display(DisplayStyle.Flex)
                 alignItems(AlignItems.Center)
-                backgroundColor(Color("#f8f9fa"))
+                backgroundColor(Colors.BackgroundWhite)
                 borderRadius(24.px)
                 padding(12.px, 16.px)
-                border(1.px, LineStyle.Solid, Color("#e0e0e0"))
+                property("border", "1px solid ${Colors.black10Alpha()}")
             }
         }) {
             Input(type = InputType.Text) {
@@ -176,7 +177,7 @@ fun ChatInput() {
                     property("outline", "none")
                     backgroundColor(Color.transparent)
                     fontSize(16.px)
-                    fontFamily("system-ui, -apple-system, sans-serif")
+                    fontFamily(Colors.FontFamily)
                 }
                 placeholder("Введите ваш вопрос...")
             }
@@ -190,13 +191,13 @@ fun ChatInput() {
                 width(48.px)
                 height(48.px)
                 borderRadius(50.percent)
-                backgroundColor(Color("#308CEF"))
+                backgroundColor(Colors.PrimaryBlue)
                 border(0.px)
                 display(DisplayStyle.Flex)
                 alignItems(AlignItems.Center)
                 justifyContent(JustifyContent.Center)
                 property("cursor", "pointer")
-                color(Color.white)
+                color(Colors.TextWhite)
                 fontSize(20.px)
                 fontWeight("bold")
                 property("transition", "background-color 200ms")

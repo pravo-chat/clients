@@ -38,7 +38,10 @@ fun App() {
             style {
                 flex(1)
                 property("overflow-y", "auto")
-                padding(20.px)
+                paddingTop(20.px)
+                paddingBottom(20.px)
+                paddingLeft(25.vw)
+                paddingRight(25.vw)
                 display(DisplayStyle.Flex)
                 flexDirection(FlexDirection.Column)
                 gap(16.px)
@@ -156,7 +159,10 @@ fun ChatInput() {
     Div({
         style {
             backgroundColor(Colors.BackgroundWhite)
-            padding(20.px)
+            paddingTop(20.px)
+            paddingBottom(20.px)
+            paddingLeft(25.vw)
+            paddingRight(25.vw)
             property("border-top", "1px solid ${Colors.black10Alpha()}")
             property("border-left", "none")
             property("border-right", "none")

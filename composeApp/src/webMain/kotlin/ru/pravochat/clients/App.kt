@@ -35,19 +35,43 @@ fun App() {
         Div({
             style {
                 flex(1)
-                property("overflow-y", "auto")
-                paddingTop(20.px)
-                paddingBottom(20.px)
-                paddingLeft(25.vw)
-                paddingRight(25.vw)
                 display(DisplayStyle.Flex)
-                flexDirection(FlexDirection.Column)
-                gap(16.px)
+                flexDirection(FlexDirection.Row)
             }
         }) {
-            chatMessages.forEach { message ->
-                MessageBubble(message)
+            // Левый отступ (гибкий)
+            Div({
+                style {
+                    flex(1)
+                    minWidth(0.px)
+                }
+            }) {}
+            
+            // Контент с фиксированной шириной
+            Div({
+                style {
+                    width(800.px)
+                    maxWidth(100.percent)
+                    paddingTop(20.px)
+                    paddingBottom(20.px)
+                    property("overflow-y", "auto")
+                    display(DisplayStyle.Flex)
+                    flexDirection(FlexDirection.Column)
+                    gap(16.px)
+                }
+            }) {
+                chatMessages.forEach { message ->
+                    MessageBubble(message)
+                }
             }
+            
+            // Правый отступ (гибкий)
+            Div({
+                style {
+                    flex(1)
+                    minWidth(0.px)
+                }
+            }) {}
         }
         
         // Поле ввода
@@ -97,19 +121,34 @@ fun ChatInput() {
     Div({
         style {
             backgroundColor(Colors.BackgroundWhite)
-            paddingTop(20.px)
-            paddingBottom(20.px)
-            paddingLeft(25.vw)
-            paddingRight(25.vw)
+            display(DisplayStyle.Flex)
+            flexDirection(FlexDirection.Row)
             property("border-top", "1px solid ${Colors.black10Alpha()}")
             property("border-left", "none")
             property("border-right", "none")
             property("border-bottom", "none")
-            display(DisplayStyle.Flex)
-            gap(12.px)
-            alignItems(AlignItems.Center)
+            paddingTop(20.px)
+            paddingBottom(20.px)
         }
     }) {
+        // Левый отступ (гибкий)
+        Div({
+            style {
+                flex(1)
+                minWidth(0.px)
+            }
+        }) {}
+        
+        // Контент с фиксированной шириной
+        Div({
+            style {
+                width(800.px)
+                maxWidth(100.percent)
+                display(DisplayStyle.Flex)
+                gap(12.px)
+                alignItems(AlignItems.Center)
+            }
+        }) {
         Div({
             style {
                 flex(1)
@@ -156,5 +195,14 @@ fun ChatInput() {
         }) {
             Text("→")
         }
+        }
+        
+        // Правый отступ (гибкий)
+        Div({
+            style {
+                flex(1)
+                minWidth(0.px)
+            }
+        }) {}
     }
 }

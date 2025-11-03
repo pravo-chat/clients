@@ -3,109 +3,206 @@ package ru.pravochat.clients
 import androidx.compose.runtime.*
 import org.jetbrains.compose.web.dom.*
 import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.attributes.*
+
+// Захардкоженные сообщения для чата
+data class Message(val id: Int, val text: String, val isUser: Boolean, val timestamp: String)
+
+val chatMessages = listOf(
+    Message(1, "Здравствуйте! У меня вопрос по трудовому законодательству.", true, "10:30"),
+    Message(2, "Добрый день! Я готов помочь вам с вопросами по трудовому праву. Расскажите, пожалуйста, подробнее о вашей ситуации.", false, "10:31"),
+    Message(3, "Мой работодатель не оплачивает сверхурочные часы. Что мне делать?", true, "10:32"),
+    Message(4, "Согласно статье 152 Трудового кодекса РФ, сверхурочная работа оплачивается за первые два часа работы не менее чем в полуторном размере, за последующие часы - не менее чем в двойном размере. Рекомендую составить письменную претензию работодателю и обратиться в Государственную инспекцию труда.", false, "10:33")
+)
 
 @Composable
 fun App() {
+    Div({
+        style {
+            width(100.percent)
+            height(100.vh)
+            display(DisplayStyle.Flex)
+            flexDirection(FlexDirection.Column)
+            backgroundColor(Color("#f5f5f5"))
+        }
+    }) {
+        // Заголовок чата
+        ChatHeader()
+        
+        // Область сообщений с прокруткой
+        Div({
+            style {
+                flex(1)
+                property("overflow-y", "auto")
+                padding(20.px)
+                display(DisplayStyle.Flex)
+                flexDirection(FlexDirection.Column)
+                gap(16.px)
+            }
+        }) {
+            chatMessages.forEach { message ->
+                MessageBubble(message)
+            }
+        }
+        
+        // Поле ввода
+        ChatInput()
+    }
+}
+
+@Composable
+fun ChatHeader() {
+    Div({
+        style {
+            backgroundColor(Color("#308CEF"))
+            padding(20.px)
+            display(DisplayStyle.Flex)
+            alignItems(AlignItems.Center)
+            gap(12.px)
+            property("box-shadow", "0px 2px 8px rgba(0, 0, 0, 0.1)")
+        }
+    }) {
+        Div({
+            style {
+                width(40.px)
+                height(40.px)
+                borderRadius(50.percent)
+                backgroundColor(Color("#7FB9F7"))
+                display(DisplayStyle.Flex)
+                alignItems(AlignItems.Center)
+                justifyContent(JustifyContent.Center)
+                fontSize(20.px)
+            }
+        }) {
+            Text("⚖️")
+        }
+        
         Div({
             style {
                 display(DisplayStyle.Flex)
                 flexDirection(FlexDirection.Column)
-                alignItems(AlignItems.Center)
-                padding(40.px)
+                flex(1)
             }
         }) {
-            H1({
+            H3({
                 style {
-                    color(Color("#333"))
-                    marginBottom(20.px)
-                    fontSize(32.px)
+                    margin(0.px)
+                    color(Color.white)
+                    fontSize(18.px)
+                    fontWeight("600")
                 }
             }) {
                 Text("Юридическая помощь")
             }
-            
-            P({
+            Span({
                 style {
-                    color(Color("#666"))
-                    fontSize(18.px)
-                    margin(10.px, 0.px)
-                    textAlign("center")
-                    maxWidth(600.px)
+                    fontSize(14.px)
+                    color(Color("#CCE3FC"))
                 }
             }) {
-                Text("ИИ-чат для получения юридических консультаций на базе Российского законодательства")
-            }
-            
-            Div({
-                style {
-                    display(DisplayStyle.Flex)
-                    flexDirection(FlexDirection.Row)
-                    flexWrap(FlexWrap.Wrap)
-                    justifyContent(JustifyContent.Center)
-                    gap(20.px)
-                    marginTop(30.px)
-                }
-            }) {
-                FeatureCard("⚖️", "Правовые консультации", "Получайте ответы на юридические вопросы")
-                FeatureCard("📚", "База знаний", "Актуальная информация о законах РФ")
-                FeatureCard("🤖", "ИИ-ассистент", "Умный помощник на основе правовых документов")
-                FeatureCard("💼", "Практические советы", "Конкретные рекомендации по вашей ситуации")
-            }
-            
-            P({
-                style {
-                    color(Color("#4CAF50"))
-                    fontSize(16.px)
-                    marginTop(40.px)
-                    fontWeight("bold")
-                }
-            }) {
-                Text("Приложение в разработке.")
+                Text("Онлайн консультация юриста")
             }
         }
+    }
 }
 
 @Composable
-fun FeatureCard(icon: String, title: String, description: String) {
+fun MessageBubble(message: Message) {
     Div({
         style {
-            backgroundColor(Color("#f8f9fa"))
-            padding(20.px)
-            borderRadius(12.px)
-            border(1.px, LineStyle.Solid, Color("#e9ecef"))
-            minWidth(200.px)
-            textAlign("center")
+            display(DisplayStyle.Flex)
+            flexDirection(FlexDirection.Column)
+            alignSelf(if (message.isUser) AlignSelf.FlexEnd else AlignSelf.FlexStart)
+            maxWidth(70.percent)
         }
     }) {
-        P({
+        Div({
             style {
-                fontSize(24.px)
-                margin(0.px, 0.px, 10.px, 0.px)
+                padding(12.px, 16.px)
+                borderRadius(16.px)
+                backgroundColor(if (message.isUser) Color("#308CEF") else Color.white)
+                color(if (message.isUser) Color.white else Color("#333"))
+                property("box-shadow", "0px 1px 3px rgba(0, 0, 0, 0.1)")
             }
         }) {
-            Text(icon)
+            Text(message.text)
         }
         
-        P({
+        Span({
             style {
-                fontSize(16.px)
+                fontSize(12.px)
+                color(Color("#999"))
+                marginTop(4.px)
+                marginLeft(if (message.isUser) 0.px else 0.px)
+                marginRight(if (message.isUser) 0.px else 0.px)
+                alignSelf(if (message.isUser) AlignSelf.FlexEnd else AlignSelf.FlexStart)
+            }
+        }) {
+            Text(message.timestamp)
+        }
+    }
+}
+
+@Composable
+fun ChatInput() {
+    Div({
+        style {
+            backgroundColor(Color.white)
+            padding(20.px)
+            property("border-top", "1px solid #e0e0e0")
+            property("border-left", "none")
+            property("border-right", "none")
+            property("border-bottom", "none")
+            display(DisplayStyle.Flex)
+            gap(12.px)
+            alignItems(AlignItems.Center)
+        }
+    }) {
+        Div({
+            style {
+                flex(1)
+                display(DisplayStyle.Flex)
+                alignItems(AlignItems.Center)
+                backgroundColor(Color("#f8f9fa"))
+                borderRadius(24.px)
+                padding(12.px, 16.px)
+                border(1.px, LineStyle.Solid, Color("#e0e0e0"))
+            }
+        }) {
+            Input(type = InputType.Text) {
+                style {
+                    flex(1)
+                    border(0.px)
+                    property("outline", "none")
+                    backgroundColor(Color.transparent)
+                    fontSize(16.px)
+                    fontFamily("system-ui, -apple-system, sans-serif")
+                }
+                placeholder("Введите ваш вопрос...")
+            }
+        }
+        
+        Button(attrs = {
+            onClick { 
+                js("console.log('Send message clicked')")
+            }
+            style {
+                width(48.px)
+                height(48.px)
+                borderRadius(50.percent)
+                backgroundColor(Color("#308CEF"))
+                border(0.px)
+                display(DisplayStyle.Flex)
+                alignItems(AlignItems.Center)
+                justifyContent(JustifyContent.Center)
+                property("cursor", "pointer")
+                color(Color.white)
+                fontSize(20.px)
                 fontWeight("bold")
-                color(Color("#333"))
-                margin(0.px, 0.px, 8.px, 0.px)
+                property("transition", "background-color 200ms")
             }
         }) {
-            Text(title)
-        }
-        
-        P({
-            style {
-                fontSize(14.px)
-                color(Color("#666"))
-                margin(0.px)
-                lineHeight("1.4")
-            }
-        }) {
-            Text(description)
+            Text("→")
         }
     }
 }

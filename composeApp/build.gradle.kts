@@ -9,9 +9,6 @@ kotlin {
         browser {
             commonWebpackConfig {
                 outputFileName = "composeApp.js"
-                devServer = devServer?.copy(
-                    port = 8087
-                )
             }
             @OptIn(org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalDistributionDsl::class)
             distribution {

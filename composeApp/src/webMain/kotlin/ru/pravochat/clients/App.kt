@@ -30,9 +30,7 @@ fun App() {
             property("overflow", "hidden")
         }
     }) {
-        // Заголовок чата
-        ChatHeader()
-        
+
         // Область сообщений с прокруткой
         Div({
             style {
@@ -54,66 +52,6 @@ fun App() {
         
         // Поле ввода
         ChatInput()
-    }
-}
-
-@Composable
-fun ChatHeader() {
-    Div({
-        style {
-            backgroundColor(Colors.PrimaryBlue)
-            height(25.vh)
-            paddingTop(0.px)
-            paddingBottom(0.px)
-            paddingLeft(25.vw)
-            paddingRight(25.vw)
-            display(DisplayStyle.Flex)
-            alignItems(AlignItems.Center)
-            gap(12.px)
-            property("box-shadow", "0px 2px 8px rgba(0, 0, 0, 0.1)")
-        }
-    }) {
-        Div({
-            style {
-                width(40.px)
-                height(40.px)
-                borderRadius(50.percent)
-                property("background-color", Colors.blue50Alpha())
-                display(DisplayStyle.Flex)
-                alignItems(AlignItems.Center)
-                justifyContent(JustifyContent.Center)
-                fontSize(20.px)
-            }
-        }) {
-            Text("⚖️")
-        }
-        
-        Div({
-            style {
-                display(DisplayStyle.Flex)
-                flexDirection(FlexDirection.Column)
-                flex(1)
-            }
-        }) {
-            H3({
-                style {
-                    margin(0.px)
-                    color(Colors.TextWhite)
-                    fontSize(18.px)
-                    fontWeight("600")
-                }
-            }) {
-                Text("Юридическая помощь")
-            }
-            Span({
-                style {
-                    fontSize(14.px)
-                    property("color", Colors.blue50Alpha())
-                }
-            }) {
-                Text("Онлайн консультация юриста")
-            }
-        }
     }
 }
 

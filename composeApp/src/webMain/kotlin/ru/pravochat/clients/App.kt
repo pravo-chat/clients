@@ -40,12 +40,7 @@ fun App() {
             }
         }) {
             // Левый отступ (гибкий)
-            Div({
-                style {
-                    flex(1)
-                    minWidth(0.px)
-                }
-            }) {}
+            SideMargin()
             
             // Контент с фиксированной шириной
             Div({
@@ -66,17 +61,22 @@ fun App() {
             }
             
             // Правый отступ (гибкий)
-            Div({
-                style {
-                    flex(1)
-                    minWidth(0.px)
-                }
-            }) {}
+            SideMargin()
         }
         
         // Поле ввода
         ChatInput()
     }
+}
+
+@Composable
+fun SideMargin() {
+    Div({
+        style {
+            flex(1)
+            minWidth(0.px)
+        }
+    }) {}
 }
 
 @Composable
@@ -132,12 +132,7 @@ fun ChatInput() {
         }
     }) {
         // Левый отступ (гибкий)
-        Div({
-            style {
-                flex(1)
-                minWidth(0.px)
-            }
-        }) {}
+        SideMargin()
         
         // Контент с фиксированной шириной
         Div({
@@ -198,11 +193,6 @@ fun ChatInput() {
         }
         
         // Правый отступ (гибкий)
-        Div({
-            style {
-                flex(1)
-                minWidth(0.px)
-            }
-        }) {}
+        SideMargin()
     }
 }

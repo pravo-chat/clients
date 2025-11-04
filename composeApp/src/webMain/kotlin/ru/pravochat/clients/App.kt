@@ -140,7 +140,7 @@ fun ChatInputCompact() {
             width(100.percent) // Растягивается на всю ширину родителя (740px)
             display(DisplayStyle.Flex)
             flexDirection(FlexDirection.Row) // ✅ HORIZONTAL layout
-            alignItems(AlignItems.Center) // ✅ Counter axis align: CENTER
+            alignItems(AlignItems.FlexStart) // ✅ Выравнивание по верхнему краю для многострочного ввода
             justifyContent(JustifyContent.SpaceBetween) // ✅ Primary axis align: MAX (кнопка справа)
             gap(10.px) // ✅ Item spacing: 10px
             backgroundColor(Colors.BackgroundWhite)
@@ -150,12 +150,13 @@ fun ChatInputCompact() {
             paddingBottom(20.px)
             paddingLeft(16.px)
             property("border", "0.5px solid rgba(0, 0, 0, 0.1)")
+            property("box-sizing", "border-box") // Padding включен в размер
+            // Контейнер автоматически подстраивается под высоту TextArea благодаря flexbox
         }
     }) {
         // TextArea для многострочного ввода
         TextArea(attrs = {
             placeholder("Спросите что-нибудь...")
-            rows(1)
             style {
                 flex(1)
                 border(0.px)
@@ -167,14 +168,48 @@ fun ChatInputCompact() {
                 fontFamily(Colors.FontFamily)
                 color(Colors.TextPrimary)
                 property("resize", "none") // Отключаем ручное изменение размера
-                property("overflow-y", "auto") // Показываем скролл при необходимости
-                property("overflow-x", "hidden") // Скрываем горизонтальный скролл
+                property("overflow", "hidden") // Скрываем скролл - высота будет увеличиваться
                 property("min-height", "24px") // Минимальная высота
-                property("max-height", "120px") // Максимальная высота (примерно 5 строк)
+                property("max-height", "120px") // Максимальная высота
+                property("height", "24px") // Начальная высота
+                property("box-sizing", "border-box") // Padding включен в размер
+                property("vertical-align", "top") // Выравнивание по верху
             }
             onInput { event ->
                 // Автоматическое изменение высоты при вводе
-                js("var textarea = event.target; if (textarea) { textarea.style.height = 'auto'; var newHeight = Math.min(textarea.scrollHeight, 120); textarea.style.height = newHeight + 'px'; }")
+                event.target?.let { element ->
+                    element.asDynamic().style.height = "1px"
+                    val scrollHeight = element.asDynamic().scrollHeight as Int
+                    val minHeight = 24
+                    val maxHeight = 120
+                    val newHeight = maxOf(minHeight, scrollHeight)
+                    
+                    if (newHeight <= maxHeight) {
+                        element.asDynamic().style.height = "${newHeight}px"
+                        element.asDynamic().style.overflow = "hidden"
+                    } else {
+                        element.asDynamic().style.height = "${maxHeight}px"
+                        element.asDynamic().style.overflowY = "auto"
+                    }
+                }
+            }
+            onChange { event ->
+                // Также обрабатываем onChange для надежности
+                event.target?.let { element ->
+                    element.asDynamic().style.height = "1px"
+                    val scrollHeight = element.asDynamic().scrollHeight as Int
+                    val minHeight = 24
+                    val maxHeight = 120
+                    val newHeight = maxOf(minHeight, scrollHeight)
+                    
+                    if (newHeight <= maxHeight) {
+                        element.asDynamic().style.height = "${newHeight}px"
+                        element.asDynamic().style.overflow = "hidden"
+                    } else {
+                        element.asDynamic().style.height = "${maxHeight}px"
+                        element.asDynamic().style.overflowY = "auto"
+                    }
+                }
             }
         })
         
@@ -195,6 +230,7 @@ fun ChatInputCompact() {
                 padding(0.px)
                 property("transition", "opacity 200ms")
                 property("flex-shrink", "0") // Не сжимается
+                marginTop(0.px) // Выравнивание кнопки по верху
             }
         }) {
             Img(src = "/images/button-default.svg", attrs = {

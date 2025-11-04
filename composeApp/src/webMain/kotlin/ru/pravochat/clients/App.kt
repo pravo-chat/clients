@@ -53,6 +53,9 @@ fun App() {
                 Div({
                     style {
                         width(100.percent)
+                        display(DisplayStyle.Flex)
+                        flexDirection(FlexDirection.Column)
+                        gap(16.px)
                     }
                 }) {
                     H2({
@@ -63,10 +66,21 @@ fun App() {
                             color(Colors.TextPrimary)
                             margin(0.px)
                             textAlign("left")
+                        }
+                    }) {
+                        Text("ИИ-юридический консультант")
+                    }
+                    Div({
+                        style {
+                            fontSize(16.px)
+                            fontWeight("400")
+                            property("line-height", "1.5")
+                            color(Colors.TextPrimary)
+                            textAlign("left")
                             property("white-space", "pre-line")
                         }
                     }) {
-                        Text("ИИ-юридический консультант — это интеллектуальная система, основанная на искусственном интеллекте, которая помогает решать правовые вопросы, анализировать документы и давать точные рекомендации. Она работает круглосуточно, мгновенно обрабатывает запросы и упрощает работу юристов и предпринимателей.\n\nПодходит для частных лиц и бизнеса: анализирует договоры, готовит документы, оценивает риски и консультирует по трудовому, гражданскому, налоговому и корпоративному праву.")
+                        Text("— это интеллектуальная система, основанная на искусственном интеллекте, которая помогает решать правовые вопросы, анализировать документы и давать точные рекомендации. Она работает круглосуточно, мгновенно обрабатывает запросы и упрощает работу юристов и предпринимателей.\n\nПодходит для частных лиц и бизнеса: анализирует договоры, готовит документы, оценивает риски и консультирует по трудовому, гражданскому, налоговому и корпоративному праву.\n\nЭто ранний доступ. Часть функционала может не работать.")
                     }
                 }
                 
@@ -142,10 +156,10 @@ fun ChatInputCompact() {
             gap(10.px)
             backgroundColor(Colors.BackgroundWhite)
             borderRadius(16.px)
-            paddingTop(20.px)
-            paddingRight(16.px)
-            paddingBottom(20.px)
-            paddingLeft(16.px)
+            paddingTop(12.px)
+            paddingRight(12.px)
+            paddingBottom(12.px)
+            paddingLeft(12.px)
             property("border", "0.5px solid rgba(0, 0, 0, 0.1)")
             property("box-sizing", "border-box")
         }
@@ -159,22 +173,23 @@ fun ChatInputCompact() {
                 backgroundColor(Color.transparent)
                 fontSize(16.px)
                 fontWeight("400")
-                property("line-height", "1.0")
+                property("line-height", "1.5")
                 fontFamily(Colors.FontFamily)
                 color(Colors.TextPrimary)
                 property("resize", "none")
                 property("overflow", "hidden")
-                property("min-height", "24px")
+                property("min-height", "52px")
                 property("max-height", "120px")
-                property("height", "24px")
+                property("height", "52px")
                 property("box-sizing", "border-box")
                 property("vertical-align", "top")
+                paddingTop(4.px)
             }
             onInput { event ->
                 event.target.let { element ->
                     element.asDynamic().style.height = "1px"
                     val scrollHeight = element.asDynamic().scrollHeight as Int
-                    val minHeight = 24
+                    val minHeight = 52
                     val maxHeight = 120
                     val newHeight = maxOf(minHeight, scrollHeight)
                     
@@ -191,7 +206,7 @@ fun ChatInputCompact() {
                 event.target?.let { element ->
                     element.asDynamic().style.height = "1px"
                     val scrollHeight = element.asDynamic().scrollHeight as Int
-                    val minHeight = 24
+                    val minHeight = 52
                     val maxHeight = 120
                     val newHeight = maxOf(minHeight, scrollHeight)
                     

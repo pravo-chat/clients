@@ -5,7 +5,6 @@ import org.jetbrains.compose.web.dom.*
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.attributes.*
 
-// Захардкоженные сообщения для чата
 data class Message(val id: Int, val text: String, val isUser: Boolean, val timestamp: String)
 
 val chatMessages = listOf(
@@ -30,50 +29,44 @@ fun App() {
             property("overflow", "hidden")
         }
     }) {
-        // Основной контент - вертикальный контейнер как в дизайне
         Div({
             style {
                 flex(1)
                 display(DisplayStyle.Flex)
                 flexDirection(FlexDirection.Row)
-                alignItems(AlignItems.Center) // Вертикальное центрирование
-                justifyContent(JustifyContent.Center) // Горизонтальное центрирование
+                alignItems(AlignItems.Center)
+                justifyContent(JustifyContent.Center)
             }
         }) {
-            // Левый отступ (гибкий)
             Space()
             
-            // Frame 2 - контейнер с заголовком и Input (как в дизайне)
             Div({
                 style {
-                    width(740.px) // ✅ Размер из дизайна
+                    width(740.px)
                     maxWidth(100.percent)
                     display(DisplayStyle.Flex)
                     flexDirection(FlexDirection.Column)
-                    alignItems(AlignItems.Center) // ✅ Counter axis align: CENTER
-                    gap(24.px) // ✅ Item spacing: 24px между заголовком и Input
+                    alignItems(AlignItems.Center)
+                    gap(24.px)
                 }
             }) {
-                // Заголовок
                 H2({
                     style {
                         fontSize(24.px)
                         fontWeight("700")
-                        property("line-height", "1.0") // 24px line height
+                        property("line-height", "1.0")
                         color(Colors.TextPrimary)
                         margin(0.px)
                         textAlign("center")
-                        width(100.percent) // Растягивается на всю ширину Frame 2
+                        width(100.percent)
                     }
                 }) {
                     Text("Как я могу помочь?")
                 }
                 
-                // Input сразу под заголовком в том же контейнере
                 ChatInputCompact()
             }
             
-            // Правый отступ (гибкий)
             Space()
         }
     }
@@ -108,7 +101,7 @@ fun MessageBubble(message: Message) {
                 property("box-shadow", "0px 1px 3px rgba(0, 0, 0, 0.1)")
                 fontSize(16.px)
                 fontWeight("400")
-                property("line-height", "1.2") // 120% как в дизайне (16px * 1.2 = 19.2px для полужирного, 16px для обычного)
+                property("line-height", "1.2")
             }
         }) {
             Text(message.text)
@@ -116,9 +109,9 @@ fun MessageBubble(message: Message) {
         
         Span({
             style {
-                fontSize(14.px) // ✅ Исправлено: было 12px, должно быть 14px по дизайну
+                fontSize(14.px)
                 fontWeight("400")
-                property("line-height", "1.2") // 120% как в дизайне (14px * 1.2 = 16.8px)
+                property("line-height", "1.2")
                 property("color", Colors.black50Alpha())
                 marginTop(4.px)
                 marginLeft(if (message.isUser) 0.px else 0.px)
@@ -131,18 +124,16 @@ fun MessageBubble(message: Message) {
     }
 }
 
-// Компактная версия Input для использования внутри Frame 2
 @Composable
 fun ChatInputCompact() {
-    // Input контейнер с кнопкой внутри
     Div({
         style {
-            width(100.percent) // Растягивается на всю ширину родителя (740px)
+            width(100.percent)
             display(DisplayStyle.Flex)
-            flexDirection(FlexDirection.Row) // ✅ HORIZONTAL layout
-            alignItems(AlignItems.FlexStart) // ✅ Выравнивание по верхнему краю для многострочного ввода
-            justifyContent(JustifyContent.SpaceBetween) // ✅ Primary axis align: MAX (кнопка справа)
-            gap(10.px) // ✅ Item spacing: 10px
+            flexDirection(FlexDirection.Row)
+            alignItems(AlignItems.FlexEnd)
+            justifyContent(JustifyContent.SpaceBetween)
+            gap(10.px)
             backgroundColor(Colors.BackgroundWhite)
             borderRadius(16.px)
             paddingTop(20.px)
@@ -150,11 +141,9 @@ fun ChatInputCompact() {
             paddingBottom(20.px)
             paddingLeft(16.px)
             property("border", "0.5px solid rgba(0, 0, 0, 0.1)")
-            property("box-sizing", "border-box") // Padding включен в размер
-            // Контейнер автоматически подстраивается под высоту TextArea благодаря flexbox
+            property("box-sizing", "border-box")
         }
     }) {
-        // TextArea для многострочного ввода
         TextArea(attrs = {
             placeholder("Спросите что-нибудь...")
             style {
@@ -167,16 +156,15 @@ fun ChatInputCompact() {
                 property("line-height", "1.0")
                 fontFamily(Colors.FontFamily)
                 color(Colors.TextPrimary)
-                property("resize", "none") // Отключаем ручное изменение размера
-                property("overflow", "hidden") // Скрываем скролл - высота будет увеличиваться
-                property("min-height", "24px") // Минимальная высота
-                property("max-height", "120px") // Максимальная высота
-                property("height", "24px") // Начальная высота
-                property("box-sizing", "border-box") // Padding включен в размер
-                property("vertical-align", "top") // Выравнивание по верху
+                property("resize", "none")
+                property("overflow", "hidden")
+                property("min-height", "24px")
+                property("max-height", "120px")
+                property("height", "24px")
+                property("box-sizing", "border-box")
+                property("vertical-align", "top")
             }
             onInput { event ->
-                // Автоматическое изменение высоты при вводе
                 event.target?.let { element ->
                     element.asDynamic().style.height = "1px"
                     val scrollHeight = element.asDynamic().scrollHeight as Int
@@ -194,7 +182,6 @@ fun ChatInputCompact() {
                 }
             }
             onChange { event ->
-                // Также обрабатываем onChange для надежности
                 event.target?.let { element ->
                     element.asDynamic().style.height = "1px"
                     val scrollHeight = element.asDynamic().scrollHeight as Int
@@ -213,7 +200,6 @@ fun ChatInputCompact() {
             }
         })
         
-        // Кнопка отправки внутри Input контейнера
         Button(attrs = {
             onClick { 
                 js("console.log('Send message clicked')")
@@ -222,15 +208,14 @@ fun ChatInputCompact() {
                 width(32.px)
                 height(32.px)
                 border(0.px)
-                backgroundColor(Color.transparent) // SVG содержит фон
+                backgroundColor(Color.transparent)
                 display(DisplayStyle.Flex)
                 alignItems(AlignItems.Center)
                 justifyContent(JustifyContent.Center)
                 property("cursor", "pointer")
                 padding(0.px)
                 property("transition", "opacity 200ms")
-                property("flex-shrink", "0") // Не сжимается
-                marginTop(0.px) // Выравнивание кнопки по верху
+                property("flex-shrink", "0")
             }
         }) {
             Img(src = "/images/button-default.svg", attrs = {
@@ -260,32 +245,29 @@ fun ChatInput() {
             paddingBottom(20.px)
         }
     }) {
-        // Левый отступ (гибкий)
         Space()
         
-        // Контент с фиксированной шириной
         Div({
             style {
                 width(800.px)
                 maxWidth(100.percent)
                 display(DisplayStyle.Flex)
-                gap(10.px) // ✅ Исправлено: было 12px, должно быть 10px по дизайну
+                gap(10.px)
                 alignItems(AlignItems.Center)
             }
         }) {
-            // Input контейнер
             Div({
                 style {
                     flex(1)
                     display(DisplayStyle.Flex)
                     alignItems(AlignItems.Center)
                     backgroundColor(Colors.BackgroundWhite)
-                    borderRadius(16.px) // ✅ Исправлено: было 24px, должно быть 16px по дизайну
-                    paddingTop(20.px) // ✅ Исправлено: было padding(12px, 16px), должно быть T=20 R=16 B=20 L=16
+                    borderRadius(16.px)
+                    paddingTop(20.px)
                     paddingRight(16.px)
                     paddingBottom(20.px)
                     paddingLeft(16.px)
-                    property("border", "0.5px solid rgba(0, 0, 0, 0.1)") // ✅ Исправлено: stroke weight 0.5px, opacity 0.1
+                    property("border", "0.5px solid rgba(0, 0, 0, 0.1)")
                 }
             }) {
                 Input(type = InputType.Text) {
@@ -296,24 +278,23 @@ fun ChatInput() {
                         backgroundColor(Color.transparent)
                         fontSize(16.px)
                         fontWeight("400")
-                        property("line-height", "1.0") // ✅ Исправлено: было 1.2, должно быть 1.0 (16px) по дизайну
+                        property("line-height", "1.0")
                         fontFamily(Colors.FontFamily)
                         color(Colors.TextPrimary)
                     }
-                    placeholder("Спросите что-нибудь...") // ✅ Исправлено: было "Введите ваш вопрос...", должно быть "Спросите что-нибудь..."
+                    placeholder("Спросите что-нибудь...")
                 }
             }
             
-            // Кнопка отправки
             Button(attrs = {
                 onClick { 
                     js("console.log('Send message clicked')")
                 }
                 style {
-                    width(32.px) // ✅ Исправлено: было 48px, должно быть 32px по дизайну
-                    height(32.px) // ✅ Исправлено: было 48px, должно быть 32px по дизайну
+                    width(32.px)
+                    height(32.px)
                     border(0.px)
-                    backgroundColor(Color.transparent) // SVG содержит фон
+                    backgroundColor(Color.transparent)
                     display(DisplayStyle.Flex)
                     alignItems(AlignItems.Center)
                     justifyContent(JustifyContent.Center)
@@ -333,7 +314,6 @@ fun ChatInput() {
             }
         }
         
-        // Правый отступ (гибкий)
         Space()
     }
 }

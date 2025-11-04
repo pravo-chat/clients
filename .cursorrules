@@ -16,3 +16,8 @@
 ## MCP Figma Setup
 - See: MCP_FIGMA_SETUP.md for configuration instructions
 - Requires: Figma Personal Access Token
+
+## Code Comments
+- Comments should only be used in very rare cases when absolutely necessary for code understanding
+- Prefer self-documenting code with clear variable and function names
+- Remove unnecessary comments that just repeat what the code does

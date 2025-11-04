@@ -165,7 +165,7 @@ fun ChatInputCompact() {
                 property("vertical-align", "top")
             }
             onInput { event ->
-                event.target?.let { element ->
+                event.target.let { element ->
                     element.asDynamic().style.height = "1px"
                     val scrollHeight = element.asDynamic().scrollHeight as Int
                     val minHeight = 24
@@ -227,93 +227,5 @@ fun ChatInputCompact() {
                 }
             })
         }
-    }
-}
-
-@Composable
-fun ChatInput() {
-    Div({
-        style {
-            backgroundColor(Colors.BackgroundWhite)
-            display(DisplayStyle.Flex)
-            flexDirection(FlexDirection.Row)
-            property("border-top", "1px solid ${Colors.black10Alpha()}")
-            property("border-left", "none")
-            property("border-right", "none")
-            property("border-bottom", "none")
-            paddingTop(20.px)
-            paddingBottom(20.px)
-        }
-    }) {
-        Space()
-        
-        Div({
-            style {
-                width(800.px)
-                maxWidth(100.percent)
-                display(DisplayStyle.Flex)
-                gap(10.px)
-                alignItems(AlignItems.Center)
-            }
-        }) {
-            Div({
-                style {
-                    flex(1)
-                    display(DisplayStyle.Flex)
-                    alignItems(AlignItems.Center)
-                    backgroundColor(Colors.BackgroundWhite)
-                    borderRadius(16.px)
-                    paddingTop(20.px)
-                    paddingRight(16.px)
-                    paddingBottom(20.px)
-                    paddingLeft(16.px)
-                    property("border", "0.5px solid rgba(0, 0, 0, 0.1)")
-                }
-            }) {
-                Input(type = InputType.Text) {
-                    style {
-                        flex(1)
-                        border(0.px)
-                        property("outline", "none")
-                        backgroundColor(Color.transparent)
-                        fontSize(16.px)
-                        fontWeight("400")
-                        property("line-height", "1.0")
-                        fontFamily(Colors.FontFamily)
-                        color(Colors.TextPrimary)
-                    }
-                    placeholder("Спросите что-нибудь...")
-                }
-            }
-            
-            Button(attrs = {
-                onClick { 
-                    js("console.log('Send message clicked')")
-                }
-                style {
-                    width(32.px)
-                    height(32.px)
-                    border(0.px)
-                    backgroundColor(Color.transparent)
-                    display(DisplayStyle.Flex)
-                    alignItems(AlignItems.Center)
-                    justifyContent(JustifyContent.Center)
-                    property("cursor", "pointer")
-                    padding(0.px)
-                    property("transition", "opacity 200ms")
-                }
-            }) {
-                Img(src = "/images/button-default.svg", attrs = {
-                    style {
-                        width(32.px)
-                        height(32.px)
-                        property("object-fit", "contain")
-                        property("display", "block")
-                    }
-                })
-            }
-        }
-        
-        Space()
     }
 }

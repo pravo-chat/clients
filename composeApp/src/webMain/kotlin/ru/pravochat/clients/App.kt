@@ -3,109 +3,279 @@ package ru.pravochat.clients
 import androidx.compose.runtime.*
 import org.jetbrains.compose.web.dom.*
 import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.attributes.*
+import kotlinx.browser.window
+import kotlin.js.json
+
+data class Message(val id: Int, val text: String, val isUser: Boolean, val timestamp: String)
+
+val chatMessages = listOf(
+    Message(1, "Здравствуйте! У меня вопрос по трудовому законодательству.", true, "10:30"),
+    Message(2, "Добрый день! Я готов помочь вам с вопросами по трудовому праву. Расскажите, пожалуйста, подробнее о вашей ситуации.", false, "10:31"),
+    Message(3, "Мой работодатель не оплачивает сверхурочные часы. Что мне делать?", true, "10:32"),
+    Message(4, "Согласно статье 152 Трудового кодекса РФ, сверхурочная работа оплачивается за первые два часа работы не менее чем в полуторном размере, за последующие часы - не менее чем в двойном размере. Рекомендую составить письменную претензию работодателю и обратиться в Государственную инспекцию труда.", false, "10:33")
+)
 
 @Composable
 fun App() {
+    Div({
+        style {
+            width(100.percent)
+            height(100.vh)
+            margin(0.px)
+            padding(0.px)
+            display(DisplayStyle.Flex)
+            flexDirection(FlexDirection.Column)
+            backgroundColor(Colors.BackgroundMain)
+            fontFamily(Colors.FontFamily)
+            property("overflow", "hidden")
+        }
+    }) {
         Div({
             style {
+                flex(1)
                 display(DisplayStyle.Flex)
-                flexDirection(FlexDirection.Column)
+                flexDirection(FlexDirection.Row)
                 alignItems(AlignItems.Center)
-                padding(40.px)
+                justifyContent(JustifyContent.Center)
             }
         }) {
-            H1({
-                style {
-                    color(Color("#333"))
-                    marginBottom(20.px)
-                    fontSize(32.px)
-                }
-            }) {
-                Text("Юридическая помощь")
-            }
-            
-            P({
-                style {
-                    color(Color("#666"))
-                    fontSize(18.px)
-                    margin(10.px, 0.px)
-                    textAlign("center")
-                    maxWidth(600.px)
-                }
-            }) {
-                Text("ИИ-чат для получения юридических консультаций на базе Российского законодательства")
-            }
+            Space()
             
             Div({
                 style {
+                    width(740.px)
+                    maxWidth(100.percent)
                     display(DisplayStyle.Flex)
-                    flexDirection(FlexDirection.Row)
-                    flexWrap(FlexWrap.Wrap)
-                    justifyContent(JustifyContent.Center)
-                    gap(20.px)
-                    marginTop(30.px)
+                    flexDirection(FlexDirection.Column)
+                    alignItems(AlignItems.Center)
+                    gap(24.px)
                 }
             }) {
-                FeatureCard("⚖️", "Правовые консультации", "Получайте ответы на юридические вопросы")
-                FeatureCard("📚", "База знаний", "Актуальная информация о законах РФ")
-                FeatureCard("🤖", "ИИ-ассистент", "Умный помощник на основе правовых документов")
-                FeatureCard("💼", "Практические советы", "Конкретные рекомендации по вашей ситуации")
+                Div({
+                    style {
+                        width(100.percent)
+                        display(DisplayStyle.Flex)
+                        flexDirection(FlexDirection.Column)
+                        gap(16.px)
+                    }
+                }) {
+                    H2({
+                        style {
+                            fontSize(24.px)
+                            fontWeight("700")
+                            property("line-height", "1.4")
+                            color(Colors.TextPrimary)
+                            margin(0.px)
+                            textAlign("left")
+                        }
+                    }) {
+                        Text("ИИ-юридический консультант")
+                    }
+                    Div({
+                        style {
+                            fontSize(16.px)
+                            fontWeight("400")
+                            property("line-height", "1.5")
+                            color(Colors.TextPrimary)
+                            textAlign("left")
+                            property("white-space", "pre-line")
+                        }
+                    }) {
+                        Text("— это интеллектуальная система, основанная на искусственном интеллекте, которая помогает решать правовые вопросы, анализировать документы и давать точные рекомендации. Она работает круглосуточно, мгновенно обрабатывает запросы и упрощает работу юристов и предпринимателей.\n\nПодходит для частных лиц и бизнеса: анализирует договоры, готовит документы, оценивает риски и консультирует по трудовому, гражданскому, налоговому и корпоративному праву.\n\nЭто ранний доступ. Часть функционала может не работать.")
+                    }
+                }
+                
+                ChatInputCompact()
             }
             
-            P({
-                style {
-                    color(Color("#4CAF50"))
-                    fontSize(16.px)
-                    marginTop(40.px)
-                    fontWeight("bold")
-                }
-            }) {
-                Text("Приложение в разработке.")
-            }
+            Space()
         }
+    }
 }
 
 @Composable
-fun FeatureCard(icon: String, title: String, description: String) {
+fun Space() {
     Div({
         style {
-            backgroundColor(Color("#f8f9fa"))
-            padding(20.px)
-            borderRadius(12.px)
-            border(1.px, LineStyle.Solid, Color("#e9ecef"))
-            minWidth(200.px)
-            textAlign("center")
+            flex(1)
+            minWidth(0.px)
+        }
+    }) {}
+}
+
+@Composable
+fun MessageBubble(message: Message) {
+    Div({
+        style {
+            display(DisplayStyle.Flex)
+            flexDirection(FlexDirection.Column)
+            alignSelf(if (message.isUser) AlignSelf.FlexEnd else AlignSelf.FlexStart)
+            maxWidth(70.percent)
         }
     }) {
-        P({
+        Div({
             style {
-                fontSize(24.px)
-                margin(0.px, 0.px, 10.px, 0.px)
-            }
-        }) {
-            Text(icon)
-        }
-        
-        P({
-            style {
+                padding(12.px, 16.px)
+                borderRadius(16.px)
+                backgroundColor(if (message.isUser) Colors.PrimaryBlue else Colors.BackgroundWhite)
+                color(if (message.isUser) Colors.TextWhite else Colors.TextPrimary)
+                property("box-shadow", "0px 1px 3px rgba(0, 0, 0, 0.1)")
                 fontSize(16.px)
-                fontWeight("bold")
-                color(Color("#333"))
-                margin(0.px, 0.px, 8.px, 0.px)
+                fontWeight("400")
+                property("line-height", "1.2")
             }
         }) {
-            Text(title)
+            Text(message.text)
         }
         
-        P({
+        Span({
             style {
                 fontSize(14.px)
-                color(Color("#666"))
-                margin(0.px)
-                lineHeight("1.4")
+                fontWeight("400")
+                property("line-height", "1.2")
+                property("color", Colors.black50Alpha())
+                marginTop(4.px)
+                marginLeft(if (message.isUser) 0.px else 0.px)
+                marginRight(if (message.isUser) 0.px else 0.px)
+                alignSelf(if (message.isUser) AlignSelf.FlexEnd else AlignSelf.FlexStart)
             }
         }) {
-            Text(description)
+            Text(message.timestamp)
+        }
+    }
+}
+
+fun sendToYandexMetrika(eventName: String, text: String) {
+    val counterId = 104954778
+    val win = window.asDynamic()
+    
+    if (win.ym != null) {
+        val params = json(
+            "chat_input_text" to text,
+            "chat_event" to eventName
+        )
+        win.ym(counterId, "params", params)
+        console.log("Yandex Metrika params sent:", eventName, "text length:", text.length)
+    } else {
+        console.log("Yandex Metrika not loaded - ym function is null")
+    }
+}
+
+@Composable
+fun ChatInputCompact() {
+    var inputText by remember { mutableStateOf("") }
+    
+    Div({
+        style {
+            width(100.percent)
+            display(DisplayStyle.Flex)
+            flexDirection(FlexDirection.Row)
+            alignItems(AlignItems.FlexEnd)
+            justifyContent(JustifyContent.SpaceBetween)
+            gap(10.px)
+            backgroundColor(Colors.BackgroundWhite)
+            borderRadius(16.px)
+            paddingTop(12.px)
+            paddingRight(12.px)
+            paddingBottom(12.px)
+            paddingLeft(12.px)
+            property("border", "0.5px solid rgba(0, 0, 0, 0.1)")
+            property("box-sizing", "border-box")
+        }
+    }) {
+        TextArea(attrs = {
+            value(inputText)
+            placeholder("Спросите что-нибудь...")
+            style {
+                flex(1)
+                border(0.px)
+                property("outline", "none")
+                backgroundColor(Color.transparent)
+                fontSize(16.px)
+                fontWeight("400")
+                property("line-height", "1.5")
+                fontFamily(Colors.FontFamily)
+                color(Colors.TextPrimary)
+                property("resize", "none")
+                property("overflow", "hidden")
+                property("min-height", "98px")
+                property("max-height", "320px")
+                property("box-sizing", "border-box")
+                property("vertical-align", "top")
+                paddingTop(4.px)
+            }
+            onInput { event ->
+                event.target?.let { element ->
+                    val newText = element.asDynamic().value as String
+                    inputText = newText
+                    
+                    element.asDynamic().style.height = "1px"
+                    val scrollHeight = element.asDynamic().scrollHeight as Int
+                    val minHeight = 52
+                    val maxHeight = 120
+                    val newHeight = maxOf(minHeight, scrollHeight)
+                    
+                    if (newHeight <= maxHeight) {
+                        element.asDynamic().style.height = "${newHeight}px"
+                        element.asDynamic().style.overflow = "hidden"
+                    } else {
+                        element.asDynamic().style.height = "${maxHeight}px"
+                        element.asDynamic().style.overflowY = "auto"
+                    }
+                }
+            }
+            onChange { event ->
+                event.target?.let { element ->
+                    val newText = element.asDynamic().value as String
+                    inputText = newText
+                    
+                    element.asDynamic().style.height = "1px"
+                    val scrollHeight = element.asDynamic().scrollHeight as Int
+                    val minHeight = 52
+                    val maxHeight = 120
+                    val newHeight = maxOf(minHeight, scrollHeight)
+                    
+                    if (newHeight <= maxHeight) {
+                        element.asDynamic().style.height = "${newHeight}px"
+                        element.asDynamic().style.overflow = "hidden"
+                    } else {
+                        element.asDynamic().style.height = "${maxHeight}px"
+                        element.asDynamic().style.overflowY = "auto"
+                    }
+                }
+            }
+        })
+        
+        Button(attrs = {
+            onClick { 
+                if (inputText.isNotBlank()) {
+                    sendToYandexMetrika("chat_input", inputText)
+                }
+                js("console.log('Send message clicked')")
+            }
+            style {
+                width(32.px)
+                height(32.px)
+                border(0.px)
+                backgroundColor(Color.transparent)
+                display(DisplayStyle.Flex)
+                alignItems(AlignItems.Center)
+                justifyContent(JustifyContent.Center)
+                property("cursor", "pointer")
+                padding(0.px)
+                property("transition", "opacity 200ms")
+                property("flex-shrink", "0")
+            }
+        }) {
+            Img(src = "/images/button-default.svg", attrs = {
+                style {
+                    width(32.px)
+                    height(32.px)
+                    property("object-fit", "contain")
+                    property("display", "block")
+                }
+            })
         }
     }
 }

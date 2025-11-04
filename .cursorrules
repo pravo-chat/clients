@@ -1,46 +1,23 @@
-# Cursor AI Rules for Pravochat Clients Project
+# Cursor Rules for Pravochat Clients Project
 
-## Git Rules
-- NEVER push to remote repository automatically
-- NEVER use `git push` command without explicit user request
-- Always commit changes locally
-- Always ask user before pushing to remote
-- User will handle git push manually
-
-## Code Style
-- Use Kotlin coding conventions
-- Use Compose for Web best practices
-- Follow Russian language in UI and content
-- Maintain clean and readable code
-
-## Design Reference
+## Figma Design Reference
 - Primary design: https://www.figma.com/design/cuPAW7JfIhcpdoI3C0yJdt/Chat-AI?node-id=26-76&t=wObD9IK4BVcN74hU-0
-- Follow Figma design specifications for UI layout and components
-- Match colors, spacing, typography from design system
-- Implement chat interface according to Chat-AI design
+- Figma File ID: cuPAW7JfIhcpdoI3C0yJdt
+- Figma file extracted: Chat AI.fig (in project root)
 
-## Testing
-- Always run tests before committing: `./gradlew check`
-- Ensure all tests pass before deployment
-- Use descriptive test names in Russian when appropriate
+## Design Tokens (from extracted .fig file)
+- Background Color: #1E1E1E (RGB: 30, 30, 30) - Dark gray
+- Canvas Size: 6080x2360 px
 
-## Deployment
-- CI runs tests on PR pushes
-- Deployment happens only on main branch merge
-- Use separate workflows for different test targets (JS, WASM)
+## Current Implementation
+- See: composeApp/src/webMain/kotlin/ru/pravochat/clients/Colors.kt
+- Background: #F9F9FA (needs update to match design #1E1E1E)
 
-## Analytics
-- Use Yandex.Metrika for tracking
-- Track all user interactions and conversions
-- Maintain analytics.js with proper event tracking
+## MCP Figma Setup
+- See: MCP_FIGMA_SETUP.md for configuration instructions
+- Requires: Figma Personal Access Token
 
-## SEO
-- Always keep SEO content for search engines
-- Maintain hidden SEO blocks in HTML
-- Update sitemap and robots.txt appropriately
-- Use proper meta tags for Russian market
-
-## Dependencies
-- Keep dependencies up to date
-- Use version catalog (libs.versions.toml)
-- Document any major dependency changes
+## Code Comments
+- Comments should only be used in very rare cases when absolutely necessary for code understanding
+- Prefer self-documenting code with clear variable and function names
+- Remove unnecessary comments that just repeat what the code does

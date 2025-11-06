@@ -52,6 +52,18 @@ fun BodyText(textProvider: () -> String) {
 }
 
 @Composable
+fun IconImage(srcProvider: () -> String) {
+    Img(src = srcProvider(), attrs = {
+        style {
+            width(32.px)
+            height(32.px)
+            property("object-fit", "contain")
+            property("display", "block")
+        }
+    })
+}
+
+@Composable
 fun App() {
     val repoMain = koinInjectRemember<RepoMain>()
     val titleRepo = koinInjectRemember<TitleRepo>()
@@ -271,14 +283,7 @@ fun ChatInputCompact() {
                 property("flex-shrink", "0")
             }
         }) {
-            Img(src = "/images/button-default.svg", attrs = {
-                style {
-                    width(32.px)
-                    height(32.px)
-                    property("object-fit", "contain")
-                    property("display", "block")
-                }
-            })
+            IconImage { "/images/button-default.svg" }
         }
     }
 }

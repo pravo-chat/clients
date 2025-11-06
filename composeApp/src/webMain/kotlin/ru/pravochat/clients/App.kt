@@ -8,6 +8,7 @@ import org.jetbrains.compose.web.attributes.*
 import ru.pravochat.clients.analytics.AnalyticsTracker
 import ru.pravochat.clients.di.koinInjectRemember
 import ru.pravochat.clients.repo.RepoMain
+import ru.pravochat.clients.repo.TitleRepo
 
 data class Message(val id: Int, val text: String, val isUser: Boolean, val timestamp: String)
 
@@ -53,7 +54,9 @@ fun BodyText(textProvider: () -> String) {
 @Composable
 fun App() {
     val repoMain = koinInjectRemember<RepoMain>()
+    val titleRepo = koinInjectRemember<TitleRepo>()
     val introduction by repoMain.introduction().collectAsState(initial = "")
+    val title by titleRepo.title().collectAsState(initial = "")
     Div({
         style {
             width(100.percent)
@@ -96,9 +99,7 @@ fun App() {
                         gap(16.px)
                     }
                 }) {
-                    Heading {
-                        "ИИ-юридический консультант"
-                    }
+                    Heading { title }
                     BodyText { introduction }
                 }
                 

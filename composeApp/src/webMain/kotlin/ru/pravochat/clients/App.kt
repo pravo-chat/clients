@@ -17,6 +17,38 @@ val chatMessages = listOf(
 )
 
 @Composable
+fun Heading(textProvider: () -> String) {
+    H2({
+        style {
+            fontSize(24.px)
+            fontWeight("700")
+            property("line-height", "1.4")
+            color(Colors.TextPrimary)
+            margin(0.px)
+            textAlign("left")
+        }
+    }) {
+        Text(textProvider())
+    }
+}
+
+@Composable
+fun BodyText(textProvider: () -> String) {
+    Div({
+        style {
+            fontSize(16.px)
+            fontWeight("400")
+            property("line-height", "1.5")
+            color(Colors.TextPrimary)
+            textAlign("left")
+            property("white-space", "pre-line")
+        }
+    }) {
+        Text(textProvider())
+    }
+}
+
+@Composable
 fun App() {
     Div({
         style {
@@ -60,29 +92,11 @@ fun App() {
                         gap(16.px)
                     }
                 }) {
-                    H2({
-                        style {
-                            fontSize(24.px)
-                            fontWeight("700")
-                            property("line-height", "1.4")
-                            color(Colors.TextPrimary)
-                            margin(0.px)
-                            textAlign("left")
-                        }
-                    }) {
-                        Text("ИИ-юридический консультант")
+                    Heading {
+                        "ИИ-юридический консультант"
                     }
-                    Div({
-                        style {
-                            fontSize(16.px)
-                            fontWeight("400")
-                            property("line-height", "1.5")
-                            color(Colors.TextPrimary)
-                            textAlign("left")
-                            property("white-space", "pre-line")
-                        }
-                    }) {
-                        Text("— это интеллектуальная система, основанная на искусственном интеллекте, которая помогает решать правовые вопросы, анализировать документы и давать точные рекомендации. Она работает круглосуточно, мгновенно обрабатывает запросы и упрощает работу юристов и предпринимателей.\n\nПодходит для частных лиц и бизнеса: анализирует договоры, готовит документы, оценивает риски и консультирует по трудовому, гражданскому, налоговому и корпоративному праву.\n\nЭто ранний доступ. Часть функционала может не работать.")
+                    BodyText {
+                        "— это интеллектуальная система, основанная на искусственном интеллекте, которая помогает решать правовые вопросы, анализировать документы и давать точные рекомендации. Она работает круглосуточно, мгновенно обрабатывает запросы и упрощает работу юристов и предпринимателей.\n\nПодходит для частных лиц и бизнеса: анализирует договоры, готовит документы, оценивает риски и консультирует по трудовому, гражданскому, налоговому и корпоративному праву.\n\nЭто ранний доступ. Часть функционала может не работать."
                     }
                 }
                 

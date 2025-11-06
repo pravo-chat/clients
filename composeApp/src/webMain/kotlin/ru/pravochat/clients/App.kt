@@ -4,8 +4,7 @@ import androidx.compose.runtime.*
 import org.jetbrains.compose.web.dom.*
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.attributes.*
-import kotlinx.browser.window
-import kotlin.js.json
+import ru.pravochat.clients.analytics.YandexMetrikaTracker
 
 data class Message(val id: Int, val text: String, val isUser: Boolean, val timestamp: String)
 
@@ -146,22 +145,6 @@ fun MessageBubble(message: Message) {
     }
 }
 
-fun sendToYandexMetrika(eventName: String, text: String) {
-    val counterId = 104954778
-    val win = window.asDynamic()
-    
-    if (win.ym != null) {
-        val params = json(
-            "chat_input_text" to text,
-            "chat_event" to eventName
-        )
-        win.ym(counterId, "params", params)
-        console.log("Yandex Metrika params sent:", eventName, "text length:", text.length)
-    } else {
-        console.log("Yandex Metrika not loaded - ym function is null")
-    }
-}
-
 @Composable
 fun ChatInputCompact() {
     var inputText by remember { mutableStateOf("") }
@@ -250,7 +233,7 @@ fun ChatInputCompact() {
         Button(attrs = {
             onClick { 
                 if (inputText.isNotBlank()) {
-                    sendToYandexMetrika("chat_input", inputText)
+                    YandexMetrikaTracker.send("chat_input", inputText)
                 }
                 js("console.log('Send message clicked')")
             }

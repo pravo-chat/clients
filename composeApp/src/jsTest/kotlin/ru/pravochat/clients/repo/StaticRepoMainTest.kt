@@ -20,12 +20,12 @@ class StaticRepoMainTest {
 class StaticTitleRepoTest {
 
     @Test
-    fun `returns expected title text`() = runTest {
+    fun `returns expected markdown content`() = runTest {
         val repo = StaticTitleRepo()
 
-        val actual = repo.title().first()
+        val actual = repo.content().first()
 
-        assertEquals(StaticTitleRepo.TITLE_TEXT, actual)
+        assertEquals(StaticTitleRepo.CONTENT, actual)
     }
 }
 

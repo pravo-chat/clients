@@ -28,6 +28,7 @@ kotlin {
             implementation(compose.html.svg)
             implementation("io.insert-koin:koin-core:3.5.6")
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+            implementation("org.jetbrains:markdown:0.6.1")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

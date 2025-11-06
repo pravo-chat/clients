@@ -6,11 +6,8 @@ import org.jetbrains.compose.web.attributes.*
 import org.jetbrains.compose.web.attributes.disabled
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
-import org.jetbrains.compose.web.dom.ContentBuilder
-import org.w3c.dom.HTMLButtonElement
 import ru.pravochat.clients.analytics.AnalyticsTracker
 import ru.pravochat.clients.di.koinInjectRemember
-import ru.pravochat.clients.repo.RepoMain
 import ru.pravochat.clients.repo.TitleRepo
 import ru.pravochat.clients.states.ButtonState
 import ru.pravochat.clients.states.ButtonStateModel
@@ -23,6 +20,20 @@ val chatMessages = listOf(
     Message(3, "Мой работодатель не оплачивает сверхурочные часы. Что мне делать?", true, "10:32"),
     Message(4, "Согласно статье 152 Трудового кодекса РФ, сверхурочная работа оплачивается за первые два часа работы не менее чем в полуторном размере, за последующие часы - не менее чем в двойном размере. Рекомендую составить письменную претензию работодателю и обратиться в Государственную инспекцию труда.", false, "10:33")
 )
+
+@Composable
+fun MarkdownContent(markdown: String) {
+    if (markdown.isBlank()) return
+    markdown.split("\n\n")
+        .map { it.trim() }
+        .filter { it.isNotEmpty() }
+        .forEach { block ->
+            when {
+                block.startsWith("## ") -> Heading { block.removePrefix("## ").trim() }
+                else -> BodyText { block }
+            }
+        }
+}
 
 @Composable
 fun Heading(textProvider: () -> String) {
@@ -71,7 +82,7 @@ fun IconImage(srcProvider: () -> String) {
 @Composable
 fun IconButton(
     state: ButtonStateModel,
-    onClick: () -> Unit,
+    onClick: () -> Unit
 ) {
     val iconSrc = when (state) {
         ButtonStateModel.On -> "/images/button-default.svg"
@@ -80,7 +91,9 @@ fun IconButton(
 
     Button(attrs = {
         this.onClick {
+            if (state == ButtonStateModel.On) {
                 onClick()
+            }
         }
         if (state == ButtonStateModel.Off) {
             disabled()
@@ -93,7 +106,7 @@ fun IconButton(
             display(DisplayStyle.Flex)
             alignItems(AlignItems.Center)
             justifyContent(JustifyContent.Center)
-            property("cursor", "pointer")
+            property("cursor", if (state == ButtonStateModel.On) "pointer" else "not-allowed")
             padding(0.px)
             property("transition", "opacity 200ms")
             property("flex-shrink", "0")
@@ -105,10 +118,8 @@ fun IconButton(
 
 @Composable
 fun App() {
-    val repoMain = koinInjectRemember<RepoMain>()
     val titleRepo = koinInjectRemember<TitleRepo>()
-    val introduction by repoMain.introduction().collectAsState(initial = "")
-    val title by titleRepo.title().collectAsState(initial = "")
+    val content by titleRepo.content().collectAsState(initial = "")
     Div({
         style {
             width(100.percent)
@@ -151,8 +162,7 @@ fun App() {
                         gap(16.px)
                     }
                 }) {
-                    Heading { title }
-                    BodyText { introduction }
+                    MarkdownContent(content)
                 }
                 
                 ChatInputCompact()

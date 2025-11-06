@@ -4,8 +4,8 @@ import androidx.compose.runtime.*
 import org.jetbrains.compose.web.dom.*
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.attributes.*
-import org.koin.core.context.GlobalContext
 import ru.pravochat.clients.analytics.AnalyticsTracker
+import ru.pravochat.clients.di.koinInject
 
 data class Message(val id: Int, val text: String, val isUser: Boolean, val timestamp: String)
 
@@ -168,7 +168,7 @@ fun ChatInputCompact() {
             property("box-sizing", "border-box")
         }
     }) {
-        val analytics: AnalyticsTracker = remember { GlobalContext.get().get() }
+        val analytics: AnalyticsTracker = koinInject()
 
         TextArea(attrs = {
             value(inputText)
@@ -192,7 +192,7 @@ fun ChatInputCompact() {
                 paddingTop(4.px)
             }
             onInput { event ->
-                event.target?.let { element ->
+                event.target.let { element ->
                     val newText = element.asDynamic().value as String
                     inputText = newText
                     
@@ -212,7 +212,7 @@ fun ChatInputCompact() {
                 }
             }
             onChange { event ->
-                event.target?.let { element ->
+                event.target.let { element ->
                     val newText = element.asDynamic().value as String
                     inputText = newText
                     

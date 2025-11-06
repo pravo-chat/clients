@@ -2,9 +2,10 @@ package ru.pravochat.clients
 
 import androidx.compose.runtime.*
 import androidx.compose.runtime.collectAsState
-import org.jetbrains.compose.web.dom.*
-import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.attributes.*
+import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.dom.*
+import org.w3c.dom.HTMLButtonElement
 import ru.pravochat.clients.analytics.AnalyticsTracker
 import ru.pravochat.clients.di.koinInjectRemember
 import ru.pravochat.clients.repo.RepoMain
@@ -61,6 +62,26 @@ fun IconImage(srcProvider: () -> String) {
             property("display", "block")
         }
     })
+}
+
+@Composable
+fun IconButton(onClick: () -> Unit, content: ContentBuilder<HTMLButtonElement>) {
+    Button(attrs = {
+        this.onClick { onClick() }
+        style {
+            width(32.px)
+            height(32.px)
+            border(0.px)
+            backgroundColor(Color.transparent)
+            display(DisplayStyle.Flex)
+            alignItems(AlignItems.Center)
+            justifyContent(JustifyContent.Center)
+            property("cursor", "pointer")
+            padding(0.px)
+            property("transition", "opacity 200ms")
+            property("flex-shrink", "0")
+        }
+    }, content = content)
 }
 
 @Composable
@@ -262,27 +283,14 @@ fun ChatInputCompact() {
             }
         })
         
-        Button(attrs = {
-            onClick { 
+        IconButton(
+            onClick = {
                 if (inputText.isNotBlank()) {
                     analytics.send("chat_input", inputText)
                 }
                 js("console.log('Send message clicked')")
             }
-            style {
-                width(32.px)
-                height(32.px)
-                border(0.px)
-                backgroundColor(Color.transparent)
-                display(DisplayStyle.Flex)
-                alignItems(AlignItems.Center)
-                justifyContent(JustifyContent.Center)
-                property("cursor", "pointer")
-                padding(0.px)
-                property("transition", "opacity 200ms")
-                property("flex-shrink", "0")
-            }
-        }) {
+        ) {
             IconImage { "/images/button-default.svg" }
         }
     }

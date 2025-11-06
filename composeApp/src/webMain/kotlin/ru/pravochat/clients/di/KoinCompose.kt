@@ -5,7 +5,7 @@ import androidx.compose.runtime.remember
 import org.koin.core.context.GlobalContext
 
 @Composable
-inline fun <reified T> koinInject(): T {
+inline fun <reified T> koinInjectRemember(): T {
     return remember { GlobalContext.get().get() }
 }
 

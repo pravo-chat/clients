@@ -1,11 +1,16 @@
 package ru.pravochat.clients
 
 import androidx.compose.runtime.*
-import org.jetbrains.compose.web.dom.*
-import org.jetbrains.compose.web.css.*
+import androidx.compose.runtime.collectAsState
 import org.jetbrains.compose.web.attributes.*
+import org.jetbrains.compose.web.attributes.disabled
+import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.dom.*
 import ru.pravochat.clients.analytics.AnalyticsTracker
-import ru.pravochat.clients.di.koinInject
+import ru.pravochat.clients.di.koinInjectRemember
+import ru.pravochat.clients.repo.TitleRepo
+import ru.pravochat.clients.states.ButtonState
+import ru.pravochat.clients.states.ButtonStateModel
 
 data class Message(val id: Int, val text: String, val isUser: Boolean, val timestamp: String)
 
@@ -17,7 +22,104 @@ val chatMessages = listOf(
 )
 
 @Composable
+fun MarkdownContent(markdown: String) {
+    if (markdown.isBlank()) return
+    markdown.split("\n\n")
+        .map { it.trim() }
+        .filter { it.isNotEmpty() }
+        .forEach { block ->
+            when {
+                block.startsWith("## ") -> Heading { block.removePrefix("## ").trim() }
+                else -> BodyText { block }
+            }
+        }
+}
+
+@Composable
+fun Heading(textProvider: () -> String) {
+    H2({
+        style {
+            fontSize(24.px)
+            fontWeight("700")
+            property("line-height", "1.4")
+            color(Colors.TextPrimary)
+            margin(0.px)
+            textAlign("left")
+        }
+    }) {
+        Text(textProvider())
+    }
+}
+
+@Composable
+fun BodyText(textProvider: () -> String) {
+    Div({
+        style {
+            fontSize(16.px)
+            fontWeight("400")
+            property("line-height", "1.5")
+            color(Colors.TextPrimary)
+            textAlign("left")
+            property("white-space", "pre-line")
+        }
+    }) {
+        Text(textProvider())
+    }
+}
+
+@Composable
+fun IconImage(srcProvider: () -> String) {
+    Img(src = srcProvider(), attrs = {
+        style {
+            width(32.px)
+            height(32.px)
+            property("object-fit", "contain")
+            property("display", "block")
+        }
+    })
+}
+
+@Composable
+fun IconButton(
+    state: ButtonStateModel,
+    onClick: () -> Unit
+) {
+    val iconSrc = when (state) {
+        ButtonStateModel.On -> "/images/button-default.svg"
+        ButtonStateModel.Off -> "/images/button-disabled.svg"
+    }
+
+    Button(attrs = {
+        this.onClick {
+            if (state == ButtonStateModel.On) {
+                onClick()
+            }
+        }
+        if (state == ButtonStateModel.Off) {
+            disabled()
+        }
+        style {
+            width(32.px)
+            height(32.px)
+            border(0.px)
+            backgroundColor(Color.transparent)
+            display(DisplayStyle.Flex)
+            alignItems(AlignItems.Center)
+            justifyContent(JustifyContent.Center)
+            property("cursor", if (state == ButtonStateModel.On) "pointer" else "not-allowed")
+            padding(0.px)
+            property("transition", "opacity 200ms")
+            property("flex-shrink", "0")
+        }
+    }) {
+            IconImage { iconSrc }
+    }
+}
+
+@Composable
 fun App() {
+    val titleRepo = koinInjectRemember<TitleRepo>()
+    val content by titleRepo.content().collectAsState(initial = "")
     Div({
         style {
             width(100.percent)
@@ -60,30 +162,7 @@ fun App() {
                         gap(16.px)
                     }
                 }) {
-                    H2({
-                        style {
-                            fontSize(24.px)
-                            fontWeight("700")
-                            property("line-height", "1.4")
-                            color(Colors.TextPrimary)
-                            margin(0.px)
-                            textAlign("left")
-                        }
-                    }) {
-                        Text("ИИ-юридический консультант")
-                    }
-                    Div({
-                        style {
-                            fontSize(16.px)
-                            fontWeight("400")
-                            property("line-height", "1.5")
-                            color(Colors.TextPrimary)
-                            textAlign("left")
-                            property("white-space", "pre-line")
-                        }
-                    }) {
-                        Text("— это интеллектуальная система, основанная на искусственном интеллекте, которая помогает решать правовые вопросы, анализировать документы и давать точные рекомендации. Она работает круглосуточно, мгновенно обрабатывает запросы и упрощает работу юристов и предпринимателей.\n\nПодходит для частных лиц и бизнеса: анализирует договоры, готовит документы, оценивает риски и консультирует по трудовому, гражданскому, налоговому и корпоративному праву.\n\nЭто ранний доступ. Часть функционала может не работать.")
-                    }
+                    MarkdownContent(content)
                 }
                 
                 ChatInputCompact()
@@ -168,7 +247,8 @@ fun ChatInputCompact() {
             property("box-sizing", "border-box")
         }
     }) {
-        val analytics: AnalyticsTracker = koinInject()
+        val analytics: AnalyticsTracker = koinInjectRemember()
+        val buttonState = koinInjectRemember<ButtonState>()
 
         TextArea(attrs = {
             value(inputText)
@@ -233,35 +313,13 @@ fun ChatInputCompact() {
             }
         })
         
-        Button(attrs = {
-            onClick { 
-                if (inputText.isNotBlank()) {
-                    analytics.send("chat_input", inputText)
-                }
+        IconButton(
+            state = buttonState.state.value,
+            onClick = {
+                buttonState.onClick()
+                analytics.send("chat_input", inputText)
                 js("console.log('Send message clicked')")
             }
-            style {
-                width(32.px)
-                height(32.px)
-                border(0.px)
-                backgroundColor(Color.transparent)
-                display(DisplayStyle.Flex)
-                alignItems(AlignItems.Center)
-                justifyContent(JustifyContent.Center)
-                property("cursor", "pointer")
-                padding(0.px)
-                property("transition", "opacity 200ms")
-                property("flex-shrink", "0")
-            }
-        }) {
-            Img(src = "/images/button-default.svg", attrs = {
-                style {
-                    width(32.px)
-                    height(32.px)
-                    property("object-fit", "contain")
-                    property("display", "block")
-                }
-            })
-        }
+        )
     }
 }

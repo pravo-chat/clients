@@ -3,13 +3,17 @@ package ru.pravochat.clients
 import androidx.compose.runtime.*
 import androidx.compose.runtime.collectAsState
 import org.jetbrains.compose.web.attributes.*
+import org.jetbrains.compose.web.attributes.disabled
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
+import org.jetbrains.compose.web.dom.ContentBuilder
 import org.w3c.dom.HTMLButtonElement
 import ru.pravochat.clients.analytics.AnalyticsTracker
 import ru.pravochat.clients.di.koinInjectRemember
 import ru.pravochat.clients.repo.RepoMain
 import ru.pravochat.clients.repo.TitleRepo
+import ru.pravochat.clients.states.ButtonState
+import ru.pravochat.clients.states.ButtonStateModel
 
 data class Message(val id: Int, val text: String, val isUser: Boolean, val timestamp: String)
 
@@ -65,9 +69,22 @@ fun IconImage(srcProvider: () -> String) {
 }
 
 @Composable
-fun IconButton(onClick: () -> Unit, content: ContentBuilder<HTMLButtonElement>) {
+fun IconButton(
+    state: ButtonStateModel,
+    onClick: () -> Unit,
+) {
+    val iconSrc = when (state) {
+        ButtonStateModel.On -> "/images/button-default.svg"
+        ButtonStateModel.Off -> "/images/button-disabled.svg"
+    }
+
     Button(attrs = {
-        this.onClick { onClick() }
+        this.onClick {
+                onClick()
+        }
+        if (state == ButtonStateModel.Off) {
+            disabled()
+        }
         style {
             width(32.px)
             height(32.px)
@@ -81,7 +98,9 @@ fun IconButton(onClick: () -> Unit, content: ContentBuilder<HTMLButtonElement>) 
             property("transition", "opacity 200ms")
             property("flex-shrink", "0")
         }
-    }, content = content)
+    }) {
+            IconImage { iconSrc }
+    }
 }
 
 @Composable
@@ -219,6 +238,7 @@ fun ChatInputCompact() {
         }
     }) {
         val analytics: AnalyticsTracker = koinInjectRemember()
+        val buttonState = koinInjectRemember<ButtonState>()
 
         TextArea(attrs = {
             value(inputText)
@@ -284,14 +304,12 @@ fun ChatInputCompact() {
         })
         
         IconButton(
+            state = buttonState.state.value,
             onClick = {
-                if (inputText.isNotBlank()) {
-                    analytics.send("chat_input", inputText)
-                }
+                buttonState.onClick()
+                analytics.send("chat_input", inputText)
                 js("console.log('Send message clicked')")
             }
-        ) {
-            IconImage { "/images/button-default.svg" }
-        }
+        )
     }
 }

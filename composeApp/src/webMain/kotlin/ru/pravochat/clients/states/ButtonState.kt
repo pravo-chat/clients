@@ -5,22 +5,23 @@ import androidx.compose.runtime.*
 import kotlinx.coroutines.delay
 import ru.pravochat.clients.repo.RepoMain
 
-sealed interface ButtonStateModel
-object On: ButtonStateModel
-object Off: ButtonStateModel
+sealed interface ButtonStateModel {
+    object On : ButtonStateModel
+    object Off : ButtonStateModel
+}
 
 interface ButtonState {
     val state: State<ButtonStateModel>
     fun onClick()
 }
 
-class ButtonStateImpl(val repoMain: RepoMain): ButtonState {
-    private var _state = mutableStateOf<ButtonStateModel>(On)
+class ButtonStateImpl(private val repoMain: RepoMain) : ButtonState {
+    private val _state = mutableStateOf<ButtonStateModel>(ButtonStateModel.On)
     override val state: State<ButtonStateModel>
         get() = _state
 
     override fun onClick() {
-        _state.value = Off
+        _state.value = ButtonStateModel.Off
     }
 
 }

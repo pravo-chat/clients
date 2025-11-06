@@ -1,6 +1,7 @@
 package ru.pravochat.clients
 
 import androidx.compose.runtime.*
+import androidx.compose.runtime.collectAsState
 import org.jetbrains.compose.web.dom.*
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.attributes.*
@@ -52,6 +53,7 @@ fun BodyText(textProvider: () -> String) {
 @Composable
 fun App() {
     val repoMain = koinInjectRemember<RepoMain>()
+    val introduction by repoMain.introduction().collectAsState(initial = "")
     Div({
         style {
             width(100.percent)
@@ -97,7 +99,7 @@ fun App() {
                     Heading {
                         "ИИ-юридический консультант"
                     }
-                    BodyText { repoMain.getIntroduction() }
+                    BodyText { introduction }
                 }
                 
                 ChatInputCompact()

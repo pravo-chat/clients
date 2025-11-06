@@ -5,7 +5,8 @@ import org.jetbrains.compose.web.dom.*
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.attributes.*
 import ru.pravochat.clients.analytics.AnalyticsTracker
-import ru.pravochat.clients.di.koinInject
+import ru.pravochat.clients.di.koinInjectRemember
+import ru.pravochat.clients.repo.RepoMain
 
 data class Message(val id: Int, val text: String, val isUser: Boolean, val timestamp: String)
 
@@ -50,6 +51,7 @@ fun BodyText(textProvider: () -> String) {
 
 @Composable
 fun App() {
+    val repoMain = koinInjectRemember<RepoMain>()
     Div({
         style {
             width(100.percent)
@@ -95,9 +97,7 @@ fun App() {
                     Heading {
                         "ИИ-юридический консультант"
                     }
-                    BodyText {
-                        "— это интеллектуальная система, основанная на искусственном интеллекте, которая помогает решать правовые вопросы, анализировать документы и давать точные рекомендации. Она работает круглосуточно, мгновенно обрабатывает запросы и упрощает работу юристов и предпринимателей.\n\nПодходит для частных лиц и бизнеса: анализирует договоры, готовит документы, оценивает риски и консультирует по трудовому, гражданскому, налоговому и корпоративному праву.\n\nЭто ранний доступ. Часть функционала может не работать."
-                    }
+                    BodyText { repoMain.getIntroduction() }
                 }
                 
                 ChatInputCompact()
@@ -182,7 +182,7 @@ fun ChatInputCompact() {
             property("box-sizing", "border-box")
         }
     }) {
-        val analytics: AnalyticsTracker = koinInject()
+        val analytics: AnalyticsTracker = koinInjectRemember()
 
         TextArea(attrs = {
             value(inputText)

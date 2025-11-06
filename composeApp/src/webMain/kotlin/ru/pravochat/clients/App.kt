@@ -4,7 +4,8 @@ import androidx.compose.runtime.*
 import org.jetbrains.compose.web.dom.*
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.attributes.*
-import ru.pravochat.clients.analytics.YandexMetrikaTracker
+import org.koin.core.context.GlobalContext
+import ru.pravochat.clients.analytics.AnalyticsTracker
 
 data class Message(val id: Int, val text: String, val isUser: Boolean, val timestamp: String)
 
@@ -167,6 +168,8 @@ fun ChatInputCompact() {
             property("box-sizing", "border-box")
         }
     }) {
+        val analytics: AnalyticsTracker = remember { GlobalContext.get().get() }
+
         TextArea(attrs = {
             value(inputText)
             placeholder("Спросите что-нибудь...")
@@ -233,7 +236,7 @@ fun ChatInputCompact() {
         Button(attrs = {
             onClick { 
                 if (inputText.isNotBlank()) {
-                    YandexMetrikaTracker.send("chat_input", inputText)
+                    analytics.send("chat_input", inputText)
                 }
                 js("console.log('Send message clicked')")
             }

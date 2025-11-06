@@ -26,6 +26,7 @@ kotlin {
             implementation(compose.runtime)
             implementation(compose.html.core)
             implementation(compose.html.svg)
+            implementation("io.insert-koin:koin-core:3.5.6")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

@@ -9,7 +9,7 @@ class StaticRepoMainTest {
 
     @Test
     fun `returns expected introduction text`() = runTest {
-        val repo = StaticRepoMain()
+        val repo = StaticRepoMain(this)
 
         val actual = repo.introduction().first()
 

@@ -3,14 +3,16 @@ package ru.pravochat.clients
 import androidx.compose.runtime.*
 import androidx.compose.runtime.collectAsState
 import org.jetbrains.compose.web.attributes.*
-import org.jetbrains.compose.web.attributes.disabled
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import ru.pravochat.clients.analytics.AnalyticsTracker
+import ru.pravochat.clients.designsystem.components.*
+import ru.pravochat.clients.designsystem.theme.PravochatColors
+import ru.pravochat.clients.designsystem.theme.PravochatTypography
+import ru.pravochat.clients.designsystem.theme.PravochatSpacing
 import ru.pravochat.clients.di.koinInjectRemember
 import ru.pravochat.clients.repo.TitleRepo
 import ru.pravochat.clients.states.ButtonState
-import ru.pravochat.clients.states.ButtonStateModel
 
 data class Message(val id: Int, val text: String, val isUser: Boolean, val timestamp: String)
 
@@ -29,91 +31,10 @@ fun MarkdownContent(markdown: String) {
         .filter { it.isNotEmpty() }
         .forEach { block ->
             when {
-                block.startsWith("## ") -> Heading { block.removePrefix("## ").trim() }
-                else -> BodyText { block }
+                block.startsWith("## ") -> PravochatHeading(text = block.removePrefix("## ").trim())
+                else -> PravochatBodyText(text = block)
             }
         }
-}
-
-@Composable
-fun Heading(textProvider: () -> String) {
-    H2({
-        style {
-            fontSize(24.px)
-            fontWeight("700")
-            property("line-height", "1.4")
-            color(Colors.TextPrimary)
-            margin(0.px)
-            textAlign("left")
-        }
-    }) {
-        Text(textProvider())
-    }
-}
-
-@Composable
-fun BodyText(textProvider: () -> String) {
-    Div({
-        style {
-            fontSize(16.px)
-            fontWeight("400")
-            property("line-height", "1.5")
-            color(Colors.TextPrimary)
-            textAlign("left")
-            property("white-space", "pre-line")
-        }
-    }) {
-        Text(textProvider())
-    }
-}
-
-@Composable
-fun IconImage(srcProvider: () -> String) {
-    Img(src = srcProvider(), attrs = {
-        style {
-            width(32.px)
-            height(32.px)
-            property("object-fit", "contain")
-            property("display", "block")
-        }
-    })
-}
-
-@Composable
-fun IconButton(
-    state: ButtonStateModel,
-    onClick: () -> Unit
-) {
-    val iconSrc = when (state) {
-        ButtonStateModel.On -> "/images/button-default.svg"
-        ButtonStateModel.Off -> "/images/button-disabled.svg"
-    }
-
-    Button(attrs = {
-        this.onClick {
-            if (state == ButtonStateModel.On) {
-                onClick()
-            }
-        }
-        if (state == ButtonStateModel.Off) {
-            disabled()
-        }
-        style {
-            width(32.px)
-            height(32.px)
-            border(0.px)
-            backgroundColor(Color.transparent)
-            display(DisplayStyle.Flex)
-            alignItems(AlignItems.Center)
-            justifyContent(JustifyContent.Center)
-            property("cursor", if (state == ButtonStateModel.On) "pointer" else "not-allowed")
-            padding(0.px)
-            property("transition", "opacity 200ms")
-            property("flex-shrink", "0")
-        }
-    }) {
-            IconImage { iconSrc }
-    }
 }
 
 @Composable
@@ -128,8 +49,8 @@ fun App() {
             padding(0.px)
             display(DisplayStyle.Flex)
             flexDirection(FlexDirection.Column)
-            backgroundColor(Colors.BackgroundMain)
-            fontFamily(Colors.FontFamily)
+            backgroundColor(PravochatColors.BackgroundMain)
+            fontFamily(PravochatTypography.FontFamily)
             property("overflow", "hidden")
         }
     }) {
@@ -142,24 +63,15 @@ fun App() {
                 justifyContent(JustifyContent.Center)
             }
         }) {
-            Space()
+            PravochatSpacer()
             
-            Div({
-                style {
-                    width(740.px)
-                    maxWidth(100.percent)
-                    display(DisplayStyle.Flex)
-                    flexDirection(FlexDirection.Column)
-                    alignItems(AlignItems.Center)
-                    gap(24.px)
-                }
-            }) {
+            PravochatContainer {
                 Div({
                     style {
                         width(100.percent)
                         display(DisplayStyle.Flex)
                         flexDirection(FlexDirection.Column)
-                        gap(16.px)
+                        gap(PravochatSpacing.contentGap)
                     }
                 }) {
                     MarkdownContent(content)
@@ -168,19 +80,9 @@ fun App() {
                 ChatInputCompact()
             }
             
-            Space()
+            PravochatSpacer()
         }
     }
-}
-
-@Composable
-fun Space() {
-    Div({
-        style {
-            flex(1)
-            minWidth(0.px)
-        }
-    }) {}
 }
 
 @Composable
@@ -195,14 +97,14 @@ fun MessageBubble(message: Message) {
     }) {
         Div({
             style {
-                padding(12.px, 16.px)
+                padding(PravochatSpacing.md, PravochatSpacing.lg)
                 borderRadius(16.px)
-                backgroundColor(if (message.isUser) Colors.PrimaryBlue else Colors.BackgroundWhite)
-                color(if (message.isUser) Colors.TextWhite else Colors.TextPrimary)
-                property("box-shadow", "0px 1px 3px rgba(0, 0, 0, 0.1)")
-                fontSize(16.px)
-                fontWeight("400")
-                property("line-height", "1.2")
+                backgroundColor(if (message.isUser) PravochatColors.PrimaryBlue else PravochatColors.BackgroundWhite)
+                color(if (message.isUser) PravochatColors.TextWhite else PravochatColors.TextPrimary)
+                property("box-shadow", "0px 1px 3px ${PravochatColors.black10Alpha()}")
+                fontSize(PravochatTypography.Body.fontSize)
+                fontWeight(PravochatTypography.Body.fontWeight)
+                property("line-height", PravochatTypography.Caption.lineHeight)
             }
         }) {
             Text(message.text)
@@ -210,11 +112,11 @@ fun MessageBubble(message: Message) {
         
         Span({
             style {
-                fontSize(14.px)
-                fontWeight("400")
-                property("line-height", "1.2")
-                property("color", Colors.black50Alpha())
-                marginTop(4.px)
+                fontSize(PravochatTypography.Caption.fontSize)
+                fontWeight(PravochatTypography.Caption.fontWeight)
+                property("line-height", PravochatTypography.Caption.lineHeight)
+                property("color", PravochatColors.black50Alpha())
+                marginTop(PravochatSpacing.xs)
                 marginLeft(if (message.isUser) 0.px else 0.px)
                 marginRight(if (message.isUser) 0.px else 0.px)
                 alignSelf(if (message.isUser) AlignSelf.FlexEnd else AlignSelf.FlexStart)
@@ -228,98 +130,18 @@ fun MessageBubble(message: Message) {
 @Composable
 fun ChatInputCompact() {
     var inputText by remember { mutableStateOf("") }
+    val analytics: AnalyticsTracker = koinInjectRemember()
+    val buttonState = koinInjectRemember<ButtonState>()
     
-    Div({
-        style {
-            width(100.percent)
-            display(DisplayStyle.Flex)
-            flexDirection(FlexDirection.Row)
-            alignItems(AlignItems.FlexEnd)
-            justifyContent(JustifyContent.SpaceBetween)
-            gap(10.px)
-            backgroundColor(Colors.BackgroundWhite)
-            borderRadius(16.px)
-            paddingTop(12.px)
-            paddingRight(12.px)
-            paddingBottom(12.px)
-            paddingLeft(12.px)
-            property("border", "0.5px solid rgba(0, 0, 0, 0.1)")
-            property("box-sizing", "border-box")
-        }
-    }) {
-        val analytics: AnalyticsTracker = koinInjectRemember()
-        val buttonState = koinInjectRemember<ButtonState>()
-
-        TextArea(attrs = {
-            value(inputText)
-            placeholder("Спросите что-нибудь...")
-            style {
-                flex(1)
-                border(0.px)
-                property("outline", "none")
-                backgroundColor(Color.transparent)
-                fontSize(16.px)
-                fontWeight("400")
-                property("line-height", "1.5")
-                fontFamily(Colors.FontFamily)
-                color(Colors.TextPrimary)
-                property("resize", "none")
-                property("overflow", "hidden")
-                property("min-height", "98px")
-                property("max-height", "320px")
-                property("box-sizing", "border-box")
-                property("vertical-align", "top")
-                paddingTop(4.px)
-            }
-            onInput { event ->
-                event.target.let { element ->
-                    val newText = element.asDynamic().value as String
-                    inputText = newText
-                    
-                    element.asDynamic().style.height = "1px"
-                    val scrollHeight = element.asDynamic().scrollHeight as Int
-                    val minHeight = 52
-                    val maxHeight = 120
-                    val newHeight = maxOf(minHeight, scrollHeight)
-                    
-                    if (newHeight <= maxHeight) {
-                        element.asDynamic().style.height = "${newHeight}px"
-                        element.asDynamic().style.overflow = "hidden"
-                    } else {
-                        element.asDynamic().style.height = "${maxHeight}px"
-                        element.asDynamic().style.overflowY = "auto"
-                    }
-                }
-            }
-            onChange { event ->
-                event.target.let { element ->
-                    val newText = element.asDynamic().value as String
-                    inputText = newText
-                    
-                    element.asDynamic().style.height = "1px"
-                    val scrollHeight = element.asDynamic().scrollHeight as Int
-                    val minHeight = 52
-                    val maxHeight = 120
-                    val newHeight = maxOf(minHeight, scrollHeight)
-                    
-                    if (newHeight <= maxHeight) {
-                        element.asDynamic().style.height = "${newHeight}px"
-                        element.asDynamic().style.overflow = "hidden"
-                    } else {
-                        element.asDynamic().style.height = "${maxHeight}px"
-                        element.asDynamic().style.overflowY = "auto"
-                    }
-                }
-            }
-        })
-        
-        IconButton(
-            state = buttonState.state.value,
-            onClick = {
-                buttonState.onClick()
-                analytics.send("chat_input", inputText)
-                js("console.log('Send message clicked')")
-            }
-        )
-    }
+    PravochatChatInput(
+        value = inputText,
+        onValueChange = { inputText = it },
+        onSend = {
+            buttonState.onClick()
+            analytics.send("chat_input", inputText)
+            js("console.log('Send message clicked')")
+        },
+        buttonState = buttonState.state.value
+    )
 }
+

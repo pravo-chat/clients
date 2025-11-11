@@ -36,7 +36,6 @@ fun PravochatIconButton(
             display(DisplayStyle.Flex)
             alignItems(AlignItems.Center)
             justifyContent(JustifyContent.Center)
-            property("cursor", if (state == ButtonStateModel.On) "pointer" else "not-allowed")
             padding(0.px)
             property("transition", "opacity 200ms")
             property("flex-shrink", "0")

@@ -715,24 +715,79 @@ fun ChatInputCompact() {
                 display(DisplayStyle.Flex)
                 alignItems(AlignItems.Center)
                 gap(PravochatSpacing.xl)
-                padding(PravochatSpacing.xxl)
-                paddingLeft(PravochatSpacing.xxxl)
-                paddingRight(PravochatSpacing.xxxl)
-                backgroundColor(PravochatColors.PrimaryBlue)
+                padding(20.px)
+                paddingLeft(44.px)
+                paddingRight(44.px)
+                property("background", "linear-gradient(135deg, #308CEF 0%, #147EFF 100%)")
                 color(PravochatColors.TextWhite)
-                borderRadius(24.px)
+                borderRadius(20.px)
+                property("border", "1px solid rgba(255, 255, 255, 0.18)")
                 textDecoration("none")
                 fontSize(PravochatTypography.Heading.fontSize)
                 fontWeight(PravochatTypography.Heading.fontWeight)
-                property("box-shadow", "0px 20px 40px rgba(48, 140, 239, 0.35)")
+                property("box-shadow", "0 18px 40px rgba(20, 126, 255, 0.28)")
+                property("backdrop-filter", "blur(18px)")
+                property("transform", "translateY(0px)")
                 property("transition", "transform 150ms, box-shadow 150ms")
             }
             onClick {
                 js("console.log('Premium model CTA clicked')")
             }
+            onMouseOver {
+                it.currentTarget?.let { el ->
+                    el.asDynamic().style.transform = "translateY(-3px)"
+                    el.asDynamic().style.boxShadow = "0 24px 48px rgba(20, 126, 255, 0.35)"
+                }
+            }
+            onMouseOut {
+                it.currentTarget?.let { el ->
+                    el.asDynamic().style.transform = "translateY(0px)"
+                    el.asDynamic().style.boxShadow = "0 18px 40px rgba(20, 126, 255, 0.28)"
+                }
+            }
         }) {
-            PravochatIcon(src = "/images/premium-button-icon.svg", size = 36, alt = "Premium model icon")
-            Text("Перейти в чат")
+            Div({
+                style {
+                    width(44.px)
+                    height(44.px)
+                    borderRadius(50.percent)
+                    backgroundColor(Color("rgba(255, 255, 255, 0.18)"))
+                    display(DisplayStyle.Flex)
+                    alignItems(AlignItems.Center)
+                    justifyContent(JustifyContent.Center)
+                }
+            }) {
+                PravochatIcon(src = "/images/premium-button-icon.svg", size = 28, alt = "Premium model icon")
+            }
+            Div({
+                style {
+                    display(DisplayStyle.Flex)
+                    flexDirection(FlexDirection.Column)
+                    gap(4.px)
+                    textAlign("left")
+                }
+            }) {
+                Span({
+                    style {
+                        fontSize(PravochatTypography.Heading.fontSize)
+                        fontWeight(PravochatTypography.Heading.fontWeight)
+                        color(PravochatColors.TextWhite)
+                        property("line-height", "120%")
+                    }
+                }) {
+                    Text("Перейти в чат")
+                }
+                Span({
+                    style {
+                        fontSize(PravochatTypography.Body.fontSize)
+                        fontWeight(PravochatTypography.Body.fontWeight)
+                        color(Color("rgba(255, 255, 255, 0.75)"))
+                        property("line-height", PravochatTypography.Body.lineHeight)
+                    }
+                }) {
+                    Text("Откройте доступ к премиум модели и получите персональную сессию.")
+                }
+            }
         }
     }
 

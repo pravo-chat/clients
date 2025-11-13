@@ -777,16 +777,6 @@ fun ChatInputCompact() {
                 }) {
                     Text("Перейти в чат")
                 }
-                Span({
-                    style {
-                        fontSize(PravochatTypography.Body.fontSize)
-                        fontWeight(PravochatTypography.Body.fontWeight)
-                        color(Color("rgba(255, 255, 255, 0.75)"))
-                        property("line-height", PravochatTypography.Body.lineHeight)
-                    }
-                }) {
-                    Text("Откройте доступ к премиум модели и получите персональную сессию.")
-                }
             }
         }
     }

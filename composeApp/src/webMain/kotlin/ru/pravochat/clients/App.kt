@@ -700,19 +700,55 @@ fun MessageBubble(message: Message) {
 
 @Composable
 fun ChatInputCompact() {
-    var inputText by remember { mutableStateOf("") }
-    val analytics: AnalyticsTracker = koinInjectRemember()
-    val buttonState = koinInjectRemember<ButtonState>()
-    
-    PravochatChatInput(
-        value = inputText,
-        onValueChange = { inputText = it },
-        onSend = {
-            buttonState.onClick()
-            analytics.send("chat_input", inputText)
-            js("console.log('Send message clicked')")
-        },
-        buttonState = buttonState.state.value
-    )
+    val ctaHref = "https://antoqk1avl.customgpt-agents.com"
+
+    Div({
+        style {
+            width(100.percent)
+            display(DisplayStyle.Flex)
+            justifyContent(JustifyContent.Center)
+        }
+    }) {
+        A(href = ctaHref, attrs = {
+            target(ATarget.Blank)
+            style {
+                display(DisplayStyle.Flex)
+                alignItems(AlignItems.Center)
+                gap(PravochatSpacing.md)
+                padding(PravochatSpacing.md)
+                paddingLeft(PravochatSpacing.xxl)
+                paddingRight(PravochatSpacing.xxl)
+                backgroundColor(PravochatColors.PrimaryBlue)
+                color(PravochatColors.TextWhite)
+                borderRadius(16.px)
+                textDecoration("none")
+                fontSize(PravochatTypography.Body.fontSize)
+                fontWeight(PravochatTypography.Heading.fontWeight)
+                property("box-shadow", "0px 20px 40px rgba(48, 140, 239, 0.35)")
+                property("transition", "transform 150ms, box-shadow 150ms")
+            }
+            onClick {
+                js("console.log('Premium model CTA clicked')")
+            }
+        }) {
+            PravochatIcon(src = "/images/premium-button-icon.svg", size = 28, alt = "Premium model icon")
+            Text("Перейти к премиум модели")
+        }
+    }
+
+    if (false) {
+        var legacyInput by remember { mutableStateOf("") }
+        val analytics: AnalyticsTracker = koinInjectRemember()
+        val buttonState = koinInjectRemember<ButtonState>()
+        PravochatChatInput(
+            value = legacyInput,
+            onValueChange = { legacyInput = it },
+            onSend = {
+                buttonState.onClick()
+                analytics.send("chat_input", legacyInput)
+            },
+            buttonState = buttonState.state.value
+        )
+    }
 }
 

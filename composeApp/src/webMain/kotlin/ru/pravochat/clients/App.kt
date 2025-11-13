@@ -714,15 +714,15 @@ fun ChatInputCompact() {
             style {
                 display(DisplayStyle.Flex)
                 alignItems(AlignItems.Center)
-                gap(PravochatSpacing.md)
-                padding(PravochatSpacing.md)
-                paddingLeft(PravochatSpacing.xxl)
-                paddingRight(PravochatSpacing.xxl)
+                gap(PravochatSpacing.xl)
+                padding(PravochatSpacing.xxl)
+                paddingLeft(PravochatSpacing.xxxl)
+                paddingRight(PravochatSpacing.xxxl)
                 backgroundColor(PravochatColors.PrimaryBlue)
                 color(PravochatColors.TextWhite)
-                borderRadius(16.px)
+                borderRadius(24.px)
                 textDecoration("none")
-                fontSize(PravochatTypography.Body.fontSize)
+                fontSize(PravochatTypography.Heading.fontSize)
                 fontWeight(PravochatTypography.Heading.fontWeight)
                 property("box-shadow", "0px 20px 40px rgba(48, 140, 239, 0.35)")
                 property("transition", "transform 150ms, box-shadow 150ms")
@@ -731,8 +731,8 @@ fun ChatInputCompact() {
                 js("console.log('Premium model CTA clicked')")
             }
         }) {
-            PravochatIcon(src = "/images/premium-button-icon.svg", size = 28, alt = "Premium model icon")
-            Text("Перейти к премиум модели")
+            PravochatIcon(src = "/images/premium-button-icon.svg", size = 36, alt = "Premium model icon")
+            Text("Перейти в чат")
         }
     }
 

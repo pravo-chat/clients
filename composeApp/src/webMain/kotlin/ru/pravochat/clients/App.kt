@@ -27,23 +27,18 @@ val chatMessages = listOf(
 
 private data class NavigationItem(
     val label: String,
-    val sectionId: String? = null,
-    val page: Page? = null,
+    val targetId: String? = null,
+    val externalHref: String? = null,
     val opensDialog: Boolean = false
 )
 
-private enum class Page {
-    HOME,
-    PRACTICE
-}
-
 private val navigationItems = listOf(
-    NavigationItem(label = "Реальные кейсы", sectionId = "cases"),
-    NavigationItem(label = "О нас", sectionId = "about"),
-    NavigationItem(label = "Контакты", sectionId = "contacts"),
-    NavigationItem(label = "Практика", page = Page.PRACTICE),
-    NavigationItem(label = "Премиум модель", sectionId = "premium", opensDialog = true),
-    NavigationItem(label = "Консультация юриста", sectionId = "consultation")
+    NavigationItem(label = "Реальные кейсы", targetId = "cases"),
+    NavigationItem(label = "О нас", targetId = "about"),
+    NavigationItem(label = "Контакты", targetId = "contacts"),
+    NavigationItem(label = "Практика", externalHref = "/practice.html"),
+    NavigationItem(label = "Премиум модель", targetId = "premium", opensDialog = true),
+    NavigationItem(label = "Консультация юриста", targetId = "consultation")
 )
 
 private data class CaseStudy(
@@ -87,7 +82,6 @@ fun App() {
     var isMenuOpen by remember { mutableStateOf(false) }
     var windowWidth by remember { mutableStateOf(window.innerWidth.toInt()) }
     var isImproveDialogOpen by remember { mutableStateOf(false) }
-    var currentPage by remember { mutableStateOf(Page.HOME) }
 
     DisposableEffect(Unit) {
         val listener: (Event) -> Unit = {
@@ -99,19 +93,6 @@ fun App() {
         }
     }
     val isMobile = windowWidth < 992
-
-    val navigateToSection: (String) -> Unit = { sectionId ->
-        currentPage = Page.HOME
-        window.setTimeout({
-            window.location.hash = sectionId
-        }, 0)
-        window.scrollTo(0.0, 0.0)
-    }
-
-    val openPracticePage: () -> Unit = {
-        currentPage = Page.PRACTICE
-        window.scrollTo(0.0, 0.0)
-    }
 
     Div({
         style {
@@ -130,14 +111,6 @@ fun App() {
             isMenuOpen = isMenuOpen,
             onToggle = { isMenuOpen = !isMenuOpen },
             onNavigate = { isMenuOpen = false },
-            onNavigateToSection = { sectionId ->
-                navigateToSection(sectionId)
-                isMenuOpen = false
-            },
-            onOpenPractice = {
-                openPracticePage()
-                isMenuOpen = false
-            },
             onRequestImproveAccess = {
                 isMenuOpen = false
                 isImproveDialogOpen = true
@@ -151,32 +124,17 @@ fun App() {
                 flexDirection(FlexDirection.Column)
             }
         }) {
-            when (currentPage) {
-                Page.HOME -> {
-                    HeroSection(content = content)
-                    CasesSection()
-                    AboutSection()
-                    ImproveModelSection()
-                    ConsultationSection()
-                    ContactsSection()
-                }
-                Page.PRACTICE -> PracticePage(
-                    onBack = { navigateToSection("cases") }
-                )
-            }
+            HeroSection(content = content)
+            CasesSection()
+            AboutSection()
+            ImproveModelSection()
+            ConsultationSection()
+            ContactsSection()
         }
         if (isMobile && isMenuOpen) {
             MobileNavigationOverlay(
                 onDismiss = { isMenuOpen = false },
                 onNavigate = { isMenuOpen = false },
-                onNavigateToSection = { sectionId ->
-                    navigateToSection(sectionId)
-                    isMenuOpen = false
-                },
-                onOpenPractice = {
-                    openPracticePage()
-                    isMenuOpen = false
-                },
                 onRequestImproveAccess = {
                     isMenuOpen = false
                     isImproveDialogOpen = true
@@ -197,8 +155,6 @@ private fun HeaderBar(
     isMenuOpen: Boolean,
     onToggle: () -> Unit,
     onNavigate: () -> Unit,
-    onNavigateToSection: (String) -> Unit,
-    onOpenPractice: () -> Unit,
     onRequestImproveAccess: () -> Unit
 ) {
     Header({
@@ -247,7 +203,7 @@ private fun HeaderBar(
             }
         }) {
             navigationItems.forEach { item ->
-                val destination = item.sectionId?.let { "#$it" } ?: "#"
+                val destination = item.externalHref ?: item.targetId?.let { "#$it" } ?: "#"
                 A(destination, attrs = {
                     style {
                         fontSize(PravochatTypography.Body.fontSize)
@@ -257,20 +213,14 @@ private fun HeaderBar(
                         property("white-space", "nowrap")
                         property("transition", "opacity 150ms")
                     }
-                    onClick { event ->
-                        when {
-                            item.page == Page.PRACTICE -> {
-                                event.preventDefault()
-                                onOpenPractice()
-                            }
-                            item.opensDialog -> {
+                    if (item.externalHref == null) {
+                        onClick { event ->
+                            if (item.opensDialog) {
                                 event.preventDefault()
                                 onNavigate()
                                 onRequestImproveAccess()
-                            }
-                            item.sectionId != null -> {
-                                event.preventDefault()
-                                onNavigateToSection(item.sectionId)
+                            } else {
+                                onNavigate()
                             }
                         }
                     }
@@ -394,7 +344,7 @@ private fun MobileNavigationOverlay(
             }
         }) {
             navigationItems.forEach { item ->
-                val destination = item.sectionId?.let { "#$it" } ?: "#"
+                val destination = item.externalHref ?: item.targetId?.let { "#$it" } ?: "#"
                 A(destination, attrs = {
                     style {
                         fontSize(PravochatTypography.Body.fontSize)
@@ -402,18 +352,12 @@ private fun MobileNavigationOverlay(
                         color(PravochatColors.TextPrimary)
                         textDecoration("none")
                     }
-                    onClick {
-                        when {
-                            item.page == Page.PRACTICE -> {
-                                onOpenPractice()
-                                onNavigate()
-                            }
-                            item.opensDialog -> {
+                    if (item.externalHref == null) {
+                        onClick {
+                            if (item.opensDialog) {
                                 onNavigate()
                                 onRequestImproveAccess()
-                            }
-                            item.sectionId != null -> {
-                                onNavigateToSection(item.sectionId)
+                            } else {
                                 onNavigate()
                             }
                         }
@@ -479,96 +423,6 @@ private fun CasesSection() {
                     PravochatHeading(caseStudy.title)
                     PravochatBodyText(caseStudy.summary)
                 }
-            }
-        }
-    }
-}
-
-@Composable
-private fun PracticePage(onBack: () -> Unit) {
-    SectionLayout(id = "practice", title = "Практика") {
-        Button(attrs = {
-            style {
-                padding(PravochatSpacing.sm, PravochatSpacing.lg)
-                borderRadius(999.px)
-                border(0.px)
-                backgroundColor(PravochatColors.PrimaryBlue)
-                color(PravochatColors.TextWhite)
-                fontSize(PravochatTypography.Body.fontSize)
-                fontWeight(PravochatTypography.Body.fontWeight)
-                property("cursor", "pointer")
-                alignSelf(AlignSelf.FlexStart)
-            }
-            onClick { onBack() }
-        }) {
-            Text("← Вернуться на главную")
-        }
-
-        Div({
-            style {
-                width(100.percent)
-                borderRadius(12.px)
-                overflow("hidden")
-                property("box-shadow", "0px 12px 32px rgba(20, 30, 80, 0.08)")
-            }
-        }) {
-            Img(src = "/images/practice-case.svg", alt = "Скриншот статьи о восстановлении сотрудницы «Летуаль»", attrs = {
-                style {
-                    width(100.percent)
-                    display(DisplayStyle.Block)
-                }
-            })
-        }
-
-        PravochatHeading("Пример: восстановление сотрудницы «Летуаль» после увольнения за больничный")
-        PravochatBodyText(
-            text = "Сотрудницу магазина «Летуаль» в Москве уволили за публикацию фотографий в социальных сетях во время больничного. Работодатель сослался на подпункт «а» пункта 6 части 1 статьи 81 ТК РФ — однократное грубое нарушение трудовых обязанностей. По мнению компании, размещение фото доказывало, что сотрудница нарушила режим лечения."
-        )
-        PravochatBodyText(
-            text = "В суде компания не смогла показать документы, подтверждающие прогул или несоблюдение медицинских назначений. Судья указал, что снимки в соцсетях не являются доказательством нарушения трудовой дисциплины, и восстановил сотрудницу в должности. Ей также выплатили компенсацию за время вынужденного прогула."
-        )
-
-        PravochatHeading("Что важно учесть")
-        Ul({
-            style {
-                margin(0.px)
-                paddingLeft(20.px)
-                display(DisplayStyle.Flex)
-                flexDirection(FlexDirection.Column)
-                gap(PravochatSpacing.sm)
-            }
-        }) {
-            listOf(
-                "Дисциплинарные взыскания допустимы только при наличии чётко задокументированного нарушения.",
-                "В локальных актах нужно заранее описать, что считается проступком, иначе уволить по инициативе работодателя будет сложно.",
-                "Сотруднику стоит сохранять больничные листы, переписку и иные доказательства соблюдения режима лечения."
-            ).forEach { point ->
-                Li {
-                    Text(point)
-                }
-            }
-        }
-
-        PravochatHeading("Источники")
-        val sources = listOf(
-            "МК: Продавец доказала в суде, что во время больничного можно публиковать фотографии" to
-                "https://www.mk.ru/amp/social/2025/11/14/prodavec-dokazala-v-sude-chto-vo-vremya-bolnichnogo-mozhno-publikovat-fotografii.html",
-            "КонсультантПлюс: ТК РФ, статья 81" to
-                "https://www.consultant.ru/document/cons_doc_LAW_34683/6a7ba42d8fda3a1ba186a9eb5c806921998ae7d1/",
-            "Taxcom: Когда суд может восстановить сотрудника на работе" to
-                "https://taxcom.ru/baza-znaniy/kadrovaya-otchetnost/stati/uvolnenie-po-sobstvennomu-zhelaniyu-kogda-sud-mozhet-vosstanovit-sotrudnika-na-rabote/"
-        )
-        sources.forEach { (label, url) ->
-            A(href = url, attrs = {
-                target(ATarget.Blank)
-                style {
-                    fontSize(PravochatTypography.Body.fontSize)
-                    fontWeight(PravochatTypography.Body.fontWeight)
-                    color(PravochatColors.PrimaryBlue)
-                    textDecoration("none")
-                }
-            }) {
-                Text(label)
             }
         }
     }

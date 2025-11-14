@@ -27,21 +27,14 @@ val chatMessages = listOf(
 
 private data class NavigationItem(
     val label: String,
-    val targetId: String,
-    val href: String? = null,
-    val isExternal: Boolean = false
+    val targetId: String
 )
 
 private val navigationItems = listOf(
     NavigationItem("Реальные кейсы", "cases"),
     NavigationItem("О нас", "about"),
     NavigationItem("Контакты", "contacts"),
-    NavigationItem(
-        label = "Практика",
-        targetId = "practice",
-        href = "https://chatgpt.com/s/dr_69176a3849008191b2d3b7fc1d318275",
-        isExternal = true
-    ),
+    NavigationItem("Практика", "practice"),
     NavigationItem("Премиум модель", "premium"),
     NavigationItem("Консультация юриста", "consultation")
 )
@@ -131,7 +124,9 @@ fun App() {
         }) {
             HeroSection(content = content)
             CasesSection()
+            PracticeSection()
             AboutSection()
+            ImproveModelSection()
             ConsultationSection()
             ContactsSection()
         }
@@ -207,8 +202,7 @@ private fun HeaderBar(
             }
         }) {
             navigationItems.forEach { item ->
-                val destination = item.href ?: "#${item.targetId}"
-                A(destination, attrs = {
+                A("#${item.targetId}", attrs = {
                     style {
                         fontSize(PravochatTypography.Body.fontSize)
                         fontWeight(PravochatTypography.Body.fontWeight)
@@ -217,18 +211,13 @@ private fun HeaderBar(
                         property("white-space", "nowrap")
                         property("transition", "opacity 150ms")
                     }
-                    if (item.isExternal) {
-                        target(ATarget.Blank)
-                    }
-                    if (!item.isExternal) {
-                        onClick { event ->
-                            if (item.targetId == "premium") {
-                                event.preventDefault()
-                                onNavigate()
-                                onRequestImproveAccess()
-                            } else {
-                                onNavigate()
-                            }
+                    onClick { event ->
+                        if (item.targetId == "premium") {
+                            event.preventDefault()
+                            onNavigate()
+                            onRequestImproveAccess()
+                        } else {
+                            onNavigate()
                         }
                     }
                 }) {
@@ -351,25 +340,19 @@ private fun MobileNavigationOverlay(
             }
         }) {
             navigationItems.forEach { item ->
-                val destination = item.href ?: "#${item.targetId}"
-                A(destination, attrs = {
+                A("#${item.targetId}", attrs = {
                     style {
                         fontSize(PravochatTypography.Body.fontSize)
                         fontWeight(PravochatTypography.Body.fontWeight)
                         color(PravochatColors.TextPrimary)
                         textDecoration("none")
                     }
-                    if (item.isExternal) {
-                        target(ATarget.Blank)
-                    }
-                    if (!item.isExternal) {
-                        onClick {
-                            if (item.targetId == "premium") {
-                                onNavigate()
-                                onRequestImproveAccess()
-                            } else {
-                                onNavigate()
-                            }
+                    onClick {
+                        if (item.targetId == "premium") {
+                            onNavigate()
+                            onRequestImproveAccess()
+                        } else {
+                            onNavigate()
                         }
                     }
                 }) {
@@ -433,6 +416,60 @@ private fun CasesSection() {
                     PravochatHeading(caseStudy.title)
                     PravochatBodyText(caseStudy.summary)
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun PracticeSection() {
+    SectionLayout(id = "practice", title = "Практика") {
+        PravochatHeading("Пример: восстановление сотрудницы «Летуаль» после увольнения за больничный")
+        PravochatBodyText(
+            text = "Сотрудницу московского магазина уволили за публикацию фотографий в социальных сетях во время больничного. Работодатель посчитал, что она нарушила трудовую дисциплину и сослался на пункт «а» части 6 статьи 81 ТК РФ."
+        )
+        PravochatBodyText(
+            text = "Суд установил, что появление в соцсетях не подтверждает прогул или неуважение к больничному режиму. Работодатель не доказал, что сотрудница нарушила медицинские предписания, поэтому увольнение признали незаконным и восстановили её на работе с выплатой компенсации."
+        )
+        Ul({
+            style {
+                margin(0.px)
+                paddingLeft(20.px)
+                display(DisplayStyle.Flex)
+                flexDirection(FlexDirection.Column)
+                gap(PravochatSpacing.sm)
+            }
+        }) {
+            listOf(
+                "Применять дисциплинарные меры можно только при наличии зафиксированного нарушения.",
+                "Перед увольнением важно проверить договор и локальные акты: в них должно быть прописано, что считается проступком.",
+                "Сотруднику стоит сохранять подтверждения лечения и переписки с работодателем — они помогут в суде."
+            ).forEach { highlight ->
+                Li {
+                    Text(highlight)
+                }
+            }
+        }
+        PravochatBodyText(text = "Источники:")
+        val sources = listOf(
+            "МК: Продавец доказала в суде, что во время больничного можно публиковать фотографии" to
+                "https://www.mk.ru/amp/social/2025/11/14/prodavec-dokazala-v-sude-chto-vo-vremya-bolnichnogo-mozhno-publikovat-fotografii.html",
+            "ТК РФ, статья 81 (КонсультантПлюс)" to
+                "https://www.consultant.ru/document/cons_doc_LAW_34683/6a7ba42d8fda3a1ba186a9eb5c806921998ae7d1/",
+            "Taxcom: когда суд может восстановить сотрудника на работе" to
+                "https://taxcom.ru/baza-znaniy/kadrovaya-otchetnost/stati/uvolnenie-po-sobstvennomu-zhelaniyu-kogda-sud-mozhet-vosstanovit-sotrudnika-na-rabote/"
+        )
+        sources.forEach { (label, url) ->
+            A(href = url, attrs = {
+                target(ATarget.Blank)
+                style {
+                    fontSize(PravochatTypography.Body.fontSize)
+                    fontWeight(PravochatTypography.Body.fontWeight)
+                    color(PravochatColors.PrimaryBlue)
+                    textDecoration("none")
+                }
+            }) {
+                Text(label)
             }
         }
     }

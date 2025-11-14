@@ -27,13 +27,21 @@ val chatMessages = listOf(
 
 private data class NavigationItem(
     val label: String,
-    val targetId: String
+    val targetId: String,
+    val href: String? = null,
+    val isExternal: Boolean = false
 )
 
 private val navigationItems = listOf(
     NavigationItem("Реальные кейсы", "cases"),
     NavigationItem("О нас", "about"),
     NavigationItem("Контакты", "contacts"),
+    NavigationItem(
+        label = "Практика",
+        targetId = "practice",
+        href = "https://chatgpt.com/s/dr_69176a3849008191b2d3b7fc1d318275",
+        isExternal = true
+    ),
     NavigationItem("Премиум модель", "premium"),
     NavigationItem("Консультация юриста", "consultation")
 )
@@ -199,7 +207,8 @@ private fun HeaderBar(
             }
         }) {
             navigationItems.forEach { item ->
-                A("#${item.targetId}", attrs = {
+                val destination = item.href ?: "#${item.targetId}"
+                A(destination, attrs = {
                     style {
                         fontSize(PravochatTypography.Body.fontSize)
                         fontWeight(PravochatTypography.Body.fontWeight)
@@ -208,13 +217,18 @@ private fun HeaderBar(
                         property("white-space", "nowrap")
                         property("transition", "opacity 150ms")
                     }
-                    onClick { event ->
-                        if (item.targetId == "premium") {
-                            event.preventDefault()
-                            onNavigate()
-                            onRequestImproveAccess()
-                        } else {
-                            onNavigate()
+                    if (item.isExternal) {
+                        target(ATarget.Blank)
+                    }
+                    if (!item.isExternal) {
+                        onClick { event ->
+                            if (item.targetId == "premium") {
+                                event.preventDefault()
+                                onNavigate()
+                                onRequestImproveAccess()
+                            } else {
+                                onNavigate()
+                            }
                         }
                     }
                 }) {
@@ -337,19 +351,25 @@ private fun MobileNavigationOverlay(
             }
         }) {
             navigationItems.forEach { item ->
-                A("#${item.targetId}", attrs = {
+                val destination = item.href ?: "#${item.targetId}"
+                A(destination, attrs = {
                     style {
                         fontSize(PravochatTypography.Body.fontSize)
                         fontWeight(PravochatTypography.Body.fontWeight)
                         color(PravochatColors.TextPrimary)
                         textDecoration("none")
                     }
-                    onClick {
-                        if (item.targetId == "premium") {
-                            onNavigate()
-                            onRequestImproveAccess()
-                        } else {
-                            onNavigate()
+                    if (item.isExternal) {
+                        target(ATarget.Blank)
+                    }
+                    if (!item.isExternal) {
+                        onClick {
+                            if (item.targetId == "premium") {
+                                onNavigate()
+                                onRequestImproveAccess()
+                            } else {
+                                onNavigate()
+                            }
                         }
                     }
                 }) {

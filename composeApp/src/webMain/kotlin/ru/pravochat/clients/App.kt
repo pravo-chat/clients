@@ -403,6 +403,7 @@ private fun CasesSection() {
                         borderRadius(16.px)
                         backgroundColor(PravochatColors.BackgroundWhite)
                         padding(PravochatSpacing.xl)
+                        border(1.px, LineStyle.Solid, PravochatColors.PrimaryBlue50)
                         property("box-shadow", "0px 12px 32px rgba(20, 30, 80, 0.12)")
                         display(DisplayStyle.Flex)
                         flexDirection(FlexDirection.Column)

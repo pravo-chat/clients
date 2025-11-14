@@ -613,7 +613,7 @@ private fun ContactsSection() {
         PravochatBodyText(
             text = "Москва, ул. Правовая, д. 10\nРаботаем по всей России онлайн."
         )
-        A(href = "tel:+74950000000", attrs = {
+        A(href = "mailto:info@pravochat.ru", attrs = {
             style {
                 fontSize(PravochatTypography.Body.fontSize)
                 fontWeight(PravochatTypography.Body.fontWeight)
@@ -621,17 +621,7 @@ private fun ContactsSection() {
                 textDecoration("none")
             }
         }) {
-            Text("+7 (495) 000-00-00")
-        }
-        A(href = "mailto:hello@pravochat.ru", attrs = {
-            style {
-                fontSize(PravochatTypography.Body.fontSize)
-                fontWeight(PravochatTypography.Body.fontWeight)
-                color(PravochatColors.PrimaryBlue)
-                textDecoration("none")
-            }
-        }) {
-            Text("hello@pravochat.ru")
+            Text("info@pravochat.ru")
         }
     }
 }

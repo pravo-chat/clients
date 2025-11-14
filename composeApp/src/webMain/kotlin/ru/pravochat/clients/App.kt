@@ -89,7 +89,7 @@ fun App() {
             window.removeEventListener("resize", listener)
         }
     }
-    val isMobile = windowWidth < 769
+    val isMobile = windowWidth < 992
 
     Div({
         style {
@@ -193,8 +193,9 @@ private fun HeaderBar(
         Nav({
             style {
                 display(if (isMobile) DisplayStyle.None else DisplayStyle.Flex)
-                gap(PravochatSpacing.xl)
+                gap(PravochatSpacing.lg)
                 alignItems(AlignItems.Center)
+                flexWrap(FlexWrap.Wrap)
             }
         }) {
             navigationItems.forEach { item ->
@@ -204,6 +205,7 @@ private fun HeaderBar(
                         fontWeight(PravochatTypography.Body.fontWeight)
                         color(PravochatColors.TextPrimary)
                         textDecoration("none")
+                        property("white-space", "nowrap")
                         property("transition", "opacity 150ms")
                     }
                     onClick { event ->

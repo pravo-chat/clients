@@ -476,6 +476,25 @@ private fun PracticeSection() {
 }
 
 @Composable
+private fun ImproveModelSection() {
+    SectionLayout(id = "improve", title = "Улучшить модель") {
+        PravochatBodyText(
+            text = "Мы постоянно обучаем модель на новых сценариях. Поделитесь, каких ответов или шаблонов вам не хватает. Отправьте свои кейсы, вопросы или правки, и команда учтет их в следующих обновлениях."
+        )
+        A(href = "mailto:info@pravochat.ru", attrs = {
+            style {
+                fontSize(PravochatTypography.Body.fontSize)
+                fontWeight(PravochatTypography.Body.fontWeight)
+                color(PravochatColors.PrimaryBlue)
+                textDecoration("none")
+            }
+        }) {
+            Text("info@pravochat.ru")
+        }
+    }
+}
+
+@Composable
 private fun AboutSection() {
     SectionLayout(id = "about", title = "О нас") {
         PravochatBodyText(

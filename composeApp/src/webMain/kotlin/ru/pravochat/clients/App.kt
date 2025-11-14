@@ -223,6 +223,15 @@ private fun HeaderBar(
             }
         }
 
+        if (!isMobile) {
+            Div({
+                style {
+                    width(PravochatSpacing.xl)
+                    minHeight(1.px)
+                }
+            })
+        }
+
         if (isMobile) {
             BurgerMenuButton(
                 isMenuOpen = isMenuOpen,

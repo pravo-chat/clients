@@ -27,16 +27,23 @@ val chatMessages = listOf(
 
 private data class NavigationItem(
     val label: String,
-    val targetId: String
+    val sectionId: String? = null,
+    val page: Page? = null,
+    val opensDialog: Boolean = false
 )
 
+private enum class Page {
+    HOME,
+    PRACTICE
+}
+
 private val navigationItems = listOf(
-    NavigationItem("Реальные кейсы", "cases"),
-    NavigationItem("О нас", "about"),
-    NavigationItem("Контакты", "contacts"),
-    NavigationItem("Практика", "practice"),
-    NavigationItem("Премиум модель", "premium"),
-    NavigationItem("Консультация юриста", "consultation")
+    NavigationItem(label = "Реальные кейсы", sectionId = "cases"),
+    NavigationItem(label = "О нас", sectionId = "about"),
+    NavigationItem(label = "Контакты", sectionId = "contacts"),
+    NavigationItem(label = "Практика", page = Page.PRACTICE),
+    NavigationItem(label = "Премиум модель", sectionId = "premium", opensDialog = true),
+    NavigationItem(label = "Консультация юриста", sectionId = "consultation")
 )
 
 private data class CaseStudy(
@@ -80,6 +87,7 @@ fun App() {
     var isMenuOpen by remember { mutableStateOf(false) }
     var windowWidth by remember { mutableStateOf(window.innerWidth.toInt()) }
     var isImproveDialogOpen by remember { mutableStateOf(false) }
+    var currentPage by remember { mutableStateOf(Page.HOME) }
 
     DisposableEffect(Unit) {
         val listener: (Event) -> Unit = {
@@ -91,6 +99,19 @@ fun App() {
         }
     }
     val isMobile = windowWidth < 992
+
+    val navigateToSection: (String) -> Unit = { sectionId ->
+        currentPage = Page.HOME
+        window.setTimeout({
+            window.location.hash = sectionId
+        }, 0)
+        window.scrollTo(0.0, 0.0)
+    }
+
+    val openPracticePage: () -> Unit = {
+        currentPage = Page.PRACTICE
+        window.scrollTo(0.0, 0.0)
+    }
 
     Div({
         style {
@@ -109,6 +130,14 @@ fun App() {
             isMenuOpen = isMenuOpen,
             onToggle = { isMenuOpen = !isMenuOpen },
             onNavigate = { isMenuOpen = false },
+            onNavigateToSection = { sectionId ->
+                navigateToSection(sectionId)
+                isMenuOpen = false
+            },
+            onOpenPractice = {
+                openPracticePage()
+                isMenuOpen = false
+            },
             onRequestImproveAccess = {
                 isMenuOpen = false
                 isImproveDialogOpen = true
@@ -122,18 +151,32 @@ fun App() {
                 flexDirection(FlexDirection.Column)
             }
         }) {
-            HeroSection(content = content)
-            CasesSection()
-            PracticeSection()
-            AboutSection()
-            ImproveModelSection()
-            ConsultationSection()
-            ContactsSection()
+            when (currentPage) {
+                Page.HOME -> {
+                    HeroSection(content = content)
+                    CasesSection()
+                    AboutSection()
+                    ImproveModelSection()
+                    ConsultationSection()
+                    ContactsSection()
+                }
+                Page.PRACTICE -> PracticePage(
+                    onBack = { navigateToSection("cases") }
+                )
+            }
         }
         if (isMobile && isMenuOpen) {
             MobileNavigationOverlay(
                 onDismiss = { isMenuOpen = false },
                 onNavigate = { isMenuOpen = false },
+                onNavigateToSection = { sectionId ->
+                    navigateToSection(sectionId)
+                    isMenuOpen = false
+                },
+                onOpenPractice = {
+                    openPracticePage()
+                    isMenuOpen = false
+                },
                 onRequestImproveAccess = {
                     isMenuOpen = false
                     isImproveDialogOpen = true
@@ -154,6 +197,8 @@ private fun HeaderBar(
     isMenuOpen: Boolean,
     onToggle: () -> Unit,
     onNavigate: () -> Unit,
+    onNavigateToSection: (String) -> Unit,
+    onOpenPractice: () -> Unit,
     onRequestImproveAccess: () -> Unit
 ) {
     Header({
@@ -202,7 +247,8 @@ private fun HeaderBar(
             }
         }) {
             navigationItems.forEach { item ->
-                A("#${item.targetId}", attrs = {
+                val destination = item.sectionId?.let { "#$it" } ?: "#"
+                A(destination, attrs = {
                     style {
                         fontSize(PravochatTypography.Body.fontSize)
                         fontWeight(PravochatTypography.Body.fontWeight)
@@ -212,12 +258,20 @@ private fun HeaderBar(
                         property("transition", "opacity 150ms")
                     }
                     onClick { event ->
-                        if (item.targetId == "premium") {
-                            event.preventDefault()
-                            onNavigate()
-                            onRequestImproveAccess()
-                        } else {
-                            onNavigate()
+                        when {
+                            item.page == Page.PRACTICE -> {
+                                event.preventDefault()
+                                onOpenPractice()
+                            }
+                            item.opensDialog -> {
+                                event.preventDefault()
+                                onNavigate()
+                                onRequestImproveAccess()
+                            }
+                            item.sectionId != null -> {
+                                event.preventDefault()
+                                onNavigateToSection(item.sectionId)
+                            }
                         }
                     }
                 }) {
@@ -340,7 +394,8 @@ private fun MobileNavigationOverlay(
             }
         }) {
             navigationItems.forEach { item ->
-                A("#${item.targetId}", attrs = {
+                val destination = item.sectionId?.let { "#$it" } ?: "#"
+                A(destination, attrs = {
                     style {
                         fontSize(PravochatTypography.Body.fontSize)
                         fontWeight(PravochatTypography.Body.fontWeight)
@@ -348,11 +403,19 @@ private fun MobileNavigationOverlay(
                         textDecoration("none")
                     }
                     onClick {
-                        if (item.targetId == "premium") {
-                            onNavigate()
-                            onRequestImproveAccess()
-                        } else {
-                            onNavigate()
+                        when {
+                            item.page == Page.PRACTICE -> {
+                                onOpenPractice()
+                                onNavigate()
+                            }
+                            item.opensDialog -> {
+                                onNavigate()
+                                onRequestImproveAccess()
+                            }
+                            item.sectionId != null -> {
+                                onNavigateToSection(item.sectionId)
+                                onNavigate()
+                            }
                         }
                     }
                 }) {
@@ -422,15 +485,50 @@ private fun CasesSection() {
 }
 
 @Composable
-private fun PracticeSection() {
+private fun PracticePage(onBack: () -> Unit) {
     SectionLayout(id = "practice", title = "Практика") {
+        Button(attrs = {
+            style {
+                padding(PravochatSpacing.sm, PravochatSpacing.lg)
+                borderRadius(999.px)
+                border(0.px)
+                backgroundColor(PravochatColors.PrimaryBlue)
+                color(PravochatColors.TextWhite)
+                fontSize(PravochatTypography.Body.fontSize)
+                fontWeight(PravochatTypography.Body.fontWeight)
+                property("cursor", "pointer")
+                alignSelf(AlignSelf.FlexStart)
+            }
+            onClick { onBack() }
+        }) {
+            Text("← Вернуться на главную")
+        }
+
+        Div({
+            style {
+                width(100.percent)
+                borderRadius(12.px)
+                overflow("hidden")
+                property("box-shadow", "0px 12px 32px rgba(20, 30, 80, 0.08)")
+            }
+        }) {
+            Img(src = "/images/practice-case.svg", alt = "Скриншот статьи о восстановлении сотрудницы «Летуаль»", attrs = {
+                style {
+                    width(100.percent)
+                    display(DisplayStyle.Block)
+                }
+            })
+        }
+
         PravochatHeading("Пример: восстановление сотрудницы «Летуаль» после увольнения за больничный")
         PravochatBodyText(
-            text = "Сотрудницу московского магазина уволили за публикацию фотографий в социальных сетях во время больничного. Работодатель посчитал, что она нарушила трудовую дисциплину и сослался на пункт «а» части 6 статьи 81 ТК РФ."
+            text = "Сотрудницу магазина «Летуаль» в Москве уволили за публикацию фотографий в социальных сетях во время больничного. Работодатель сослался на подпункт «а» пункта 6 части 1 статьи 81 ТК РФ — однократное грубое нарушение трудовых обязанностей. По мнению компании, размещение фото доказывало, что сотрудница нарушила режим лечения."
         )
         PravochatBodyText(
-            text = "Суд установил, что появление в соцсетях не подтверждает прогул или неуважение к больничному режиму. Работодатель не доказал, что сотрудница нарушила медицинские предписания, поэтому увольнение признали незаконным и восстановили её на работе с выплатой компенсации."
+            text = "В суде компания не смогла показать документы, подтверждающие прогул или несоблюдение медицинских назначений. Судья указал, что снимки в соцсетях не являются доказательством нарушения трудовой дисциплины, и восстановил сотрудницу в должности. Ей также выплатили компенсацию за время вынужденного прогула."
         )
+
+        PravochatHeading("Что важно учесть")
         Ul({
             style {
                 margin(0.px)
@@ -441,22 +539,23 @@ private fun PracticeSection() {
             }
         }) {
             listOf(
-                "Применять дисциплинарные меры можно только при наличии зафиксированного нарушения.",
-                "Перед увольнением важно проверить договор и локальные акты: в них должно быть прописано, что считается проступком.",
-                "Сотруднику стоит сохранять подтверждения лечения и переписки с работодателем — они помогут в суде."
-            ).forEach { highlight ->
+                "Дисциплинарные взыскания допустимы только при наличии чётко задокументированного нарушения.",
+                "В локальных актах нужно заранее описать, что считается проступком, иначе уволить по инициативе работодателя будет сложно.",
+                "Сотруднику стоит сохранять больничные листы, переписку и иные доказательства соблюдения режима лечения."
+            ).forEach { point ->
                 Li {
-                    Text(highlight)
+                    Text(point)
                 }
             }
         }
-        PravochatBodyText(text = "Источники:")
+
+        PravochatHeading("Источники")
         val sources = listOf(
             "МК: Продавец доказала в суде, что во время больничного можно публиковать фотографии" to
                 "https://www.mk.ru/amp/social/2025/11/14/prodavec-dokazala-v-sude-chto-vo-vremya-bolnichnogo-mozhno-publikovat-fotografii.html",
-            "ТК РФ, статья 81 (КонсультантПлюс)" to
+            "КонсультантПлюс: ТК РФ, статья 81" to
                 "https://www.consultant.ru/document/cons_doc_LAW_34683/6a7ba42d8fda3a1ba186a9eb5c806921998ae7d1/",
-            "Taxcom: когда суд может восстановить сотрудника на работе" to
+            "Taxcom: Когда суд может восстановить сотрудника на работе" to
                 "https://taxcom.ru/baza-znaniy/kadrovaya-otchetnost/stati/uvolnenie-po-sobstvennomu-zhelaniyu-kogda-sud-mozhet-vosstanovit-sotrudnika-na-rabote/"
         )
         sources.forEach { (label, url) ->

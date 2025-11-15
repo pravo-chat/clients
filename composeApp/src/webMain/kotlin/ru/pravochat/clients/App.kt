@@ -34,7 +34,6 @@ private data class NavigationItem(
 
 private val navigationItems = listOf(
     NavigationItem(label = "Реальные кейсы", targetId = "cases"),
-    NavigationItem(label = "О нас", targetId = "about"),
     NavigationItem(label = "Контакты", targetId = "contacts"),
     NavigationItem(label = "Практика", externalHref = "/practice.html"),
     NavigationItem(label = "Премиум модель", targetId = "premium", opensDialog = true),
@@ -126,7 +125,6 @@ fun App() {
         }) {
             HeroSection(content = content)
             CasesSection()
-            AboutSection()
             ConsultationSection()
             ContactsSection()
         }
@@ -424,18 +422,6 @@ private fun CasesSection() {
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun AboutSection() {
-    SectionLayout(id = "about", title = "О нас") {
-        PravochatBodyText(
-            text = "Мы объединяем опыт практикующих юристов и возможности искусственного интеллекта. Команда специализируется на юридическом сопровождении бизнеса и частных клиентов, помогая быстро ориентироваться в сложных правовых ситуациях."
-        )
-        PravochatBodyText(
-            text = "PravoChat анализирует документы, предлагает готовые решения и подключает специалистов для детальной консультации. Мы фокусируемся на прозрачности, скорости и понятной коммуникации."
-        )
     }
 }
 

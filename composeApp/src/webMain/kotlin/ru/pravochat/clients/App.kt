@@ -27,15 +27,18 @@ val chatMessages = listOf(
 
 private data class NavigationItem(
     val label: String,
-    val targetId: String
+    val targetId: String? = null,
+    val externalHref: String? = null,
+    val opensDialog: Boolean = false
 )
 
 private val navigationItems = listOf(
-    NavigationItem("Реальные кейсы", "cases"),
-    NavigationItem("О нас", "about"),
-    NavigationItem("Контакты", "contacts"),
-    NavigationItem("Премиум модель", "premium"),
-    NavigationItem("Консультация юриста", "consultation")
+    NavigationItem(label = "Реальные кейсы", targetId = "cases"),
+    NavigationItem(label = "О нас", targetId = "about"),
+    NavigationItem(label = "Контакты", targetId = "contacts"),
+    NavigationItem(label = "Практика", externalHref = "/practice.html"),
+    NavigationItem(label = "Премиум модель", targetId = "premium", opensDialog = true),
+    NavigationItem(label = "Консультация юриста", targetId = "consultation")
 )
 
 private data class CaseStudy(
@@ -89,7 +92,7 @@ fun App() {
             window.removeEventListener("resize", listener)
         }
     }
-    val isMobile = windowWidth < 769
+    val isMobile = windowWidth < 992
 
     Div({
         style {
@@ -124,6 +127,7 @@ fun App() {
             HeroSection(content = content)
             CasesSection()
             AboutSection()
+            ImproveModelSection()
             ConsultationSection()
             ContactsSection()
         }
@@ -193,32 +197,46 @@ private fun HeaderBar(
         Nav({
             style {
                 display(if (isMobile) DisplayStyle.None else DisplayStyle.Flex)
-                gap(PravochatSpacing.xl)
+                gap(PravochatSpacing.lg)
                 alignItems(AlignItems.Center)
+                flexWrap(FlexWrap.Wrap)
             }
         }) {
             navigationItems.forEach { item ->
-                A("#${item.targetId}", attrs = {
+                val destination = item.externalHref ?: item.targetId?.let { "#$it" } ?: "#"
+                A(destination, attrs = {
                     style {
                         fontSize(PravochatTypography.Body.fontSize)
                         fontWeight(PravochatTypography.Body.fontWeight)
                         color(PravochatColors.TextPrimary)
                         textDecoration("none")
+                        property("white-space", "nowrap")
                         property("transition", "opacity 150ms")
                     }
-                    onClick { event ->
-                        if (item.targetId == "premium") {
-                            event.preventDefault()
-                            onNavigate()
-                            onRequestImproveAccess()
-                        } else {
-                            onNavigate()
+                    if (item.externalHref == null) {
+                        onClick { event ->
+                            if (item.opensDialog) {
+                                event.preventDefault()
+                                onNavigate()
+                                onRequestImproveAccess()
+                            } else {
+                                onNavigate()
+                            }
                         }
                     }
                 }) {
                     Text(item.label)
                 }
             }
+        }
+
+        if (!isMobile) {
+            Div({
+                style {
+                    width(PravochatSpacing.xl)
+                    minHeight(1.px)
+                }
+            })
         }
 
         if (isMobile) {
@@ -326,19 +344,22 @@ private fun MobileNavigationOverlay(
             }
         }) {
             navigationItems.forEach { item ->
-                A("#${item.targetId}", attrs = {
+                val destination = item.externalHref ?: item.targetId?.let { "#$it" } ?: "#"
+                A(destination, attrs = {
                     style {
                         fontSize(PravochatTypography.Body.fontSize)
                         fontWeight(PravochatTypography.Body.fontWeight)
                         color(PravochatColors.TextPrimary)
                         textDecoration("none")
                     }
-                    onClick {
-                        if (item.targetId == "premium") {
-                            onNavigate()
-                            onRequestImproveAccess()
-                        } else {
-                            onNavigate()
+                    if (item.externalHref == null) {
+                        onClick {
+                            if (item.opensDialog) {
+                                onNavigate()
+                                onRequestImproveAccess()
+                            } else {
+                                onNavigate()
+                            }
                         }
                     }
                 }) {
@@ -392,6 +413,7 @@ private fun CasesSection() {
                         borderRadius(16.px)
                         backgroundColor(PravochatColors.BackgroundWhite)
                         padding(PravochatSpacing.xl)
+                        border(1.px, LineStyle.Solid, PravochatColors.AccentBlue)
                         property("box-shadow", "0px 12px 32px rgba(20, 30, 80, 0.12)")
                         display(DisplayStyle.Flex)
                         flexDirection(FlexDirection.Column)
@@ -402,6 +424,25 @@ private fun CasesSection() {
                     PravochatBodyText(caseStudy.summary)
                 }
             }
+        }
+    }
+}
+
+@Composable
+private fun ImproveModelSection() {
+    SectionLayout(id = "improve", title = "Улучшить модель") {
+        PravochatBodyText(
+            text = "Мы постоянно обучаем модель на новых сценариях. Поделитесь, каких ответов или шаблонов вам не хватает. Отправьте свои кейсы, вопросы или правки, и команда учтет их в следующих обновлениях."
+        )
+        A(href = "mailto:info@pravochat.ru", attrs = {
+            style {
+                fontSize(PravochatTypography.Body.fontSize)
+                fontWeight(PravochatTypography.Body.fontWeight)
+                color(PravochatColors.PrimaryBlue)
+                textDecoration("none")
+            }
+        }) {
+            Text("info@pravochat.ru")
         }
     }
 }
@@ -601,7 +642,7 @@ private fun ContactsSection() {
         PravochatBodyText(
             text = "Москва, ул. Правовая, д. 10\nРаботаем по всей России онлайн."
         )
-        A(href = "tel:+74950000000", attrs = {
+        A(href = "mailto:info@pravochat.ru", attrs = {
             style {
                 fontSize(PravochatTypography.Body.fontSize)
                 fontWeight(PravochatTypography.Body.fontWeight)
@@ -609,17 +650,7 @@ private fun ContactsSection() {
                 textDecoration("none")
             }
         }) {
-            Text("+7 (495) 000-00-00")
-        }
-        A(href = "mailto:hello@pravochat.ru", attrs = {
-            style {
-                fontSize(PravochatTypography.Body.fontSize)
-                fontWeight(PravochatTypography.Body.fontWeight)
-                color(PravochatColors.PrimaryBlue)
-                textDecoration("none")
-            }
-        }) {
-            Text("hello@pravochat.ru")
+            Text("info@pravochat.ru")
         }
     }
 }

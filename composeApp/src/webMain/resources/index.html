@@ -139,11 +139,83 @@
         }
         
         .container { max-width: 1120px; margin: 0 auto; padding: 24px; }
-        .header { position: sticky; top: 0; background: #FFFFFF; border-bottom: 1px solid #E6E9F0; z-index: 20; }
+        .header { position: sticky; top: 0; background: #FFFFFF; border-bottom: 1px solid #E6E9F0; z-index: 100; }
         .nav { display: flex; align-items: center; justify-content: space-between; color: #111322; padding: 24px 8px; }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; font-size: 20px; font-weight: 600; }
         .nav-links { display: flex; align-items: center; }
         .nav-links a { margin-left: 20px; color: #111322; text-decoration: none; font-weight: 500; }
+        
+        /* Burger menu */
+        .burger-menu {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .burger-menu span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #111322;
+            border-radius: 2px;
+            transition: transform 150ms, opacity 150ms;
+        }
+        .burger-menu.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .burger-menu.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        
+        /* Mobile menu overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(30, 30, 30, 0.6);
+            z-index: 999;
+        }
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: #FFFFFF;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+            transform: translateX(100%);
+            transition: transform 200ms;
+        }
+        .mobile-menu-overlay.active .mobile-menu {
+            transform: translateX(0);
+        }
+        .mobile-menu a {
+            color: #111322;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+        }
         .hero { padding: 64px 24px; color: #111111; }
         .hero h1 { font-size: 36px; line-height: 1.2; margin: 0 0 16px 0; }
         .hero p { font-size: 16px; line-height: 1.6; margin: 0 0 24px 0; color: #333333; }
@@ -279,8 +351,26 @@
             border: none !important;
         }
         @media (max-width: 768px) {
+            .header {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 1000 !important;
+                background: #FFFFFF !important;
+                width: 100% !important;
+            }
+            .nav-links {
+                display: none !important;
+            }
+            .burger-menu {
+                display: flex !important;
+            }
+            body {
+                padding-top: 70px !important;
+            }
             #customgpt_chat {
-                height: calc(100vh - 80px) !important;
+                height: calc(100vh - 70px) !important;
                 min-height: 500px !important;
             }
         }
@@ -325,6 +415,11 @@
                     <a href="#premium" onclick="document.getElementById('ea-dialog')?.showModal(); return false;">Премиум модель</a>
                     <a href="#consult" onclick="document.getElementById('consult-dialog')?.showModal(); return false;">Консультация юриста</a>
                 </nav>
+                <button class="burger-menu" id="burger-menu" aria-label="Открыть меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </header>
 
@@ -359,6 +454,17 @@
                 </div>
             </form>
         </dialog>
+    </div>
+    
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+        <div class="mobile-menu">
+            <a href="/cases.html" onclick="closeMobileMenu()">Реальные кейсы</a>
+            <a href="/about.html" onclick="closeMobileMenu()">О нас и контакты</a>
+            <a href="/practice.html" onclick="closeMobileMenu()">Практика</a>
+            <a href="#premium" onclick="closeMobileMenu(); document.getElementById('ea-dialog')?.showModal(); return false;">Премиум модель</a>
+            <a href="#consult" onclick="closeMobileMenu(); document.getElementById('consult-dialog')?.showModal(); return false;">Консультация юриста</a>
+        </div>
     </div>
     
     <!-- CustomGPT main content widget -->
@@ -405,6 +511,28 @@
             
             setupDialogCloseHandlers(eaDialog);
             setupDialogCloseHandlers(consultDialog);
+            
+            // Mobile menu handlers
+            const burgerMenu = document.getElementById('burger-menu');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            
+            if (burgerMenu && mobileMenuOverlay) {
+                burgerMenu.addEventListener('click', function() {
+                    burgerMenu.classList.toggle('active');
+                    mobileMenuOverlay.classList.toggle('active');
+                });
+                
+                mobileMenuOverlay.addEventListener('click', function(e) {
+                    if (e.target === mobileMenuOverlay) {
+                        closeMobileMenu();
+                    }
+                });
+            }
+            
+            window.closeMobileMenu = function() {
+                if (burgerMenu) burgerMenu.classList.remove('active');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('active');
+            };
         })();
     </script>
     

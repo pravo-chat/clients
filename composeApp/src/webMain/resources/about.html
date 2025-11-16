@@ -6,6 +6,7 @@
     <title>О нас — PravoChat</title>
     <meta name="description" content="PravoChat — юридическая помощь онлайн. Узнайте больше о команде и миссии, свяжитесь с нами.">
     <link rel="canonical" href="https://pravochat.ru/about.html">
+    <link rel="preconnect" href="https://cdn.customgpt.ai" crossorigin>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -90,9 +91,13 @@
     <script defer>
         (function(){
             function init(){
-                CustomGPT.init({ p_id:'85945', p_key:'88b56239fe3f9ef608c6bd60989064ec' })
+                try { CustomGPT.init({ p_id:'85945', p_key:'88b56239fe3f9ef608c6bd60989064ec' }) } catch(e){}
             }
-            document.readyState === 'complete' ? init() : window.addEventListener('load', init);
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init, { once: true });
+            } else {
+                init();
+            }
         })();
     </script>
 </body>

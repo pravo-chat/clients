@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <link rel="preconnect" href="https://cdn.customgpt.ai" crossorigin>
+    
     <!-- Primary Meta Tags -->
     <title>Юридическая помощь - Онлайн консультации юристов | Бесплатная правовая помощь</title>
     <meta name="title" content="Юридическая помощь - Онлайн консультации юристов | Бесплатная правовая помощь">
@@ -176,9 +178,13 @@
     <script defer>
         (function(){
             function init(){
-                CustomGPT.init({ p_id:'85945', p_key:'88b56239fe3f9ef608c6bd60989064ec' })
+                try { CustomGPT.init({ p_id:'85945', p_key:'88b56239fe3f9ef608c6bd60989064ec' }) } catch(e){}
             }
-            document.readyState === 'complete' ? init() : window.addEventListener('load', init);
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init, { once: true });
+            } else {
+                init();
+            }
         })();
     </script>
 </body>

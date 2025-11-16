@@ -125,7 +125,7 @@
             padding: 0;
             min-height: 100%;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #F9F9FA;
+            background-color: #1E1E1E;
             overflow-x: hidden;
         }
         
@@ -137,6 +137,22 @@
             height: 1px;
             overflow: hidden;
         }
+        
+        .container { max-width: 1120px; margin: 0 auto; padding: 24px; }
+        .header { position: sticky; top: 0; background: #1E1E1E; border-bottom: 1px solid #2A2A2A; z-index: 20; }
+        .nav { display: flex; align-items: center; justify-content: space-between; color: #FFFFFF; }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #FFFFFF; font-size: 20px; font-weight: 600; }
+        .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
+        .nav-links a { color: #FFFFFF; text-decoration: none; font-size: 14px; opacity: 0.95; }
+        .hero { padding: 64px 24px; color: #FFFFFF; }
+        .hero h1 { font-size: 36px; line-height: 1.2; margin: 0 0 16px 0; }
+        .hero p { font-size: 16px; line-height: 1.6; margin: 0 0 24px 0; color: #D0D0D0; }
+        .cta { display: inline-flex; align-items: center; gap: 16px; padding: 16px 28px; border-radius: 20px; color: #FFFFFF; text-decoration: none;
+               background: linear-gradient(135deg, #308CEF 0%, #147EFF 100%); border: 1px solid rgba(255,255,255,0.18); box-shadow: 0 18px 40px rgba(20,126,255,0.28); }
+        .section { padding: 64px 24px; }
+        .card { background: #FFFFFF; border: 1px solid #308CEF; box-shadow: 0 12px 32px rgba(20, 30, 80, 0.12); border-radius: 16px; padding: 24px; margin-bottom: 16px; }
+        .card h3 { margin: 0 0 8px 0; font-size: 18px; }
+        .card p { margin: 0; color: #333333; line-height: 1.5; }
     </style>
 </head>
 <body>
@@ -165,13 +181,82 @@
     </div>
     
     <div id="root">
+        <header class="header">
+            <div class="container nav">
+                <a href="#hero" class="brand">
+                    <img src="/images/pravo-logo.svg" alt="PravoChat logo" width="32" height="32">
+                    <span>PravoChat</span>
+                </a>
+                <nav class="nav-links">
+                    <a href="#cases">Реальные кейсы</a>
+                    <a href="/about.html">О нас и контакты</a>
+                    <a href="/practice.html">Практика</a>
+                    <a href="#premium" onclick="document.getElementById('ea-dialog')?.showModal(); return false;">Премиум модель</a>
+                    <a href="#consult" onclick="document.getElementById('consult-dialog')?.showModal(); return false;">Консультация юриста</a>
+                </nav>
+            </div>
+        </header>
+
+        <section id="hero" class="hero">
+            <div class="container">
+                <h1>Онлайн юридическая помощь</h1>
+                <p>Быстрые ответы на правовые вопросы, помощь с документами и защита ваших интересов.</p>
+                <a class="cta" href="https://antoqk1avl.customgpt-agents.com" target="_blank" rel="noopener">
+                    <span>Перейти в чат</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="cases" class="section">
+            <div class="container">
+                <div class="card">
+                    <h3>Восстановление сотрудника после незаконного увольнения</h3>
+                    <p>Подготовили претензию, представили клиента в суде и добились восстановления на работе с выплатой компенсации.</p>
+                </div>
+                <div class="card">
+                    <h3>Сопровождение сделки по продаже бизнеса</h3>
+                    <p>Проанализировали договор, провели правовую экспертизу активов и снизили риски сторон с помощью дополнительных соглашений.</p>
+                </div>
+                <div class="card">
+                    <h3>Оптимизация налоговой нагрузки для ИП</h3>
+                    <p>Провели аудит договоров с контрагентами, подобрали льготные режимы и снизили расходы на 18% без нарушения законодательства.</p>
+                </div>
+            </div>
+        </section>
+
+        <dialog id="ea-dialog">
+            <form method="dialog">
+                <h3>Ранний доступ</h3>
+                <p>Оставьте контакты, и мы подключим вас, как только доступ будет активирован.</p>
+                <label>Имя<br><input type="text" style="width:100%"></label><br><br>
+                <label>Email<br><input type="email" style="width:100%"></label><br><br>
+                <div style="display:flex;gap:8px;justify-content:flex-end">
+                    <button>Отмена</button>
+                    <button>Отправить заявку</button>
+                </div>
+            </form>
+        </dialog>
+
+        <dialog id="consult-dialog">
+            <form method="dialog">
+                <h3>Консультация юриста</h3>
+                <p>Оставьте контакты и кратко опишите вопрос — мы свяжемся с вами.</p>
+                <label>Имя<br><input type="text" style="width:100%"></label><br><br>
+                <label>Email<br><input type="email" style="width:100%"></label><br><br>
+                <label>Ваш вопрос<br><textarea style="width:100%;min-height:96px"></textarea></label><br><br>
+                <div style="display:flex;gap:8px;justify-content:flex-end">
+                    <button>Отмена</button>
+                    <button>Отправить</button>
+                </div>
+            </form>
+        </dialog>
     </div>
     
     <!-- Analytics -->
     <script src="analytics.js"></script>
     
     <!-- Main App -->
-    <script type="module" src="composeApp.js"></script>
+    <!-- <script type="module" src="composeApp.js"></script> -->
     
     <!-- CustomGPT embedded chat -->
     <div id="customgpt_chat"></div>

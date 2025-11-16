@@ -29,7 +29,8 @@ private data class NavigationItem(
     val label: String,
     val targetId: String? = null,
     val externalHref: String? = null,
-    val opensDialog: Boolean = false
+    val opensDialog: Boolean = false,
+    val opensConsultationDialog: Boolean = false
 )
 
 private val navigationItems = listOf(
@@ -37,7 +38,7 @@ private val navigationItems = listOf(
     NavigationItem(label = "О нас и контакты", externalHref = "/about.html"),
     NavigationItem(label = "Практика", externalHref = "/practice.html"),
     NavigationItem(label = "Премиум модель", targetId = "premium", opensDialog = true),
-    NavigationItem(label = "Консультация юриста", targetId = "consultation")
+    NavigationItem(label = "Консультация юриста", opensConsultationDialog = true)
 )
 
 private data class CaseStudy(
@@ -81,6 +82,7 @@ fun App() {
     var isMenuOpen by remember { mutableStateOf(false) }
     var windowWidth by remember { mutableStateOf(window.innerWidth.toInt()) }
     var isImproveDialogOpen by remember { mutableStateOf(false) }
+    var isConsultationDialogOpen by remember { mutableStateOf(false) }
 
     DisposableEffect(Unit) {
         val listener: (Event) -> Unit = {
@@ -113,6 +115,10 @@ fun App() {
             onRequestImproveAccess = {
                 isMenuOpen = false
                 isImproveDialogOpen = true
+            },
+            onRequestConsultation = {
+                isMenuOpen = false
+                isConsultationDialogOpen = true
             }
         )
         Main({
@@ -125,7 +131,6 @@ fun App() {
         }) {
             HeroSection(content = content)
             CasesSection()
-            ConsultationSection()
         }
         if (isMobile && isMenuOpen) {
             MobileNavigationOverlay(
@@ -134,12 +139,21 @@ fun App() {
                 onRequestImproveAccess = {
                     isMenuOpen = false
                     isImproveDialogOpen = true
+                },
+                onRequestConsultation = {
+                    isMenuOpen = false
+                    isConsultationDialogOpen = true
                 }
             )
         }
         if (isImproveDialogOpen) {
             EarlyAccessDialog(
                 onClose = { isImproveDialogOpen = false }
+            )
+        }
+        if (isConsultationDialogOpen) {
+            ConsultationDialog(
+                onClose = { isConsultationDialogOpen = false }
             )
         }
     }
@@ -151,7 +165,8 @@ private fun HeaderBar(
     isMenuOpen: Boolean,
     onToggle: () -> Unit,
     onNavigate: () -> Unit,
-    onRequestImproveAccess: () -> Unit
+    onRequestImproveAccess: () -> Unit,
+    onRequestConsultation: () -> Unit
 ) {
     Header({
         style {
@@ -215,6 +230,10 @@ private fun HeaderBar(
                                 event.preventDefault()
                                 onNavigate()
                                 onRequestImproveAccess()
+                            } else if (item.opensConsultationDialog) {
+                                event.preventDefault()
+                                onNavigate()
+                                onRequestConsultation()
                             } else {
                                 onNavigate()
                             }
@@ -307,7 +326,8 @@ private fun BurgerMenuButton(
 private fun MobileNavigationOverlay(
     onDismiss: () -> Unit,
     onNavigate: () -> Unit,
-    onRequestImproveAccess: () -> Unit
+    onRequestImproveAccess: () -> Unit,
+    onRequestConsultation: () -> Unit
 ) {
     Div({
         style {
@@ -353,6 +373,9 @@ private fun MobileNavigationOverlay(
                             if (item.opensDialog) {
                                 onNavigate()
                                 onRequestImproveAccess()
+                            } else if (item.opensConsultationDialog) {
+                                onNavigate()
+                                onRequestConsultation()
                             } else {
                                 onNavigate()
                             }
@@ -589,12 +612,183 @@ private fun EarlyAccessDialog(
 }
 
 @Composable
-private fun ConsultationSection() {
-    SectionLayout(id = "consultation", title = "Консультация юриста") {
-        PravochatBodyText(
-            text = "Получите первичную консультацию за несколько минут. Опишите ситуацию в чате — система подскажет возможные варианты, а при необходимости подключит живого специалиста."
-        )
-        ChatInputCompact()
+private fun ConsultationDialog(
+    onClose: () -> Unit
+) {
+    var fullName by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var question by remember { mutableStateOf("") }
+    val isFormValid = fullName.isNotBlank() && email.isNotBlank() && question.isNotBlank()
+    var isSubmitted by remember { mutableStateOf(false) }
+
+    Div({
+        style {
+            position(Position.Fixed)
+            top(0.px)
+            left(0.px)
+            width(100.percent)
+            height(100.vh)
+            backgroundColor(rgba(30, 30, 30, 0.7))
+            display(DisplayStyle.Flex)
+            justifyContent(JustifyContent.Center)
+            alignItems(AlignItems.Center)
+            property("z-index", "30")
+            padding(PravochatSpacing.lg)
+        }
+        onClick { onClose() }
+    }) {
+        Div({
+            style {
+                width(100.percent)
+                maxWidth(520.px)
+                backgroundColor(PravochatColors.BackgroundWhite)
+                borderRadius(20.px)
+                display(DisplayStyle.Flex)
+                flexDirection(FlexDirection.Column)
+                gap(PravochatSpacing.md)
+                padding(PravochatSpacing.xxl)
+                property("box-shadow", "0px 24px 48px rgba(20, 30, 80, 0.18)")
+            }
+            onClick { event -> event.stopPropagation() }
+        }) {
+            PravochatHeading("Консультация юриста")
+            PravochatBodyText(
+                text = "Оставьте контакты и кратко опишите вопрос — мы свяжемся с вами и предложим варианты решения."
+            )
+
+            Label(forId = "consult-name", attrs = {
+                style {
+                    fontWeight(PravochatTypography.Body.fontWeight)
+                    color(PravochatColors.TextPrimary)
+                }
+            }) { Text("Имя") }
+            Input(InputType.Text, attrs = {
+                id("consult-name")
+                placeholder("Ваше имя")
+                value(fullName)
+                onInput { fullName = it.value }
+                style {
+                    width(100.percent)
+                    padding(PravochatSpacing.md)
+                    borderRadius(12.px)
+                    border {
+                        width(1.px)
+                        style(LineStyle.Solid)
+                        color(Color("#D9D9DC"))
+                    }
+                    fontSize(PravochatTypography.Body.fontSize)
+                }
+            })
+
+            Label(forId = "consult-email", attrs = {
+                style {
+                    fontWeight(PravochatTypography.Body.fontWeight)
+                    color(PravochatColors.TextPrimary)
+                }
+            }) { Text("Email") }
+            Input(InputType.Email, attrs = {
+                id("consult-email")
+                placeholder("name@example.com")
+                value(email)
+                onInput { email = it.value }
+                style {
+                    width(100.percent)
+                    padding(PravochatSpacing.md)
+                    borderRadius(12.px)
+                    border {
+                        width(1.px)
+                        style(LineStyle.Solid)
+                        color(Color("#D9D9DC"))
+                    }
+                    fontSize(PravochatTypography.Body.fontSize)
+                }
+            })
+
+            Label(forId = "consult-question", attrs = {
+                style {
+                    fontWeight(PravochatTypography.Body.fontWeight)
+                    color(PravochatColors.TextPrimary)
+                }
+            }) { Text("Ваш вопрос") }
+            TextArea(attrs = {
+                id("consult-question")
+                placeholder("Коротко опишите ситуацию")
+                value(question)
+                onInput { question = it.value }
+                style {
+                    width(100.percent)
+                    padding(PravochatSpacing.md)
+                    minHeight(96.px)
+                    borderRadius(12.px)
+                    border {
+                        width(1.px)
+                        style(LineStyle.Solid)
+                        color(Color("#D9D9DC"))
+                    }
+                    fontSize(PravochatTypography.Body.fontSize)
+                    property("resize", "vertical")
+                }
+            })
+
+            if (isSubmitted) {
+                PravochatBodyText(
+                    text = "Спасибо! Мы свяжемся с вами в ближайшее время.",
+                    color = PravochatColors.PrimaryBlue
+                )
+            }
+
+            Div({
+                style {
+                    display(DisplayStyle.Flex)
+                    gap(PravochatSpacing.sm)
+                    marginTop(PravochatSpacing.lg)
+                    justifyContent(JustifyContent.FlexEnd)
+                }
+            }) {
+                Button(attrs = {
+                    style {
+                        padding(PravochatSpacing.sm)
+                        paddingLeft(PravochatSpacing.lg)
+                        paddingRight(PravochatSpacing.lg)
+                        borderRadius(10.px)
+                        border {
+                            width(1.px)
+                            style(LineStyle.Solid)
+                            color(Color("#D9D9DC"))
+                        }
+                        backgroundColor(Color.transparent)
+                        color(PravochatColors.TextPrimary)
+                        fontSize(PravochatTypography.Body.fontSize)
+                        property("cursor", "pointer")
+                    }
+                    onClick { onClose() }
+                }) { Text("Отмена") }
+
+                Button(attrs = {
+                    style {
+                        padding(PravochatSpacing.sm)
+                        paddingLeft(PravochatSpacing.lg)
+                        paddingRight(PravochatSpacing.lg)
+                        borderRadius(10.px)
+                        border(0.px)
+                        backgroundColor(
+                            if (isFormValid) PravochatColors.PrimaryBlue else Color("#A3C7F6")
+                        )
+                        color(PravochatColors.TextWhite)
+                        fontSize(PravochatTypography.Body.fontSize)
+                        property("cursor", if (isFormValid) "pointer" else "not-allowed")
+                        property("transition", "opacity 150ms")
+                    }
+                    if (!isFormValid) disabled()
+                    onClick {
+                        if (isFormValid) {
+                            isSubmitted = true
+                            println("Consultation requested: name=$fullName email=$email question=${question.take(120)}")
+                        }
+                    }
+                }) { Text(if (isSubmitted) "Отправлено" else "Отправить") }
+            }
+        }
     }
 }
 

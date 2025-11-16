@@ -891,7 +891,7 @@ fun MessageBubble(message: Message) {
 
 @Composable
 fun ChatInputCompact() {
-    val ctaHref = "https://antoqk1avl.customgpt-agents.com"
+    val ctaHref = "https://anto55flnc.customgpt-agents.com"
 
     Div({
         style {

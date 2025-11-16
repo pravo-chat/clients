@@ -154,6 +154,114 @@
         .card h3 { margin: 0 0 8px 0; font-size: 18px; }
         .card p { margin: 0; color: #333333; line-height: 1.5; }
         
+        /* Dialog overlay and styling */
+        dialog {
+            border: none !important;
+            padding: 0 !important;
+            background: transparent !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
+        }
+        dialog::backdrop {
+            background: rgba(30, 30, 30, 0.7) !important;
+            backdrop-filter: blur(4px);
+        }
+        dialog form {
+            width: 100%;
+            max-width: 520px;
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0px 24px 48px rgba(20, 30, 80, 0.18);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        dialog h3 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #000000;
+            margin: 0;
+        }
+        dialog p {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #333333;
+            margin: 0;
+        }
+        dialog label {
+            font-size: 16px;
+            font-weight: 400;
+            color: #000000;
+            display: block;
+            margin-bottom: 8px;
+        }
+        dialog input,
+        dialog textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #D9D9DC;
+            font-size: 16px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #000000;
+            box-sizing: border-box;
+        }
+        dialog input:focus,
+        dialog textarea:focus {
+            outline: none;
+            border-color: #308CEF;
+        }
+        dialog textarea {
+            min-height: 96px;
+            resize: vertical;
+        }
+        dialog .dialog-buttons {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+            margin-top: 8px;
+        }
+        dialog button {
+            padding: 8px 24px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 400;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            cursor: pointer;
+            transition: opacity 150ms;
+        }
+        dialog button[type="button"],
+        dialog button.cancel {
+            background: transparent;
+            border: 1px solid #D9D9DC;
+            color: #000000;
+        }
+        dialog button[type="submit"],
+        dialog button.primary {
+            background: #308CEF;
+            border: none;
+            color: #FFFFFF;
+        }
+        dialog button[type="submit"]:hover,
+        dialog button.primary:hover {
+            opacity: 0.9;
+        }
+        dialog button[type="submit"]:disabled,
+        dialog button.primary:disabled {
+            background: #A3C7F6;
+            cursor: not-allowed;
+            opacity: 1;
+        }
+        @media (max-width: 768px) {
+            dialog form {
+                max-width: calc(100vw - 32px);
+                padding: 24px;
+            }
+        }
+        
         /* CustomGPT main content widget */
         #customgpt_chat {
             position: relative !important;
@@ -224,11 +332,13 @@
             <form method="dialog">
                 <h3>Ранний доступ</h3>
                 <p>Оставьте контакты, и мы подключим вас, как только доступ будет активирован.</p>
-                <label>Имя<br><input type="text" style="width:100%"></label><br><br>
-                <label>Email<br><input type="email" style="width:100%"></label><br><br>
-                <div style="display:flex;gap:8px;justify-content:flex-end">
-                    <button>Отмена</button>
-                    <button>Отправить заявку</button>
+                <label for="improve-name">Имя</label>
+                <input type="text" id="improve-name" name="name" placeholder="Ваше имя" required>
+                <label for="improve-email">Email</label>
+                <input type="email" id="improve-email" name="email" placeholder="name@example.com" required>
+                <div class="dialog-buttons">
+                    <button type="button" class="cancel">Отмена</button>
+                    <button type="submit" class="primary">Отправить заявку</button>
                 </div>
             </form>
         </dialog>
@@ -237,12 +347,15 @@
             <form method="dialog">
                 <h3>Консультация юриста</h3>
                 <p>Оставьте контакты и кратко опишите вопрос — мы свяжемся с вами.</p>
-                <label>Имя<br><input type="text" style="width:100%"></label><br><br>
-                <label>Email<br><input type="email" style="width:100%"></label><br><br>
-                <label>Ваш вопрос<br><textarea style="width:100%;min-height:96px"></textarea></label><br><br>
-                <div style="display:flex;gap:8px;justify-content:flex-end">
-                    <button>Отмена</button>
-                    <button>Отправить</button>
+                <label for="consult-name">Имя</label>
+                <input type="text" id="consult-name" name="name" placeholder="Ваше имя" required>
+                <label for="consult-email">Email</label>
+                <input type="email" id="consult-email" name="email" placeholder="name@example.com" required>
+                <label for="consult-question">Ваш вопрос</label>
+                <textarea id="consult-question" name="question" placeholder="Коротко опишите ситуацию" required></textarea>
+                <div class="dialog-buttons">
+                    <button type="button" class="cancel">Отмена</button>
+                    <button type="submit" class="primary">Отправить</button>
                 </div>
             </form>
         </dialog>
@@ -252,7 +365,7 @@
     <div class="container" style="padding: 0; max-width: 100%;">
         <div id="customgpt_chat">
             <iframe 
-                src="https://antoqk1avl.customgpt-agents.com/" 
+                src="https://anto55flnc.customgpt-agents.com/" 
                 width="100%" 
                 height="100%" 
                 frameborder="0"
@@ -264,6 +377,36 @@
     
     <!-- Analytics -->
     <script src="analytics.js"></script>
+    
+    <!-- Dialog handlers -->
+    <script>
+        (function() {
+            const eaDialog = document.getElementById('ea-dialog');
+            const consultDialog = document.getElementById('consult-dialog');
+            
+            // Close dialog on cancel button click
+            function setupDialogCloseHandlers(dialog) {
+                if (!dialog) return;
+                
+                const cancelBtn = dialog.querySelector('.cancel');
+                if (cancelBtn) {
+                    cancelBtn.addEventListener('click', function() {
+                        dialog.close();
+                    });
+                }
+                
+                // Close dialog when clicking outside (on backdrop)
+                dialog.addEventListener('click', function(e) {
+                    if (e.target === dialog) {
+                        dialog.close();
+                    }
+                });
+            }
+            
+            setupDialogCloseHandlers(eaDialog);
+            setupDialogCloseHandlers(consultDialog);
+        })();
+    </script>
     
     <!-- Main App -->
     <!-- <script type="module" src="composeApp.js"></script> -->

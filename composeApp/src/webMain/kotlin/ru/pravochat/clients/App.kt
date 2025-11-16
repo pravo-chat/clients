@@ -34,7 +34,6 @@ private data class NavigationItem(
 
 private val navigationItems = listOf(
     NavigationItem(label = "Реальные кейсы", targetId = "cases"),
-    NavigationItem(label = "О нас", targetId = "about"),
     NavigationItem(label = "Контакты", targetId = "contacts"),
     NavigationItem(label = "Практика", externalHref = "/practice.html"),
     NavigationItem(label = "Премиум модель", targetId = "premium", opensDialog = true),
@@ -126,8 +125,6 @@ fun App() {
         }) {
             HeroSection(content = content)
             CasesSection()
-            AboutSection()
-            ImproveModelSection()
             ConsultationSection()
             ContactsSection()
         }
@@ -425,37 +422,6 @@ private fun CasesSection() {
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun ImproveModelSection() {
-    SectionLayout(id = "improve", title = "Улучшить модель") {
-        PravochatBodyText(
-            text = "Мы постоянно обучаем модель на новых сценариях. Поделитесь, каких ответов или шаблонов вам не хватает. Отправьте свои кейсы, вопросы или правки, и команда учтет их в следующих обновлениях."
-        )
-        A(href = "mailto:info@pravochat.ru", attrs = {
-            style {
-                fontSize(PravochatTypography.Body.fontSize)
-                fontWeight(PravochatTypography.Body.fontWeight)
-                color(PravochatColors.PrimaryBlue)
-                textDecoration("none")
-            }
-        }) {
-            Text("info@pravochat.ru")
-        }
-    }
-}
-
-@Composable
-private fun AboutSection() {
-    SectionLayout(id = "about", title = "О нас") {
-        PravochatBodyText(
-            text = "Мы объединяем опыт практикующих юристов и возможности искусственного интеллекта. Команда специализируется на юридическом сопровождении бизнеса и частных клиентов, помогая быстро ориентироваться в сложных правовых ситуациях."
-        )
-        PravochatBodyText(
-            text = "PravoChat анализирует документы, предлагает готовые решения и подключает специалистов для детальной консультации. Мы фокусируемся на прозрачности, скорости и понятной коммуникации."
-        )
     }
 }
 

@@ -170,5 +170,16 @@
     
     <!-- Main App -->
     <script type="module" src="composeApp.js"></script>
+    
+    <!-- CustomGPT live chat -->
+    <script defer src="https://cdn.customgpt.ai/js/chat.js"></script>
+    <script defer>
+        (function(){
+            function init(){
+                CustomGPT.init({ p_id:'85945', p_key:'88b56239fe3f9ef608c6bd60989064ec' })
+            }
+            document.readyState === 'complete' ? init() : window.addEventListener('load', init);
+        })();
+    </script>
 </body>
 </html>

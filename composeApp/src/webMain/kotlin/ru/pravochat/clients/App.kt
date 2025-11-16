@@ -34,7 +34,7 @@ private data class NavigationItem(
 
 private val navigationItems = listOf(
     NavigationItem(label = "Реальные кейсы", targetId = "cases"),
-    NavigationItem(label = "Контакты", targetId = "contacts"),
+    NavigationItem(label = "О нас и контакты", externalHref = "/about.html"),
     NavigationItem(label = "Практика", externalHref = "/practice.html"),
     NavigationItem(label = "Премиум модель", targetId = "premium", opensDialog = true),
     NavigationItem(label = "Консультация юриста", targetId = "consultation")
@@ -126,7 +126,6 @@ fun App() {
             HeroSection(content = content)
             CasesSection()
             ConsultationSection()
-            ContactsSection()
         }
         if (isMobile && isMenuOpen) {
             MobileNavigationOverlay(

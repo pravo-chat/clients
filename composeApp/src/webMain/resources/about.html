@@ -86,20 +86,9 @@
             <p>Email: <a class="link" href="mailto:info@pravochat.ru">info@pravochat.ru</a></p>
         </section>
     </main>
-    <!-- CustomGPT live chat -->
-    <script defer src="https://cdn.customgpt.ai/js/chat.js"></script>
-    <script defer>
-        (function(){
-            function init(){
-                try { CustomGPT.init({ p_id:'85945', p_key:'88b56239fe3f9ef608c6bd60989064ec' }) } catch(e){}
-            }
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', init, { once: true });
-            } else {
-                init();
-            }
-        })();
-    </script>
+    <!-- CustomGPT embedded chat -->
+    <div id="customgpt_chat"></div>
+    <script src="https://cdn.customgpt.ai/js/embed.js" defer div_id="customgpt_chat" p_id="85945" p_key="88b56239fe3f9ef608c6bd60989064ec"></script>
 </body>
 </html>
 

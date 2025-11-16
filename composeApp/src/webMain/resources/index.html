@@ -123,10 +123,10 @@
         html, body {
             margin: 0;
             padding: 0;
-            min-height: 100%;
+            height: 100%;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: #F9F9FA;
-            overflow-x: hidden;
+            overflow: hidden;
         }
         
         /* SEO content hidden for crawlers but visible to search engines */
@@ -153,6 +153,29 @@
         .card { background: #FFFFFF; border: 1px solid #308CEF; box-shadow: 0 12px 32px rgba(20, 30, 80, 0.12); border-radius: 16px; padding: 24px; margin-bottom: 16px; }
         .card h3 { margin: 0 0 8px 0; font-size: 18px; }
         .card p { margin: 0; color: #333333; line-height: 1.5; }
+        
+        /* CustomGPT main content widget */
+        #customgpt_chat {
+            position: relative !important;
+            width: 100% !important;
+            height: calc(100vh - 100px) !important;
+            min-height: 600px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            display: block !important;
+        }
+        #customgpt_chat iframe {
+            width: 100% !important;
+            height: 100% !important;
+            border: none !important;
+        }
+        @media (max-width: 768px) {
+            #customgpt_chat {
+                height: calc(100vh - 80px) !important;
+                min-height: 500px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -225,14 +248,24 @@
         </dialog>
     </div>
     
+    <!-- CustomGPT main content widget -->
+    <div class="container" style="padding: 0; max-width: 100%;">
+        <div id="customgpt_chat">
+            <iframe 
+                src="https://antoqk1avl.customgpt-agents.com/" 
+                width="100%" 
+                height="100%" 
+                frameborder="0"
+                allow="microphone; camera"
+                title="CustomGPT Chat">
+            </iframe>
+        </div>
+    </div>
+    
     <!-- Analytics -->
     <script src="analytics.js"></script>
     
     <!-- Main App -->
     <!-- <script type="module" src="composeApp.js"></script> -->
-    
-    <!-- CustomGPT embedded chat -->
-    <div id="customgpt_chat"></div>
-    <script src="https://cdn.customgpt.ai/js/embed.js" defer div_id="customgpt_chat" p_id="85945" p_key="88b56239fe3f9ef608c6bd60989064ec"></script>
 </body>
 </html>

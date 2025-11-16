@@ -103,6 +103,7 @@ fun App() {
             padding(0.px)
             display(DisplayStyle.Flex)
             flexDirection(FlexDirection.Column)
+            alignItems(AlignItems.FlexStart)
             backgroundColor(PravochatColors.BackgroundMain)
             fontFamily(PravochatTypography.FontFamily)
         }

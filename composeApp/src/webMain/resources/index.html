@@ -6,6 +6,57 @@
     
     <link rel="preconnect" href="https://cdn.customgpt.ai" crossorigin>
     
+    <!-- Disable dialogs on mobile -->
+    <script>
+        (function() {
+            function isMobile() {
+                return window.innerWidth <= 768;
+            }
+            
+            // Prevent dialog opening on mobile
+            const originalShowModal = HTMLDialogElement.prototype.showModal;
+            HTMLDialogElement.prototype.showModal = function() {
+                if (isMobile()) {
+                    console.log('[Dialog] Blocked dialog opening on mobile:', this.id);
+                    return;
+                }
+                return originalShowModal.call(this);
+            };
+            
+            // Force close any open dialogs on page load (especially on mobile)
+            function forceCloseDialogs() {
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', forceCloseDialogs);
+                    return;
+                }
+                
+                const consultDialog = document.getElementById('consult-dialog');
+                const eaDialog = document.getElementById('ea-dialog');
+                
+                if (consultDialog && consultDialog.open) {
+                    consultDialog.close();
+                }
+                
+                if (eaDialog && eaDialog.open) {
+                    eaDialog.close();
+                }
+            }
+            
+            // Close dialogs immediately and on load
+            forceCloseDialogs();
+            window.addEventListener('load', function() {
+                setTimeout(forceCloseDialogs, 100);
+            });
+            
+            // Also close on resize if becomes mobile
+            window.addEventListener('resize', function() {
+                if (isMobile()) {
+                    forceCloseDialogs();
+                }
+            });
+        })();
+    </script>
+    
     <!-- Primary Meta Tags -->
     <title>Юридическая помощь - Онлайн консультации юристов | Бесплатная правовая помощь</title>
     <meta name="title" content="Юридическая помощь - Онлайн консультации юристов | Бесплатная правовая помощь">
@@ -128,6 +179,9 @@
             background-color: #F9F9FA;
             overflow: hidden;
         }
+        body {
+            padding-top: 70px;
+        }
         
         /* SEO content hidden for crawlers but visible to search engines */
         .seo-content {
@@ -139,7 +193,16 @@
         }
         
         .container { max-width: 1120px; margin: 0 auto; padding: 24px; }
-        .header { position: sticky; top: 0; background: #FFFFFF; border-bottom: 1px solid #E6E9F0; z-index: 100; }
+        .header { 
+            position: fixed; 
+            top: 0; 
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: #FFFFFF; 
+            border-bottom: 1px solid #E6E9F0; 
+            z-index: 1000; 
+        }
         .nav { display: flex; align-items: center; justify-content: space-between; color: #111322; padding: 24px 8px; }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; font-size: 20px; font-weight: 600; }
         .nav-links { display: flex; align-items: center; }
@@ -328,9 +391,14 @@
             opacity: 1;
         }
         @media (max-width: 768px) {
-            dialog form {
-                max-width: calc(100vw - 32px);
-                padding: 24px;
+            dialog {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
+            dialog::backdrop {
+                display: none !important;
             }
         }
         
@@ -338,7 +406,7 @@
         #customgpt_chat {
             position: relative !important;
             width: 100% !important;
-            height: calc(100vh - 100px) !important;
+            height: calc(100vh - 70px) !important;
             min-height: 600px !important;
             margin: 0 !important;
             padding: 0 !important;
@@ -351,23 +419,11 @@
             border: none !important;
         }
         @media (max-width: 768px) {
-            .header {
-                position: fixed !important;
-                top: 0 !important;
-                left: 0 !important;
-                right: 0 !important;
-                z-index: 1000 !important;
-                background: #FFFFFF !important;
-                width: 100% !important;
-            }
             .nav-links {
                 display: none !important;
             }
             .burger-menu {
                 display: flex !important;
-            }
-            body {
-                padding-top: 70px !important;
             }
             #customgpt_chat {
                 height: calc(100vh - 70px) !important;
@@ -412,8 +468,8 @@
                     <a href="/cases.html">Реальные кейсы</a>
                     <a href="/about.html">О нас и контакты</a>
                     <a href="/practice.html">Практика</a>
-                    <a href="#premium" onclick="document.getElementById('ea-dialog')?.showModal(); return false;">Премиум модель</a>
-                    <a href="#consult" onclick="document.getElementById('consult-dialog')?.showModal(); return false;">Консультация юриста</a>
+                    <a href="#premium" onclick="if (window.innerWidth > 768) { document.getElementById('ea-dialog')?.showModal(); return false; }">Премиум модель</a>
+                    <a href="#consult" onclick="if (window.innerWidth > 768) { document.getElementById('consult-dialog')?.showModal(); return false; }">Консультация юриста</a>
                 </nav>
                 <button class="burger-menu" id="burger-menu" aria-label="Открыть меню">
                     <span></span>
@@ -459,11 +515,11 @@
     <!-- Mobile menu overlay -->
     <div class="mobile-menu-overlay" id="mobile-menu-overlay">
         <div class="mobile-menu">
-            <a href="/cases.html" onclick="closeMobileMenu()">Реальные кейсы</a>
+            <a href="/#cases" onclick="closeMobileMenu()">Реальные кейсы</a>
             <a href="/about.html" onclick="closeMobileMenu()">О нас и контакты</a>
             <a href="/practice.html" onclick="closeMobileMenu()">Практика</a>
-            <a href="#premium" onclick="closeMobileMenu(); document.getElementById('ea-dialog')?.showModal(); return false;">Премиум модель</a>
-            <a href="#consult" onclick="closeMobileMenu(); document.getElementById('consult-dialog')?.showModal(); return false;">Консультация юриста</a>
+            <a href="/premium.html" onclick="closeMobileMenu()">Премиум модель</a>
+            <a href="/consult.html" onclick="closeMobileMenu()">Консультация юриста</a>
         </div>
     </div>
     
@@ -533,6 +589,8 @@
                 if (burgerMenu) burgerMenu.classList.remove('active');
                 if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('active');
             };
+            
+            // Dialogs only open on explicit click, never automatically
         })();
     </script>
     

@@ -262,12 +262,14 @@
             height: 100vh;
             background: #FFFFFF;
             padding: 32px;
+            padding-top: 110px;
             display: flex;
             flex-direction: column;
             gap: 24px;
             box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
             transform: translateX(100%);
             transition: transform 200ms;
+            overflow-y: auto;
         }
         .mobile-menu-overlay.active .mobile-menu {
             transform: translateX(0);
@@ -515,7 +517,7 @@
     <!-- Mobile menu overlay -->
     <div class="mobile-menu-overlay" id="mobile-menu-overlay">
         <div class="mobile-menu">
-            <a href="/#cases" onclick="closeMobileMenu()">Реальные кейсы</a>
+            <a href="/cases.html" onclick="closeMobileMenu()">Реальные кейсы</a>
             <a href="/about.html" onclick="closeMobileMenu()">О нас и контакты</a>
             <a href="/practice.html" onclick="closeMobileMenu()">Практика</a>
             <a href="/premium.html" onclick="closeMobileMenu()">Премиум модель</a>

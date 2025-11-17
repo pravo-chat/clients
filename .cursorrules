@@ -21,3 +21,9 @@
 - Comments should only be used in very rare cases when absolutely necessary for code understanding
 - Prefer self-documenting code with clear variable and function names
 - Remove unnecessary comments that just repeat what the code does
+
+## Sitemap Maintenance
+- The sitemap.xml file (composeApp/src/webMain/resources/sitemap.xml) must be kept up to date
+- When adding, removing, or modifying HTML pages, update the sitemap.xml accordingly
+- Include all public pages with correct URLs, lastmod dates, changefreq, and priority values
+- Current pages: index.html (main), cases.html, about.html, practice.html, consult.html, premium.html

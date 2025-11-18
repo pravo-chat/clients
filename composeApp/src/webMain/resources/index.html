@@ -437,9 +437,17 @@
             .burger-menu {
                 display: flex !important;
             }
+            .customgpt-wrapper {
+                margin-top: 32px;
+                margin-bottom: 54px;
+            }
             #customgpt_chat {
-                height: calc(100vh - 70px) !important;
+                height: calc(100vh - 140px) !important;
                 min-height: 500px !important;
+                padding-bottom: 120px !important;
+            }
+            .customgpt-overlay {
+                height: 30px;
             }
         }
     </style>
@@ -536,16 +544,18 @@
     </div>
     
     <!-- CustomGPT main content widget -->
-    <div class="container" style="padding: 0; max-width: 100%;">
-        <div id="customgpt_chat">
-            <iframe 
-                src="https://anto55flnc.customgpt-agents.com/" 
-                width="100%" 
-                height="100%" 
-                frameborder="0"
-                allow="microphone; camera"
-                title="CustomGPT Chat">
-            </iframe>
+    <div class="customgpt-wrapper">
+        <div class="container" style="padding: 0; max-width: 100%;">
+            <div id="customgpt_chat">
+                <iframe 
+                    src="https://anto55flnc.customgpt-agents.com/" 
+                    width="100%" 
+                    height="100%" 
+                    frameborder="0"
+                    allow="microphone; camera"
+                    title="CustomGPT Chat">
+                </iframe>
+            </div>
         </div>
     </div>
     

@@ -411,7 +411,7 @@
             height: calc(100vh - 70px) !important;
             min-height: 600px !important;
             margin: 0 !important;
-            padding: 0 !important;
+            padding: 0 0 24px 0 !important;
             border: none !important;
             display: block !important;
         }
@@ -419,6 +419,16 @@
             width: 100% !important;
             height: 100% !important;
             border: none !important;
+        }
+        .customgpt-overlay {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: #F9F9FA;
+            z-index: 100;
+            pointer-events: none;
         }
         @media (max-width: 768px) {
             .nav-links {
@@ -538,6 +548,9 @@
             </iframe>
         </div>
     </div>
+    
+    <!-- White overlay to hide "Powered by CustomGPT" -->
+    <div class="customgpt-overlay"></div>
     
     <!-- Analytics -->
     <script src="analytics.js"></script>

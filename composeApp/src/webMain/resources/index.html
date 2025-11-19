@@ -445,6 +445,7 @@
             flex-grow: 1;
             min-height: 0;
             width: 100%;
+            position: relative;
         }
         .customgpt-wrapper .container {
             display: flex;
@@ -457,6 +458,7 @@
             margin: 0 auto;
             padding: 24px;
             box-sizing: border-box;
+            position: relative;
         }
         /* CustomGPT main content widget */
         #customgpt_chat {
@@ -478,9 +480,19 @@
             min-height: 0 !important;
         }
         .customgpt-overlay {
-            height: 180px;
+            height: 80px;
             background: #F9F9FA;
             flex-shrink: 0;
+        }
+        .customgpt-bottom-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: #F9F9FA;
+            z-index: 10;
+            pointer-events: none;
         }
         @media (max-width: 768px) {
             .nav-links {
@@ -490,7 +502,10 @@
                 display: flex !important;
             }
             .customgpt-overlay {
-                height: 180px;
+                height: 80px;
+            }
+            .customgpt-bottom-overlay {
+                height: 60px;
             }
         }
     </style>
@@ -615,6 +630,7 @@
                         title="CustomGPT Chat">
                     </iframe>
                 </div>
+                <div class="customgpt-bottom-overlay"></div>
             </div>
         </div>
         

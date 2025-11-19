@@ -199,12 +199,16 @@
             display: flex;
             flex-direction: column;
             height: 100vh;
+            width: 100%;
+            margin: 0;
+            padding: 0;
         }
         #root {
             display: flex;
             flex-direction: column;
             flex-grow: 1;
             min-height: 0;
+            width: 100%;
         }
         
         /* SEO content - visible to search engines, hidden from users */
@@ -433,12 +437,14 @@
             flex-direction: column;
             flex-grow: 1;
             min-height: 0;
+            width: 100%;
         }
         .customgpt-wrapper {
             display: flex;
             flex-direction: column;
             flex-grow: 1;
             min-height: 0;
+            width: 100%;
         }
         .customgpt-wrapper .container {
             display: flex;
@@ -446,8 +452,11 @@
             flex-grow: 1;
             min-height: 0;
             height: 100%;
-            max-width: 880px;
+            width: 100%;
+            max-width: 2000px;
             margin: 0 auto;
+            padding: 24px;
+            box-sizing: border-box;
         }
         /* CustomGPT main content widget */
         #customgpt_chat {
@@ -458,12 +467,15 @@
             margin: 0 !important;
             padding: 0 !important;
             border: none !important;
-            display: block !important;
+            display: flex !important;
+            flex-direction: column !important;
         }
         #customgpt_chat iframe {
             width: 100% !important;
             height: 100% !important;
             border: none !important;
+            flex: 1 !important;
+            min-height: 0 !important;
         }
         .customgpt-overlay {
             height: 80px;
@@ -593,7 +605,7 @@
         <div class="main-content-wrapper">
         <!-- CustomGPT main content widget -->
         <div class="customgpt-wrapper">
-            <div class="container" style="padding: 0;">
+            <div class="container">
                 <div id="customgpt_chat">
                     <iframe 
                         src="https://anto55flnc.customgpt-agents.com/" 

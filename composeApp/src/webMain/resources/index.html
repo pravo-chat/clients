@@ -704,6 +704,60 @@
             
             // Dialogs only open on explicit click, never automatically
         })();
+        
+        // Hide bottom overlay when keyboard appears on mobile
+        (function() {
+            function isMobile() {
+                return window.innerWidth <= 768;
+            }
+            
+            const bottomOverlay = document.querySelector('.customgpt-bottom-overlay');
+            if (!bottomOverlay) return;
+            
+            let initialViewportHeight = window.innerHeight;
+            
+            function handleKeyboard() {
+                if (!isMobile()) {
+                    bottomOverlay.style.display = '';
+                    return;
+                }
+                
+                const currentHeight = window.innerHeight;
+                const heightDifference = initialViewportHeight - currentHeight;
+                
+                if (heightDifference > 150) {
+                    bottomOverlay.style.display = 'none';
+                } else {
+                    bottomOverlay.style.display = '';
+                }
+            }
+            
+            window.addEventListener('resize', function() {
+                const currentHeight = window.innerHeight;
+                if (currentHeight > initialViewportHeight) {
+                    initialViewportHeight = currentHeight;
+                }
+                handleKeyboard();
+            });
+            
+            if (window.visualViewport) {
+                window.visualViewport.addEventListener('resize', function() {
+                    handleKeyboard();
+                });
+            }
+            
+            document.addEventListener('focusin', function(e) {
+                if (isMobile() && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+                    setTimeout(handleKeyboard, 100);
+                }
+            });
+            
+            document.addEventListener('focusout', function(e) {
+                if (isMobile() && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+                    setTimeout(handleKeyboard, 300);
+                }
+            });
+        })();
     </script>
     
     <!-- Main App -->

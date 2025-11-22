@@ -484,13 +484,13 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 60px;
+            height: 40px;
             background: #F9F9FA;
             z-index: 10;
             pointer-events: none;
         }
         .customgpt-bottom-overlay {
-            height: 60px;
+            height: 0px;
             background: #F9F9FA;
             flex-shrink: 0;
         }
@@ -502,10 +502,10 @@
                 display: flex !important;
             }
             .customgpt-overlay {
-                height: 60px;
+                height: 40px;
             }
             .customgpt-bottom-overlay {
-                height: 60px;
+                height: 0px;
             }
         }
     </style>
@@ -710,7 +710,7 @@
                 return window.innerWidth <= 768;
             }
             
-            const overlay = document.querySelector('.customgpt-overlay');
+            const overlay = document.querySelector('.customgpt-bottom-overlay');
             if (!overlay) return;
             
             let initialViewportHeight = window.innerHeight;

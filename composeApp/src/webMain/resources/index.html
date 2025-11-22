@@ -480,19 +480,19 @@
             min-height: 0 !important;
         }
         .customgpt-overlay {
-            height: 80px;
-            background: #F9F9FA;
-            flex-shrink: 0;
-        }
-        .customgpt-bottom-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 60px;
+            height: 40px;
             background: #F9F9FA;
             z-index: 10;
             pointer-events: none;
+        }
+        .customgpt-bottom-overlay {
+            height: 0px;
+            background: #F9F9FA;
+            flex-shrink: 0;
         }
         @media (max-width: 768px) {
             .nav-links {
@@ -502,10 +502,10 @@
                 display: flex !important;
             }
             .customgpt-overlay {
-                height: 20px;
+                height: 40px;
             }
             .customgpt-bottom-overlay {
-                height: 60px;
+                height: 0px;
             }
         }
     </style>
@@ -629,12 +629,11 @@
                         allow="microphone; camera"
                         title="CustomGPT Chat">
                     </iframe>
+                    <div class="customgpt-overlay"></div>
                 </div>
                 <div class="customgpt-bottom-overlay"></div>
             </div>
         </div>
-        
-        <div class="customgpt-overlay"></div>
         </div>
     </div>
     
@@ -711,33 +710,79 @@
                 return window.innerWidth <= 768;
             }
             
-            const bottomOverlay = document.querySelector('.customgpt-bottom-overlay');
-            if (!bottomOverlay) return;
+            const overlay = document.querySelector('.customgpt-bottom-overlay');
+            if (!overlay) return;
             
             let initialViewportHeight = window.innerHeight;
+            let initialVisualHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+            let keyboardVisible = false;
+            let resizeTimeout;
+            
+            function ensureOverlayVisible() {
+                overlay.style.display = '';
+                overlay.style.visibility = 'visible';
+                keyboardVisible = false;
+            }
+            
+            function hideOverlay() {
+                overlay.style.display = 'none';
+                overlay.style.visibility = 'hidden';
+                keyboardVisible = true;
+            }
+            
+            function updateInitialHeight() {
+                const currentHeight = window.innerHeight;
+                if (currentHeight > initialViewportHeight) {
+                    initialViewportHeight = currentHeight;
+                }
+                if (window.visualViewport) {
+                    const currentVisualHeight = window.visualViewport.height;
+                    if (currentVisualHeight > initialVisualHeight) {
+                        initialVisualHeight = currentVisualHeight;
+                    }
+                }
+            }
             
             function handleKeyboard() {
                 if (!isMobile()) {
-                    bottomOverlay.style.display = '';
+                    ensureOverlayVisible();
                     return;
                 }
                 
                 const currentHeight = window.innerHeight;
                 const heightDifference = initialViewportHeight - currentHeight;
                 
-                if (heightDifference > 150) {
-                    bottomOverlay.style.display = 'none';
+                if (window.visualViewport) {
+                    const visualHeight = window.visualViewport.height;
+                    const visualDifference = initialVisualHeight - visualHeight;
+                    
+                    if (visualDifference > 150 || heightDifference > 150) {
+                        hideOverlay();
+                    } else if (visualDifference < 50 && heightDifference < 50) {
+                        ensureOverlayVisible();
+                        updateInitialHeight();
+                    }
                 } else {
-                    bottomOverlay.style.display = '';
+                    if (heightDifference > 150) {
+                        hideOverlay();
+                    } else if (heightDifference < 50) {
+                        ensureOverlayVisible();
+                        updateInitialHeight();
+                    }
                 }
             }
             
+            updateInitialHeight();
+            ensureOverlayVisible();
+            
             window.addEventListener('resize', function() {
-                const currentHeight = window.innerHeight;
-                if (currentHeight > initialViewportHeight) {
-                    initialViewportHeight = currentHeight;
-                }
-                handleKeyboard();
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    if (!keyboardVisible) {
+                        updateInitialHeight();
+                    }
+                    handleKeyboard();
+                }, 100);
             });
             
             if (window.visualViewport) {
@@ -747,14 +792,17 @@
             }
             
             document.addEventListener('focusin', function(e) {
-                if (isMobile() && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
-                    setTimeout(handleKeyboard, 100);
+                if (isMobile()) {
+                    setTimeout(handleKeyboard, 200);
                 }
             });
             
             document.addEventListener('focusout', function(e) {
-                if (isMobile() && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
-                    setTimeout(handleKeyboard, 300);
+                if (isMobile()) {
+                    setTimeout(function() {
+                        updateInitialHeight();
+                        handleKeyboard();
+                    }, 400);
                 }
             });
         })();

@@ -517,6 +517,14 @@
                 height: auto;
                 min-height: 40px;
             }
+            .customgpt-wrapper {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1000;
+            }
         }
     </style>
 </head>
@@ -760,35 +768,18 @@
                     heightDifference = initialViewportHeight - currentHeight;
                 }
                 
-                // Если высота уменьшилась (клавиатура или панель браузера поднялись)
-                if (heightDifference > 30) {
+                // Всегда поднимаем контейнер на высоту клавиатуры/панели
+                // Контейнер уже в position: fixed через CSS на мобильных
+                isPositioned = true;
+                
+                if (heightDifference > 10) {
                     bottomOffset = heightDifference;
                     keyboardVisible = true;
-                    
-                    // Позиционируем контейнер с чатом над клавиатурой/панелью
-                    if (!isPositioned) {
-                        wrapper.style.position = 'fixed';
-                        wrapper.style.top = '0';
-                        wrapper.style.left = '0';
-                        wrapper.style.right = '0';
-                        wrapper.style.bottom = bottomOffset + 'px';
-                        wrapper.style.zIndex = '1000';
-                        isPositioned = true;
-                    } else {
-                        wrapper.style.bottom = bottomOffset + 'px';
-                    }
+                    wrapper.style.bottom = bottomOffset + 'px';
                 } else {
-                    // Клавиатура/панель скрыты - возвращаем обычное позиционирование
+                    // Клавиатура/панель скрыты - поднимаем на 0
                     keyboardVisible = false;
-                    if (isPositioned) {
-                        wrapper.style.position = '';
-                        wrapper.style.top = '';
-                        wrapper.style.left = '';
-                        wrapper.style.right = '';
-                        wrapper.style.bottom = '';
-                        wrapper.style.zIndex = '';
-                        isPositioned = false;
-                    }
+                    wrapper.style.bottom = '0px';
                     updateInitialHeight();
                 }
             }

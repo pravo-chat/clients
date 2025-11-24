@@ -522,7 +522,7 @@
                 top: 0;
                 left: 0;
                 right: 0;
-                bottom: 0;
+                height: 100vh;
                 z-index: 1000;
             }
         }
@@ -740,7 +740,7 @@
             let initialVisualHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
             let keyboardVisible = false;
             let resizeTimeout;
-            let isPositioned = false;
+            let rafId = null;
             
             function updateInitialHeight() {
                 const currentHeight = window.innerHeight;
@@ -756,57 +756,74 @@
             }
             
             function positionChatAboveKeyboard() {
-                const currentHeight = window.innerHeight;
-                let heightDifference = 0;
-                let bottomOffset = 0;
+                let availableHeight = window.innerHeight;
                 
                 if (window.visualViewport) {
-                    const visualHeight = window.visualViewport.height;
-                    const visualDifference = initialVisualHeight - visualHeight;
-                    heightDifference = visualDifference;
+                    // Используем visualViewport для точного определения доступной высоты
+                    availableHeight = window.visualViewport.height;
+                    const heightDifference = initialVisualHeight - availableHeight;
+                    
+                    if (heightDifference > 10) {
+                        keyboardVisible = true;
+                    } else {
+                        keyboardVisible = false;
+                        updateInitialHeight();
+                    }
                 } else {
-                    heightDifference = initialViewportHeight - currentHeight;
+                    const heightDifference = initialViewportHeight - availableHeight;
+                    if (heightDifference > 10) {
+                        keyboardVisible = true;
+                    } else {
+                        keyboardVisible = false;
+                        updateInitialHeight();
+                    }
                 }
                 
-                // Всегда поднимаем контейнер на высоту клавиатуры/панели
-                // Контейнер уже в position: fixed через CSS на мобильных
-                isPositioned = true;
-                
-                if (heightDifference > 10) {
-                    bottomOffset = heightDifference;
-                    keyboardVisible = true;
-                    wrapper.style.bottom = bottomOffset + 'px';
-                } else {
-                    // Клавиатура/панель скрыты - поднимаем на 0
-                    keyboardVisible = false;
-                    wrapper.style.bottom = '0px';
-                    updateInitialHeight();
+                // Устанавливаем высоту контейнера равной доступной высоте
+                // Контейнер всегда зафиксирован сверху, клавиатура появляется снизу
+                const newHeight = availableHeight + 'px';
+                if (wrapper.style.height !== newHeight) {
+                    wrapper.style.height = newHeight;
                 }
+            }
+            
+            function handleResize() {
+                // Отменяем предыдущий таймаут и requestAnimationFrame
+                clearTimeout(resizeTimeout);
+                if (rafId !== null) {
+                    cancelAnimationFrame(rafId);
+                }
+                
+                // Используем requestAnimationFrame для плавных обновлений
+                rafId = requestAnimationFrame(function() {
+                    positionChatAboveKeyboard();
+                    rafId = null;
+                });
+            }
+            
+            // Более стабильное отслеживание с увеличенным дебаунсингом
+            function debouncedResize() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(handleResize, 100);
             }
             
             updateInitialHeight();
             
-            // Обработка изменений размера viewport
-            function handleResize() {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(function() {
-                    positionChatAboveKeyboard();
-                }, 50);
-            }
+            // Основной обработчик resize с дебаунсингом
+            window.addEventListener('resize', debouncedResize, { passive: true });
             
-            window.addEventListener('resize', handleResize);
-            
+            // Visual Viewport API - более точное отслеживание
             if (window.visualViewport) {
-                window.visualViewport.addEventListener('resize', handleResize);
-                window.visualViewport.addEventListener('scroll', handleResize);
+                window.visualViewport.addEventListener('resize', debouncedResize, { passive: true });
+                // Убираем scroll, так как он может вызывать лишние обновления
             }
             
-            // Отслеживание фокуса на input/textarea
+            // Отслеживание фокуса на input/textarea с задержкой
             document.addEventListener('focusin', function(e) {
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-                    setTimeout(handleResize, 300);
+                    setTimeout(handleResize, 250);
                 }
-            });
+            }, { passive: true });
             
             document.addEventListener('focusout', function(e) {
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
@@ -815,12 +832,12 @@
                         if (!keyboardVisible) {
                             updateInitialHeight();
                         }
-                    }, 400);
+                    }, 300);
                 }
-            });
+            }, { passive: true });
             
             // Начальная проверка
-            handleResize();
+            setTimeout(handleResize, 100);
         })();
         
         // Установка актуальной даты обновления базы документов

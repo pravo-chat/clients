@@ -10,28 +10,72 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/simple-header.css">
     <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            min-height: 100%;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #F9F9FA;
-            overflow-x: hidden;
+        :root {
+            color-scheme: light;
         }
-        .container { max-width: 1120px; margin: 0 auto; padding: 24px; }
-        .header { position: sticky; top: 0; background: #FFFFFF; border-bottom: 1px solid #E6E9F0; z-index: 20; }
-        .nav { display: flex; align-items: center; justify-content: space-between; color: #111322; padding: 24px 8px; }
-        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; font-size: 20px; font-weight: 600; }
-        .nav-links { display: flex; align-items: center; }
-        .nav-links a { margin-left: 20px; color: #111322; text-decoration: none; font-weight: 500; }
-        .section { padding: 64px 24px; }
-        .card { background: #FFFFFF; border: 1px solid #308CEF; box-shadow: 0 12px 32px rgba(20, 30, 80, 0.12); border-radius: 16px; padding: 24px; margin-bottom: 16px; }
-        .card h3 { margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #111322; }
-        .card p { margin: 0; color: #333333; line-height: 1.5; }
-        h1 { font-size: 32px; font-weight: 700; color: #111322; margin: 0 0 16px 0; }
-        .intro-text { font-size: 18px; line-height: 1.6; color: #2F3347; margin-bottom: 32px; }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding-top: 70px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #F5F7FB;
+            color: #111322;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            text-decoration: none;
+            color: #0B5ED7;
+            font-weight: 600;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-top: 32px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2F3347;
+        }
+        .card {
+            background: #FFFFFF;
+            border: 1px solid #E6E9F0;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 12px 32px rgba(20, 30, 80, 0.08);
+        }
+        .card h3 {
+            margin: 0 0 12px 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #111322;
+        }
+        .card p {
+            margin: 0;
+        }
+        .intro-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2F3347;
+            margin-bottom: 32px;
+        }
         .seo-content {
             position: absolute;
             width: 1px;
@@ -44,52 +88,42 @@
             border-width: 0;
         }
         @media (max-width: 768px) {
-            .header .nav {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-            .nav-links {
-                display: none !important;
+            h1 {
+                font-size: 28px;
             }
         }
     </style>
     <link rel="canonical" href="https://pravochat.ru/cases.html">
 </head>
 <body>
-    <header class="header">
-        <div class="container nav">
-            <a href="/" class="brand">
-                <img src="/images/pravo-logo.svg" alt="PravoChat logo" width="32" height="32">
-                <span>PravoChat</span>
-            </a>
-            <nav class="nav-links">
-                <a href="/">Главная</a>
-                <a href="/about.html">О нас и контакты</a>
-                <a href="/practice.html">Практика</a>
-            </nav>
-        </div>
+    <header class="simple-header">
+        <a class="brand" href="/">
+            <img src="/images/pravo-logo.svg" width="36" height="36" alt="PravoChat логотип">
+            PravoChat
+        </a>
+        <nav class="nav-links">
+            <a href="/">Главная</a>
+        </nav>
     </header>
-
-    <main>
-        <section id="cases" class="section">
-            <div class="container">
-                <h1>Реальные кейсы юридической помощи</h1>
-                <p class="intro-text">Ниже представлены примеры успешных решений правовых вопросов наших клиентов. Каждый кейс демонстрирует практический подход к решению сложных юридических задач в различных отраслях права: трудовое право, корпоративное право, налоговое право и другие.</p>
-                
-                <div class="card">
-                    <h3>Восстановление сотрудника после незаконного увольнения</h3>
-                    <p>Клиент обратился к нам после незаконного увольнения с работы. Мы подготовили претензию работодателю, собрали все необходимые доказательства нарушения трудового законодательства, представили клиента в суде и добились восстановления на работе с выплатой компенсации за вынужденный прогул и морального вреда. Дело было выиграно благодаря тщательному анализу трудового договора и доказательств нарушения процедуры увольнения.</p>
-                </div>
-                <div class="card">
-                    <h3>Сопровождение сделки по продаже бизнеса</h3>
-                    <p>Крупная сделка по продаже бизнеса требовала тщательной правовой проработки. Мы проанализировали все договоры, провели правовую экспертизу активов компании, выявили потенциальные риски и снизили их с помощью дополнительных соглашений и гарантий. Благодаря нашей работе сделка прошла успешно, все стороны остались довольны результатом, а клиент получил максимальную защиту своих интересов.</p>
-                </div>
-                <div class="card">
-                    <h3>Оптимизация налоговой нагрузки для ИП</h3>
-                    <p>Индивидуальный предприниматель обратился за помощью в оптимизации налоговых платежей. Мы провели комплексный аудит всех договоров с контрагентами, проанализировали применяемые налоговые режимы, подобрали оптимальные льготные режимы налогообложения в рамках действующего законодательства и снизили налоговые расходы на 18% без нарушения налогового законодательства. Клиент получил значительную экономию при полном соблюдении всех правовых норм.</p>
-                </div>
-            </div>
-        </section>
+    <main class="container">
+        <a class="back-link" href="/">
+            ← Вернуться на главную
+        </a>
+        <h1>Реальные кейсы юридической помощи</h1>
+        <p class="intro-text">Ниже представлены примеры успешных решений правовых вопросов наших клиентов. Каждый кейс демонстрирует практический подход к решению сложных юридических задач в различных отраслях права: трудовое право, корпоративное право, налоговое право и другие.</p>
+        
+        <div class="card">
+            <h3>Восстановление сотрудника после незаконного увольнения</h3>
+            <p>Клиент обратился к нам после незаконного увольнения с работы. Мы подготовили претензию работодателю, собрали все необходимые доказательства нарушения трудового законодательства, представили клиента в суде и добились восстановления на работе с выплатой компенсации за вынужденный прогул и морального вреда. Дело было выиграно благодаря тщательному анализу трудового договора и доказательств нарушения процедуры увольнения.</p>
+        </div>
+        <div class="card">
+            <h3>Сопровождение сделки по продаже бизнеса</h3>
+            <p>Крупная сделка по продаже бизнеса требовала тщательной правовой проработки. Мы проанализировали все договоры, провели правовую экспертизу активов компании, выявили потенциальные риски и снизили их с помощью дополнительных соглашений и гарантий. Благодаря нашей работе сделка прошла успешно, все стороны остались довольны результатом, а клиент получил максимальную защиту своих интересов.</p>
+        </div>
+        <div class="card">
+            <h3>Оптимизация налоговой нагрузки для ИП</h3>
+            <p>Индивидуальный предприниматель обратился за помощью в оптимизации налоговых платежей. Мы провели комплексный аудит всех договоров с контрагентами, проанализировали применяемые налоговые режимы, подобрали оптимальные льготные режимы налогообложения в рамках действующего законодательства и снизили налоговые расходы на 18% без нарушения налогового законодательства. Клиент получил значительную экономию при полном соблюдении всех правовых норм.</p>
+        </div>
         
         <div class="seo-content" aria-hidden="true">
             <h2>Примеры юридической помощи и успешных решений</h2>

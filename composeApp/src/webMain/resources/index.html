@@ -522,7 +522,8 @@
                 top: 0;
                 left: 0;
                 right: 0;
-                height: 100vh;
+                height: 100dvh;
+                max-height: 100dvh;
                 z-index: 1000;
             }
         }
@@ -724,121 +725,6 @@
             // Dialogs only open on explicit click, never automatically
         })();
         
-        // Поднимать панель ввода над клавиатурой/панелью браузера на мобильных
-        (function() {
-            function isMobile() {
-                return window.innerWidth <= 768;
-            }
-            
-            if (!isMobile()) return;
-            
-            const chatContainer = document.querySelector('#customgpt_chat');
-            const wrapper = document.querySelector('.customgpt-wrapper');
-            if (!chatContainer || !wrapper) return;
-            
-            let initialViewportHeight = window.innerHeight;
-            let initialVisualHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-            let keyboardVisible = false;
-            let resizeTimeout;
-            let rafId = null;
-            
-            function updateInitialHeight() {
-                const currentHeight = window.innerHeight;
-                if (currentHeight > initialViewportHeight) {
-                    initialViewportHeight = currentHeight;
-                }
-                if (window.visualViewport) {
-                    const currentVisualHeight = window.visualViewport.height;
-                    if (currentVisualHeight > initialVisualHeight) {
-                        initialVisualHeight = currentVisualHeight;
-                    }
-                }
-            }
-            
-            function positionChatAboveKeyboard() {
-                let availableHeight = window.innerHeight;
-                
-                if (window.visualViewport) {
-                    // Используем visualViewport для точного определения доступной высоты
-                    availableHeight = window.visualViewport.height;
-                    const heightDifference = initialVisualHeight - availableHeight;
-                    
-                    if (heightDifference > 10) {
-                        keyboardVisible = true;
-                    } else {
-                        keyboardVisible = false;
-                        updateInitialHeight();
-                    }
-                } else {
-                    const heightDifference = initialViewportHeight - availableHeight;
-                    if (heightDifference > 10) {
-                        keyboardVisible = true;
-                    } else {
-                        keyboardVisible = false;
-                        updateInitialHeight();
-                    }
-                }
-                
-                // Устанавливаем высоту контейнера равной доступной высоте
-                // Контейнер всегда зафиксирован сверху, клавиатура появляется снизу
-                const newHeight = availableHeight + 'px';
-                if (wrapper.style.height !== newHeight) {
-                    wrapper.style.height = newHeight;
-                }
-            }
-            
-            function handleResize() {
-                // Отменяем предыдущий таймаут и requestAnimationFrame
-                clearTimeout(resizeTimeout);
-                if (rafId !== null) {
-                    cancelAnimationFrame(rafId);
-                }
-                
-                // Используем requestAnimationFrame для плавных обновлений
-                rafId = requestAnimationFrame(function() {
-                    positionChatAboveKeyboard();
-                    rafId = null;
-                });
-            }
-            
-            // Более стабильное отслеживание с увеличенным дебаунсингом
-            function debouncedResize() {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(handleResize, 100);
-            }
-            
-            updateInitialHeight();
-            
-            // Основной обработчик resize с дебаунсингом
-            window.addEventListener('resize', debouncedResize, { passive: true });
-            
-            // Visual Viewport API - более точное отслеживание
-            if (window.visualViewport) {
-                window.visualViewport.addEventListener('resize', debouncedResize, { passive: true });
-                // Убираем scroll, так как он может вызывать лишние обновления
-            }
-            
-            // Отслеживание фокуса на input/textarea с задержкой
-            document.addEventListener('focusin', function(e) {
-                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-                    setTimeout(handleResize, 250);
-                }
-            }, { passive: true });
-            
-            document.addEventListener('focusout', function(e) {
-                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-                    setTimeout(function() {
-                        handleResize();
-                        if (!keyboardVisible) {
-                            updateInitialHeight();
-                        }
-                    }, 300);
-                }
-            }, { passive: true });
-            
-            // Начальная проверка
-            setTimeout(handleResize, 100);
-        })();
         
         // Установка актуальной даты обновления базы документов
         (function() {

@@ -446,6 +446,7 @@
             min-height: 0;
             width: 100%;
             position: relative;
+            transition: bottom 0.3s ease;
         }
         .customgpt-wrapper .container {
             display: flex;
@@ -490,9 +491,17 @@
             pointer-events: none;
         }
         .customgpt-bottom-overlay {
-            height: 0px;
+            height: auto;
+            min-height: 40px;
             background: #F9F9FA;
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            font-size: 14px;
+            color: #666;
+            text-align: center;
         }
         @media (max-width: 768px) {
             .nav-links {
@@ -505,7 +514,8 @@
                 height: 40px;
             }
             .customgpt-bottom-overlay {
-                height: 0px;
+                height: auto;
+                min-height: 40px;
             }
         }
     </style>
@@ -631,7 +641,9 @@
                     </iframe>
                     <div class="customgpt-overlay"></div>
                 </div>
-                <div class="customgpt-bottom-overlay"></div>
+                <div class="customgpt-bottom-overlay">
+                    <span id="doc-update-date">База документов обновлена: </span>
+                </div>
             </div>
         </div>
         </div>
@@ -704,31 +716,23 @@
             // Dialogs only open on explicit click, never automatically
         })();
         
-        // Hide bottom overlay when keyboard appears on mobile
+        // Поднимать панель ввода над клавиатурой/панелью браузера на мобильных
         (function() {
             function isMobile() {
                 return window.innerWidth <= 768;
             }
             
-            const overlay = document.querySelector('.customgpt-bottom-overlay');
-            if (!overlay) return;
+            if (!isMobile()) return;
+            
+            const chatContainer = document.querySelector('#customgpt_chat');
+            const wrapper = document.querySelector('.customgpt-wrapper');
+            if (!chatContainer || !wrapper) return;
             
             let initialViewportHeight = window.innerHeight;
             let initialVisualHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
             let keyboardVisible = false;
             let resizeTimeout;
-            
-            function ensureOverlayVisible() {
-                overlay.style.display = '';
-                overlay.style.visibility = 'visible';
-                keyboardVisible = false;
-            }
-            
-            function hideOverlay() {
-                overlay.style.display = 'none';
-                overlay.style.visibility = 'hidden';
-                keyboardVisible = true;
-            }
+            let isPositioned = false;
             
             function updateInitialHeight() {
                 const currentHeight = window.innerHeight;
@@ -743,68 +747,102 @@
                 }
             }
             
-            function handleKeyboard() {
-                if (!isMobile()) {
-                    ensureOverlayVisible();
-                    return;
-                }
-                
+            function positionChatAboveKeyboard() {
                 const currentHeight = window.innerHeight;
-                const heightDifference = initialViewportHeight - currentHeight;
+                let heightDifference = 0;
+                let bottomOffset = 0;
                 
                 if (window.visualViewport) {
                     const visualHeight = window.visualViewport.height;
                     const visualDifference = initialVisualHeight - visualHeight;
+                    heightDifference = visualDifference;
+                } else {
+                    heightDifference = initialViewportHeight - currentHeight;
+                }
+                
+                // Если высота уменьшилась (клавиатура или панель браузера поднялись)
+                if (heightDifference > 30) {
+                    bottomOffset = heightDifference;
+                    keyboardVisible = true;
                     
-                    if (visualDifference > 150 || heightDifference > 150) {
-                        hideOverlay();
-                    } else if (visualDifference < 50 && heightDifference < 50) {
-                        ensureOverlayVisible();
-                        updateInitialHeight();
+                    // Позиционируем контейнер с чатом над клавиатурой/панелью
+                    if (!isPositioned) {
+                        wrapper.style.position = 'fixed';
+                        wrapper.style.top = '0';
+                        wrapper.style.left = '0';
+                        wrapper.style.right = '0';
+                        wrapper.style.bottom = bottomOffset + 'px';
+                        wrapper.style.zIndex = '1000';
+                        isPositioned = true;
+                    } else {
+                        wrapper.style.bottom = bottomOffset + 'px';
                     }
                 } else {
-                    if (heightDifference > 150) {
-                        hideOverlay();
-                    } else if (heightDifference < 50) {
-                        ensureOverlayVisible();
-                        updateInitialHeight();
+                    // Клавиатура/панель скрыты - возвращаем обычное позиционирование
+                    keyboardVisible = false;
+                    if (isPositioned) {
+                        wrapper.style.position = '';
+                        wrapper.style.top = '';
+                        wrapper.style.left = '';
+                        wrapper.style.right = '';
+                        wrapper.style.bottom = '';
+                        wrapper.style.zIndex = '';
+                        isPositioned = false;
                     }
+                    updateInitialHeight();
                 }
             }
             
             updateInitialHeight();
-            ensureOverlayVisible();
             
-            window.addEventListener('resize', function() {
+            // Обработка изменений размера viewport
+            function handleResize() {
                 clearTimeout(resizeTimeout);
                 resizeTimeout = setTimeout(function() {
-                    if (!keyboardVisible) {
-                        updateInitialHeight();
-                    }
-                    handleKeyboard();
-                }, 100);
-            });
-            
-            if (window.visualViewport) {
-                window.visualViewport.addEventListener('resize', function() {
-                    handleKeyboard();
-                });
+                    positionChatAboveKeyboard();
+                }, 50);
             }
             
+            window.addEventListener('resize', handleResize);
+            
+            if (window.visualViewport) {
+                window.visualViewport.addEventListener('resize', handleResize);
+                window.visualViewport.addEventListener('scroll', handleResize);
+            }
+            
+            // Отслеживание фокуса на input/textarea
             document.addEventListener('focusin', function(e) {
-                if (isMobile()) {
-                    setTimeout(handleKeyboard, 200);
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                    setTimeout(handleResize, 300);
                 }
             });
             
             document.addEventListener('focusout', function(e) {
-                if (isMobile()) {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
                     setTimeout(function() {
-                        updateInitialHeight();
-                        handleKeyboard();
+                        handleResize();
+                        if (!keyboardVisible) {
+                            updateInitialHeight();
+                        }
                     }, 400);
                 }
             });
+            
+            // Начальная проверка
+            handleResize();
+        })();
+        
+        // Установка актуальной даты обновления базы документов
+        (function() {
+            const dateElement = document.getElementById('doc-update-date');
+            if (dateElement) {
+                const now = new Date();
+                const day = String(now.getDate()).padStart(2, '0');
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                const year = now.getFullYear();
+                const formattedDate = day + '.' + month + '.' + year;
+                dateElement.textContent = 'База документов обновлена: ' + formattedDate;
+            }
         })();
     </script>
     

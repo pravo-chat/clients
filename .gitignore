@@ -19,3 +19,5 @@ captures
 node_modules/
 figma_mcp_config.json
 .figma_extract/
+screenshots/
+package-lock.json

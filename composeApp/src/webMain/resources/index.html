@@ -105,8 +105,11 @@
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="ubwGu17Swj9_trBhg_JbMVyYYwS6RfeGi4YEx1GWQ0k" />
     
-    <!-- Canonical URL -->
+    <!-- Canonical URL - главная страница должна быть канонической -->
     <link rel="canonical" href="https://pravochat.ru/">
+    <!-- Alternate links -->
+    <link rel="alternate" href="https://pravochat.ru/" hreflang="ru">
+    <link rel="alternate" href="https://pravochat.ru/" hreflang="x-default">
     
     <!-- Sitemap reference -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
@@ -145,7 +148,7 @@
             k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
         })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104954778', 'ym');
 
-        ym(104954778, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+        ym(104954778, 'init', {webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/104954778" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
@@ -651,6 +654,9 @@
                         width="100%" 
                         height="100%" 
                         allow="microphone; camera"
+                        allowfullscreen
+                        loading="eager"
+                        referrerpolicy="no-referrer-when-downgrade"
                         title="CustomGPT Chat">
                     </iframe>
                     <div class="customgpt-overlay"></div>
@@ -742,6 +748,87 @@
                 const formattedDate = day + '.' + month + '.' + year;
                 dateElement.textContent = 'База документов обновлена: ' + formattedDate;
             }
+        })();
+        
+        // CustomGPT iframe error handling
+        (function() {
+            const iframe = document.querySelector('#customgpt_chat iframe');
+            if (!iframe) return;
+            
+            let loadTimeout;
+            let retryCount = 0;
+            const maxRetries = 2;
+            const loadTimeoutMs = 30000; // 30 seconds
+            
+            function trackIframeError(errorType, errorMessage) {
+                if (typeof trackError === 'function') {
+                    trackError('iframe_error', errorType + ': ' + errorMessage, 'customgpt_chat');
+                }
+                console.error('[CustomGPT Iframe]', errorType, errorMessage);
+            }
+            
+            function handleIframeError(errorType, errorMessage) {
+                trackIframeError(errorType, errorMessage);
+                
+                // Try to reload iframe if we haven't exceeded max retries
+                if (retryCount < maxRetries) {
+                    retryCount++;
+                    console.log('[CustomGPT Iframe] Retrying load, attempt', retryCount);
+                    setTimeout(function() {
+                        const currentSrc = iframe.src;
+                        iframe.src = '';
+                        setTimeout(function() {
+                            iframe.src = currentSrc;
+                        }, 100);
+                    }, 2000);
+                } else {
+                    console.error('[CustomGPT Iframe] Max retries reached, giving up');
+                }
+            }
+            
+            // Monitor iframe load
+            iframe.addEventListener('load', function() {
+                clearTimeout(loadTimeout);
+                console.log('[CustomGPT Iframe] Loaded successfully');
+                
+                // Check if iframe content is accessible (cross-origin may block this)
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    // If we can access the document, check for error messages
+                    // Note: This will fail for cross-origin iframes, which is expected
+                } catch (e) {
+                    // Cross-origin restriction - this is normal
+                    console.log('[CustomGPT Iframe] Cross-origin iframe (expected)');
+                }
+            });
+            
+            // Monitor iframe errors
+            iframe.addEventListener('error', function(e) {
+                clearTimeout(loadTimeout);
+                handleIframeError('load_error', 'Iframe failed to load');
+            });
+            
+            // Set timeout to detect if iframe is taking too long
+            loadTimeout = setTimeout(function() {
+                handleIframeError('load_timeout', 'Iframe took longer than ' + loadTimeoutMs + 'ms to load');
+            }, loadTimeoutMs);
+            
+            // Listen for messages from iframe (if CustomGPT sends error messages via postMessage)
+            window.addEventListener('message', function(event) {
+                // Only accept messages from CustomGPT domain
+                if (event.origin !== 'https://anto55flnc.customgpt-agents.com' && 
+                    event.origin !== 'https://cdn.customgpt.ai') {
+                    return;
+                }
+                
+                // Check if message indicates an error
+                if (event.data && typeof event.data === 'object') {
+                    if (event.data.type === 'error' || event.data.error) {
+                        const errorMsg = event.data.message || event.data.error || 'Unknown error';
+                        trackIframeError('chat_error', errorMsg);
+                    }
+                }
+            });
         })();
     </script>
     

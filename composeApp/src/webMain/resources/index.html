@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="preconnect" href="https://cdn.customgpt.ai" crossorigin>
     
     <!-- Disable dialogs on mobile -->
     <script>
@@ -524,16 +523,6 @@
             flex: 1 !important;
             min-height: 0 !important;
         }
-        .customgpt-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40px;
-            background: #F9F9FA;
-            z-index: 10;
-            pointer-events: none;
-        }
         .customgpt-bottom-overlay {
             height: auto;
             min-height: 40px;
@@ -553,9 +542,6 @@
             }
             .burger-menu {
                 display: flex !important;
-            }
-            .customgpt-overlay {
-                height: 40px;
             }
             .customgpt-bottom-overlay {
                 height: auto;
@@ -695,16 +681,15 @@
             <div class="container">
                 <div id="customgpt_chat">
                     <iframe 
-                        src="https://anto55flnc.customgpt-agents.com/" 
+                        src="https://chat.pravochat.ru" 
                         width="100%" 
                         height="100%" 
                         allow="microphone; camera"
                         allowfullscreen
                         loading="eager"
                         referrerpolicy="no-referrer-when-downgrade"
-                        title="CustomGPT Chat">
+                        title="PravoChat AI Chat">
                     </iframe>
-                    <div class="customgpt-overlay"></div>
                 </div>
                 <div class="customgpt-bottom-overlay">
                     <span id="doc-update-date">База документов обновлена: </span>

@@ -65,6 +65,9 @@
     <meta name="author" content="Юридическая помощь">
     <meta name="robots" content="index, follow">
     <meta name="language" content="Russian">
+    <meta http-equiv="Content-Language" content="ru-RU">
+    <meta name="geo.region" content="RU">
+    <meta name="geo.placename" content="Россия">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -157,6 +160,20 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "PravoChat — юридическая помощь онлайн",
+        "url": "https://pravochat.ru/",
+        "inLanguage": "ru-RU",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://pravochat.ru/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Юридическая помощь",
         "url": "https://pravochat.ru",
@@ -186,6 +203,30 @@
             "areaServed": "RU",
             "availableLanguage": "Russian"
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Как получить бесплатную юридическую консультацию онлайн?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Вы можете задать вопрос на платформе PravoChat и получить ответ от юристов и ИИ-ассистента 24/7 по основным отраслям российского права."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "По каким отраслям права консультирует PravoChat?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "PravoChat помогает по вопросам гражданского, семейного, трудового, налогового права и другим ситуациям, связанным с российским законодательством."
+                }
+            }
+        ]
     }
     </script>
     
@@ -588,6 +629,10 @@
             <p>Наша платформа помогает найти ответы на любые правовые вопросы. Будь то вопросы по недвижимости, наследству, разводам, трудовым спорам, налоговым вопросам или уголовным делам - наши юристы готовы помочь вам разобраться в любой ситуации и найти оптимальное решение.</p>
         </section>
     </div>
+    
+    <noscript>
+        <p>PravoChat — онлайн-платформа для бесплатных и платных юридических консультаций. Включите JavaScript, чтобы воспользоваться ИИ-чатом и получить помощь юриста.</p>
+    </noscript>
     
     <div id="root">
         <header class="header">

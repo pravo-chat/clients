@@ -286,7 +286,13 @@
         }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; font-size: 20px; font-weight: 600; }
         .nav-links { display: flex; align-items: center; }
-        .nav-links a { margin-left: 20px; color: #111322; text-decoration: none; font-weight: 500; }
+        .nav-links a {
+            margin-left: 16px;
+            color: #111322;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
         
         /* Burger menu */
         .burger-menu {
@@ -560,7 +566,7 @@
         
         <nav>
             <ul>
-                <li><a href="/cases.html">Реальные кейсы юридической помощи</a></li>
+                <li><a href="/legal-questions.html">Юридические вопросы и решения юридической помощи</a></li>
                 <li><a href="/about.html">О нас и контакты</a></li>
                 <li><a href="/practice.html">Практика и судебные решения</a></li>
                 <li><a href="/consult.html">Консультация юриста</a></li>
@@ -616,7 +622,7 @@
                     <span>PravoChat</span>
                 </a>
                 <nav class="nav-links">
-                    <a href="/cases.html">Реальные кейсы</a>
+                    <a href="/legal-questions.html">Юридические вопросы и решения</a>
                     <a href="/about.html">О нас и контакты</a>
                     <a href="/practice.html">Практика</a>
                     <a href="#premium" onclick="if (window.innerWidth > 768) { document.getElementById('ea-dialog')?.showModal(); return false; }">Премиум модель</a>
@@ -690,7 +696,7 @@
     <!-- Mobile menu overlay -->
     <div class="mobile-menu-overlay" id="mobile-menu-overlay">
         <div class="mobile-menu">
-            <a href="/cases.html" onclick="closeMobileMenu()">Реальные кейсы</a>
+            <a href="/legal-questions.html" onclick="closeMobileMenu()">Юридические вопросы и решения</a>
             <a href="/about.html" onclick="closeMobileMenu()">О нас и контакты</a>
             <a href="/practice.html" onclick="closeMobileMenu()">Практика</a>
             <a href="/premium.html" onclick="closeMobileMenu()">Премиум модель</a>

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Юридические вопросы и решения юридической помощи — PravoChat | Примеры успешных решений</title>
-    <meta name="description" content="Юридические вопросы и решения юридической помощи от PravoChat: восстановление на работе, сопровождение сделок, оптимизация налогов. Примеры успешных решений правовых вопросов.">
-    <meta name="keywords" content="юридические вопросы и решения юриста, примеры юридической помощи, успешные дела юриста, кейсы восстановления на работе, юридические кейсы, правовые решения">
+    <title>Юридические вопросы и решения — Категории правовых ситуаций | PravoChat</title>
+    <meta name="description" content="Список категорий юридических вопросов и решений: бесплатная юридическая консультация, семейные споры, раздел имущества, наследство, жилищные споры, защита прав потребителей, трудовые споры и другие правовые ситуации.">
+    <meta name="keywords" content="юридические вопросы, категории юридических вопросов, семейные споры, жилищные споры, наследство, трудовые споры, защита прав потребителей, бесплатная юридическая консультация">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,48 +40,13 @@
             color: #111322;
         }
         .container {
-            max-width: 860px;
+            max-width: 1120px;
             margin: 0 auto;
             padding: 40px 24px 80px;
-        }
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 24px;
-            text-decoration: none;
-            color: #0B5ED7;
-            font-weight: 600;
         }
         h1 {
             font-size: 36px;
             margin-bottom: 16px;
-        }
-        h2 {
-            font-size: 24px;
-            margin-top: 32px;
-        }
-        p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #2F3347;
-        }
-        .card {
-            background: #FFFFFF;
-            border: 1px solid #E6E9F0;
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 12px 32px rgba(20, 30, 80, 0.08);
-        }
-        .card h3 {
-            margin: 0 0 12px 0;
-            font-size: 24px;
-            font-weight: 600;
-            color: #111322;
-        }
-        .card p {
-            margin: 0;
         }
         .intro-text {
             font-size: 18px;
@@ -89,16 +54,37 @@
             color: #2F3347;
             margin-bottom: 32px;
         }
-        .seo-content {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .category-card {
+            background: #FFFFFF;
+            border: 1px solid #E6E9F0;
+            border-radius: 16px;
+            padding: 20px 20px 18px;
+            box-shadow: 0 12px 32px rgba(20, 30, 80, 0.08);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: box-shadow 0.15s ease, transform 0.15s ease;
+        }
+        .category-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 40px rgba(20, 30, 80, 0.12);
+        }
+        .category-title {
+            margin: 0 0 8px 0;
+            font-size: 20px;
+            font-weight: 600;
+            color: #111322;
+        }
+        .category-description {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #2F3347;
         }
         @media (max-width: 768px) {
             h1 {
@@ -119,27 +105,90 @@
         </nav>
     </header>
     <main class="container">
-        <h1>Юридические вопросы и решения юридической помощи</h1>
-        <p class="intro-text">Ниже представлены примеры успешных решений правовых вопросов наших клиентов. Каждый кейс демонстрирует практический подход к решению сложных юридических задач в различных отраслях права: трудовое право, корпоративное право, налоговое право и другие.</p>
+        <h1>Юридические вопросы и решения по тематикам</h1>
+        <p class="intro-text">Выберите категорию юридических вопросов, чтобы перейти к материалам, примерам ситуаций и решениям по интересующей вас теме.</p>
         
-        <div class="card">
-            <h3>Восстановление сотрудника после незаконного увольнения</h3>
-            <p>Клиент обратился к нам после незаконного увольнения с работы. Мы подготовили претензию работодателю, собрали все необходимые доказательства нарушения трудового законодательства, представили клиента в суде и добились восстановления на работе с выплатой компенсации за вынужденный прогул и морального вреда. Дело было выиграно благодаря тщательному анализу трудового договора и доказательств нарушения процедуры увольнения.</p>
-        </div>
-        <div class="card">
-            <h3>Сопровождение сделки по продаже бизнеса</h3>
-            <p>Крупная сделка по продаже бизнеса требовала тщательной правовой проработки. Мы проанализировали все договоры, провели правовую экспертизу активов компании, выявили потенциальные риски и снизили их с помощью дополнительных соглашений и гарантий. Благодаря нашей работе сделка прошла успешно, все стороны остались довольны результатом, а клиент получил максимальную защиту своих интересов.</p>
-        </div>
-        <div class="card">
-            <h3>Оптимизация налоговой нагрузки для ИП</h3>
-            <p>Индивидуальный предприниматель обратился за помощью в оптимизации налоговых платежей. Мы провели комплексный аудит всех договоров с контрагентами, проанализировали применяемые налоговые режимы, подобрали оптимальные льготные режимы налогообложения в рамках действующего законодательства и снизили налоговые расходы на 18% без нарушения налогового законодательства. Клиент получил значительную экономию при полном соблюдении всех правовых норм.</p>
-        </div>
-        
-        <div class="seo-content" aria-hidden="true">
-            <h2>Примеры юридической помощи и успешных решений</h2>
-            <p>На этой странице представлены юридические вопросы и решения юридической помощи, которые демонстрируют эффективность работы наших юристов. Мы специализируемся на различных отраслях права: трудовое право, корпоративное право, налоговое право, гражданское право, семейное право. Каждый кейс показывает, как профессиональная юридическая помощь помогает решать сложные правовые вопросы и защищать интересы клиентов.</p>
-            <p>Наши юристы имеют большой опыт работы с различными категориями дел: восстановление на работе после незаконного увольнения, сопровождение сделок с недвижимостью и бизнесом, оптимизация налоговой нагрузки, защита прав потребителей, семейные споры, наследственные дела и многое другое. Мы гарантируем профессиональный подход к каждому делу и максимальную защиту интересов наших клиентов.</p>
-            <p>Если у вас возникла похожая ситуация, обратитесь к нам за консультацией. Наши юристы помогут разобраться в вашем вопросе и предложат оптимальное решение с учетом всех особенностей вашего случая и действующего законодательства Российской Федерации.</p>
+        <div class="categories-grid">
+            <a class="category-card" href="/free-legal-consultation/">
+                <h2 class="category-title">Бесплатная юридическая консультация</h2>
+                <p class="category-description">Общие правовые вопросы, первичная бесплатная консультация и разбор типичных жизненных ситуаций.</p>
+            </a>
+            <a class="category-card" href="/online-lawyer/">
+                <h2 class="category-title">Юрист онлайн</h2>
+                <p class="category-description">Вопросы по дистанционным консультациям, онлайн-сопровождению сделок и правовой помощи через интернет.</p>
+            </a>
+            <a class="category-card" href="/family-lawyer-divorce-alimony/">
+                <h2 class="category-title">Семейный юрист (развод, алименты)</h2>
+                <p class="category-description">Развод, алименты, споры о детях, брачные договоры и иные семейные вопросы.</p>
+            </a>
+            <a class="category-card" href="/property-division-divorce/">
+                <h2 class="category-title">Раздел имущества при разводе</h2>
+                <p class="category-description">Раздел квартиры, бизнеса, вкладов и другого совместно нажитого имущества супругов.</p>
+            </a>
+            <a class="category-card" href="/inheritance-processing/">
+                <h2 class="category-title">Оформление наследства</h2>
+                <p class="category-description">Вступление в наследство, споры между наследниками, сроки и порядок оформления прав.</p>
+            </a>
+            <a class="category-card" href="/housing-disputes/">
+                <h2 class="category-title">Жилищные споры</h2>
+                <p class="category-description">Регистрация, выселение, коммунальные споры, споры с управляющими компаниями и соседями.</p>
+            </a>
+            <a class="category-card" href="/sale-purchase-agreement/">
+                <h2 class="category-title">Договор купли-продажи</h2>
+                <p class="category-description">Подготовка и проверка договоров купли-продажи имущества, риски и способы их минимизации.</p>
+            </a>
+            <a class="category-card" href="/apartment-check-sale/">
+                <h2 class="category-title">Проверка квартиры / продажа</h2>
+                <p class="category-description">Юридическая проверка квартиры перед покупкой, сопровождение сделок с недвижимостью.</p>
+            </a>
+            <a class="category-card" href="/consumer-rights-protection/">
+                <h2 class="category-title">Защита прав потребителей</h2>
+                <p class="category-description">Возврат товара, некачественные услуги, претензии к магазинам, банкам и сервисам.</p>
+            </a>
+            <a class="category-card" href="/labor-disputes/">
+                <h2 class="category-title">Трудовые споры</h2>
+                <p class="category-description">Увольнение, невыплата зарплаты, переработки, споры с работодателем и инспекцией труда.</p>
+            </a>
+            <a class="category-card" href="/personal-bankruptcy/">
+                <h2 class="category-title">Банкротство физических лиц</h2>
+                <p class="category-description">Процедура банкротства граждан, списание долгов и защита имущества.</p>
+            </a>
+            <a class="category-card" href="/administrative-offenses/">
+                <h2 class="category-title">Административные правонарушения</h2>
+                <p class="category-description">Штрафы, ГИБДД, административные протоколы и обжалование постановлений.</p>
+            </a>
+            <a class="category-card" href="/criminal-lawyer/">
+                <h2 class="category-title">Уголовный адвокат</h2>
+                <p class="category-description">Защита по уголовным делам, допросы, задержание, избрание меры пресечения.</p>
+            </a>
+            <a class="category-card" href="/notary-powers-of-attorney/">
+                <h2 class="category-title">Нотариальные доверенности</h2>
+                <p class="category-description">Оформление и отзыв доверенностей, проверка полномочий и рисков.</p>
+            </a>
+            <a class="category-card" href="/child-support/">
+                <h2 class="category-title">Алименты на ребёнка</h2>
+                <p class="category-description">Назначение, изменение и взыскание алиментов, споры с плательщиком или получателем.</p>
+            </a>
+            <a class="category-card" href="/apartment-division-mortgage/">
+                <h2 class="category-title">Раздел квартиры / ипотека</h2>
+                <p class="category-description">Раздел ипотечной квартиры, ответственность по кредиту и взаимодействие с банком.</p>
+            </a>
+            <a class="category-card" href="/land-disputes/">
+                <h2 class="category-title">Земельные споры</h2>
+                <p class="category-description">Аренда и выкуп земли, границы участков, споры с соседями и муниципалитетом.</p>
+            </a>
+            <a class="category-card" href="/inheritance-without-will/">
+                <h2 class="category-title">Наследство без завещания</h2>
+                <p class="category-description">Наследование по закону, очередность наследников и споры при отсутствии завещания.</p>
+            </a>
+            <a class="category-card" href="/taxes-and-consulting/">
+                <h2 class="category-title">Налоги и консультации</h2>
+                <p class="category-description">Налоговые споры, оптимизация налоговой нагрузки и консультации по налоговым обязанностям.</p>
+            </a>
+            <a class="category-card" href="/compensations-and-benefits/">
+                <h2 class="category-title">Компенсации и льготы</h2>
+                <p class="category-description">Социальные выплаты, льготы, компенсации и порядок их оформления.</p>
+            </a>
         </div>
     </main>
 </body>

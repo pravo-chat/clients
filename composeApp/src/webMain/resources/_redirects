@@ -1,0 +1,6 @@
+# Редиректы для GitHub Pages
+# Устраняет дубли страниц /index и /index.html
+
+/index / 301
+/index.html / 301
+

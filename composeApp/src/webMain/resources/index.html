@@ -257,6 +257,19 @@
         /* SEO content - visible to search engines, hidden from users */
         .seo-content {
             position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+        }
+        .seo-content .h1-subtitle {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #2F3347;
+            margin-top: 12px;
+            margin-bottom: 24px;
             width: 1px;
             height: 1px;
             padding: 0;
@@ -561,8 +574,8 @@
 <body>
     <!-- SEO Content for Search Engines -->
     <div class="seo-content" aria-hidden="true">
-        <h1>Юридическая помощь - Онлайн консультации юристов | PravoChat</h1>
-        <p>Получите бесплатную юридическую консультацию онлайн от опытных юристов на PravoChat. Быстрые ответы на правовые вопросы, помощь с документами, защита ваших интересов. Консультации 24/7 по всем отраслям Российского права.</p>
+        <h1>Задайте любой юридический вопрос по российскому праву</h1>
+        <p class="h1-subtitle">Бесплатная юридическая консультация онлайн: получите ответы на вопросы по российскому праву в удобном чате. ИИ-юрист и опытные специалисты помогут разобраться в правовых ситуациях, составить документы и защитить ваши интересы 24/7.</p>
         
         <nav>
             <ul>

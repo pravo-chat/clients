@@ -44,6 +44,33 @@ jobs:
       - name: Build web application
         run: ./gradlew :composeApp:jsBrowserDistribution
 
+      - name: Create redirect files for SEO
+        run: |
+          cd composeApp/build/dist/js/productionExecutable
+          # Создаем HTML файл для редиректа
+          cat > redirect-template.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="ru">
+          <head>
+              <meta charset="UTF-8">
+              <meta http-equiv="refresh" content="0; url=/">
+              <link rel="canonical" href="https://pravochat.ru/">
+              <script>window.location.replace('/');</script>
+              <title>Redirecting...</title>
+          </head>
+          <body>
+              <p>Если редирект не произошел автоматически, <a href="/">нажмите здесь</a>.</p>
+          </body>
+          </html>
+          EOF
+          # Создаем папку /index с редиректом
+          mkdir -p index
+          cp redirect-template.html index/index.html
+          # Если нет index.html в корне, создаем его (но не перезаписываем существующий)
+          if [ ! -f index.html ]; then
+            cp redirect-template.html index.html
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

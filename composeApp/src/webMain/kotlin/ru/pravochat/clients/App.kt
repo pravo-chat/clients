@@ -38,7 +38,7 @@ private val navigationItems = listOf(
     NavigationItem(label = "О нас и контакты", externalHref = "/about.html"),
     NavigationItem(label = "Практика", externalHref = "/practice.html"),
     NavigationItem(label = "Премиум модель", targetId = "premium", opensDialog = true),
-    NavigationItem(label = "Консультация юриста", opensConsultationDialog = true)
+    NavigationItem(label = "Ваш юрист", opensConsultationDialog = true)
 )
 
 private data class CaseStudy(
@@ -652,7 +652,7 @@ private fun ConsultationDialog(
             }
             onClick { event -> event.stopPropagation() }
         }) {
-            PravochatHeading("Консультация юриста")
+            PravochatHeading("Ваш юрист")
             PravochatBodyText(
                 text = "Оставьте контакты и кратко опишите вопрос — мы свяжемся с вами и предложим варианты решения."
             )

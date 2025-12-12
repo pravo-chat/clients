@@ -542,6 +542,25 @@
             height: 100% !important;
             flex: 1 !important;
         }
+        
+        /* Hide floating button/icon that appears before widget loads */
+        [data-anythingllm-widget-button],
+        .anythingllm-widget-button,
+        iframe[src*="anythingllm"],
+        #anythingllm-embed-button,
+        a[href*="anythingllm"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+        
+        /* Hide any floating elements in bottom-left corner */
+        body > div[style*="position: fixed"][style*="bottom"],
+        body > div[style*="position:fixed"][style*="bottom"],
+        body > button[style*="position: fixed"][style*="bottom"],
+        body > button[style*="position:fixed"][style*="bottom"] {
+            display: none !important;
+        }
         .customgpt-bottom-overlay {
             height: auto;
             min-height: 40px;
@@ -784,17 +803,17 @@
     
     <!-- AnythingLLM Chat Widget -->
     <!-- Paste this script at the bottom of your HTML before the </body> tag. -->
-    <!-- For more style and configuration options, see: https://github.com/Mintplex-Labs/anythingllm-embed/blob/main/README.md -->
+    <!-- See more style and config options on our docs: https://github.com/Mintplex-Labs/anythingllm-embed/blob/main/README.md -->
     <script
-        data-embed-id="1b4679cd-cdec-48ae-9431-6649df6f1121"
+        data-embed-id="d842da1a-53df-41ee-8a16-3f4b80c4bd0c"
         data-base-api-url="https://chat.pravochat.ru/api/embed"
         data-render-in-container-id="customgpt_chat"
         data-position="inline"
         data-open-on-load="on"
         data-window-width="100%"
         data-window-height="100%"
-        src="https://chat.pravochat.ru/embed/anythingllm-chat-widget.min.js"
-        onerror="console.error('Failed to load AnythingLLM widget script'); document.getElementById('customgpt_chat').innerHTML = '<p style=\'padding: 20px; text-align: center; color: #666;\'>Ошибка загрузки чата. Пожалуйста, обновите страницу.</p>';">
+        data-language="ru"
+        src="https://chat.pravochat.ru/embed/anythingllm-chat-widget.min.js">
     </script>
     <!-- AnythingLLM (https://anythingllm.com) -->
 </body>

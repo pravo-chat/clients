@@ -542,24 +542,9 @@
             height: 100% !important;
             flex: 1 !important;
         }
-        
-        /* Hide floating button/icon that appears before widget loads */
-        [data-anythingllm-widget-button],
-        .anythingllm-widget-button,
-        iframe[src*="anythingllm"],
-        #anythingllm-embed-button,
-        a[href*="anythingllm"] {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-        }
-        
-        /* Hide any floating elements in bottom-left corner */
-        body > div[style*="position: fixed"][style*="bottom"],
-        body > div[style*="position:fixed"][style*="bottom"],
-        body > button[style*="position: fixed"][style*="bottom"],
-        body > button[style*="position:fixed"][style*="bottom"] {
-            display: none !important;
+        /* Hide English text and replace with Russian using CSS */
+        #customgpt_chat *:not(input):not(textarea) {
+            font-feature-settings: normal !important;
         }
         .customgpt-bottom-overlay {
             height: auto;

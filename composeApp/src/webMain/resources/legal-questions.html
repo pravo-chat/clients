@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Юридические вопросы и решения — Категории правовых ситуаций | PravoChat</title>
-    <meta name="description" content="Список категорий юридических вопросов и решений: бесплатная юридическая консультация, семейные споры, раздел имущества, наследство, жилищные споры, защита прав потребителей, трудовые споры и другие правовые ситуации.">
+    <title>Юридические вопросы и решения — Категории и статьи по правовым ситуациям | PravoChat</title>
+    <meta name="description" content="Список категорий юридических вопросов и опубликованных статей с ответами: бесплатная юридическая консультация, семейные споры, раздел имущества при разводе, наследство, жилищные споры, защита прав потребителей, трудовые споры и другие правовые ситуации.">
     <meta name="keywords" content="юридические вопросы, категории юридических вопросов, семейные споры, жилищные споры, наследство, трудовые споры, защита прав потребителей, бесплатная юридическая консультация">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pravochat.ru/legal-questions.html">
-    <meta property="og:title" content="Юридические вопросы и решения — Категории правовых ситуаций | PravoChat">
-    <meta property="og:description" content="Список категорий юридических вопросов и решений: бесплатная юридическая консультация, семейные споры, раздел имущества, наследство, жилищные споры, защита прав потребителей, трудовые споры и другие правовые ситуации.">
+    <meta property="og:title" content="Юридические вопросы и решения — Категории и статьи по правовым ситуациям | PravoChat">
+    <meta property="og:description" content="Список категорий юридических вопросов и опубликованных статей с ответами: бесплатная юридическая консультация, семейные споры, раздел имущества при разводе, наследство, жилищные споры, защита прав потребителей, трудовые споры и другие правовые ситуации.">
     <meta property="og:image" content="https://pravochat.ru/og-image.png">
     <meta property="og:site_name" content="PravoChat">
     <meta property="og:locale" content="ru_RU">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Юридические вопросы и решения — Категории правовых ситуаций | PravoChat">
-    <meta name="twitter:description" content="Список категорий юридических вопросов и решений: бесплатная юридическая консультация, семейные споры, раздел имущества, наследство, жилищные споры, защита прав потребителей, трудовые споры и другие правовые ситуации.">
+    <meta name="twitter:title" content="Юридические вопросы и решения — Категории и статьи по правовым ситуациям | PravoChat">
+    <meta name="twitter:description" content="Список категорий юридических вопросов и опубликованных статей с ответами: бесплатная юридическая консультация, семейные споры, раздел имущества при разводе, наследство, жилищные споры, защита прав потребителей, трудовые споры и другие правовые ситуации.">
     <meta name="twitter:image" content="https://pravochat.ru/og-image.png">
     
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -102,13 +102,148 @@
             line-height: 1.7;
             color: #2F3347;
         }
+        .articles-section {
+            margin-top: 64px;
+            padding-top: 48px;
+            border-top: 2px solid #E6E9F0;
+        }
+        .articles-section h2 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            color: #111322;
+        }
+        .articles-category {
+            margin-bottom: 48px;
+        }
+        .articles-category h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #111322;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #E6E9F0;
+        }
+        .articles-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        .article-card {
+            background: #FFFFFF;
+            border: 1px solid #E6E9F0;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(20, 30, 80, 0.06);
+            transition: box-shadow 0.15s ease, transform 0.15s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(20, 30, 80, 0.12);
+        }
+        .article-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 12px 0;
+            color: #111322;
+            line-height: 1.4;
+        }
+        .article-title a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .article-title a:hover {
+            color: #308CEF;
+        }
+        .article-summary {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #2F3347;
+            margin: 0 0 12px 0;
+        }
+        .article-meta {
+            font-size: 13px;
+            color: #666;
+            margin: 0 0 12px 0;
+        }
+        .article-read-more {
+            font-size: 14px;
+        }
+        .article-read-more a {
+            color: #308CEF;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .article-read-more a:hover {
+            text-decoration: underline;
+        }
         @media (max-width: 768px) {
             h1 {
                 font-size: 28px;
             }
+            .articles-list {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
     <link rel="canonical" href="https://pravochat.ru/legal-questions.html">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Юридические вопросы и решения по тематикам",
+        "description": "Список категорий юридических вопросов и опубликованных статей с ответами",
+        "url": "https://pravochat.ru/legal-questions.html",
+        "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": 4,
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Можно ли стать собственником заброшенной машины?",
+                        "description": "Стать собственником заброшенного авто можно, если подтвердить, что владелец отказался от вещи, и пройти установленную законом процедуру",
+                        "url": "https://pravochat.ru/free-legal-consultation/abandoned-car-ownership.html",
+                        "datePublished": "2025-12-07"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что делать, если машину повредили во дворе, а виновник скрылся?",
+                        "description": "Порядок действий при повреждении автомобиля во дворе, если виновник скрылся",
+                        "url": "https://pravochat.ru/online-lawyer/car-damage-yard.html",
+                        "datePublished": "2025-01-07"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как подать на развод, если супруг(а) не даёт согласие или не выходит на связь?",
+                        "description": "Если супруг или супруга не дают согласие на развод или не выходят на связь, вы всё равно можете инициировать расторжение брака через суд",
+                        "url": "https://pravochat.ru/family-lawyer-divorce-alimony/divorce-without-consent.html",
+                        "datePublished": "2025-01-08"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как делится имущество при разводе, если оно оформлено только на одного из супругов?",
+                        "description": "При разводе имущество, даже если оно оформлено только на одного из супругов, обычно считается совместно нажитым, если было приобретено в браке",
+                        "url": "https://pravochat.ru/property-division-divorce/",
+                        "datePublished": "2025-01-09"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
 </head>
 <body>
     <header class="simple-header">
@@ -206,6 +341,69 @@
                 <p class="category-description">Социальные выплаты, льготы, компенсации и порядок их оформления.</p>
             </a>
         </div>
+
+        <section class="articles-section">
+            <h2>Юридические статьи и ответы на вопросы</h2>
+            <p class="intro-text">Ниже представлены все опубликованные статьи с ответами на юридические вопросы, сгруппированные по категориям.</p>
+
+            <div class="articles-category">
+                <h3>Бесплатная юридическая консультация</h3>
+                <div class="articles-list">
+                    <article class="article-card">
+                        <h4 class="article-title">
+                            <a href="/free-legal-consultation/abandoned-car-ownership.html">Можно ли стать собственником заброшенной машины?</a>
+                        </h4>
+                        <p class="article-summary">Стать собственником заброшенного авто можно, если подтвердить, что владелец отказался от вещи, и пройти установленную законом процедуру (проверка в розыске, отсутствие споров, оформление прав).</p>
+                        <p class="article-meta">07.12.2025, вопрос №100001, г. Казань</p>
+                        <p class="article-read-more">
+                            <a href="/free-legal-consultation/abandoned-car-ownership.html">Читать полностью →</a>
+                        </p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="articles-category">
+                <h3>Юрист онлайн</h3>
+                <div class="articles-list">
+                    <article class="article-card">
+                        <h4 class="article-title">
+                            <a href="/online-lawyer/car-damage-yard.html">Что делать, если машину повредили во дворе, а виновник скрылся?</a>
+                        </h4>
+                        <p class="article-summary">Порядок действий при повреждении автомобиля во дворе, если виновник скрылся: остановка и фиксация обстоятельств, вызов полиции, оформление происшествия и получение компенсации через страховую компанию.</p>
+                        <p class="article-meta">07.01.2025, вопрос №100002, г. Москва</p>
+                        <p class="article-read-more">
+                            <a href="/online-lawyer/car-damage-yard.html">Читать полностью →</a>
+                        </p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="articles-category">
+                <h3>Семейный юрист (развод, алименты)</h3>
+                <div class="articles-list">
+                    <article class="article-card">
+                        <h4 class="article-title">
+                            <a href="/family-lawyer-divorce-alimony/divorce-without-consent.html">Как подать на развод, если супруг(а) не даёт согласие или не выходит на связь?</a>
+                        </h4>
+                        <p class="article-summary">Если супруг или супруга не дают согласие на развод или не выходят на связь, вы всё равно можете инициировать расторжение брака через суд. Развод осуществляется в судебном порядке при наличии общих несовершеннолетних детей или при отсутствии согласия одного из супругов.</p>
+                        <p class="article-meta">08.01.2025, вопрос №100003, г. Санкт-Петербург</p>
+                        <p class="article-read-more">
+                            <a href="/family-lawyer-divorce-alimony/divorce-without-consent.html">Читать полностью →</a>
+                        </p>
+                    </article>
+                    <article class="article-card">
+                        <h4 class="article-title">
+                            <a href="/property-division-divorce/">Как делится имущество при разводе, если оно оформлено только на одного из супругов?</a>
+                        </h4>
+                        <p class="article-summary">При разводе имущество, даже если оно оформлено только на одного из супругов, обычно считается совместно нажитым, если было приобретено в браке. По умолчанию доли супругов признаются равными. Исключения: имущество, приобретённое до брака, полученное в дар или по наследству, считается личной собственностью.</p>
+                        <p class="article-meta">09.01.2025, вопрос №100004, г. Москва</p>
+                        <p class="article-read-more">
+                            <a href="/property-division-divorce/">Читать полностью →</a>
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
     </main>
 </body>
 </html>

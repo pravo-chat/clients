@@ -9,7 +9,7 @@ This is a Kotlin Multiplatform project targeting Web.
     Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
     folder is the appropriate location.
 
-### Build and Run Web Application
+### Build and Run Web Applicationц
 
 To build and run the development version of the web app, use the run configuration from the run widget
 in your IDE's toolbar or run it directly from the terminal:

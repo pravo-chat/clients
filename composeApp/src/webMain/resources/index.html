@@ -523,24 +523,24 @@
             box-sizing: border-box;
             position: relative;
         }
-        /* CustomGPT main content widget */
+        /* CustomGPT main content widget / AnythingLLM container */
         #customgpt_chat {
             position: relative !important;
             width: 100% !important;
             flex: 1 !important;
-            min-height: 0 !important;
+            min-height: 400px !important;
+            height: 100% !important;
             margin: 0 !important;
             padding: 0 !important;
             border: none !important;
             display: flex !important;
             flex-direction: column !important;
         }
-        #customgpt_chat iframe {
+        /* AnythingLLM widget will create its own elements inside #customgpt_chat */
+        #customgpt_chat > * {
             width: 100% !important;
             height: 100% !important;
-            border: none !important;
             flex: 1 !important;
-            min-height: 0 !important;
         }
         .customgpt-bottom-overlay {
             height: auto;
@@ -687,16 +687,7 @@
         <div class="customgpt-wrapper">
             <div class="container">
                 <div id="customgpt_chat">
-                    <iframe 
-                        src="https://chat.pravochat.ru" 
-                        width="100%" 
-                        height="100%" 
-                        allow="microphone; camera"
-                        allowfullscreen
-                        loading="eager"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="PravoChat AI Chat">
-                    </iframe>
+                    <!-- AnythingLLM chat widget will be rendered here -->
                 </div>
                 <div class="customgpt-bottom-overlay">
                     <span id="doc-update-date">База документов обновлена: </span>
@@ -786,90 +777,25 @@
                 dateElement.textContent = 'База документов обновлена: ' + formattedDate;
             }
         })();
-        
-        // CustomGPT iframe error handling
-        (function() {
-            const iframe = document.querySelector('#customgpt_chat iframe');
-            if (!iframe) return;
-            
-            let loadTimeout;
-            let retryCount = 0;
-            const maxRetries = 2;
-            const loadTimeoutMs = 30000; // 30 seconds
-            
-            function trackIframeError(errorType, errorMessage) {
-                if (typeof trackError === 'function') {
-                    trackError('iframe_error', errorType + ': ' + errorMessage, 'customgpt_chat');
-                }
-                console.error('[CustomGPT Iframe]', errorType, errorMessage);
-            }
-            
-            function handleIframeError(errorType, errorMessage) {
-                trackIframeError(errorType, errorMessage);
-                
-                // Try to reload iframe if we haven't exceeded max retries
-                if (retryCount < maxRetries) {
-                    retryCount++;
-                    console.log('[CustomGPT Iframe] Retrying load, attempt', retryCount);
-                    setTimeout(function() {
-                        const currentSrc = iframe.src;
-                        iframe.src = '';
-                        setTimeout(function() {
-                            iframe.src = currentSrc;
-                        }, 100);
-                    }, 2000);
-                } else {
-                    console.error('[CustomGPT Iframe] Max retries reached, giving up');
-                }
-            }
-            
-            // Monitor iframe load
-            iframe.addEventListener('load', function() {
-                clearTimeout(loadTimeout);
-                console.log('[CustomGPT Iframe] Loaded successfully');
-                
-                // Check if iframe content is accessible (cross-origin may block this)
-                try {
-                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                    // If we can access the document, check for error messages
-                    // Note: This will fail for cross-origin iframes, which is expected
-                } catch (e) {
-                    // Cross-origin restriction - this is normal
-                    console.log('[CustomGPT Iframe] Cross-origin iframe (expected)');
-                }
-            });
-            
-            // Monitor iframe errors
-            iframe.addEventListener('error', function(e) {
-                clearTimeout(loadTimeout);
-                handleIframeError('load_error', 'Iframe failed to load');
-            });
-            
-            // Set timeout to detect if iframe is taking too long
-            loadTimeout = setTimeout(function() {
-                handleIframeError('load_timeout', 'Iframe took longer than ' + loadTimeoutMs + 'ms to load');
-            }, loadTimeoutMs);
-            
-            // Listen for messages from iframe (if CustomGPT sends error messages via postMessage)
-            window.addEventListener('message', function(event) {
-                // Only accept messages from CustomGPT domain
-                if (event.origin !== 'https://anto55flnc.customgpt-agents.com' && 
-                    event.origin !== 'https://cdn.customgpt.ai') {
-                    return;
-                }
-                
-                // Check if message indicates an error
-                if (event.data && typeof event.data === 'object') {
-                    if (event.data.type === 'error' || event.data.error) {
-                        const errorMsg = event.data.message || event.data.error || 'Unknown error';
-                        trackIframeError('chat_error', errorMsg);
-                    }
-                }
-            });
-        })();
     </script>
     
     <!-- Main App -->
     <!-- <script type="module" src="composeApp.js"></script> -->
+    
+    <!-- AnythingLLM Chat Widget -->
+    <!-- Paste this script at the bottom of your HTML before the </body> tag. -->
+    <!-- For more style and configuration options, see: https://github.com/Mintplex-Labs/anythingllm-embed/blob/main/README.md -->
+    <script
+        data-embed-id="1b4679cd-cdec-48ae-9431-6649df6f1121"
+        data-base-api-url="https://chat.pravochat.ru/api/embed"
+        data-render-in-container-id="customgpt_chat"
+        data-position="inline"
+        data-open-on-load="on"
+        data-window-width="100%"
+        data-window-height="100%"
+        src="https://chat.pravochat.ru/embed/anythingllm-chat-widget.min.js"
+        onerror="console.error('Failed to load AnythingLLM widget script'); document.getElementById('customgpt_chat').innerHTML = '<p style=\'padding: 20px; text-align: center; color: #666;\'>Ошибка загрузки чата. Пожалуйста, обновите страницу.</p>';">
+    </script>
+    <!-- AnythingLLM (https://anythingllm.com) -->
 </body>
 </html>

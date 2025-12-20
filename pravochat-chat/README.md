@@ -6,7 +6,7 @@ Next.js чат-приложение с Vercel AI SDK для развертыва
 
 1. Скопируйте всю папку `pravochat-chat` на сервер:
    ```bash
-   scp -r pravochat-chat root@155.212.170.94:/opt/
+   scp -r pravochat-chat root@drivebit.my:/opt/
    ```
 
 2. Подключитесь к серверу:
@@ -53,10 +53,10 @@ pm2 startup
 
 ### Шаг 1: Создание DNS записи
 
-У вашего регистратора домена создайте A-запись:
-- **Тип**: A
+У вашего регистратора домена создайте CNAME-запись:
+- **Тип**: CNAME
 - **Имя**: `chat` (или `chat.pravochat.ru`)
-- **Значение**: `155.212.170.94`
+- **Значение**: `drivebit.my`
 - **TTL**: 3600 (или по умолчанию)
 
 Подождите 5-30 минут, пока DNS распространится (проверьте: `dig chat.pravochat.ru` или `nslookup chat.pravochat.ru`).
@@ -65,13 +65,13 @@ pm2 startup
 
 1. Скопируйте файлы конфигурации на сервер:
    ```bash
-   scp pravochat-chat/nginx-chat.conf root@155.212.170.94:/opt/pravochat-chat/
-   scp pravochat-chat/setup-chat-domain.sh root@155.212.170.94:/opt/pravochat-chat/
+   scp pravochat-chat/nginx-chat.conf root@drivebit.my:/opt/pravochat-chat/
+   scp pravochat-chat/setup-chat-domain.sh root@drivebit.my:/opt/pravochat-chat/
    ```
 
 2. На сервере запустите скрипт настройки:
    ```bash
-   ssh root@155.212.170.94
+   ssh root@drivebit.my
    cd /opt/pravochat-chat
    chmod +x setup-chat-domain.sh
    ./setup-chat-domain.sh

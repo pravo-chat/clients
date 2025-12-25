@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "PravoChat — ИИ-юрист",
   description: "Онлайн консультации по российскому праву",
+  alternates: {
+    canonical: "https://pravochat.ru/",
+  },
 };
 
 export default function RootLayout({

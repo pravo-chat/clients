@@ -3,21 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Страница не найдена — PravoChat</title>
-    <meta name="description" content="Страница не найдена. Вернитесь на главную страницу PravoChat для получения бесплатной юридической консультации онлайн.">
-    <meta name="robots" content="noindex, follow">
-    
-    <!-- Open Graph -->
+    <title>Юридические статьи и вопросы — Защита прав потребителей | PravoChat</title>
+    <meta name="description" content="Юридические статьи и ответы на вопросы по защите прав потребителей: возврат товара, недостатки (брак), сроки доставки, некачественные услуги, претензии и порядок возврата денег.">
+    <meta name="keywords" content="защита прав потребителей, возврат товара, возврат денег, некачественный товар, брак, нарушение сроков доставки, претензия продавцу, закон о защите прав потребителей">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pravochat.ru/404.html">
-    <meta property="og:title" content="Страница не найдена — PravoChat">
-    <meta property="og:description" content="Вернитесь на главную страницу для получения бесплатной юридической консультации онлайн.">
-    
+    <meta property="og:url" content="https://pravochat.ru/consumer-rights-protection/">
+    <meta property="og:title" content="Юридические статьи и вопросы — Защита прав потребителей | PravoChat">
+    <meta property="og:description" content="Юридические статьи и ответы на вопросы по защите прав потребителей: возврат товара, недостатки (брак), сроки доставки, некачественные услуги, претензии и порядок возврата денег.">
+    <meta property="og:image" content="https://pravochat.ru/images/practice-gavel.jpg">
+    <meta property="og:site_name" content="PravoChat">
+    <meta property="og:locale" content="ru_RU">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Юридические статьи и вопросы — Защита прав потребителей | PravoChat">
+    <meta name="twitter:description" content="Юридические статьи и ответы на вопросы по защите прав потребителей: возврат товара, недостатки (брак), сроки доставки, некачественные услуги, претензии и порядок возврата денег.">
+    <meta name="twitter:image" content="https://pravochat.ru/images/practice-gavel.jpg">
+
+    <link rel="canonical" href="https://pravochat.ru/consumer-rights-protection/">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/simple-header.css">
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104954778', 'ym');
+
+        ym(104954778, 'init', {webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/104954778" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     <style>
         :root {
             color-scheme: light;
@@ -31,124 +55,86 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: #F5F7FB;
             color: #111322;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
         .container {
-            max-width: 800px;
+            max-width: 960px;
             margin: 0 auto;
-            padding: 60px 24px;
-            flex: 1;
-            text-align: center;
-        }
-        .error-code {
-            font-size: 120px;
-            font-weight: 700;
-            color: #308CEF;
-            margin: 0;
-            line-height: 1;
+            padding: 40px 24px 80px;
         }
         h1 {
-            font-size: 36px;
-            margin: 24px 0 16px;
-            color: #111322;
+            font-size: 32px;
+            margin-bottom: 12px;
         }
-        .subtitle {
+        .intro {
             font-size: 18px;
-            line-height: 1.7;
+            line-height: 1.8;
             color: #2F3347;
-            margin-bottom: 40px;
+            margin: 0 0 28px 0;
         }
-        .cta-buttons {
+        .articles-list {
             display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 60px;
+            flex-direction: column;
+            gap: 24px;
         }
-        .btn {
-            padding: 14px 32px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: opacity 0.15s ease;
-            display: inline-block;
-        }
-        .btn-primary {
-            background: #308CEF;
-            color: #FFFFFF;
-        }
-        .btn-primary:hover {
-            opacity: 0.9;
-        }
-        .btn-secondary {
+        .article-card {
             background: #FFFFFF;
-            color: #111322;
-            border: 1px solid #D9D9DC;
-        }
-        .btn-secondary:hover {
-            opacity: 0.8;
-        }
-        .popular-services {
-            background: #FFFFFF;
+            border: 1px solid #E6E9F0;
             border-radius: 16px;
-            padding: 32px;
-            margin-top: 40px;
-            box-shadow: 0 4px 16px rgba(20, 30, 80, 0.08);
-        }
-        .popular-services h2 {
-            font-size: 24px;
-            margin: 0 0 24px;
-            color: #111322;
-        }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-        }
-        .service-link {
-            padding: 16px;
-            background: #F9F9FA;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #111322;
-            font-weight: 500;
-            transition: background 0.15s ease;
-        }
-        .service-link:hover {
-            background: #F0F0F2;
-        }
-        .usp {
-            margin-top: 40px;
             padding: 24px;
-            background: linear-gradient(135deg, #308CEF 0%, #1E6FD9 100%);
-            border-radius: 16px;
-            color: #FFFFFF;
+            box-shadow: 0 12px 32px rgba(20, 30, 80, 0.08);
         }
-        .usp h3 {
-            margin: 0 0 12px;
-            font-size: 20px;
+        .article-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            color: #111322;
         }
-        .usp p {
-            margin: 0;
+        .article-title a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .article-title a:hover {
+            color: #308CEF;
+        }
+        .article-summary {
             font-size: 16px;
             line-height: 1.6;
-            opacity: 0.95;
+            color: #2F3347;
+            margin: 0 0 16px 0;
+        }
+        .article-meta {
+            font-size: 14px;
+            color: #6B7080;
+            margin-bottom: 12px;
+        }
+        .article-read-more {
+            font-size: 14px;
+        }
+        .article-read-more a {
+            color: #0B5ED7;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .article-read-more a:hover {
+            text-decoration: underline;
+        }
+        .help-links {
+            margin-top: 28px;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #2F3347;
+        }
+        .help-links a {
+            color: #0B5ED7;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .help-links a:hover {
+            text-decoration: underline;
         }
         @media (max-width: 768px) {
-            .error-code {
-                font-size: 80px;
-            }
             h1 {
-                font-size: 28px;
-            }
-            .cta-buttons {
-                flex-direction: column;
-            }
-            .btn {
-                width: 100%;
+                font-size: 26px;
             }
         }
     </style>
@@ -160,39 +146,31 @@
             Ваш Юрист
         </a>
         <nav class="nav-links">
+            <a href="/">Главная</a>
             <a href="/legal-questions.html">Юридические вопросы</a>
-            <a href="/about.html">О нас</a>
-            <a href="/practice.html">Практика</a>
         </nav>
     </header>
+    <main class="container">
+        <h1>Защита прав потребителей — статьи и ответы на вопросы</h1>
+        <p class="intro">Разбираем типовые ситуации: как вернуть деньги за товар с недостатками, что делать при нарушении сроков доставки, как оформить претензию продавцу и какие права дает Закон РФ «О защите прав потребителей».</p>
 
-    <div class="container">
-        <div class="error-code">404</div>
-        <h1>Ой, кажется, мы что-то потеряли!</h1>
-        <p class="subtitle">Но не переживайте — у нас есть много выгодных предложений! Страница, которую вы ищете, не найдена, но мы можем помочь вам с юридическими вопросами.</p>
-        
-        <div class="cta-buttons">
-            <a href="/" class="btn btn-primary">Вернуться на главную</a>
-            <a href="/legal-questions.html" class="btn btn-secondary">Юридические вопросы</a>
+        <div class="articles-list">
+            <article class="article-card">
+                <h2 class="article-title">
+                    <a href="/sale-purchase-agreement/consumer-terminate-contract-return-money.html">Можно ли расторгнуть договор купли-продажи и вернуть деньги, если продавец нарушил условия сделки?</a>
+                </h2>
+                <p class="article-summary">Краткий разбор оснований для расторжения договора и возврата денег: недостатки товара, просрочка передачи, нарушение условий о качестве/комплектности, некачественные работы и дистанционная торговля.</p>
+                <p class="article-meta">11.01.2025, вопрос №100006, г. Москва</p>
+                <p class="article-read-more">
+                    <a href="/sale-purchase-agreement/consumer-terminate-contract-return-money.html">Читать полностью</a>
+                </p>
+            </article>
         </div>
 
-        <div class="popular-services">
-            <h2>Популярные услуги</h2>
-            <div class="services-grid">
-                <a href="/legal-questions.html" class="service-link">Бесплатная консультация</a>
-                <a href="/family-lawyer-divorce-alimony/" class="service-link">Семейные споры</a>
-                <a href="/housing-disputes/" class="service-link">Жилищные споры</a>
-                <a href="/labor-disputes/" class="service-link">Трудовые споры</a>
-                <a href="/inheritance-processing/" class="service-link">Наследство</a>
-                <a href="/consumer-rights-protection/" class="service-link">Защита прав потребителей</a>
-            </div>
-        </div>
-
-        <div class="usp">
-            <h3>Почему выбирают PravoChat?</h3>
-            <p>Бесплатные юридические консультации онлайн 24/7, ответы от опытных юристов и ИИ-ассистента, помощь по всем отраслям российского права. Получите быстрый ответ на ваш юридический вопрос прямо сейчас!</p>
-        </div>
-    </div>
+        <p class="help-links">
+            Также смотрите раздел <a href="/sale-purchase-agreement/">«Договор купли-продажи»</a> и общий каталог <a href="/legal-questions.html">«Юридические вопросы»</a>.
+        </p>
+    </main>
     <a href="/" class="consult-lawyer-btn">Обсудить с юристом</a>
 </body>
 </html>

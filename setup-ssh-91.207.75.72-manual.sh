@@ -35,3 +35,4 @@ echo "   ssh-copy-id -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP"
 echo ""
 
 
+

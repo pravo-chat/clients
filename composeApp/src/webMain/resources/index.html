@@ -542,6 +542,23 @@
             height: 100% !important;
             flex: 1 !important;
         }
+
+        /* Bottom mask: covers the very bottom of the fixed AnythingLLM widget (e.g. reset button) */
+        :root {
+            --allm-bottom-mask-height: 40px;
+        }
+        .allm-bottom-mask {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: var(--allm-bottom-mask-height);
+            background: #F9F9FA;
+            z-index: 60; /* widget uses z-50 */
+            pointer-events: none; /* do not block clicks */
+        }
+
+        /* AnythingLLM embed layout overrides (kept minimal to avoid fighting widget positioning) */
         /* Hide English text and replace with Russian using CSS */
         #customgpt_chat *:not(input):not(textarea) {
             font-feature-settings: normal !important;
@@ -798,8 +815,14 @@
         data-window-width="100%"
         data-window-height="100%"
         data-language="ru"
+        data-assistant-icon="/favicon.svg"
+        data-assistant-name="Юридический ассистент"
+        data-send-message-text="Задайте ваш вопрос..."
+        data-reset-chat-text="Начать новый диалог"
+        data-no-sponsor="true"
         src="https://chat.pravochat.ru/embed/anythingllm-chat-widget.min.js">
     </script>
+    <div class="allm-bottom-mask" aria-hidden="true"></div>
     <!-- AnythingLLM (https://anythingllm.com) -->
 </body>
 </html>

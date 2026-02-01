@@ -77,6 +77,12 @@
     <meta property="og:site_name" content="Юридическая помощь">
     <meta property="og:locale" content="ru_RU">
     
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Юридическая помощь - Онлайн консультации юристов | Бесплатная правовая помощь">
+    <meta name="twitter:description" content="Получите бесплатную юридическую консультацию онлайн от опытных юристов. Быстрые ответы на правовые вопросы, помощь с документами, защита ваших интересов.">
+    <meta name="twitter:image" content="https://pravochat.ru/images/practice-gavel.jpg">
+
     <!-- VKontakte -->
     <meta property="vk:image" content="https://pravochat.ru/images/practice-gavel.jpg">
     <meta name="vk:title" content="Юридическая помощь - Онлайн консультации юристов">
@@ -257,31 +263,6 @@
             width: 100%;
         }
         
-        /* SEO content - visible to search engines, hidden from users */
-        .seo-content {
-            position: absolute;
-            left: -9999px;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-        }
-        .seo-content .h1-subtitle {
-            font-size: 18px;
-            line-height: 1.7;
-            color: #2F3347;
-            margin-top: 12px;
-            margin-bottom: 24px;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
         
         .container { max-width: 1120px; margin: 0 auto; padding: 24px; }
         .header { 
@@ -579,6 +560,17 @@
             color: #666;
             text-align: center;
         }
+        
+        /* SEO content - visible to search engines, hidden from users */
+        .seo-content {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+        }
         @media (max-width: 768px) {
             .nav-links {
                 display: none !important;
@@ -599,11 +591,11 @@
     <!-- SEO Content for Search Engines -->
     <div class="seo-content" aria-hidden="true">
         <h1>Задайте любой юридический вопрос по российскому праву</h1>
-        <p class="h1-subtitle">Бесплатная юридическая консультация онлайн: получите ответы на вопросы по российскому праву в удобном чате. ИИ-юрист и опытные специалисты помогут разобраться в правовых ситуациях, составить документы и защитить ваши интересы 24/7.</p>
+        <p>Бесплатная юридическая консультация онлайн: получите ответы на вопросы по российскому праву в удобном чате. ИИ-юрист и опытные специалисты помогут разобраться в правовых ситуациях, составить документы и защитить ваши интересы 24/7.</p>
         
         <nav>
             <ul>
-                <li><a href="/legal-questions.html">Юридические вопросы и решения юридической помощи</a></li>
+                <li><a href="/legal-questions-answers.html">Юридические вопросы и ответы по юридической помощи</a></li>
                 <li><a href="/about.html">О нас и контакты</a></li>
                 <li><a href="/practice.html">Практика и судебные решения</a></li>
                 <li><a href="/consult.html">Ваш юрист</a></li>
@@ -659,7 +651,7 @@
                     <span>Ваш Юрист</span>
                 </a>
                 <nav class="nav-links">
-                    <a href="/legal-questions.html">Юридические вопросы и решения</a>
+                    <a href="/legal-questions-answers.html">Юридические вопросы и ответы</a>
                     <a href="/about.html">О нас и контакты</a>
                     <a href="/practice.html">Практика</a>
                     <a href="#premium" onclick="if (window.innerWidth > 768) { document.getElementById('ea-dialog')?.showModal(); return false; }">Премиум модель</a>
@@ -724,7 +716,7 @@
     <!-- Mobile menu overlay -->
     <div class="mobile-menu-overlay" id="mobile-menu-overlay">
         <div class="mobile-menu">
-            <a href="/legal-questions.html" onclick="closeMobileMenu()">Юридические вопросы и решения</a>
+            <a href="/legal-questions-answers.html" onclick="closeMobileMenu()">Юридические вопросы и ответы</a>
             <a href="/about.html" onclick="closeMobileMenu()">О нас и контакты</a>
             <a href="/practice.html" onclick="closeMobileMenu()">Практика</a>
             <a href="/premium.html" onclick="closeMobileMenu()">Премиум модель</a>

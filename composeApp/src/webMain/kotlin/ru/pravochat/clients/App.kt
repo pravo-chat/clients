@@ -34,7 +34,7 @@ private data class NavigationItem(
 )
 
 private val navigationItems = listOf(
-    NavigationItem(label = "Юридические вопросы и решения", targetId = "cases"),
+    NavigationItem(label = "Юридические вопросы и ответы", targetId = "cases"),
     NavigationItem(label = "О нас и контакты", externalHref = "/about.html"),
     NavigationItem(label = "Практика", externalHref = "/practice.html"),
     NavigationItem(label = "Премиум модель", targetId = "premium", opensDialog = true),
@@ -419,7 +419,7 @@ private fun HeroSection(content: String) {
 
 @Composable
 private fun CasesSection() {
-    SectionLayout(id = "cases", title = "Юридические вопросы и решения") {
+    SectionLayout(id = "cases", title = "Юридические вопросы и ответы") {
         Div({
             style {
                 display(DisplayStyle.Flex)

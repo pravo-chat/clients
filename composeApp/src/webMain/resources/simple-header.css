@@ -70,24 +70,16 @@
     gap: 8px;
     transition: all 0.2s ease;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.consult-lawyer-btn:hover {
+}.consult-lawyer-btn:hover {
     background: #1E7CE8;
     box-shadow: 0 6px 16px rgba(48, 140, 239, 0.4);
     transform: translateY(-2px);
-}
-
-.consult-lawyer-btn:active {
+}.consult-lawyer-btn:active {
     transform: translateY(0);
-}
-
-.consult-lawyer-btn::before {
+}.consult-lawyer-btn::before {
     content: "💬";
     font-size: 18px;
-}
-
-@media (max-width: 768px) {
+}@media (max-width: 768px) {
     .consult-lawyer-btn {
         bottom: 16px;
         right: 16px;
@@ -95,4 +87,3 @@
         font-size: 14px;
     }
 }
-

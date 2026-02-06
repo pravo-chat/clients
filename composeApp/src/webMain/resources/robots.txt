@@ -24,3 +24,7 @@ Crawl-delay: 1
 
 # Important for Yandex
 Host: pravochat.ru
+
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content
+Clean-param: gclid
+Clean-param: yclid

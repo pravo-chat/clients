@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Юридические вопросы и ответы — Категории и статьи по правовым ситуациям | PravoChat</title>
-    <meta name="description" content="Список категорий юридических вопросов с ответами и решениями: бесплатная юридическая консультация, семейные споры, раздел имущества при разводе, наследство, жилищные споры, защита прав потребителей, трудовые споры и другие правовые ситуации.">
-    <meta name="keywords" content="юридические вопросы и ответы, категории юридических вопросов, семейные споры, жилищные споры, наследство, трудовые споры, защита прав потребителей, бесплатная юридическая консультация">
+    <title>Юридические вопросы и решения — Категории и статьи по правовым ситуациям | PravoChat</title>
+    <meta name="description" content="Список категорий юридических вопросов и опубликованных статей с ответами: бесплатная юридическая консультация, семейные споры, раздел имущества при разводе, наследство, жилищные споры, защита прав потребителей, трудовые споры и другие правовые ситуации.">
+    <meta name="keywords" content="юридические вопросы, категории юридических вопросов, семейные споры, жилищные споры, наследство, трудовые споры, защита прав потребителей, бесплатная юридическая консультация">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pravochat.ru/legal-questions-answers.html">
-    <meta property="og:title" content="Юридические вопросы и ответы — Категории и статьи по правовым ситуациям | PravoChat">
-    <meta property="og:description" content="Список категорий юридических вопросов с ответами и решениями: бесплатная юридическая консультация, семейные споры, раздел имущества при разводе, наследство, жилищные споры, защита прав потребителей, трудовые споры и другие правовые ситуации.">
+    <meta property="og:title" content="Юридические вопросы и решения — Категории и статьи по правовым ситуациям | PravoChat">
+    <meta property="og:description" content="Список категорий юридических вопросов и опубликованных статей с ответами: бесплатная юридическая консультация, семейные споры, раздел имущества при разводе, наследство, жилищные споры, защита прав потребителей, трудовые споры и другие правовые ситуации.">
     <meta property="og:image" content="https://pravochat.ru/images/practice-gavel.jpg">
     <meta property="og:site_name" content="PravoChat">
     <meta property="og:locale" content="ru_RU">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Юридические вопросы и ответы — Категории и статьи по правовым ситуациям | PravoChat">
-    <meta name="twitter:description" content="Список категорий юридических вопросов с ответами и решениями: бесплатная юридическая консультация, семейные споры, раздел имущества при разводе, наследство, жилищные споры, защита прав потребителей, трудовые споры и другие правовые ситуации.">
+    <meta name="twitter:title" content="Юридические вопросы и решения — Категории и статьи по правовым ситуациям | PravoChat">
+    <meta name="twitter:description" content="Список категорий юридических вопросов и опубликованных статей с ответами: бесплатная юридическая консультация, семейные споры, раздел имущества при разводе, наследство, жилищные споры, защита прав потребителей, трудовые споры и другие правовые ситуации.">
     <meta name="twitter:image" content="https://pravochat.ru/images/practice-gavel.jpg">
     
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -134,10 +134,16 @@
             padding: 20px;
             box-shadow: 0 2px 8px rgba(20, 30, 80, 0.06);
             transition: box-shadow 0.15s ease, transform 0.15s ease;
+            display: block;
+            text-decoration: none;
+            color: inherit;
         }
         .article-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 16px rgba(20, 30, 80, 0.12);
+        }
+        .article-card article {
+            margin: 0;
         }
         .article-title {
             font-size: 18px;
@@ -146,11 +152,7 @@
             color: #111322;
             line-height: 1.4;
         }
-        .article-title a {
-            text-decoration: none;
-            color: inherit;
-        }
-        .article-title a:hover {
+        .article-card:hover .article-title {
             color: #308CEF;
         }
         .article-summary {
@@ -166,14 +168,9 @@
         }
         .article-read-more {
             font-size: 14px;
-        }
-        .article-read-more a {
             color: #308CEF;
-            text-decoration: none;
             font-weight: 500;
-        }
-        .article-read-more a:hover {
-            text-decoration: underline;
+            margin: 0;
         }
         @media (max-width: 768px) {
             h1 {
@@ -189,12 +186,12 @@
     {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        "name": "Юридические вопросы и ответы по тематикам",
-        "description": "Список категорий юридических вопросов с ответами и решениями",
+        "name": "Юридические вопросы и решения по тематикам",
+        "description": "Список категорий юридических вопросов и опубликованных статей с ответами",
         "url": "https://pravochat.ru/legal-questions-answers.html",
             "mainEntity": {
             "@type": "ItemList",
-            "numberOfItems": 7,
+            "numberOfItems": 89,
             "itemListElement": [
                 {
                     "@type": "ListItem",
@@ -272,6 +269,908 @@
                         "url": "https://pravochat.ru/apartment-check-sale/check-apartment-before-purchase.html",
                         "datePublished": "2026-01-11"
                     }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 8,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что делать, если работодатель задерживает зарплату?",
+                        "description": "Как зафиксировать задолженность по зарплате, направить претензию работодателю, куда жаловаться (ГИТ, прокуратура) и когда имеет смысл идти в суд за взысканием и компенсацией",
+                        "url": "https://pravochat.ru/labor-disputes/employer-delays-salary.html",
+                        "datePublished": "2026-01-15"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 9,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Можно ли уволиться без отработки, если нарушают трудовой договор?",
+                        "description": "Право работника уволиться без отработки при нарушении работодателем условий трудового договора, порядок увольнения и защита прав",
+                        "url": "https://pravochat.ru/labor-disputes/resign-without-notice.html",
+                        "datePublished": "2026-01-16"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 10,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Можно ли списать долги через банкротство и сохранить единственное жильё?",
+                        "description": "Процедура банкротства физических лиц, списание долгов и защита единственного жилья от взыскания при банкротстве",
+                        "url": "https://pravochat.ru/personal-bankruptcy/write-off-debts-keep-housing.html",
+                        "datePublished": "2026-01-17"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 11,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что выгоднее: внесудебное банкротство через МФЦ или банкротство через суд?",
+                        "description": "Сравнение внесудебного банкротства через МФЦ и банкротства через суд: условия, процедура, сроки и стоимость",
+                        "url": "https://pravochat.ru/personal-bankruptcy/out-of-court-bankruptcy.html",
+                        "datePublished": "2026-01-18"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 12,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как обжаловать штраф ГИБДД, если вы не согласны с постановлением?",
+                        "description": "Порядок обжалования штрафа ГИБДД, сроки обжалования, документы для жалобы и как защитить свои права при административных правонарушениях",
+                        "url": "https://pravochat.ru/administrative-offenses/appeal-traffic-fine.html",
+                        "datePublished": "2026-01-19"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 13,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что делать, если составили протокол, но вы не согласны с нарушением?",
+                        "description": "Порядок действий при несогласии с протоколом об административном правонарушении, обжалование протокола и защита прав",
+                        "url": "https://pravochat.ru/administrative-offenses/disagree-with-protocol.html",
+                        "datePublished": "2026-01-20"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 14,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Вас вызывают на допрос: что можно и чего нельзя делать?",
+                        "description": "Права и обязанности при допросе, как вести себя на допросе, право на адвоката и защиту при уголовном преследовании",
+                        "url": "https://pravochat.ru/criminal-lawyer/interrogation-rights.html",
+                        "datePublished": "2026-01-21"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 15,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что делать при задержании и как быстро обеспечить защиту?",
+                        "description": "Порядок действий при задержании, права задержанного, как связаться с адвокатом и защитить свои права при задержании",
+                        "url": "https://pravochat.ru/criminal-lawyer/detention-rights.html",
+                        "datePublished": "2026-01-22"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 16,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как отменить нотариальную доверенность и уведомить третьих лиц?",
+                        "description": "Порядок отмены нотариальной доверенности у нотариуса, уведомление представителя и организаций (банк, Росреестр), и как снизить риски, если по доверенности уже совершали действия",
+                        "url": "https://pravochat.ru/notary-powers-of-attorney/revoke-notary-power.html",
+                        "datePublished": "2026-01-23"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 17,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как проверить полномочия по доверенности перед сделкой?",
+                        "description": "Какие реквизиты и объём полномочий проверять, на что обратить внимание в сроках и праве передоверия, и когда лучше запросить нотариальную проверку",
+                        "url": "https://pravochat.ru/notary-powers-of-attorney/check-power-before-deal.html",
+                        "datePublished": "2026-01-24"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 18,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как увеличить размер алиментов на ребёнка?",
+                        "description": "Основания для увеличения алиментов, порядок подачи иска в суд, какие документы нужны, и как изменить способ взыскания (с доли на твёрдую сумму)",
+                        "url": "https://pravochat.ru/child-support/increase-alimony.html",
+                        "datePublished": "2026-01-25"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 19,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как взыскать задолженность по алиментам?",
+                        "description": "Расчёт задолженности по алиментам, порядок взыскания через суд, ответственность за неуплату (штраф, ограничение прав, уголовная ответственность) и работа с приставами",
+                        "url": "https://pravochat.ru/child-support/collect-alimony-debt.html",
+                        "datePublished": "2026-01-26"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 20,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как разделить квартиру при разводе?",
+                        "description": "Раздел совместно нажитой квартиры при разводе: доли супругов, варианты раздела (продажа, выкуп доли, определение порядка пользования), и как учитывается ипотека",
+                        "url": "https://pravochat.ru/property-division-mortgage/divide-apartment-divorce.html",
+                        "datePublished": "2026-01-27"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 21,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как разделить ипотеку при разводе?",
+                        "description": "Раздел ипотечных обязательств при разводе: варианты (переоформление на одного, раздел долга, продажа квартиры), согласование с банком и порядок оформления",
+                        "url": "https://pravochat.ru/property-division-mortgage/mortgage-after-divorce.html",
+                        "datePublished": "2026-01-28"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 22,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как решить спор о границах земельного участка?",
+                        "description": "Процедура установления границ земельного участка, межевание, порядок решения споров с соседями через кадастрового инженера и суд, и как защитить свои права",
+                        "url": "https://pravochat.ru/land-disputes/boundary-dispute.html",
+                        "datePublished": "2026-01-29"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 23,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что делать с самовольной постройкой на земельном участке?",
+                        "description": "Правовой статус самовольной постройки, порядок легализации через суд, снос самовольной постройки, и как защитить свои права при спорах о самовольном строительстве",
+                        "url": "https://pravochat.ru/land-disputes/unauthorized-construction.html",
+                        "datePublished": "2026-01-30"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 24,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как принять наследство без завещания?",
+                        "description": "Порядок вступления в наследство по закону, сроки принятия наследства, документы для нотариуса, и что делать, если пропущен срок принятия наследства",
+                        "url": "https://pravochat.ru/inheritance-without-will/accept-inheritance.html",
+                        "datePublished": "2026-01-31"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 25,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как отказаться от наследства без завещания?",
+                        "description": "Порядок отказа от наследства, сроки отказа, отказ в пользу других наследников, и последствия отказа от наследства",
+                        "url": "https://pravochat.ru/inheritance-without-will/refuse-inheritance.html",
+                        "datePublished": "2026-02-01"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 26,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как получить налоговый вычет при покупке квартиры?",
+                        "description": "Порядок получения имущественного налогового вычета при покупке недвижимости, документы для налоговой, сроки возврата НДФЛ, и как получить вычет через работодателя",
+                        "url": "https://pravochat.ru/taxes-consultation/tax-deduction.html",
+                        "datePublished": "2026-02-02"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 27,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как обжаловать решение налоговой проверки?",
+                        "description": "Порядок обжалования решения налоговой проверки, сроки обжалования, документы для жалобы, и как защитить свои права при налоговых спорах",
+                        "url": "https://pravochat.ru/taxes-consultation/appeal-tax-audit.html",
+                        "datePublished": "2026-02-03"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 28,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как получить пособие по беременности и родам?",
+                        "description": "Порядок получения пособия по беременности и родам, размер пособия, документы для оформления, и как получить пособие через работодателя или соцзащиту",
+                        "url": "https://pravochat.ru/compensations-benefits/maternity-benefits.html",
+                        "datePublished": "2026-02-04"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 29,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Какие льготы положены ветеранам труда?",
+                        "description": "Льготы для ветеранов труда: налоговые льготы, льготы по ЖКХ, медицинское обслуживание, проезд, и порядок оформления льгот",
+                        "url": "https://pravochat.ru/compensations-benefits/veteran-benefits.html",
+                        "datePublished": "2026-02-05"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 30,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что делать, если соседи шумят и мешают спать?",
+                        "description": "Порядок действий при шуме от соседей: переговоры, обращение в полицию, Роспотребнадзор, управляющую компанию, и как взыскать компенсацию морального вреда через суд",
+                        "url": "https://pravochat.ru/free-legal-consultation/neighbor-noise-complaint.html",
+                        "datePublished": "2026-02-06"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 31,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как отличить мошенников от настоящих юристов в интернете?",
+                        "description": "Признаки мошенничества при онлайн-консультациях, как проверить юриста, на что обратить внимание при выборе онлайн-юриста, и что делать, если стали жертвой мошенников",
+                        "url": "https://pravochat.ru/online-lawyer/online-consultation-scam.html",
+                        "datePublished": "2026-02-07"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 32,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Споры между наследниками при устаревшем завещании",
+                        "description": "Разбираем процедуру вступления в наследство при наличии устаревшего завещания, способы решения споров между наследниками и порядок оспаривания спорных моментов через нотариуса и суд",
+                        "url": "https://pravochat.ru/inheritance-processing/inheritance-dispute.html",
+                        "datePublished": "2026-02-08"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 33,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как оспорить неправильные счета за коммунальные услуги?",
+                        "description": "Порядок оспаривания неправильных счетов за коммунальные услуги, проверка расчётов, обращение в управляющую компанию, Роспотребнадзор и суд, и как вернуть переплату",
+                        "url": "https://pravochat.ru/housing-disputes/utility-bills-dispute.html",
+                        "datePublished": "2026-02-09"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 34,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что проверить в договоре купли-продажи перед подписанием?",
+                        "description": "Чеклист проверки договора купли-продажи: обязательные условия, права и обязанности сторон, ответственность, порядок расчётов, и на что обратить внимание перед подписанием",
+                        "url": "https://pravochat.ru/sale-purchase-agreement/contract-review-checklist.html",
+                        "datePublished": "2026-02-10"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 35,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как проверить квартиру на обременения и аресты?",
+                        "description": "Проверка квартиры на обременения: ипотека, арест, залог, рента, как получить выписку из ЕГРН, проверить через интернет и что делать, если обнаружены обременения",
+                        "url": "https://pravochat.ru/apartment-check-sale/encumbrances-check.html",
+                        "datePublished": "2026-02-11"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 36,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Какие права есть у арендатора при выселении?",
+                        "description": "Права арендатора при выселении: сроки уведомления, компенсация, защита от незаконного выселения, и что делать, если собственник пытается выселить без оснований",
+                        "url": "https://pravochat.ru/free-legal-consultation/tenant-rights-eviction.html",
+                        "datePublished": "2026-02-12"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 37,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как проверить документы онлайн перед подписанием?",
+                        "description": "Порядок онлайн-проверки документов юристом перед подписанием: какие документы проверить, как отправить документы юристу, сроки проверки и стоимость услуги",
+                        "url": "https://pravochat.ru/online-lawyer/online-document-review.html",
+                        "datePublished": "2026-02-13"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 38,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как определить место жительства ребёнка при разводе?",
+                        "description": "Определение места жительства ребёнка при разводе: факторы, которые учитывает суд, порядок определения через соглашение или суд, и права родителей на общение с ребёнком",
+                        "url": "https://pravochat.ru/family-lawyer-divorce-alimony/child-custody-divorce.html",
+                        "datePublished": "2026-02-14"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 39,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что делать, если пропущен срок вступления в наследство?",
+                        "description": "Восстановление срока принятия наследства через суд, фактическое принятие наследства, согласие других наследников, и порядок действий при пропуске 6-месячного срока",
+                        "url": "https://pravochat.ru/inheritance-processing/missed-inheritance-deadline.html",
+                        "datePublished": "2026-02-15"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 40,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как решить конфликт с соседями в многоквартирном доме?",
+                        "description": "Способы решения конфликтов с соседями: переговоры, обращение в управляющую компанию, участковому, суд, и как защитить свои права при спорах с соседями",
+                        "url": "https://pravochat.ru/housing-disputes/neighbor-conflicts-resolution.html",
+                        "datePublished": "2026-02-16"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 41,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Можно ли вернуть задаток, если сделка не состоялась?",
+                        "description": "Возврат задатка при отказе от сделки: когда задаток возвращается, когда остаётся у продавца, разница между задатком и авансом, и как вернуть задаток через суд",
+                        "url": "https://pravochat.ru/sale-purchase-agreement/deposit-refund-dispute.html",
+                        "datePublished": "2026-02-17"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 42,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как проверить, кто прописан в квартире перед покупкой?",
+                        "description": "Проверка прописанных лиц в квартире: как получить справку о зарегистрированных лицах, что делать, если в квартире прописаны несовершеннолетние, и как защитить себя от рисков",
+                        "url": "https://pravochat.ru/apartment-check-sale/registered-persons-check.html",
+                        "datePublished": "2026-02-18"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 43,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как взыскать невыплаченную переработку и сверхурочные?",
+                        "description": "Взыскание невыплаченных сверхурочных часов: расчёт переработки, порядок взыскания через суд, документы для доказательства переработки, и компенсация за нарушение трудового законодательства",
+                        "url": "https://pravochat.ru/labor-disputes/unpaid-overtime.html",
+                        "datePublished": "2026-02-19"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 44,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Сколько стоит банкротство физического лица?",
+                        "description": "Стоимость банкротства физических лиц: госпошлина, услуги финансового управляющего, расходы на юриста, и как снизить затраты на процедуру банкротства",
+                        "url": "https://pravochat.ru/personal-bankruptcy/bankruptcy-costs.html",
+                        "datePublished": "2026-02-20"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 45,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как вернуть водительские права после лишения?",
+                        "description": "Порядок возврата водительских прав после лишения: сроки лишения, сдача экзамена, оплата штрафов, и как вернуть права досрочно или обжаловать решение о лишении",
+                        "url": "https://pravochat.ru/administrative-offenses/driver-license-suspension.html",
+                        "datePublished": "2026-02-21"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 46,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как добиться освобождения под залог или домашний арест?",
+                        "description": "Изменение меры пресечения с заключения под стражу на залог или домашний арест: основания для изменения, порядок ходатайства, размер залога, и как добиться освобождения",
+                        "url": "https://pravochat.ru/criminal-lawyer/bail-release.html",
+                        "datePublished": "2026-02-22"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 47,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что можно и чего нельзя делать по генеральной доверенности?",
+                        "description": "Объём полномочий по генеральной доверенности: какие действия можно совершать, какие ограничения есть, риски генеральной доверенности, и как защитить свои интересы",
+                        "url": "https://pravochat.ru/notary-powers-of-attorney/general-power-attorney.html",
+                        "datePublished": "2026-02-23"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 48,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как уменьшить размер алиментов на ребёнка?",
+                        "description": "Основания для уменьшения алиментов, порядок подачи иска в суд, какие документы нужны, и как изменить способ взыскания алиментов при изменении обстоятельств",
+                        "url": "https://pravochat.ru/child-support/reduce-alimony.html",
+                        "datePublished": "2026-02-24"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 49,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как рефинансировать ипотеку при разводе?",
+                        "description": "Рефинансирование ипотеки при разводе: условия рефинансирования, порядок оформления, как переоформить ипотеку на одного супруга, и преимущества рефинансирования",
+                        "url": "https://pravochat.ru/property-division-mortgage/mortgage-refinancing-divorce.html",
+                        "datePublished": "2026-02-25"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 50,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как расторгнуть договор аренды земельного участка?",
+                        "description": "Расторжение договора аренды земельного участка: основания для расторжения, порядок расторжения по соглашению или через суд, и что делать при спорах с арендодателем",
+                        "url": "https://pravochat.ru/land-disputes/land-lease-dispute.html",
+                        "datePublished": "2026-02-26"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 51,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как определить, к какой очереди наследников вы относитесь?",
+                        "description": "Очерёдность наследников по закону: кто относится к первой, второй, третьей очереди, как определяется очередь, и что делать при спорах о принадлежности к очереди",
+                        "url": "https://pravochat.ru/inheritance-without-will/heir-queue-dispute.html",
+                        "datePublished": "2026-02-27"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 52,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как получить налоговый вычет при покупке квартиры?",
+                        "description": "Налоговый вычет при покупке квартиры: размер вычета, порядок получения, документы для оформления, и как вернуть налог через работодателя или налоговую",
+                        "url": "https://pravochat.ru/taxes-consultation/tax-deduction-purchase.html",
+                        "datePublished": "2026-02-28"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 53,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Какие льготы и компенсации положены ветеранам труда?",
+                        "description": "Льготы и компенсации для ветеранов труда: налоговые льготы, льготы на коммунальные услуги, транспортные льготы, и как оформить статус ветерана труда",
+                        "url": "https://pravochat.ru/compensations-benefits/veteran-benefits.html",
+                        "datePublished": "2026-03-01"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 54,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Куда жаловаться при нарушении прав потребителя?",
+                        "description": "Куда обращаться при нарушении прав потребителя: Роспотребнадзор, прокуратура, суд, порядок подачи жалобы, и какие документы нужны для защиты прав потребителя",
+                        "url": "https://pravochat.ru/free-legal-consultation/consumer-rights-violation.html",
+                        "datePublished": "2026-03-02"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 55,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как правильно подписать договор онлайн?",
+                        "description": "Порядок подписания договора онлайн: электронная подпись, платформы для подписания, юридическая сила электронного договора, и как защитить свои права при онлайн-подписании",
+                        "url": "https://pravochat.ru/online-lawyer/online-contract-signing.html",
+                        "datePublished": "2026-03-03"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 56,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как заключить брачный договор и что в нём можно предусмотреть?",
+                        "description": "Брачный договор: порядок заключения, что можно предусмотреть в договоре, ограничения брачного договора, и как изменить или расторгнуть брачный договор",
+                        "url": "https://pravochat.ru/family-lawyer-divorce-alimony/marital-agreement.html",
+                        "datePublished": "2026-03-04"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 57,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Нужно ли платить налог при получении наследства?",
+                        "description": "Налогообложение наследства: когда платится налог, кто освобождён от налога, размер налога, и какие расходы связаны с получением наследства",
+                        "url": "https://pravochat.ru/inheritance-processing/inheritance-tax.html",
+                        "datePublished": "2026-03-05"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 58,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как оспорить отказ в регистрации по месту жительства?",
+                        "description": "Оспаривание отказа в регистрации: основания для отказа, порядок обжалования, документы для регистрации, и как защитить право на регистрацию через суд",
+                        "url": "https://pravochat.ru/housing-disputes/registration-dispute.html",
+                        "datePublished": "2026-03-06"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 59,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как изменить условия договора купли-продажи после подписания?",
+                        "description": "Изменение договора купли-продажи: порядок изменения условий, соглашение об изменении договора, когда можно изменить договор в одностороннем порядке, и как защитить свои права",
+                        "url": "https://pravochat.ru/sale-purchase-agreement/contract-amendment.html",
+                        "datePublished": "2026-03-07"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 60,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как проверить историю сделок с квартирой?",
+                        "description": "Проверка истории сделок с квартирой: как узнать предыдущих собственников, проверить частоту сделок, выявить риски, и где получить информацию о сделках",
+                        "url": "https://pravochat.ru/apartment-check-sale/apartment-history-check.html",
+                        "datePublished": "2026-03-08"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 61,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как восстановиться на работе при незаконном увольнении?",
+                        "description": "Восстановление на работе при незаконном увольнении: порядок обращения в суд, сроки для восстановления, компенсация за вынужденный прогул, и как защитить свои права",
+                        "url": "https://pravochat.ru/labor-disputes/illegal-dismissal.html",
+                        "datePublished": "2026-03-09"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 62,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Какие этапы проходит процедура банкротства физического лица?",
+                        "description": "Этапы банкротства физических лиц: реструктуризация долгов, реализация имущества, мировое соглашение, сроки каждого этапа, и что происходит на каждом этапе",
+                        "url": "https://pravochat.ru/personal-bankruptcy/bankruptcy-procedure-stages.html",
+                        "datePublished": "2026-03-10"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 63,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Можно ли оплатить административный штраф в рассрочку?",
+                        "description": "Рассрочка оплаты административного штрафа: условия предоставления рассрочки, порядок оформления, сроки рассрочки, и что делать при отказе в рассрочке",
+                        "url": "https://pravochat.ru/administrative-offenses/fine-payment-installment.html",
+                        "datePublished": "2026-03-11"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 64,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Какие права есть у подозреваемого в уголовном деле?",
+                        "description": "Права подозреваемого в уголовном деле: право на защиту, право на адвоката, право не давать показания, право знать в чём обвиняется, и как защитить свои права",
+                        "url": "https://pravochat.ru/criminal-lawyer/suspect-rights.html",
+                        "datePublished": "2026-03-12"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 65,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что делать, если доверенность истекла, а сделка уже совершена?",
+                        "description": "Действия при истечении доверенности: последствия сделок по истёкшей доверенности, как защитить свои права, и что делать, если сделка совершена по недействительной доверенности",
+                        "url": "https://pravochat.ru/notary-powers-of-attorney/power-attorney-expiry.html",
+                        "datePublished": "2026-03-13"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 66,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как индексируются алименты в твёрдой денежной сумме?",
+                        "description": "Индексация алиментов: порядок индексации, кто проводит индексацию, размер индексации, и как требовать индексацию при росте прожиточного минимума",
+                        "url": "https://pravochat.ru/child-support/alimony-indexation.html",
+                        "datePublished": "2026-03-14"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 67,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как разделить страховку по ипотеке при разводе?",
+                        "description": "Раздел страховки по ипотеке при разводе: кто платит страховку, как разделить страховые взносы, изменение страхового договора, и что делать при спорах",
+                        "url": "https://pravochat.ru/property-division-mortgage/mortgage-insurance-divorce.html",
+                        "datePublished": "2026-03-15"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 68,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как определяется цена выкупа земельного участка у государства?",
+                        "description": "Цена выкупа земельного участка: как определяется цена, кадастровая стоимость, рыночная стоимость, порядок оспаривания цены, и льготы при выкупе",
+                        "url": "https://pravochat.ru/land-disputes/land-redemption-price.html",
+                        "datePublished": "2026-03-16"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 69,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что происходит с наследством, если нет наследников?",
+                        "description": "Выморочное наследство: когда наследство переходит государству, порядок наследования выморочного имущества, и можно ли вернуть выморочное наследство",
+                        "url": "https://pravochat.ru/inheritance-without-will/escheat-inheritance.html",
+                        "datePublished": "2026-03-17"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 70,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что будет, если не подать налоговую декларацию в срок?",
+                        "description": "Последствия неподачи налоговой декларации: штрафы за неподачу декларации, сроки подачи, ответственность за нарушение сроков, и как избежать штрафов",
+                        "url": "https://pravochat.ru/taxes-consultation/tax-declaration-deadline.html",
+                        "datePublished": "2026-03-18"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 71,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Какие льготы и выплаты положены инвалидам?",
+                        "description": "Льготы и выплаты для инвалидов: пенсия по инвалидности, ЕДВ, льготы на коммунальные услуги, транспортные льготы, налоговые льготы, и порядок оформления",
+                        "url": "https://pravochat.ru/compensations-benefits/disability-benefits.html",
+                        "datePublished": "2026-03-19"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 72,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Какие права есть у арендодателя и арендатора при аренде жилья?",
+                        "description": "Права арендодателя и арендатора: права и обязанности сторон, расторжение договора аренды, повышение арендной платы, и как защитить свои права при аренде",
+                        "url": "https://pravochat.ru/free-legal-consultation/landlord-tenant-rights.html",
+                        "datePublished": "2026-03-20"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 73,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Сколько стоит консультация юриста онлайн?",
+                        "description": "Стоимость онлайн-консультации юриста: цены на консультации, факторы влияющие на стоимость, бесплатные консультации, и как выбрать юриста по цене и качеству",
+                        "url": "https://pravochat.ru/online-lawyer/online-legal-advice-cost.html",
+                        "datePublished": "2026-03-21"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 74,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как определить порядок общения с ребёнком после развода?",
+                        "description": "Порядок общения с ребёнком: соглашение о порядке общения, определение порядка через суд, график общения, и как защитить права ребёнка и родителя",
+                        "url": "https://pravochat.ru/family-lawyer-divorce-alimony/child-visitation-rights.html",
+                        "datePublished": "2026-03-22"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 75,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как оценить стоимость наследственного имущества?",
+                        "description": "Оценка наследственного имущества: порядок оценки, кто проводит оценку, стоимость оценки, и для чего нужна оценка наследства",
+                        "url": "https://pravochat.ru/inheritance-processing/inheritance-valuation.html",
+                        "datePublished": "2026-03-23"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 76,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как пожаловаться на управляющую компанию за ненадлежащее обслуживание?",
+                        "description": "Жалоба на управляющую компанию: порядок подачи жалобы, куда жаловаться, сроки рассмотрения жалобы, и как добиться устранения нарушений",
+                        "url": "https://pravochat.ru/housing-disputes/management-company-complaint.html",
+                        "datePublished": "2026-03-24"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 77,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как оформить договор задатка при покупке квартиры?",
+                        "description": "Договор задатка при покупке квартиры: порядок оформления, размер задатка, отличие задатка от аванса, и что делать при отказе от сделки",
+                        "url": "https://pravochat.ru/sale-purchase-agreement/prepayment-agreement.html",
+                        "datePublished": "2026-03-25"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 78,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как проверить долги по коммунальным услугам перед покупкой квартиры?",
+                        "description": "Проверка долгов по коммунальным услугам: как узнать задолженность, где проверить долги, справка об отсутствии долгов, и что делать при наличии долгов",
+                        "url": "https://pravochat.ru/apartment-check-sale/utility-debt-check.html",
+                        "datePublished": "2026-03-26"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 79,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что делать при нарушении требований охраны труда на рабочем месте?",
+                        "description": "Нарушение требований охраны труда: порядок действий при нарушении, куда жаловаться, ответственность работодателя, и как защитить свои права",
+                        "url": "https://pravochat.ru/labor-disputes/workplace-safety-violation.html",
+                        "datePublished": "2026-03-27"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 80,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Какие ограничения налагаются на гражданина при банкротстве?",
+                        "description": "Ограничения при банкротстве: ограничения на выезд за границу, ограничения на сделки, ограничения на получение кредитов, и сроки ограничений",
+                        "url": "https://pravochat.ru/personal-bankruptcy/bankruptcy-restrictions.html",
+                        "datePublished": "2026-03-28"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 81,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "В какой срок можно обжаловать административный штраф?",
+                        "description": "Сроки обжалования административного штрафа: срок для обжалования постановления, порядок восстановления пропущенного срока, и как правильно подать жалобу в срок",
+                        "url": "https://pravochat.ru/administrative-offenses/fine-appeal-deadline.html",
+                        "datePublished": "2026-03-29"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 82,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как добиться прекращения уголовного дела?",
+                        "description": "Прекращение уголовного дела: основания для прекращения, порядок прекращения дела, реабилитация при прекращении, и как защитить свои права при прекращении дела",
+                        "url": "https://pravochat.ru/criminal-lawyer/criminal-case-termination.html",
+                        "datePublished": "2026-03-30"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 83,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что такое передоверие доверенности и когда оно возможно?",
+                        "description": "Передоверие доверенности: когда возможно передоверие, порядок оформления передоверия, уведомление доверителя, и ограничения передоверия",
+                        "url": "https://pravochat.ru/notary-powers-of-attorney/power-attorney-substitution.html",
+                        "datePublished": "2026-03-31"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 84,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как взыскать алименты с неработающего родителя?",
+                        "description": "Взыскание алиментов с неработающего: размер алиментов при отсутствии дохода, взыскание в твёрдой сумме, расчёт задолженности, и как получить алименты с безработного",
+                        "url": "https://pravochat.ru/child-support/alimony-from-unemployed.html",
+                        "datePublished": "2026-04-01"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 85,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как досрочно погасить ипотеку при разводе?",
+                        "description": "Досрочное погашение ипотеки при разводе: порядок досрочного погашения, раздел средств при досрочном погашении, согласование с банком, и как защитить свои права",
+                        "url": "https://pravochat.ru/property-division-mortgage/mortgage-early-repayment-divorce.html",
+                        "datePublished": "2026-04-02"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 86,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как оспорить кадастровую стоимость земельного участка?",
+                        "description": "Оспаривание кадастровой стоимости земельного участка: порядок оспаривания, комиссия по рассмотрению споров, обращение в суд, и как снизить кадастровую стоимость",
+                        "url": "https://pravochat.ru/land-disputes/land-cadastral-value-dispute.html",
+                        "datePublished": "2026-04-03"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 87,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Что такое обязательная доля в наследстве и кто имеет на неё право?",
+                        "description": "Обязательная доля в наследстве: кто имеет право на обязательную долю, размер обязательной доли, порядок получения, и можно ли лишить обязательной доли",
+                        "url": "https://pravochat.ru/inheritance-without-will/obligatory-share.html",
+                        "datePublished": "2026-04-04"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 88,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Какие налоговые льготы есть у физических лиц?",
+                        "description": "Налоговые льготы для физических лиц: стандартные вычеты, социальные вычеты, имущественные вычеты, льготы по налогам, и порядок получения налоговых льгот",
+                        "url": "https://pravochat.ru/taxes-consultation/tax-benefits.html",
+                        "datePublished": "2026-04-05"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 89,
+                    "item": {
+                        "@type": "Article",
+                        "headline": "Как использовать материнский капитал и на что его можно потратить?",
+                        "description": "Использование материнского капитала: на что можно потратить маткапитал, порядок получения и использования, документы для использования, и как получить сертификат на маткапитал",
+                        "url": "https://pravochat.ru/compensations-benefits/maternity-capital.html",
+                        "datePublished": "2026-04-06"
+                    }
                 }
             ]
         }
@@ -289,8 +1188,8 @@
         </nav>
     </header>
     <main class="container">
-        <h1>Юридические вопросы и ответы по тематикам</h1>
-        <p class="intro-text">Выберите категорию юридических вопросов и ответов, чтобы перейти к материалам, примерам ситуаций и решениям по интересующей вас теме.</p>
+        <h1>Юридические вопросы и решения по тематикам</h1>
+        <p class="intro-text">Выберите категорию юридических вопросов, чтобы перейти к материалам, примерам ситуаций и решениям по интересующей вас теме.</p>
         
         <div class="categories-grid">
             <a class="category-card" href="/free-legal-consultation/">
@@ -353,7 +1252,7 @@
                 <h2 class="category-title">Алименты на ребёнка</h2>
                 <p class="category-description">Назначение, изменение и взыскание алиментов, споры с плательщиком или получателем.</p>
             </a>
-            <a class="category-card" href="/apartment-division-mortgage/">
+            <a class="category-card" href="/property-division-mortgage/">
                 <h2 class="category-title">Раздел квартиры / ипотека</h2>
                 <p class="category-description">Раздел ипотечной квартиры, ответственность по кредиту и взаимодействие с банком.</p>
             </a>
@@ -365,11 +1264,11 @@
                 <h2 class="category-title">Наследство без завещания</h2>
                 <p class="category-description">Наследование по закону, очередность наследников и споры при отсутствии завещания.</p>
             </a>
-            <a class="category-card" href="/taxes-and-consulting/">
+            <a class="category-card" href="/taxes-consultation/">
                 <h2 class="category-title">Налоги и консультации</h2>
                 <p class="category-description">Налоговые споры, оптимизация налоговой нагрузки и консультации по налоговым обязанностям.</p>
             </a>
-            <a class="category-card" href="/compensations-and-benefits/">
+            <a class="category-card" href="/compensations-benefits/">
                 <h2 class="category-title">Компенсации и льготы</h2>
                 <p class="category-description">Социальные выплаты, льготы, компенсации и порядок их оформления.</p>
             </a>
@@ -382,122 +1281,820 @@
             <div class="articles-category">
                 <h3>Бесплатная юридическая консультация</h3>
                 <div class="articles-list">
-                    <article class="article-card">
-                        <h4 class="article-title">
-                            <a href="/free-legal-consultation/abandoned-car-ownership.html">Можно ли стать собственником заброшенной машины?</a>
-                        </h4>
-                        <p class="article-summary">Стать собственником заброшенного авто можно, если подтвердить, что владелец отказался от вещи, и пройти установленную законом процедуру (проверка в розыске, отсутствие споров, оформление прав).</p>
-                        <p class="article-meta">07.12.2025, вопрос №100001, г. Казань</p>
-                        <p class="article-read-more">
-                            <a href="/free-legal-consultation/abandoned-car-ownership.html">Читать полностью →</a>
-                        </p>
-                    </article>
+                    <a href="/free-legal-consultation/abandoned-car-ownership.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Можно ли стать собственником заброшенной машины?</h4>
+                            <p class="article-summary">Стать собственником заброшенного авто можно, если подтвердить, что владелец отказался от вещи, и пройти установленную законом процедуру (проверка в розыске, отсутствие споров, оформление прав).</p>
+                            <p class="article-meta">07.12.2025, вопрос №100001, г. Казань</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/free-legal-consultation/neighbor-noise-complaint.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что делать, если соседи шумят и мешают спать?</h4>
+                            <p class="article-summary">Порядок действий при шуме от соседей: переговоры, обращение в полицию, Роспотребнадзор, управляющую компанию, и как взыскать компенсацию морального вреда через суд.</p>
+                            <p class="article-meta">06.02.2026, вопрос №100030, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/free-legal-consultation/tenant-rights-eviction.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Какие права есть у арендатора при выселении?</h4>
+                            <p class="article-summary">Права арендатора при выселении: сроки уведомления, компенсация, защита от незаконного выселения, и что делать, если собственник пытается выселить без оснований.</p>
+                            <p class="article-meta">12.02.2026, вопрос №100036, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/free-legal-consultation/consumer-rights-violation.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Куда жаловаться при нарушении прав потребителя?</h4>
+                            <p class="article-summary">Куда обращаться при нарушении прав потребителя: Роспотребнадзор, прокуратура, суд, порядок подачи жалобы, и какие документы нужны для защиты прав потребителя.</p>
+                            <p class="article-meta">02.03.2026, вопрос №100054, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/free-legal-consultation/landlord-tenant-rights.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Какие права есть у арендодателя и арендатора при аренде жилья?</h4>
+                            <p class="article-summary">Права арендодателя и арендатора: права и обязанности сторон, расторжение договора аренды, повышение арендной платы, и как защитить свои права при аренде.</p>
+                            <p class="article-meta">20.03.2026, вопрос №100072, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
                 </div>
             </div>
 
             <div class="articles-category">
                 <h3>Юрист онлайн</h3>
                 <div class="articles-list">
-                    <article class="article-card">
-                        <h4 class="article-title">
-                            <a href="/online-lawyer/car-damage-yard.html">Что делать, если машину повредили во дворе, а виновник скрылся?</a>
-                        </h4>
-                        <p class="article-summary">Порядок действий при повреждении автомобиля во дворе, если виновник скрылся: остановка и фиксация обстоятельств, вызов полиции, оформление происшествия и получение компенсации через страховую компанию.</p>
-                        <p class="article-meta">07.01.2025, вопрос №100002, г. Москва</p>
-                        <p class="article-read-more">
-                            <a href="/online-lawyer/car-damage-yard.html">Читать полностью →</a>
-                        </p>
-                    </article>
+                    <a href="/online-lawyer/car-damage-yard.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что делать, если машину повредили во дворе, а виновник скрылся?</h4>
+                            <p class="article-summary">Порядок действий при повреждении автомобиля во дворе, если виновник скрылся: остановка и фиксация обстоятельств, вызов полиции, оформление происшествия и получение компенсации через страховую компанию.</p>
+                            <p class="article-meta">07.01.2025, вопрос №100002, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/online-lawyer/online-consultation-scam.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как отличить мошенников от настоящих юристов в интернете?</h4>
+                            <p class="article-summary">Признаки мошенничества при онлайн-консультациях, как проверить юриста, на что обратить внимание при выборе онлайн-юриста, и что делать, если стали жертвой мошенников.</p>
+                            <p class="article-meta">07.02.2026, вопрос №100031, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/online-lawyer/online-document-review.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как проверить документы онлайн перед подписанием?</h4>
+                            <p class="article-summary">Порядок онлайн-проверки документов юристом перед подписанием: какие документы проверить, как отправить документы юристу, сроки проверки и стоимость услуги.</p>
+                            <p class="article-meta">13.02.2026, вопрос №100037, г. Екатеринбург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/online-lawyer/online-contract-signing.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как правильно подписать договор онлайн?</h4>
+                            <p class="article-summary">Порядок подписания договора онлайн: электронная подпись, платформы для подписания, юридическая сила электронного договора, и как защитить свои права при онлайн-подписании.</p>
+                            <p class="article-meta">03.03.2026, вопрос №100055, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/online-lawyer/online-legal-advice-cost.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Сколько стоит консультация юриста онлайн?</h4>
+                            <p class="article-summary">Стоимость онлайн-консультации юриста: цены на консультации, факторы влияющие на стоимость, бесплатные консультации, и как выбрать юриста по цене и качеству.</p>
+                            <p class="article-meta">21.03.2026, вопрос №100073, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
                 </div>
             </div>
 
             <div class="articles-category">
                 <h3>Семейный юрист (развод, алименты)</h3>
                 <div class="articles-list">
-                    <article class="article-card">
-                        <h4 class="article-title">
-                            <a href="/family-lawyer-divorce-alimony/divorce-without-consent.html">Как подать на развод, если супруг(а) не даёт согласие или не выходит на связь?</a>
-                        </h4>
-                        <p class="article-summary">Если супруг или супруга не дают согласие на развод или не выходят на связь, вы всё равно можете инициировать расторжение брака через суд. Развод осуществляется в судебном порядке при наличии общих несовершеннолетних детей или при отсутствии согласия одного из супругов.</p>
-                        <p class="article-meta">08.01.2025, вопрос №100003, г. Санкт-Петербург</p>
-                        <p class="article-read-more">
-                            <a href="/family-lawyer-divorce-alimony/divorce-without-consent.html">Читать полностью →</a>
-                        </p>
-                    </article>
-                    <article class="article-card">
-                        <h4 class="article-title">
-                            <a href="/property-division-divorce/how-to-divide-property.html">Как делится имущество при разводе, если оно оформлено только на одного из супругов?</a>
-                        </h4>
-                        <p class="article-summary">При разводе имущество, даже если оно оформлено только на одного из супругов, обычно считается совместно нажитым, если было приобретено в браке. По умолчанию доли супругов признаются равными. Исключения: имущество, приобретённое до брака, полученное в дар или по наследству, считается личной собственностью.</p>
-                        <p class="article-meta">09.01.2025, вопрос №100004, г. Москва</p>
-                        <p class="article-read-more">
-                            <a href="/property-division-divorce/how-to-divide-property.html">Читать полностью →</a>
-                        </p>
-                    </article>
+                    <a href="/family-lawyer-divorce-alimony/divorce-without-consent.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как подать на развод, если супруг(а) не даёт согласие или не выходит на связь?</h4>
+                            <p class="article-summary">Если супруг или супруга не дают согласие на развод или не выходят на связь, вы всё равно можете инициировать расторжение брака через суд. Развод осуществляется в судебном порядке при наличии общих несовершеннолетних детей или при отсутствии согласия одного из супругов.</p>
+                            <p class="article-meta">08.01.2025, вопрос №100003, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/property-division-divorce/how-to-divide-property.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как делится имущество при разводе, если оно оформлено только на одного из супругов?</h4>
+                            <p class="article-summary">При разводе имущество, даже если оно оформлено только на одного из супругов, обычно считается совместно нажитым, если было приобретено в браке. По умолчанию доли супругов признаются равными. Исключения: имущество, приобретённое до брака, полученное в дар или по наследству, считается личной собственностью.</p>
+                            <p class="article-meta">09.01.2025, вопрос №100004, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/family-lawyer-divorce-alimony/child-custody-divorce.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как определить место жительства ребёнка при разводе?</h4>
+                            <p class="article-summary">Определение места жительства ребёнка при разводе: факторы, которые учитывает суд, порядок определения через соглашение или суд, и права родителей на общение с ребёнком.</p>
+                            <p class="article-meta">14.02.2026, вопрос №100038, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/family-lawyer-divorce-alimony/marital-agreement.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как заключить брачный договор и что в нём можно предусмотреть?</h4>
+                            <p class="article-summary">Брачный договор: порядок заключения, что можно предусмотреть в договоре, ограничения брачного договора, и как изменить или расторгнуть брачный договор.</p>
+                            <p class="article-meta">04.03.2026, вопрос №100056, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/family-lawyer-divorce-alimony/child-visitation-rights.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как определить порядок общения с ребёнком после развода?</h4>
+                            <p class="article-summary">Порядок общения с ребёнком: соглашение о порядке общения, определение порядка через суд, график общения, и как защитить права ребёнка и родителя.</p>
+                            <p class="article-meta">22.03.2026, вопрос №100074, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
                 </div>
             </div>
 
             <div class="articles-category">
                 <h3>Оформление наследства</h3>
                 <div class="articles-list">
-                    <article class="article-card">
-                        <h4 class="article-title">
-                            <a href="/inheritance-processing/how-to-inherit-after-death.html">Как вступить в наследство после смерти родственника и какие сроки нельзя пропустить?</a>
-                        </h4>
-                        <p class="article-summary">Как вступить в наследство после смерти родственника: порядок действий, необходимые документы, сроки принятия наследства (6 месяцев) и что делать, если срок пропущен.</p>
-                        <p class="article-meta">10.01.2025, вопрос №100005, г. Москва</p>
-                        <p class="article-read-more">
-                            <a href="/inheritance-processing/how-to-inherit-after-death.html">Читать полностью →</a>
-                        </p>
-                    </article>
+                    <a href="/inheritance-processing/how-to-inherit-after-death.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как вступить в наследство после смерти родственника и какие сроки нельзя пропустить?</h4>
+                            <p class="article-summary">Как вступить в наследство после смерти родственника: порядок действий, необходимые документы, сроки принятия наследства (6 месяцев) и что делать, если срок пропущен.</p>
+                            <p class="article-meta">10.01.2025, вопрос №100005, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/inheritance-processing/inheritance-dispute.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Споры между наследниками при устаревшем завещании</h4>
+                            <p class="article-summary">Разбираем процедуру вступления в наследство при наличии устаревшего завещания, способы решения споров между наследниками и порядок оспаривания спорных моментов через нотариуса и суд.</p>
+                            <p class="article-meta">08.02.2026, вопрос №100032, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/inheritance-processing/missed-inheritance-deadline.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что делать, если пропущен срок вступления в наследство?</h4>
+                            <p class="article-summary">Восстановление срока принятия наследства через суд, фактическое принятие наследства, согласие других наследников, и порядок действий при пропуске 6-месячного срока.</p>
+                            <p class="article-meta">15.02.2026, вопрос №100039, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/inheritance-processing/inheritance-tax.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Нужно ли платить налог при получении наследства?</h4>
+                            <p class="article-summary">Налогообложение наследства: когда платится налог, кто освобождён от налога, размер налога, и какие расходы связаны с получением наследства.</p>
+                            <p class="article-meta">05.03.2026, вопрос №100057, г. Екатеринбург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/inheritance-processing/inheritance-valuation.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как оценить стоимость наследственного имущества?</h4>
+                            <p class="article-summary">Оценка наследственного имущества: порядок оценки, кто проводит оценку, стоимость оценки, и для чего нужна оценка наследства.</p>
+                            <p class="article-meta">23.03.2026, вопрос №100075, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
                 </div>
             </div>
 
             <div class="articles-category">
                 <h3>Жилищные споры</h3>
                 <div class="articles-list">
-                    <article class="article-card">
-                        <h4 class="article-title">
-                            <a href="/housing-disputes/eviction-without-court-order.html">Могут ли выселить из квартиры без решения суда и в каких случаях это законно?</a>
-                        </h4>
-                        <p class="article-summary">Разбираем, в каких случаях выселение из квартиры возможно без решения суда, когда это законно, а когда нет. Права собственника, нанимателя и арендатора при выселении. Что делать, если пытаются выселить незаконно.</p>
-                        <p class="article-meta">11.01.2025</p>
-                        <p class="article-read-more">
-                            <a href="/housing-disputes/eviction-without-court-order.html">Читать полностью →</a>
-                        </p>
-                    </article>
+                    <a href="/housing-disputes/eviction-without-court-order.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Могут ли выселить из квартиры без решения суда и в каких случаях это законно?</h4>
+                            <p class="article-summary">Разбираем, в каких случаях выселение из квартиры возможно без решения суда, когда это законно, а когда нет. Права собственника, нанимателя и арендатора при выселении. Что делать, если пытаются выселить незаконно.</p>
+                            <p class="article-meta">11.01.2025</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/housing-disputes/utility-bills-dispute.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как оспорить неправильные счета за коммунальные услуги?</h4>
+                            <p class="article-summary">Порядок оспаривания неправильных счетов за коммунальные услуги, проверка расчётов, обращение в управляющую компанию, Роспотребнадзор и суд, и как вернуть переплату.</p>
+                            <p class="article-meta">09.02.2026, вопрос №100033, г. Екатеринбург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/housing-disputes/neighbor-conflicts-resolution.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как решить конфликт с соседями в многоквартирном доме?</h4>
+                            <p class="article-summary">Способы решения конфликтов с соседями: переговоры, обращение в управляющую компанию, участковому, суд, и как защитить свои права при спорах с соседями.</p>
+                            <p class="article-meta">16.02.2026, вопрос №100040, г. Новосибирск</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/housing-disputes/registration-dispute.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как оспорить отказ в регистрации по месту жительства?</h4>
+                            <p class="article-summary">Оспаривание отказа в регистрации: основания для отказа, порядок обжалования, документы для регистрации, и как защитить право на регистрацию через суд.</p>
+                            <p class="article-meta">06.03.2026, вопрос №100058, г. Новосибирск</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/housing-disputes/management-company-complaint.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как пожаловаться на управляющую компанию за ненадлежащее обслуживание?</h4>
+                            <p class="article-summary">Жалоба на управляющую компанию: порядок подачи жалобы, куда жаловаться, сроки рассмотрения жалобы, и как добиться устранения нарушений.</p>
+                            <p class="article-meta">24.03.2026, вопрос №100076, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
                 </div>
             </div>
 
             <div class="articles-category">
                 <h3>Договор купли-продажи</h3>
                 <div class="articles-list">
-                    <article class="article-card">
-                        <h4 class="article-title">
-                            <a href="/sale-purchase-agreement/consumer-terminate-contract-return-money.html">Я потребитель. Можно ли расторгнуть договор купли-продажи и вернуть деньги, если продавец нарушил условия сделки?</a>
-                        </h4>
-                        <p class="article-summary">Да, как потребитель вы можете расторгнуть договор и требовать возврата денег, если продавец нарушил условия сделки. Права потребителей по Закону РФ «О защите прав потребителей»: расторжение договора при товаре с недостатками, нарушении сроков передачи, нарушении условий о качестве, комплектности, ассортименте, некачественной услуге или работе, а также при дистанционной торговле.</p>
-                        <p class="article-meta">11.01.2025, вопрос №100006, г. Москва</p>
-                        <p class="article-read-more">
-                            <a href="/sale-purchase-agreement/consumer-terminate-contract-return-money.html">Читать полностью →</a>
-                        </p>
-                    </article>
+                    <a href="/sale-purchase-agreement/consumer-terminate-contract-return-money.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Я потребитель. Можно ли расторгнуть договор купли-продажи и вернуть деньги, если продавец нарушил условия сделки?</h4>
+                            <p class="article-summary">Да, как потребитель вы можете расторгнуть договор и требовать возврата денег, если продавец нарушил условия сделки. Права потребителей по Закону РФ «О защите прав потребителей»: расторжение договора при товаре с недостатками, нарушении сроков передачи, нарушении условий о качестве, комплектности, ассортименте, некачественной услуге или работе, а также при дистанционной торговле.</p>
+                            <p class="article-meta">11.01.2025, вопрос №100006, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/sale-purchase-agreement/contract-review-checklist.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что проверить в договоре купли-продажи перед подписанием?</h4>
+                            <p class="article-summary">Чеклист проверки договора купли-продажи: обязательные условия, права и обязанности сторон, ответственность, порядок расчётов, и на что обратить внимание перед подписанием.</p>
+                            <p class="article-meta">10.02.2026, вопрос №100034, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/sale-purchase-agreement/deposit-refund-dispute.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Можно ли вернуть задаток, если сделка не состоялась?</h4>
+                            <p class="article-summary">Возврат задатка при отказе от сделки: когда задаток возвращается, когда остаётся у продавца, разница между задатком и авансом, и как вернуть задаток через суд.</p>
+                            <p class="article-meta">17.02.2026, вопрос №100041, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/sale-purchase-agreement/contract-amendment.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как изменить условия договора купли-продажи после подписания?</h4>
+                            <p class="article-summary">Изменение договора купли-продажи: порядок изменения условий, соглашение об изменении договора, когда можно изменить договор в одностороннем порядке, и как защитить свои права.</p>
+                            <p class="article-meta">07.03.2026, вопрос №100059, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/sale-purchase-agreement/prepayment-agreement.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как оформить договор задатка при покупке квартиры?</h4>
+                            <p class="article-summary">Договор задатка при покупке квартиры: порядок оформления, размер задатка, отличие задатка от аванса, и что делать при отказе от сделки.</p>
+                            <p class="article-meta">25.03.2026, вопрос №100077, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
                 </div>
             </div>
 
             <div class="articles-category">
                 <h3>Проверка квартиры / продажа</h3>
                 <div class="articles-list">
-                    <article class="article-card">
-                        <h4 class="article-title">
-                            <a href="/apartment-check-sale/check-apartment-before-purchase.html">Какие документы нужно проверить при покупке квартиры и как проверить её на юридическую чистоту?</a>
-                        </h4>
-                        <p class="article-summary">Полный чеклист документов для проверки квартиры перед покупкой: выписка ЕГРН, правоустанавливающие документы, проверка обременений (ипотека, арест, залог), проверка прописанных лиц, задолженности по коммунальным платежам и истории сделок. Как проверить квартиру на юридическую чистоту самостоятельно.</p>
-                        <p class="article-meta">11.01.2026, вопрос №100007, г. Москва</p>
-                        <p class="article-read-more">
-                            <a href="/apartment-check-sale/check-apartment-before-purchase.html">Читать полностью →</a>
-                        </p>
-                    </article>
+                    <a href="/apartment-check-sale/check-apartment-before-purchase.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Какие документы нужно проверить при покупке квартиры и как проверить её на юридическую чистоту?</h4>
+                            <p class="article-summary">Полный чеклист документов для проверки квартиры перед покупкой: выписка ЕГРН, правоустанавливающие документы, проверка обременений (ипотека, арест, залог), проверка прописанных лиц, задолженности по коммунальным платежам и истории сделок. Как проверить квартиру на юридическую чистоту самостоятельно.</p>
+                            <p class="article-meta">11.01.2026, вопрос №100007, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/apartment-check-sale/encumbrances-check.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как проверить квартиру на обременения и аресты?</h4>
+                            <p class="article-summary">Проверка квартиры на обременения: ипотека, арест, залог, рента, как получить выписку из ЕГРН, проверить через интернет и что делать, если обнаружены обременения.</p>
+                            <p class="article-meta">11.02.2026, вопрос №100035, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/apartment-check-sale/registered-persons-check.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как проверить, кто прописан в квартире перед покупкой?</h4>
+                            <p class="article-summary">Проверка прописанных лиц в квартире: как получить справку о зарегистрированных лицах, что делать, если в квартире прописаны несовершеннолетние, и как защитить себя от рисков.</p>
+                            <p class="article-meta">18.02.2026, вопрос №100042, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/apartment-check-sale/apartment-history-check.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как проверить историю сделок с квартирой?</h4>
+                            <p class="article-summary">Проверка истории сделок с квартирой: как узнать предыдущих собственников, проверить частоту сделок, выявить риски, и где получить информацию о сделках.</p>
+                            <p class="article-meta">08.03.2026, вопрос №100060, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/apartment-check-sale/utility-debt-check.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как проверить долги по коммунальным услугам перед покупкой квартиры?</h4>
+                            <p class="article-summary">Проверка долгов по коммунальным услугам: как узнать задолженность, где проверить долги, справка об отсутствии долгов, и что делать при наличии долгов.</p>
+                            <p class="article-meta">26.03.2026, вопрос №100078, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                </div>
+            </div>
+
+            <div class="articles-category">
+                <h3>Трудовые споры</h3>
+                <div class="articles-list">
+                    <a href="/labor-disputes/employer-delays-salary.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что делать, если работодатель задерживает зарплату?</h4>
+                            <p class="article-summary">Как зафиксировать задолженность по зарплате, направить претензию работодателю, куда жаловаться (ГИТ, прокуратура) и когда имеет смысл идти в суд за взысканием и компенсацией.</p>
+                            <p class="article-meta">15.01.2026, вопрос №100008, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/labor-disputes/resign-without-notice.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Можно ли уволиться без отработки, если нарушают трудовой договор?</h4>
+                            <p class="article-summary">Право работника уволиться без отработки при нарушении работодателем условий трудового договора, порядок увольнения и защита прав.</p>
+                            <p class="article-meta">16.01.2026, вопрос №100009, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/labor-disputes/unpaid-overtime.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как взыскать невыплаченную переработку и сверхурочные?</h4>
+                            <p class="article-summary">Взыскание невыплаченных сверхурочных часов: расчёт переработки, порядок взыскания через суд, документы для доказательства переработки, и компенсация за нарушение трудового законодательства.</p>
+                            <p class="article-meta">19.02.2026, вопрос №100043, г. Екатеринбург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/labor-disputes/illegal-dismissal.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как восстановиться на работе при незаконном увольнении?</h4>
+                            <p class="article-summary">Восстановление на работе при незаконном увольнении: порядок обращения в суд, сроки для восстановления, компенсация за вынужденный прогул, и как защитить свои права.</p>
+                            <p class="article-meta">09.03.2026, вопрос №100061, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/labor-disputes/workplace-safety-violation.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что делать при нарушении требований охраны труда на рабочем месте?</h4>
+                            <p class="article-summary">Нарушение требований охраны труда: порядок действий при нарушении, куда жаловаться, ответственность работодателя, и как защитить свои права.</p>
+                            <p class="article-meta">27.03.2026, вопрос №100079, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                </div>
+            </div>
+
+            <div class="articles-category">
+                <h3>Банкротство физических лиц</h3>
+                <div class="articles-list">
+                    <a href="/personal-bankruptcy/write-off-debts-keep-housing.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Можно ли списать долги через банкротство и сохранить единственное жильё?</h4>
+                            <p class="article-summary">Процедура банкротства физических лиц, списание долгов и защита единственного жилья от взыскания при банкротстве.</p>
+                            <p class="article-meta">17.01.2026, вопрос №100010, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/personal-bankruptcy/out-of-court-bankruptcy.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что выгоднее: внесудебное банкротство через МФЦ или банкротство через суд?</h4>
+                            <p class="article-summary">Сравнение внесудебного банкротства через МФЦ и банкротства через суд: условия, процедура, сроки и стоимость.</p>
+                            <p class="article-meta">18.01.2026, вопрос №100011, г. Екатеринбург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/personal-bankruptcy/bankruptcy-costs.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Сколько стоит банкротство физического лица?</h4>
+                            <p class="article-summary">Стоимость банкротства физических лиц: госпошлина, услуги финансового управляющего, расходы на юриста, и как снизить затраты на процедуру банкротства.</p>
+                            <p class="article-meta">20.02.2026, вопрос №100044, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/personal-bankruptcy/bankruptcy-procedure-stages.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Какие этапы проходит процедура банкротства физического лица?</h4>
+                            <p class="article-summary">Этапы банкротства физических лиц: реструктуризация долгов, реализация имущества, мировое соглашение, сроки каждого этапа, и что происходит на каждом этапе.</p>
+                            <p class="article-meta">10.03.2026, вопрос №100062, г. Екатеринбург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/personal-bankruptcy/bankruptcy-restrictions.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Какие ограничения налагаются на гражданина при банкротстве?</h4>
+                            <p class="article-summary">Ограничения при банкротстве: ограничения на выезд за границу, ограничения на сделки, ограничения на получение кредитов, и сроки ограничений.</p>
+                            <p class="article-meta">28.03.2026, вопрос №100080, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                </div>
+            </div>
+
+            <div class="articles-category">
+                <h3>Административные правонарушения</h3>
+                <div class="articles-list">
+                    <a href="/administrative-offenses/appeal-traffic-fine.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как обжаловать штраф ГИБДД, если вы не согласны с постановлением?</h4>
+                            <p class="article-summary">Порядок обжалования штрафа ГИБДД, сроки обжалования, документы для жалобы и как защитить свои права при административных правонарушениях.</p>
+                            <p class="article-meta">19.01.2026, вопрос №100012, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/administrative-offenses/disagree-with-protocol.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что делать, если составили протокол, но вы не согласны с нарушением?</h4>
+                            <p class="article-summary">Порядок действий при несогласии с протоколом об административном правонарушении, обжалование протокола и защита прав.</p>
+                            <p class="article-meta">20.01.2026, вопрос №100013, г. Новосибирск</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/administrative-offenses/driver-license-suspension.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как вернуть водительские права после лишения?</h4>
+                            <p class="article-summary">Порядок возврата водительских прав после лишения: сроки лишения, сдача экзамена, оплата штрафов, и как вернуть права досрочно или обжаловать решение о лишении.</p>
+                            <p class="article-meta">21.02.2026, вопрос №100045, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/administrative-offenses/fine-payment-installment.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Можно ли оплатить административный штраф в рассрочку?</h4>
+                            <p class="article-summary">Рассрочка оплаты административного штрафа: условия предоставления рассрочки, порядок оформления, сроки рассрочки, и что делать при отказе в рассрочке.</p>
+                            <p class="article-meta">11.03.2026, вопрос №100063, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/administrative-offenses/fine-appeal-deadline.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">В какой срок можно обжаловать административный штраф?</h4>
+                            <p class="article-summary">Сроки обжалования административного штрафа: срок для обжалования постановления, порядок восстановления пропущенного срока, и как правильно подать жалобу в срок.</p>
+                            <p class="article-meta">29.03.2026, вопрос №100081, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                </div>
+            </div>
+
+            <div class="articles-category">
+                <h3>Уголовный адвокат</h3>
+                <div class="articles-list">
+                    <a href="/criminal-lawyer/interrogation-rights.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Вас вызывают на допрос: что можно и чего нельзя делать?</h4>
+                            <p class="article-summary">Права и обязанности при допросе, как вести себя на допросе, право на адвоката и защиту при уголовном преследовании.</p>
+                            <p class="article-meta">21.01.2026, вопрос №100014, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/criminal-lawyer/detention-rights.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что делать при задержании и как быстро обеспечить защиту?</h4>
+                            <p class="article-summary">Порядок действий при задержании, права задержанного, как связаться с адвокатом и защитить свои права при задержании.</p>
+                            <p class="article-meta">22.01.2026, вопрос №100015, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/criminal-lawyer/bail-release.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как добиться освобождения под залог или домашний арест?</h4>
+                            <p class="article-summary">Изменение меры пресечения с заключения под стражу на залог или домашний арест: основания для изменения, порядок ходатайства, размер залога, и как добиться освобождения.</p>
+                            <p class="article-meta">22.02.2026, вопрос №100046, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/criminal-lawyer/suspect-rights.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Какие права есть у подозреваемого в уголовном деле?</h4>
+                            <p class="article-summary">Права подозреваемого в уголовном деле: право на защиту, право на адвоката, право не давать показания, право знать в чём обвиняется, и как защитить свои права.</p>
+                            <p class="article-meta">12.03.2026, вопрос №100064, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/criminal-lawyer/criminal-case-termination.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как добиться прекращения уголовного дела?</h4>
+                            <p class="article-summary">Прекращение уголовного дела: основания для прекращения, порядок прекращения дела, реабилитация при прекращении, и как защитить свои права при прекращении дела.</p>
+                            <p class="article-meta">30.03.2026, вопрос №100082, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                </div>
+            </div>
+
+            <div class="articles-category">
+                <h3>Нотариальные доверенности</h3>
+                <div class="articles-list">
+                    <a href="/notary-powers-of-attorney/revoke-notary-power.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как отменить нотариальную доверенность и уведомить третьих лиц?</h4>
+                            <p class="article-summary">Порядок отмены нотариальной доверенности у нотариуса, уведомление представителя и организаций (банк, Росреестр), и как снизить риски, если по доверенности уже совершали действия.</p>
+                            <p class="article-meta">23.01.2026, вопрос №100016, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/notary-powers-of-attorney/check-power-before-deal.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как проверить полномочия по доверенности перед сделкой?</h4>
+                            <p class="article-summary">Какие реквизиты и объём полномочий проверять, на что обратить внимание в сроках и праве передоверия, и когда лучше запросить нотариальную проверку.</p>
+                            <p class="article-meta">24.01.2026, вопрос №100017, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/notary-powers-of-attorney/general-power-attorney.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что можно и чего нельзя делать по генеральной доверенности?</h4>
+                            <p class="article-summary">Объём полномочий по генеральной доверенности: какие действия можно совершать, какие ограничения есть, риски генеральной доверенности, и как защитить свои интересы.</p>
+                            <p class="article-meta">23.02.2026, вопрос №100047, г. Екатеринбург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/notary-powers-of-attorney/power-attorney-expiry.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что делать, если доверенность истекла, а сделка уже совершена?</h4>
+                            <p class="article-summary">Действия при истечении доверенности: последствия сделок по истёкшей доверенности, как защитить свои права, и что делать, если сделка совершена по недействительной доверенности.</p>
+                            <p class="article-meta">13.03.2026, вопрос №100065, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/notary-powers-of-attorney/power-attorney-substitution.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что такое передоверие доверенности и когда оно возможно?</h4>
+                            <p class="article-summary">Передоверие доверенности: когда возможно передоверие, порядок оформления передоверия, уведомление доверителя, и ограничения передоверия.</p>
+                            <p class="article-meta">31.03.2026, вопрос №100083, г. Екатеринбург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                </div>
+            </div>
+
+            <div class="articles-category">
+                <h3>Алименты на ребёнка</h3>
+                <div class="articles-list">
+                    <a href="/child-support/increase-alimony.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как увеличить размер алиментов на ребёнка?</h4>
+                            <p class="article-summary">Основания для увеличения алиментов, порядок подачи иска в суд, какие документы нужны, и как изменить способ взыскания (с доли на твёрдую сумму).</p>
+                            <p class="article-meta">25.01.2026, вопрос №100018, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/child-support/collect-alimony-debt.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как взыскать задолженность по алиментам?</h4>
+                            <p class="article-summary">Расчёт задолженности по алиментам, порядок взыскания через суд, ответственность за неуплату (штраф, ограничение прав, уголовная ответственность) и работа с приставами.</p>
+                            <p class="article-meta">26.01.2026, вопрос №100019, г. Екатеринбург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/child-support/reduce-alimony.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как уменьшить размер алиментов на ребёнка?</h4>
+                            <p class="article-summary">Основания для уменьшения алиментов, порядок подачи иска в суд, какие документы нужны, и как изменить способ взыскания алиментов при изменении обстоятельств.</p>
+                            <p class="article-meta">24.02.2026, вопрос №100048, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/child-support/alimony-indexation.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как индексируются алименты в твёрдой денежной сумме?</h4>
+                            <p class="article-summary">Индексация алиментов: порядок индексации, кто проводит индексацию, размер индексации, и как требовать индексацию при росте прожиточного минимума.</p>
+                            <p class="article-meta">14.03.2026, вопрос №100066, г. Екатеринбург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/child-support/alimony-from-unemployed.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как взыскать алименты с неработающего родителя?</h4>
+                            <p class="article-summary">Взыскание алиментов с неработающего: размер алиментов при отсутствии дохода, взыскание в твёрдой сумме, расчёт задолженности, и как получить алименты с безработного.</p>
+                            <p class="article-meta">01.04.2026, вопрос №100084, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                </div>
+            </div>
+
+            <div class="articles-category">
+                <h3>Раздел квартиры / ипотека</h3>
+                <div class="articles-list">
+                    <a href="/property-division-mortgage/divide-apartment-divorce.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как разделить квартиру при разводе?</h4>
+                            <p class="article-summary">Раздел совместно нажитой квартиры при разводе: доли супругов, варианты раздела (продажа, выкуп доли, определение порядка пользования), и как учитывается ипотека.</p>
+                            <p class="article-meta">27.01.2026, вопрос №100020, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/property-division-mortgage/mortgage-after-divorce.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как разделить ипотеку при разводе?</h4>
+                            <p class="article-summary">Раздел ипотечных обязательств при разводе: варианты (переоформление на одного, раздел долга, продажа квартиры), согласование с банком и порядок оформления.</p>
+                            <p class="article-meta">28.01.2026, вопрос №100021, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/property-division-mortgage/mortgage-refinancing-divorce.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как рефинансировать ипотеку при разводе?</h4>
+                            <p class="article-summary">Рефинансирование ипотеки при разводе: условия рефинансирования, порядок оформления, как переоформить ипотеку на одного супруга, и преимущества рефинансирования.</p>
+                            <p class="article-meta">25.02.2026, вопрос №100049, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/property-division-mortgage/mortgage-insurance-divorce.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как разделить страховку по ипотеке при разводе?</h4>
+                            <p class="article-summary">Раздел страховки по ипотеке при разводе: кто платит страховку, как разделить страховые взносы, изменение страхового договора, и что делать при спорах.</p>
+                            <p class="article-meta">15.03.2026, вопрос №100067, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/property-division-mortgage/mortgage-early-repayment-divorce.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как досрочно погасить ипотеку при разводе?</h4>
+                            <p class="article-summary">Досрочное погашение ипотеки при разводе: порядок досрочного погашения, раздел средств при досрочном погашении, согласование с банком, и как защитить свои права.</p>
+                            <p class="article-meta">02.04.2026, вопрос №100085, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                </div>
+            </div>
+
+            <div class="articles-category">
+                <h3>Земельные споры</h3>
+                <div class="articles-list">
+                    <a href="/land-disputes/boundary-dispute.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как решить спор о границах земельного участка?</h4>
+                            <p class="article-summary">Процедура установления границ земельного участка, межевание, порядок решения споров с соседями через кадастрового инженера и суд, и как защитить свои права.</p>
+                            <p class="article-meta">29.01.2026, вопрос №100022, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/land-disputes/unauthorized-construction.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что делать с самовольной постройкой на земельном участке?</h4>
+                            <p class="article-summary">Правовой статус самовольной постройки, порядок легализации через суд, снос самовольной постройки, и как защитить свои права при спорах о самовольном строительстве.</p>
+                            <p class="article-meta">30.01.2026, вопрос №100023, г. Новосибирск</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/land-disputes/land-lease-dispute.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как расторгнуть договор аренды земельного участка?</h4>
+                            <p class="article-summary">Расторжение договора аренды земельного участка: основания для расторжения, порядок расторжения по соглашению или через суд, и что делать при спорах с арендодателем.</p>
+                            <p class="article-meta">26.02.2026, вопрос №100050, г. Новосибирск</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/land-disputes/land-redemption-price.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как определяется цена выкупа земельного участка у государства?</h4>
+                            <p class="article-summary">Цена выкупа земельного участка: как определяется цена, кадастровая стоимость, рыночная стоимость, порядок оспаривания цены, и льготы при выкупе.</p>
+                            <p class="article-meta">16.03.2026, вопрос №100068, г. Новосибирск</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/land-disputes/land-cadastral-value-dispute.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как оспорить кадастровую стоимость земельного участка?</h4>
+                            <p class="article-summary">Оспаривание кадастровой стоимости земельного участка: порядок оспаривания, комиссия по рассмотрению споров, обращение в суд, и как снизить кадастровую стоимость.</p>
+                            <p class="article-meta">03.04.2026, вопрос №100086, г. Новосибирск</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                </div>
+            </div>
+
+            <div class="articles-category">
+                <h3>Наследство без завещания</h3>
+                <div class="articles-list">
+                    <a href="/inheritance-without-will/accept-inheritance.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как принять наследство без завещания?</h4>
+                            <p class="article-summary">Порядок вступления в наследство по закону, сроки принятия наследства, документы для нотариуса, и что делать, если пропущен срок принятия наследства.</p>
+                            <p class="article-meta">31.01.2026, вопрос №100024, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/inheritance-without-will/refuse-inheritance.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как отказаться от наследства без завещания?</h4>
+                            <p class="article-summary">Порядок отказа от наследства, сроки отказа, отказ в пользу других наследников, и последствия отказа от наследства.</p>
+                            <p class="article-meta">01.02.2026, вопрос №100025, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/inheritance-without-will/heir-queue-dispute.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как определить, к какой очереди наследников вы относитесь?</h4>
+                            <p class="article-summary">Очерёдность наследников по закону: кто относится к первой, второй, третьей очереди, как определяется очередь, и что делать при спорах о принадлежности к очереди.</p>
+                            <p class="article-meta">27.02.2026, вопрос №100051, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/inheritance-without-will/escheat-inheritance.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что происходит с наследством, если нет наследников?</h4>
+                            <p class="article-summary">Выморочное наследство: когда наследство переходит государству, порядок наследования выморочного имущества, и можно ли вернуть выморочное наследство.</p>
+                            <p class="article-meta">17.03.2026, вопрос №100069, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/inheritance-without-will/obligatory-share.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что такое обязательная доля в наследстве и кто имеет на неё право?</h4>
+                            <p class="article-summary">Обязательная доля в наследстве: кто имеет право на обязательную долю, размер обязательной доли, порядок получения, и можно ли лишить обязательной доли.</p>
+                            <p class="article-meta">04.04.2026, вопрос №100087, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                </div>
+            </div>
+
+            <div class="articles-category">
+                <h3>Налоги и консультации</h3>
+                <div class="articles-list">
+                    <a href="/taxes-consultation/tax-deduction.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как получить налоговый вычет при покупке квартиры?</h4>
+                            <p class="article-summary">Порядок получения имущественного налогового вычета при покупке недвижимости, документы для налоговой, сроки возврата НДФЛ, и как получить вычет через работодателя.</p>
+                            <p class="article-meta">02.02.2026, вопрос №100026, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/taxes-consultation/appeal-tax-audit.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как обжаловать решение налоговой проверки?</h4>
+                            <p class="article-summary">Порядок обжалования решения налоговой проверки, сроки обжалования, документы для жалобы, и как защитить свои права при налоговых спорах.</p>
+                            <p class="article-meta">03.02.2026, вопрос №100027, г. Екатеринбург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/taxes-consultation/tax-deduction-purchase.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как получить налоговый вычет при покупке квартиры?</h4>
+                            <p class="article-summary">Налоговый вычет при покупке квартиры: размер вычета, порядок получения, документы для оформления, и как вернуть налог через работодателя или налоговую.</p>
+                            <p class="article-meta">28.02.2026, вопрос №100052, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/taxes-consultation/tax-declaration-deadline.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Что будет, если не подать налоговую декларацию в срок?</h4>
+                            <p class="article-summary">Последствия неподачи налоговой декларации: штрафы за неподачу декларации, сроки подачи, ответственность за нарушение сроков, и как избежать штрафов.</p>
+                            <p class="article-meta">18.03.2026, вопрос №100070, г. Санкт-Петербург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/taxes-consultation/tax-benefits.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Какие налоговые льготы есть у физических лиц?</h4>
+                            <p class="article-summary">Налоговые льготы для физических лиц: стандартные вычеты, социальные вычеты, имущественные вычеты, льготы по налогам, и порядок получения налоговых льгот.</p>
+                            <p class="article-meta">05.04.2026, вопрос №100088, г. Екатеринбург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                </div>
+            </div>
+
+            <div class="articles-category">
+                <h3>Компенсации и льготы</h3>
+                <div class="articles-list">
+                    <a href="/compensations-benefits/maternity-benefits.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как получить пособие по беременности и родам?</h4>
+                            <p class="article-summary">Порядок получения пособия по беременности и родам, размер пособия, документы для оформления, и как получить пособие через работодателя или соцзащиту.</p>
+                            <p class="article-meta">04.02.2026, вопрос №100028, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/compensations-benefits/veteran-benefits.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Какие льготы и компенсации положены ветеранам труда?</h4>
+                            <p class="article-summary">Льготы и компенсации для ветеранов труда: налоговые льготы, льготы на коммунальные услуги, транспортные льготы, и как оформить статус ветерана труда.</p>
+                            <p class="article-meta">01.03.2026, вопрос №100053, г. Екатеринбург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/compensations-benefits/disability-benefits.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Какие льготы и выплаты положены инвалидам?</h4>
+                            <p class="article-summary">Льготы и выплаты для инвалидов: пенсия по инвалидности, ЕДВ, льготы на коммунальные услуги, транспортные льготы, налоговые льготы, и порядок оформления.</p>
+                            <p class="article-meta">19.03.2026, вопрос №100071, г. Екатеринбург</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
+                    <a href="/compensations-benefits/maternity-capital.html" class="article-card">
+                        <article>
+                            <h4 class="article-title">Как использовать материнский капитал и на что его можно потратить?</h4>
+                            <p class="article-summary">Использование материнского капитала: на что можно потратить маткапитал, порядок получения и использования, документы для использования, и как получить сертификат на маткапитал.</p>
+                            <p class="article-meta">06.04.2026, вопрос №100089, г. Москва</p>
+                            <p class="article-read-more">Читать полностью →</p>
+                        </article>
+                    </a>
                 </div>
             </div>
         </section>

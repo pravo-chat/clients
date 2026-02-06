@@ -183,11 +183,11 @@
     {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Юридическая помощь",
+        "name": "PravoChat",
         "url": "https://pravochat.ru",
         "logo": "https://pravochat.ru/android-chrome-512x512.png",
         "image": "https://pravochat.ru/images/practice-gavel.jpg",
-        "description": "Онлайн платформа для получения юридических консультаций от опытных юристов",
+        "description": "PravoChat — платформа, где юрист отвечает мгновенно и работает 24/7, чтобы помочь с правовыми вопросами по российскому законодательству.",
         "sameAs": [
             "https://t.me/pravochat",
             "https://vk.com/pravochat",
@@ -195,18 +195,35 @@
             "https://wa.me/79000000000",
             "https://dzen.ru/pravochat"
         ],
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "customer service",
-            "availableLanguage": "Russian"
-        },
+        "contactPoint": [
+            {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "availableLanguage": "Russian",
+                "areaServed": "RU",
+                "hoursAvailable": {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday",
+                        "https://schema.org/Saturday",
+                        "https://schema.org/Sunday"
+                    ],
+                    "opens": "00:00",
+                    "closes": "23:59"
+                }
+            }
+        ],
         "service": {
             "@type": "Service",
             "name": "Юридические консультации онлайн",
-            "description": "Бесплатные и платные юридические консультации от квалифицированных юристов",
-        "provider": {
+            "description": "Бесплатные и платные консультации от юристов и ИИ-ассистента, которые обеспечивают мгновенный ответ и поддержку 24/7.",
+            "provider": {
                 "@type": "Organization",
-                "name": "Юридическая помощь"
+                "name": "PravoChat"
             },
             "areaServed": "RU",
             "availableLanguage": "Russian"
@@ -814,6 +831,7 @@
         data-assistant-name="Юридический ассистент"
         data-send-message-text="Задайте ваш вопрос..."
         data-reset-chat-text="Начать новый диалог"
+        data-greeting= "Привет, я юридический ассистент. Как я могу помочь вам сегодня?"
         data-no-sponsor="true"
         src="https://chat.pravochat.ru/embed/anythingllm-chat-widget.min.js">
     </script>

@@ -14,6 +14,8 @@ TEMPLATE = '''<!DOCTYPE html>
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://pravochat.ru{path}">
 <meta property="og:title" content="{title} | PravoChat">
+<meta property="og:description" content="{description}">
+<meta property="og:image" content="https://pravochat.ru/images/practice-gavel.jpg">
 <link rel="canonical" href="https://pravochat.ru{path}">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="stylesheet" href="/simple-header.css">

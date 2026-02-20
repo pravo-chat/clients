@@ -19,9 +19,6 @@ Allow: /
 User-agent: Yandex
 Allow: /
 
-# Crawl delay
-Crawl-delay: 1
-
 # Important for Yandex
 Host: pravochat.ru
 

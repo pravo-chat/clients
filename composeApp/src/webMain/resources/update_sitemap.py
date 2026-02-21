@@ -5,7 +5,7 @@ from datetime import date
 
 BASE_URL = "https://pravochat.ru"
 RESOURCES = os.path.dirname(os.path.abspath(__file__))
-SKIP = {"404.html", "index-redirect.html", "legal-questions.html"}
+SKIP = {"404.html", "index-redirect.html"}
 SKIP_CONTAINS = ("google", "yandex")
 
 def path_to_url(relpath):

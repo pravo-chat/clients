@@ -10,63 +10,107 @@ from pathlib import Path
 from typing import List, Set, Tuple
 
 def extract_article_links(html_content: str) -> Set[str]:
-    """Извлекает все ссылки на HTML файлы из содержимого HTML."""
+    """Извлекает ссылки на статьи: /category/#slug (после объединения) или /category/slug.html."""
     links = set()
-    # Ищем все href="..." с .html
-    pattern = r'href="([^"]+\.html)"'
-    matches = re.findall(pattern, html_content)
-    
-    for link in matches:
-        # Игнорируем полные URL и ссылки на главную страницу
-        if link.startswith("/") and not link.startswith("https://") and link != "/":
+    pattern = r'href="(/(?:[^/"]+/)#([^"]+))"'
+    for m in re.finditer(pattern, html_content):
+        links.add(m.group(1))
+    pattern_legacy = r'href="([^"]+\.html)"'
+    for m in re.finditer(pattern_legacy, html_content):
+        link = m.group(1)
+        if link.startswith("/") and "legal-questions" not in link and "about" not in link:
             links.add(link)
-    
     return links
 
+
 def check_article_files(resources_dir: Path) -> Tuple[List[str], List[str]]:
-    """Проверяет наличие всех файлов статей."""
+    """Проверяет наличие страниц категорий для ссылок вида /category/#slug."""
     legal_questions_file = resources_dir / "legal-questions-answers.html"
-    
     if not legal_questions_file.exists():
         return [], [f"Файл {legal_questions_file} не найден"]
-    
-    with open(legal_questions_file, 'r', encoding='utf-8') as f:
+
+    with open(legal_questions_file, "r", encoding="utf-8") as f:
         content = f.read()
-    
+
     article_links = extract_article_links(content)
     missing_files = []
-    
+
     for link in sorted(article_links):
-        file_path = link.lstrip("/")
-        full_path = resources_dir / file_path
-        
-        if not full_path.exists():
-            missing_files.append(file_path)
-    
+        if "#" in link:
+            category = link.split("#")[0].rstrip("/")
+            index_path = resources_dir / category.lstrip("/") / "index.html"
+            if not index_path.exists():
+                missing_files.append(f"{category}/index.html")
+        else:
+            file_path = link.lstrip("/")
+            if not (resources_dir / file_path).exists():
+                missing_files.append(file_path)
+
     return sorted(article_links), missing_files
 
 def check_category_index_files(resources_dir: Path) -> Tuple[List[str], List[str]]:
     """Проверяет наличие всех index.html файлов категорий."""
     categories = [
         "administrative-offenses",
-        "land-disputes",
+        "apartment-check-sale",
+        "appeal-cassation",
+        "auto-loan",
+        "business-trips",
+        "cadastral-registration",
         "child-support",
         "compensations-benefits",
+        "consumer-rights-protection",
+        "contract-work",
+        "copyright-law",
+        "credit-agreement",
+        "credit-holidays",
         "criminal-lawyer",
+        "debt-collection",
+        "developer-disputes",
+        "disability-rights",
+        "dolevoe-stroitelstvo",
+        "employment-contract",
+        "enforcement-proceedings",
         "family-lawyer-divorce-alimony",
+        "gift-agreement",
+        "goods-return",
         "free-legal-consultation",
         "housing-disputes",
+        "housing-privatization",
         "inheritance-processing",
         "inheritance-without-will",
+        "insurance-disputes",
+        "ip-registration",
         "labor-disputes",
+        "land-disputes",
+        "lease-agreement",
+        "maternity-payments",
+        "medical-disputes",
+        "mediation",
+        "microfinance",
+        "migration-law",
+        "military-mortgage",
+        "moral-damage-compensation",
         "notary-powers-of-attorney",
         "online-lawyer",
+        "pension-disputes",
         "personal-bankruptcy",
-        "property-division-mortgage",
-        "sale-purchase-agreement",
-        "taxes-consultation",
+        "personal-data-protection",
+        "pledge-guarantee",
         "property-division-divorce",
-        "apartment-check-sale"
+        "property-division-mortgage",
+        "redevelopment",
+        "registration-residence",
+        "remote-work",
+        "rent-agreement",
+        "sale-purchase-agreement",
+        "self-employment",
+        "service-agreement",
+        "shareholder-rights",
+        "taxes-consultation",
+        "traffic-accident-osago",
+        "transaction-contest",
+        "veteran-benefits",
     ]
     
     missing_indexes = []

@@ -8,7 +8,6 @@ DIST_PATH = Path("composeApp/build/dist/js/productionExecutable")
 EXCLUDED_PATHS = {
     "404.html",
     "index-redirect.html",
-    "legal-questions.html",
     "redirect-template.html",
     "index/index.html",
 }

@@ -5,7 +5,7 @@ import re
 
 RESOURCES = os.path.dirname(os.path.abspath(__file__))
 OG_IMAGE = "https://pravochat.ru/images/practice-gavel.jpg"
-SKIP_FILES = {"404.html", "index-redirect.html", "legal-questions.html"}
+SKIP_FILES = {"404.html", "index-redirect.html"}
 
 def add_og_to_file(filepath):
     with open(filepath, "r", encoding="utf-8") as f:

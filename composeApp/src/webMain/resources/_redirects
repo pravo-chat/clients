@@ -1,6 +1,7 @@
 # Редиректы для GitHub Pages
 /index / 301
 /index.html / 301
+/legal-questions.html /legal-questions-answers.html 301
 
 /administrative-offenses/administrative-arrest.html /administrative-offenses/#administrative-arrest 301
 /administrative-offenses/administrative-detention.html /administrative-offenses/#administrative-detention 301

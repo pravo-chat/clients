@@ -60,7 +60,6 @@ def check_category_index_files(resources_dir: Path) -> Tuple[List[str], List[str
         "family-lawyer-divorce-alimony",
         "free-legal-consultation",
         "housing-disputes",
-        "inheritance",
         "inheritance-processing",
         "inheritance-without-will",
         "labor-disputes",

@@ -96,7 +96,7 @@ def generate_index_html(slug: str, name: str, intro: str, articles: list) -> str
     <meta property="og:description" content="{intro[:155]}">
     <meta property="og:image" content="https://pravochat.ru/images/practice-gavel.jpg">
     <meta property="og:site_name" content="PravoChat">
-    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale" content="ru-RU">
     <link rel="canonical" href="https://pravochat.ru{cat_path}">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">

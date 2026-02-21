@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Git hook: перед push автоматически собираем production-дистрибутив,
+# чтобы локально сразу видеть, что все ресурсы попали в build/dist.
+#
+# Включение hooks см. clients/setup-git-hooks.sh
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT_DIR"
+
+echo "[pre-push] running: ./gradlew :composeApp:jsBrowserDistribution"
+./gradlew :composeApp:jsBrowserDistribution --no-daemon
+
+
+
+
+

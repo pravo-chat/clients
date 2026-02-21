@@ -181,6 +181,13 @@ def main():
     from composeApp.scripts.build_duplicate_registry import build_registry, normalize as reg_normalize
     from composeApp.scripts.categories_data import NEW_CATEGORIES
 
+    try:
+        from composeApp.scripts.categories_20_extras import EXTRA_ARTICLES
+        for cat in NEW_CATEGORIES:
+            cat["articles"] = list(cat["articles"]) + EXTRA_ARTICLES.get(cat["slug"], [])
+    except ImportError:
+        pass
+
     build_registry(RESOURCES)
     registry_path = Path(__file__).parent / "duplicate_registry.json"
     with open(registry_path, encoding="utf-8") as f:
@@ -212,7 +219,7 @@ def main():
                 filtered.append(a)
                 seen_in_session.add(norm)
 
-        if len(filtered) < 10:
+        if len(filtered) < 16:
             print(f"WARNING: {slug} has only {len(filtered)} unique questions (duplicates skipped)")
 
         cat_dir = RESOURCES / slug

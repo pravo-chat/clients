@@ -1,0 +1,1202 @@
+[
+  {
+    "category": "administrative-offenses",
+    "question": "В каких случаях применяется административный арест?",
+    "question_normalized": "в каких случаях применяется административный арест",
+    "slug": "administrative-arrest"
+  },
+  {
+    "category": "administrative-offenses",
+    "question": "Что такое административное задержание и какие права у задержанного?",
+    "question_normalized": "что такое административное задержание и какие права у задержанного",
+    "slug": "administrative-detention"
+  },
+  {
+    "category": "administrative-offenses",
+    "question": "Как обжаловать штраф ГИБДД, если вы не согласны с постановлением?",
+    "question_normalized": "как обжаловать штраф гибдд если вы не согласны с постановлением",
+    "slug": "appeal-traffic-fine"
+  },
+  {
+    "category": "administrative-offenses",
+    "question": "Как обжаловать постановление о лишении прав?",
+    "question_normalized": "как обжаловать постановление о лишении прав",
+    "slug": "deprivation-rights-appeal"
+  },
+  {
+    "category": "administrative-offenses",
+    "question": "Что делать, если составили протокол, но вы не согласны с нарушением?",
+    "question_normalized": "что делать если составили протокол но вы не согласны с нарушением",
+    "slug": "disagree-with-protocol"
+  },
+  {
+    "category": "administrative-offenses",
+    "question": "Как вернуть водительские права после лишения?",
+    "question_normalized": "как вернуть водительские права после лишения",
+    "slug": "driver-license-suspension"
+  },
+  {
+    "category": "administrative-offenses",
+    "question": "В какой срок можно обжаловать административный штраф?",
+    "question_normalized": "в какой срок можно обжаловать административный штраф",
+    "slug": "fine-appeal-deadline"
+  },
+  {
+    "category": "administrative-offenses",
+    "question": "Когда можно оплатить штраф со скидкой 50%?",
+    "question_normalized": "когда можно оплатить штраф со скидкой 50",
+    "slug": "fine-discount-50"
+  },
+  {
+    "category": "administrative-offenses",
+    "question": "Можно ли оплатить административный штраф в рассрочку?",
+    "question_normalized": "можно ли оплатить административный штраф в рассрочку",
+    "slug": "fine-payment-installment"
+  },
+  {
+    "category": "administrative-offenses",
+    "question": "Как использовать ошибки в протоколе для защиты?",
+    "question_normalized": "как использовать ошибки в протоколе для защиты",
+    "slug": "protocol-errors"
+  },
+  {
+    "category": "apartment-check-sale",
+    "question": "Как проверить историю сделок с квартирой?",
+    "question_normalized": "как проверить историю сделок с квартирой",
+    "slug": "apartment-history-check"
+  },
+  {
+    "category": "apartment-check-sale",
+    "question": "Какие документы нужно проверить при покупке квартиры и как проверить её на юридическую чистоту?",
+    "question_normalized": "какие документы нужно проверить при покупке квартиры и как проверить её на юридическую чистоту",
+    "slug": "check-apartment-before-purchase"
+  },
+  {
+    "category": "apartment-check-sale",
+    "question": "Как проверить, снято ли обременение с квартиры после погашения ипотеки?",
+    "question_normalized": "как проверить снято ли обременение с квартиры после погашения ипотеки",
+    "slug": "encumbrance-lift"
+  },
+  {
+    "category": "apartment-check-sale",
+    "question": "Как проверить квартиру на обременения и аресты?",
+    "question_normalized": "как проверить квартиру на обременения и аресты",
+    "slug": "encumbrances-check"
+  },
+  {
+    "category": "apartment-check-sale",
+    "question": "Чем опасна покупка квартиры, в которой прописаны несовершеннолетние?",
+    "question_normalized": "чем опасна покупка квартиры в которой прописаны несовершеннолетние",
+    "slug": "minors-registered"
+  },
+  {
+    "category": "apartment-check-sale",
+    "question": "Что проверить при покупке квартиры в новостройке?",
+    "question_normalized": "что проверить при покупке квартиры в новостройке",
+    "slug": "new-building-checklist"
+  },
+  {
+    "category": "apartment-check-sale",
+    "question": "Когда сделка с недвижимостью требует нотариального удостоверения?",
+    "question_normalized": "когда сделка с недвижимостью требует нотариального удостоверения",
+    "slug": "notary-deal-mandatory"
+  },
+  {
+    "category": "apartment-check-sale",
+    "question": "Как проверить, кто прописан в квартире перед покупкой?",
+    "question_normalized": "как проверить кто прописан в квартире перед покупкой",
+    "slug": "registered-persons-check"
+  },
+  {
+    "category": "apartment-check-sale",
+    "question": "Какая выписка из ЕГРН нужна при покупке квартиры?",
+    "question_normalized": "какая выписка из егрн нужна при покупке квартиры",
+    "slug": "seller-egrn-extract"
+  },
+  {
+    "category": "apartment-check-sale",
+    "question": "Как проверить задолженность по коммунальным платежам перед покупкой квартиры?",
+    "question_normalized": "как проверить задолженность по коммунальным платежам перед покупкой квартиры",
+    "slug": "utility-debt-check"
+  },
+  {
+    "category": "child-support",
+    "question": "Платятся ли алименты на совершеннолетнего ребёнка?",
+    "question_normalized": "платятся ли алименты на совершеннолетнего ребёнка",
+    "slug": "alimony-adult-child"
+  },
+  {
+    "category": "child-support",
+    "question": "Как оформить соглашение об уплате алиментов?",
+    "question_normalized": "как оформить соглашение об уплате алиментов",
+    "slug": "alimony-agreement-form"
+  },
+  {
+    "category": "child-support",
+    "question": "Как изменить размер алиментов при изменении обстоятельств?",
+    "question_normalized": "как изменить размер алиментов при изменении обстоятельств",
+    "slug": "alimony-change-circumstances"
+  },
+  {
+    "category": "child-support",
+    "question": "Есть ли срок исковой давности по взысканию задолженности по алиментам?",
+    "question_normalized": "есть ли срок исковой давности по взысканию задолженности по алиментам",
+    "slug": "alimony-debt-limitation"
+  },
+  {
+    "category": "child-support",
+    "question": "Как взыскать алименты с неработающего родителя?",
+    "question_normalized": "как взыскать алименты с неработающего родителя",
+    "slug": "alimony-from-unemployed"
+  },
+  {
+    "category": "child-support",
+    "question": "Как индексируются алименты в твёрдой денежной сумме?",
+    "question_normalized": "как индексируются алименты в твёрдой денежной сумме",
+    "slug": "alimony-indexation"
+  },
+  {
+    "category": "child-support",
+    "question": "Как взыскать задолженность по алиментам?",
+    "question_normalized": "как взыскать задолженность по алиментам",
+    "slug": "collect-alimony-debt"
+  },
+  {
+    "category": "child-support",
+    "question": "Как увеличить размер алиментов на ребёнка?",
+    "question_normalized": "как увеличить размер алиментов на ребёнка",
+    "slug": "increase-alimony"
+  },
+  {
+    "category": "child-support",
+    "question": "Как оспорить отцовство и освободиться от алиментов?",
+    "question_normalized": "как оспорить отцовство и освободиться от алиментов",
+    "slug": "paternity-dispute-alimony"
+  },
+  {
+    "category": "child-support",
+    "question": "Как уменьшить размер алиментов на ребёнка?",
+    "question_normalized": "как уменьшить размер алиментов на ребёнка",
+    "slug": "reduce-alimony"
+  },
+  {
+    "category": "compensations-benefits",
+    "question": "Какие пособия на детей положены в 2026 году?",
+    "question_normalized": "какие пособия на детей положены в 2026 году",
+    "slug": "child-benefits-2026"
+  },
+  {
+    "category": "compensations-benefits",
+    "question": "Какие льготы и выплаты положены инвалидам?",
+    "question_normalized": "какие льготы и выплаты положены инвалидам",
+    "slug": "disability-benefits"
+  },
+  {
+    "category": "compensations-benefits",
+    "question": "Какие льготы положены многодетным семьям?",
+    "question_normalized": "какие льготы положены многодетным семьям",
+    "slug": "large-family-benefits"
+  },
+  {
+    "category": "compensations-benefits",
+    "question": "Индексируется ли материнский капитал и как им воспользоваться досрочно?",
+    "question_normalized": "индексируется ли материнский капитал и как им воспользоваться досрочно",
+    "slug": "maternal-capital-indexation"
+  },
+  {
+    "category": "compensations-benefits",
+    "question": "Как получить пособие по беременности и родам?",
+    "question_normalized": "как получить пособие по беременности и родам",
+    "slug": "maternity-benefits"
+  },
+  {
+    "category": "compensations-benefits",
+    "question": "Как использовать материнский капитал и на что его можно потратить?",
+    "question_normalized": "как использовать материнский капитал и на что его можно потратить",
+    "slug": "maternity-capital"
+  },
+  {
+    "category": "compensations-benefits",
+    "question": "Как оформить доплату к пенсии и кто имеет право?",
+    "question_normalized": "как оформить доплату к пенсии и кто имеет право",
+    "slug": "pension-supplement"
+  },
+  {
+    "category": "compensations-benefits",
+    "question": "Как рассчитывается пособие по временной нетрудоспособности?",
+    "question_normalized": "как рассчитывается пособие по временной нетрудоспособности",
+    "slug": "sick-leave-benefits"
+  },
+  {
+    "category": "compensations-benefits",
+    "question": "Как оформить и получить пособие по безработице?",
+    "question_normalized": "как оформить и получить пособие по безработице",
+    "slug": "unemployment-benefits"
+  },
+  {
+    "category": "compensations-benefits",
+    "question": "Какие льготы и компенсации положены ветеранам труда?",
+    "question_normalized": "какие льготы и компенсации положены ветеранам труда",
+    "slug": "veteran-benefits"
+  },
+  {
+    "category": "consumer-rights-protection",
+    "question": "Как предъявить претензию по гарантийному ремонту?",
+    "question_normalized": "как предъявить претензию по гарантийному ремонту",
+    "slug": "claim-warranty-repair"
+  },
+  {
+    "category": "consumer-rights-protection",
+    "question": "Как подать коллективную жалобу в Роспотребнадзор?",
+    "question_normalized": "как подать коллективную жалобу в роспотребнадзор",
+    "slug": "collective-complaint"
+  },
+  {
+    "category": "consumer-rights-protection",
+    "question": "Как взыскать компенсацию морального вреда с продавца?",
+    "question_normalized": "как взыскать компенсацию морального вреда с продавца",
+    "slug": "compensation-moral-harm"
+  },
+  {
+    "category": "consumer-rights-protection",
+    "question": "Какие права есть у потребителя при кредите и рассрочке?",
+    "question_normalized": "какие права есть у потребителя при кредите и рассрочке",
+    "slug": "credit-consumer-rights"
+  },
+  {
+    "category": "consumer-rights-protection",
+    "question": "Как предъявить претензию за некачественные медицинские услуги?",
+    "question_normalized": "как предъявить претензию за некачественные медицинские услуги",
+    "slug": "medical-services-claim"
+  },
+  {
+    "category": "consumer-rights-protection",
+    "question": "Как вернуть товар, купленный в интернет-магазине?",
+    "question_normalized": "как вернуть товар купленный в интернетмагазине",
+    "slug": "online-purchase-return"
+  },
+  {
+    "category": "consumer-rights-protection",
+    "question": "Как взыскать неустойку за просрочку удовлетворения требований потребителя?",
+    "question_normalized": "как взыскать неустойку за просрочку удовлетворения требований потребителя",
+    "slug": "penalty-consumer"
+  },
+  {
+    "category": "consumer-rights-protection",
+    "question": "Можно ли вернуть товар без чека?",
+    "question_normalized": "можно ли вернуть товар без чека",
+    "slug": "refund-without-receipt"
+  },
+  {
+    "category": "consumer-rights-protection",
+    "question": "Как вернуть некачественный товар и получить деньги?",
+    "question_normalized": "как вернуть некачественный товар и получить деньги",
+    "slug": "return-defective-goods"
+  },
+  {
+    "category": "consumer-rights-protection",
+    "question": "Как вернуть деньги за несостоявшуюся или испорченную туристическую поездку?",
+    "question_normalized": "как вернуть деньги за несостоявшуюся или испорченную туристическую поездку",
+    "slug": "tour-refund"
+  },
+  {
+    "category": "criminal-lawyer",
+    "question": "Как обжаловать приговор суда?",
+    "question_normalized": "как обжаловать приговор суда",
+    "slug": "appeal-verdict"
+  },
+  {
+    "category": "criminal-lawyer",
+    "question": "Как добиться освобождения под залог или домашний арест?",
+    "question_normalized": "как добиться освобождения под залог или домашний арест",
+    "slug": "bail-release"
+  },
+  {
+    "category": "criminal-lawyer",
+    "question": "Что такое соглашение о сотрудничестве с обвинением?",
+    "question_normalized": "что такое соглашение о сотрудничестве с обвинением",
+    "slug": "conclusion-agreement"
+  },
+  {
+    "category": "criminal-lawyer",
+    "question": "Как добиться прекращения уголовного дела?",
+    "question_normalized": "как добиться прекращения уголовного дела",
+    "slug": "criminal-case-termination"
+  },
+  {
+    "category": "criminal-lawyer",
+    "question": "Когда участие защитника по уголовному делу обязательно?",
+    "question_normalized": "когда участие защитника по уголовному делу обязательно",
+    "slug": "defender-mandatory"
+  },
+  {
+    "category": "criminal-lawyer",
+    "question": "Что делать при задержании и как быстро обеспечить защиту?",
+    "question_normalized": "что делать при задержании и как быстро обеспечить защиту",
+    "slug": "detention-rights"
+  },
+  {
+    "category": "criminal-lawyer",
+    "question": "Вас вызывают на допрос: что можно и чего нельзя делать?",
+    "question_normalized": "вас вызывают на допрос что можно и чего нельзя делать",
+    "slug": "interrogation-rights"
+  },
+  {
+    "category": "criminal-lawyer",
+    "question": "Можно ли отказаться от дачи показаний?",
+    "question_normalized": "можно ли отказаться от дачи показаний",
+    "slug": "refuse-testify"
+  },
+  {
+    "category": "criminal-lawyer",
+    "question": "Как оформить реабилитацию после отмены приговора?",
+    "question_normalized": "как оформить реабилитацию после отмены приговора",
+    "slug": "rehabilitation"
+  },
+  {
+    "category": "criminal-lawyer",
+    "question": "Какие права есть у подозреваемого в уголовном деле?",
+    "question_normalized": "какие права есть у подозреваемого в уголовном деле",
+    "slug": "suspect-rights"
+  },
+  {
+    "category": "family-lawyer-divorce-alimony",
+    "question": "Как изменить место жительства ребёнка после развода?",
+    "question_normalized": "как изменить место жительства ребёнка после развода",
+    "slug": "change-child-residence"
+  },
+  {
+    "category": "family-lawyer-divorce-alimony",
+    "question": "Как определить место жительства ребёнка при разводе?",
+    "question_normalized": "как определить место жительства ребёнка при разводе",
+    "slug": "child-custody-divorce"
+  },
+  {
+    "category": "family-lawyer-divorce-alimony",
+    "question": "Нужно ли платить алименты во время бракоразводного процесса?",
+    "question_normalized": "нужно ли платить алименты во время бракоразводного процесса",
+    "slug": "child-support-during-divorce"
+  },
+  {
+    "category": "family-lawyer-divorce-alimony",
+    "question": "Как определить порядок общения с ребёнком после развода?",
+    "question_normalized": "как определить порядок общения с ребёнком после развода",
+    "slug": "child-visitation-rights"
+  },
+  {
+    "category": "family-lawyer-divorce-alimony",
+    "question": "Когда развод возможен через загс без суда?",
+    "question_normalized": "когда развод возможен через загс без суда",
+    "slug": "divorce-by-registry-office"
+  },
+  {
+    "category": "family-lawyer-divorce-alimony",
+    "question": "Сколько стоит развод через суд и загс?",
+    "question_normalized": "сколько стоит развод через суд и загс",
+    "slug": "divorce-fees"
+  },
+  {
+    "category": "family-lawyer-divorce-alimony",
+    "question": "Как оформить развод, если супруг гражданин другого государства?",
+    "question_normalized": "как оформить развод если супруг гражданин другого государства",
+    "slug": "divorce-with-foreigner"
+  },
+  {
+    "category": "family-lawyer-divorce-alimony",
+    "question": "Как подать на развод, если супруг(а) не даёт согласие или не выходит на связь?",
+    "question_normalized": "как подать на развод если супруга не даёт согласие или не выходит на связь",
+    "slug": "divorce-without-consent"
+  },
+  {
+    "category": "family-lawyer-divorce-alimony",
+    "question": "Как заключить брачный договор и что в нём можно предусмотреть?",
+    "question_normalized": "как заключить брачный договор и что в нём можно предусмотреть",
+    "slug": "marital-agreement"
+  },
+  {
+    "category": "family-lawyer-divorce-alimony",
+    "question": "Можно ли восстановить брак после развода?",
+    "question_normalized": "можно ли восстановить брак после развода",
+    "slug": "restore-marriage"
+  },
+  {
+    "category": "free-legal-consultation",
+    "question": "Можно ли стать собственником заброшенной машины?",
+    "question_normalized": "можно ли стать собственником заброшенной машины",
+    "slug": "abandoned-car-ownership"
+  },
+  {
+    "category": "free-legal-consultation",
+    "question": "В какой орган обращаться с жалобой на действия чиновников?",
+    "question_normalized": "в какой орган обращаться с жалобой на действия чиновников",
+    "slug": "complaint-authority"
+  },
+  {
+    "category": "free-legal-consultation",
+    "question": "Куда жаловаться при нарушении прав потребителя?",
+    "question_normalized": "куда жаловаться при нарушении прав потребителя",
+    "slug": "consumer-rights-violation"
+  },
+  {
+    "category": "free-legal-consultation",
+    "question": "Какие права и обязанности у собственника при сдаче квартиры в аренду?",
+    "question_normalized": "какие права и обязанности у собственника при сдаче квартиры в аренду",
+    "slug": "landlord-tenant-rights"
+  },
+  {
+    "category": "free-legal-consultation",
+    "question": "Кто имеет право на бесплатную юридическую помощь по закону?",
+    "question_normalized": "кто имеет право на бесплатную юридическую помощь по закону",
+    "slug": "legal-aid-low-income"
+  },
+  {
+    "category": "free-legal-consultation",
+    "question": "Что делать, если соседи шумят и мешают спать?",
+    "question_normalized": "что делать если соседи шумят и мешают спать",
+    "slug": "neighbor-noise-complaint"
+  },
+  {
+    "category": "free-legal-consultation",
+    "question": "Как подать заявление в суд по упрощённой процедуре?",
+    "question_normalized": "как подать заявление в суд по упрощённой процедуре",
+    "slug": "small-claims-court"
+  },
+  {
+    "category": "free-legal-consultation",
+    "question": "Что такое срок исковой давности и что делать, если он пропущен?",
+    "question_normalized": "что такое срок исковой давности и что делать если он пропущен",
+    "slug": "statute-of-limitations"
+  },
+  {
+    "category": "free-legal-consultation",
+    "question": "Какие права есть у арендатора при выселении?",
+    "question_normalized": "какие права есть у арендатора при выселении",
+    "slug": "tenant-rights-eviction"
+  },
+  {
+    "category": "free-legal-consultation",
+    "question": "Где можно получить бесплатную юридическую помощь?",
+    "question_normalized": "где можно получить бесплатную юридическую помощь",
+    "slug": "where-get-free-legal-help"
+  },
+  {
+    "category": "housing-disputes",
+    "question": "Как принимаются решения по общему имуществу в МКД?",
+    "question_normalized": "как принимаются решения по общему имуществу в мкд",
+    "slug": "common-property-vote"
+  },
+  {
+    "category": "housing-disputes",
+    "question": "Можно ли перевести нежилое помещение в жилое?",
+    "question_normalized": "можно ли перевести нежилое помещение в жилое",
+    "slug": "convert-office-to-residential"
+  },
+  {
+    "category": "housing-disputes",
+    "question": "Могут ли выселить из квартиры без решения суда и в каких случаях это законно?",
+    "question_normalized": "могут ли выселить из квартиры без решения суда и в каких случаях это законно",
+    "slug": "eviction-without-court-order"
+  },
+  {
+    "category": "housing-disputes",
+    "question": "Как пожаловаться на управляющую компанию и куда обращаться?",
+    "question_normalized": "как пожаловаться на управляющую компанию и куда обращаться",
+    "slug": "management-company-complaint"
+  },
+  {
+    "category": "housing-disputes",
+    "question": "Как решить конфликт с соседями в многоквартирном доме?",
+    "question_normalized": "как решить конфликт с соседями в многоквартирном доме",
+    "slug": "neighbor-conflicts-resolution"
+  },
+  {
+    "category": "housing-disputes",
+    "question": "В какое время разрешён шум от ремонта у соседей?",
+    "question_normalized": "в какое время разрешён шум от ремонта у соседей",
+    "slug": "noise-from-renovation"
+  },
+  {
+    "category": "housing-disputes",
+    "question": "Обязаны ли собственники платить взносы на капремонт?",
+    "question_normalized": "обязаны ли собственники платить взносы на капремонт",
+    "slug": "overhaul-contribution"
+  },
+  {
+    "category": "housing-disputes",
+    "question": "Как оспорить отказ в регистрации по месту жительства?",
+    "question_normalized": "как оспорить отказ в регистрации по месту жительства",
+    "slug": "registration-dispute"
+  },
+  {
+    "category": "housing-disputes",
+    "question": "Как получить субсидию на оплату ЖКУ?",
+    "question_normalized": "как получить субсидию на оплату жку",
+    "slug": "subsidy-utility"
+  },
+  {
+    "category": "housing-disputes",
+    "question": "Как оспорить неправильные счета за коммунальные услуги?",
+    "question_normalized": "как оспорить неправильные счета за коммунальные услуги",
+    "slug": "utility-bills-dispute"
+  },
+  {
+    "category": "inheritance-processing",
+    "question": "Как оспорить завещание?",
+    "question_normalized": "как оспорить завещание",
+    "slug": "contest-will"
+  },
+  {
+    "category": "inheritance-processing",
+    "question": "Как получить свидетельство о праве на наследство?",
+    "question_normalized": "как получить свидетельство о праве на наследство",
+    "slug": "heir-certificate"
+  },
+  {
+    "category": "inheritance-processing",
+    "question": "Как вступить в наследство после смерти родственника и какие сроки нельзя пропустить?",
+    "question_normalized": "как вступить в наследство после смерти родственника и какие сроки нельзя пропустить",
+    "slug": "how-to-inherit-after-death"
+  },
+  {
+    "category": "inheritance-processing",
+    "question": "Отвечаю ли я по долгам наследодателя?",
+    "question_normalized": "отвечаю ли я по долгам наследодателя",
+    "slug": "inheritance-debt"
+  },
+  {
+    "category": "inheritance-processing",
+    "question": "Споры между наследниками при устаревшем завещании",
+    "question_normalized": "споры между наследниками при устаревшем завещании",
+    "slug": "inheritance-dispute"
+  },
+  {
+    "category": "inheritance-processing",
+    "question": "Как оформить в наследство квартиру или дом?",
+    "question_normalized": "как оформить в наследство квартиру или дом",
+    "slug": "inheritance-real-estate"
+  },
+  {
+    "category": "inheritance-processing",
+    "question": "Нужно ли платить налог при получении наследства?",
+    "question_normalized": "нужно ли платить налог при получении наследства",
+    "slug": "inheritance-tax"
+  },
+  {
+    "category": "inheritance-processing",
+    "question": "Как оценить наследственное имущество для нотариуса?",
+    "question_normalized": "как оценить наследственное имущество для нотариуса",
+    "slug": "inheritance-valuation"
+  },
+  {
+    "category": "inheritance-processing",
+    "question": "Что делать, если пропущен срок вступления в наследство?",
+    "question_normalized": "что делать если пропущен срок вступления в наследство",
+    "slug": "missed-inheritance-deadline"
+  },
+  {
+    "category": "inheritance-processing",
+    "question": "Можно ли отказаться от наследства в пользу другого наследника?",
+    "question_normalized": "можно ли отказаться от наследства в пользу другого наследника",
+    "slug": "refuse-inheritance-favor"
+  },
+  {
+    "category": "inheritance-without-will",
+    "question": "Как принять наследство без завещания?",
+    "question_normalized": "как принять наследство без завещания",
+    "slug": "accept-inheritance"
+  },
+  {
+    "category": "inheritance-without-will",
+    "question": "Что происходит с наследством, если нет наследников?",
+    "question_normalized": "что происходит с наследством если нет наследников",
+    "slug": "escheat-inheritance"
+  },
+  {
+    "category": "inheritance-without-will",
+    "question": "Когда наследство переходит государству как выморочное?",
+    "question_normalized": "когда наследство переходит государству как выморочное",
+    "slug": "escheat"
+  },
+  {
+    "category": "inheritance-without-will",
+    "question": "Как определить, к какой очереди наследников вы относитесь?",
+    "question_normalized": "как определить к какой очереди наследников вы относитесь",
+    "slug": "heir-queue-dispute"
+  },
+  {
+    "category": "inheritance-without-will",
+    "question": "Кто наследует по праву представления?",
+    "question_normalized": "кто наследует по праву представления",
+    "slug": "heirs-by-right-of-representation"
+  },
+  {
+    "category": "inheritance-without-will",
+    "question": "Как принять наследство, если наследник пропустил срок?",
+    "question_normalized": "как принять наследство если наследник пропустил срок",
+    "slug": "inheritance-missing-heir"
+  },
+  {
+    "category": "inheritance-without-will",
+    "question": "Что такое наследственная трансмиссия?",
+    "question_normalized": "что такое наследственная трансмиссия",
+    "slug": "inheritance-transmission"
+  },
+  {
+    "category": "inheritance-without-will",
+    "question": "Что такое обязательная доля в наследстве и кто имеет на неё право?",
+    "question_normalized": "что такое обязательная доля в наследстве и кто имеет на неё право",
+    "slug": "obligatory-share"
+  },
+  {
+    "category": "inheritance-without-will",
+    "question": "Как отказаться от наследства без завещания?",
+    "question_normalized": "как отказаться от наследства без завещания",
+    "slug": "refuse-inheritance"
+  },
+  {
+    "category": "inheritance-without-will",
+    "question": "В каких случаях наследник признаётся недостойным?",
+    "question_normalized": "в каких случаях наследник признаётся недостойным",
+    "slug": "unworthy-heir"
+  },
+  {
+    "category": "labor-disputes",
+    "question": "Что делать, если работодатель задерживает зарплату?",
+    "question_normalized": "что делать если работодатель задерживает зарплату",
+    "slug": "employer-delays-salary"
+  },
+  {
+    "category": "labor-disputes",
+    "question": "Что делать, если работодатель не выдаёт трудовую книжку при увольнении?",
+    "question_normalized": "что делать если работодатель не выдаёт трудовую книжку при увольнении",
+    "slug": "employment-record"
+  },
+  {
+    "category": "labor-disputes",
+    "question": "Как восстановиться на работе при незаконном увольнении?",
+    "question_normalized": "как восстановиться на работе при незаконном увольнении",
+    "slug": "illegal-dismissal"
+  },
+  {
+    "category": "labor-disputes",
+    "question": "Какие права у работника на неполном рабочем времени?",
+    "question_normalized": "какие права у работника на неполном рабочем времени",
+    "slug": "part-time-rights"
+  },
+  {
+    "category": "labor-disputes",
+    "question": "Какие выплаты положены при сокращении штата?",
+    "question_normalized": "какие выплаты положены при сокращении штата",
+    "slug": "reduction-compensation"
+  },
+  {
+    "category": "labor-disputes",
+    "question": "Можно ли уволиться без отработки, если нарушают трудовой договор?",
+    "question_normalized": "можно ли уволиться без отработки если нарушают трудовой договор",
+    "slug": "resign-without-notice"
+  },
+  {
+    "category": "labor-disputes",
+    "question": "Как оплачивается больничный лист?",
+    "question_normalized": "как оплачивается больничный лист",
+    "slug": "sick-leave-payment"
+  },
+  {
+    "category": "labor-disputes",
+    "question": "Как взыскать невыплаченную переработку и сверхурочные?",
+    "question_normalized": "как взыскать невыплаченную переработку и сверхурочные",
+    "slug": "unpaid-overtime"
+  },
+  {
+    "category": "labor-disputes",
+    "question": "Когда работник имеет право на ежегодный оплачиваемый отпуск?",
+    "question_normalized": "когда работник имеет право на ежегодный оплачиваемый отпуск",
+    "slug": "vacation-rights"
+  },
+  {
+    "category": "labor-disputes",
+    "question": "Что делать, если работодатель нарушает требования охраны труда?",
+    "question_normalized": "что делать если работодатель нарушает требования охраны труда",
+    "slug": "workplace-safety-violation"
+  },
+  {
+    "category": "land-disputes",
+    "question": "Как решить спор о границах земельного участка?",
+    "question_normalized": "как решить спор о границах земельного участка",
+    "slug": "boundary-dispute"
+  },
+  {
+    "category": "land-disputes",
+    "question": "Как оспорить кадастровую стоимость земельного участка?",
+    "question_normalized": "как оспорить кадастровую стоимость земельного участка",
+    "slug": "land-cadastral-value-dispute"
+  },
+  {
+    "category": "land-disputes",
+    "question": "Как расторгнуть договор аренды земельного участка?",
+    "question_normalized": "как расторгнуть договор аренды земельного участка",
+    "slug": "land-lease-dispute"
+  },
+  {
+    "category": "land-disputes",
+    "question": "Как приватизировать земельный участок под домом?",
+    "question_normalized": "как приватизировать земельный участок под домом",
+    "slug": "land-privatization"
+  },
+  {
+    "category": "land-disputes",
+    "question": "Как определяется цена выкупа земельного участка у государства?",
+    "question_normalized": "как определяется цена выкупа земельного участка у государства",
+    "slug": "land-redemption-price"
+  },
+  {
+    "category": "land-disputes",
+    "question": "Что такое сервитут на земельный участок и как его установить?",
+    "question_normalized": "что такое сервитут на земельный участок и как его установить",
+    "slug": "land-servitude"
+  },
+  {
+    "category": "land-disputes",
+    "question": "Как выделить земельную долю в натуре?",
+    "question_normalized": "как выделить земельную долю в натуре",
+    "slug": "land-share-dispute"
+  },
+  {
+    "category": "land-disputes",
+    "question": "Как выселить самовольных захватчиков с земельного участка?",
+    "question_normalized": "как выселить самовольных захватчиков с земельного участка",
+    "slug": "land-squatter"
+  },
+  {
+    "category": "land-disputes",
+    "question": "Как изменить категорию и вид разрешённого использования земельного участка?",
+    "question_normalized": "как изменить категорию и вид разрешённого использования земельного участка",
+    "slug": "land-use-category"
+  },
+  {
+    "category": "land-disputes",
+    "question": "Что делать с самовольной постройкой на земельном участке?",
+    "question_normalized": "что делать с самовольной постройкой на земельном участке",
+    "slug": "unauthorized-construction"
+  },
+  {
+    "category": "notary-powers-of-attorney",
+    "question": "Как проверить полномочия по доверенности перед сделкой?",
+    "question_normalized": "как проверить полномочия по доверенности перед сделкой",
+    "slug": "check-power-before-deal"
+  },
+  {
+    "category": "notary-powers-of-attorney",
+    "question": "Что можно и чего нельзя делать по генеральной доверенности?",
+    "question_normalized": "что можно и чего нельзя делать по генеральной доверенности",
+    "slug": "general-power-attorney"
+  },
+  {
+    "category": "notary-powers-of-attorney",
+    "question": "Что такое безотзывная доверенность?",
+    "question_normalized": "что такое безотзывная доверенность",
+    "slug": "irrevocable-power"
+  },
+  {
+    "category": "notary-powers-of-attorney",
+    "question": "Какие бывают формы доверенностей и когда нужна нотариальная?",
+    "question_normalized": "какие бывают формы доверенностей и когда нужна нотариальная",
+    "slug": "notary-power-form"
+  },
+  {
+    "category": "notary-powers-of-attorney",
+    "question": "Что делать, если доверенность истекла, а сделка уже совершена?",
+    "question_normalized": "что делать если доверенность истекла а сделка уже совершена",
+    "slug": "power-attorney-expiry"
+  },
+  {
+    "category": "notary-powers-of-attorney",
+    "question": "Что такое передоверие доверенности и когда оно возможно?",
+    "question_normalized": "что такое передоверие доверенности и когда оно возможно",
+    "slug": "power-attorney-substitution"
+  },
+  {
+    "category": "notary-powers-of-attorney",
+    "question": "Чем доверенность от директора отличается от обычной?",
+    "question_normalized": "чем доверенность от директора отличается от обычной",
+    "slug": "power-company-director"
+  },
+  {
+    "category": "notary-powers-of-attorney",
+    "question": "Можно ли оформить доверенность на представление интересов ребёнка?",
+    "question_normalized": "можно ли оформить доверенность на представление интересов ребёнка",
+    "slug": "power-for-child"
+  },
+  {
+    "category": "notary-powers-of-attorney",
+    "question": "Нужна ли доверенность для ведения наследственного дела?",
+    "question_normalized": "нужна ли доверенность для ведения наследственного дела",
+    "slug": "power-inheritance"
+  },
+  {
+    "category": "notary-powers-of-attorney",
+    "question": "Как отменить нотариальную доверенность и уведомить третьих лиц?",
+    "question_normalized": "как отменить нотариальную доверенность и уведомить третьих лиц",
+    "slug": "revoke-notary-power"
+  },
+  {
+    "category": "online-lawyer",
+    "question": "Что делать, если машину повредили во дворе, а виновник скрылся?",
+    "question_normalized": "что делать если машину повредили во дворе а виновник скрылся",
+    "slug": "car-damage-yard"
+  },
+  {
+    "category": "online-lawyer",
+    "question": "Как выбрать надёжного юриста для консультации онлайн?",
+    "question_normalized": "как выбрать надёжного юриста для консультации онлайн",
+    "slug": "choose-online-lawyer"
+  },
+  {
+    "category": "online-lawyer",
+    "question": "Как сохранить конфиденциальность при онлайн-консультации с юристом?",
+    "question_normalized": "как сохранить конфиденциальность при онлайнконсультации с юристом",
+    "slug": "confidentiality-online"
+  },
+  {
+    "category": "online-lawyer",
+    "question": "Как отличить мошенников от настоящих юристов в интернете?",
+    "question_normalized": "как отличить мошенников от настоящих юристов в интернете",
+    "slug": "online-consultation-scam"
+  },
+  {
+    "category": "online-lawyer",
+    "question": "Как правильно подписать договор онлайн?",
+    "question_normalized": "как правильно подписать договор онлайн",
+    "slug": "online-contract-signing"
+  },
+  {
+    "category": "online-lawyer",
+    "question": "Можно ли урегулировать спор с юристом онлайн без суда?",
+    "question_normalized": "можно ли урегулировать спор с юристом онлайн без суда",
+    "slug": "online-dispute-resolution"
+  },
+  {
+    "category": "online-lawyer",
+    "question": "Как проверить документы онлайн перед подписанием?",
+    "question_normalized": "как проверить документы онлайн перед подписанием",
+    "slug": "online-document-review"
+  },
+  {
+    "category": "online-lawyer",
+    "question": "Сколько стоит онлайн-консультация юриста и от чего зависит цена?",
+    "question_normalized": "сколько стоит онлайнконсультация юриста и от чего зависит цена",
+    "slug": "online-legal-advice-cost"
+  },
+  {
+    "category": "online-lawyer",
+    "question": "Может ли юрист представлять интересы в суде удалённо?",
+    "question_normalized": "может ли юрист представлять интересы в суде удалённо",
+    "slug": "online-representation-court"
+  },
+  {
+    "category": "online-lawyer",
+    "question": "Имеет ли юридическую силу консультация юриста по видеосвязи?",
+    "question_normalized": "имеет ли юридическую силу консультация юриста по видеосвязи",
+    "slug": "video-consultation-legal"
+  },
+  {
+    "category": "personal-bankruptcy",
+    "question": "Что происходит после завершения банкротства и снятия долгов?",
+    "question_normalized": "что происходит после завершения банкротства и снятия долгов",
+    "slug": "after-discharge"
+  },
+  {
+    "category": "personal-bankruptcy",
+    "question": "Сколько стоит банкротство физического лица?",
+    "question_normalized": "сколько стоит банкротство физического лица",
+    "slug": "bankruptcy-costs"
+  },
+  {
+    "category": "personal-bankruptcy",
+    "question": "Когда банкротство могут признать фиктивным?",
+    "question_normalized": "когда банкротство могут признать фиктивным",
+    "slug": "bankruptcy-fraud"
+  },
+  {
+    "category": "personal-bankruptcy",
+    "question": "Какие этапы проходит процедура банкротства физического лица?",
+    "question_normalized": "какие этапы проходит процедура банкротства физического лица",
+    "slug": "bankruptcy-procedure-stages"
+  },
+  {
+    "category": "personal-bankruptcy",
+    "question": "Какие ограничения накладывает банкротство физического лица?",
+    "question_normalized": "какие ограничения накладывает банкротство физического лица",
+    "slug": "bankruptcy-restrictions"
+  },
+  {
+    "category": "personal-bankruptcy",
+    "question": "Как кредитору заявить требования в деле о банкротстве гражданина?",
+    "question_normalized": "как кредитору заявить требования в деле о банкротстве гражданина",
+    "slug": "creditor-claims"
+  },
+  {
+    "category": "personal-bankruptcy",
+    "question": "Кто такой финансовый управляющий и как его выбирают?",
+    "question_normalized": "кто такой финансовый управляющий и как его выбирают",
+    "slug": "financial-manager"
+  },
+  {
+    "category": "personal-bankruptcy",
+    "question": "Что выгоднее: внесудебное банкротство через МФЦ или банкротство через суд?",
+    "question_normalized": "что выгоднее внесудебное банкротство через мфц или банкротство через суд",
+    "slug": "out-of-court-bankruptcy"
+  },
+  {
+    "category": "personal-bankruptcy",
+    "question": "Что такое план реструктуризации долгов?",
+    "question_normalized": "что такое план реструктуризации долгов",
+    "slug": "restructuring-plan"
+  },
+  {
+    "category": "personal-bankruptcy",
+    "question": "Можно ли списать долги через банкротство и сохранить единственное жильё?",
+    "question_normalized": "можно ли списать долги через банкротство и сохранить единственное жильё",
+    "slug": "write-off-debts-keep-housing"
+  },
+  {
+    "category": "property-division-divorce",
+    "question": "Как разделить бизнес при разводе?",
+    "question_normalized": "как разделить бизнес при разводе",
+    "slug": "business-division-divorce"
+  },
+  {
+    "category": "property-division-divorce",
+    "question": "Как делится автомобиль при разводе?",
+    "question_normalized": "как делится автомобиль при разводе",
+    "slug": "car-division-divorce"
+  },
+  {
+    "category": "property-division-divorce",
+    "question": "Как делится кредит при разводе?",
+    "question_normalized": "как делится кредит при разводе",
+    "slug": "credit-division-divorce"
+  },
+  {
+    "category": "property-division-divorce",
+    "question": "Как разделить вклады и ценные бумаги при разводе?",
+    "question_normalized": "как разделить вклады и ценные бумаги при разводе",
+    "slug": "deposits-securities-division"
+  },
+  {
+    "category": "property-division-divorce",
+    "question": "Как подать иск о разделе имущества?",
+    "question_normalized": "как подать иск о разделе имущества",
+    "slug": "divide-property-lawsuit"
+  },
+  {
+    "category": "property-division-divorce",
+    "question": "Как делится подаренное имущество при разводе?",
+    "question_normalized": "как делится подаренное имущество при разводе",
+    "slug": "gifted-property-division"
+  },
+  {
+    "category": "property-division-divorce",
+    "question": "Как делится имущество при разводе, если оно оформлено только на одного из супругов?",
+    "question_normalized": "как делится имущество при разводе если оно оформлено только на одного из супругов",
+    "slug": "how-to-divide-property"
+  },
+  {
+    "category": "property-division-divorce",
+    "question": "Как разделить земельный участок при разводе?",
+    "question_normalized": "как разделить земельный участок при разводе",
+    "slug": "land-division-divorce"
+  },
+  {
+    "category": "property-division-divorce",
+    "question": "Как брачный договор влияет на раздел имущества?",
+    "question_normalized": "как брачный договор влияет на раздел имущества",
+    "slug": "marital-agreement-property"
+  },
+  {
+    "category": "property-division-divorce",
+    "question": "Срок исковой давности по разделу имущества",
+    "question_normalized": "срок исковой давности по разделу имущества",
+    "slug": "property-division-limitation"
+  },
+  {
+    "category": "property-division-divorce",
+    "question": "Как оценить имущество при разделе?",
+    "question_normalized": "как оценить имущество при разделе",
+    "slug": "property-valuation-divorce"
+  },
+  {
+    "category": "property-division-mortgage",
+    "question": "Учитываются ли права детей при разделе квартиры при разводе?",
+    "question_normalized": "учитываются ли права детей при разделе квартиры при разводе",
+    "slug": "children-rights-division"
+  },
+  {
+    "category": "property-division-mortgage",
+    "question": "Как разделить обязанности созаёмщика по ипотеке при разводе?",
+    "question_normalized": "как разделить обязанности созаёмщика по ипотеке при разводе",
+    "slug": "co-borrower-divorce"
+  },
+  {
+    "category": "property-division-mortgage",
+    "question": "Как разделить квартиру при разводе?",
+    "question_normalized": "как разделить квартиру при разводе",
+    "slug": "divide-apartment-divorce"
+  },
+  {
+    "category": "property-division-mortgage",
+    "question": "Как снять обременение с квартиры после развода и погашения ипотеки?",
+    "question_normalized": "как снять обременение с квартиры после развода и погашения ипотеки",
+    "slug": "encumbrance-removal-divorce"
+  },
+  {
+    "category": "property-division-mortgage",
+    "question": "Как разделить ипотеку при разводе?",
+    "question_normalized": "как разделить ипотеку при разводе",
+    "slug": "mortgage-after-divorce"
+  },
+  {
+    "category": "property-division-mortgage",
+    "question": "Как досрочно погасить ипотеку при разводе?",
+    "question_normalized": "как досрочно погасить ипотеку при разводе",
+    "slug": "mortgage-early-repayment-divorce"
+  },
+  {
+    "category": "property-division-mortgage",
+    "question": "Как разделить страховку по ипотеке при разводе?",
+    "question_normalized": "как разделить страховку по ипотеке при разводе",
+    "slug": "mortgage-insurance-divorce"
+  },
+  {
+    "category": "property-division-mortgage",
+    "question": "Как рефинансировать ипотеку при разводе?",
+    "question_normalized": "как рефинансировать ипотеку при разводе",
+    "slug": "mortgage-refinancing-divorce"
+  },
+  {
+    "category": "property-division-mortgage",
+    "question": "Можно ли продать ипотечную квартиру при разводе?",
+    "question_normalized": "можно ли продать ипотечную квартиру при разводе",
+    "slug": "mortgage-sale-divorce"
+  },
+  {
+    "category": "property-division-mortgage",
+    "question": "Как делятся льготная ипотека и субсидии при разводе?",
+    "question_normalized": "как делятся льготная ипотека и субсидии при разводе",
+    "slug": "mortgage-subsidy-divorce"
+  },
+  {
+    "category": "sale-purchase-agreement",
+    "question": "Что такое уступка прав по договору (цессия) при покупке квартиры?",
+    "question_normalized": "что такое уступка прав по договору цессия при покупке квартиры",
+    "slug": "assignment-claim"
+  },
+  {
+    "category": "sale-purchase-agreement",
+    "question": "Я потребитель. Можно ли расторгнуть договор купли-продажи и вернуть деньги, если продавец нарушил условия сделки?",
+    "question_normalized": "я потребитель можно ли расторгнуть договор куплипродажи и вернуть деньги если продавец нарушил условия сделки",
+    "slug": "consumer-terminate-contract-return-money"
+  },
+  {
+    "category": "sale-purchase-agreement",
+    "question": "Как изменить условия договора купли-продажи после подписания?",
+    "question_normalized": "как изменить условия договора куплипродажи после подписания",
+    "slug": "contract-amendment"
+  },
+  {
+    "category": "sale-purchase-agreement",
+    "question": "Что проверить в договоре купли-продажи перед подписанием?",
+    "question_normalized": "что проверить в договоре куплипродажи перед подписанием",
+    "slug": "contract-review-checklist"
+  },
+  {
+    "category": "sale-purchase-agreement",
+    "question": "Когда договор купли-продажи недвижимости можно признать недействительным?",
+    "question_normalized": "когда договор куплипродажи недвижимости можно признать недействительным",
+    "slug": "contract-void"
+  },
+  {
+    "category": "sale-purchase-agreement",
+    "question": "Можно ли вернуть задаток, если сделка не состоялась?",
+    "question_normalized": "можно ли вернуть задаток если сделка не состоялась",
+    "slug": "deposit-refund-dispute"
+  },
+  {
+    "category": "sale-purchase-agreement",
+    "question": "Как оформить покупку квартиры в рассрочку?",
+    "question_normalized": "как оформить покупку квартиры в рассрочку",
+    "slug": "installment-sale-apartment"
+  },
+  {
+    "category": "sale-purchase-agreement",
+    "question": "Можно ли взыскать неустойку с продавца или покупателя за просрочку?",
+    "question_normalized": "можно ли взыскать неустойку с продавца или покупателя за просрочку",
+    "slug": "penalty-seller-buyer"
+  },
+  {
+    "category": "sale-purchase-agreement",
+    "question": "Как правильно оформить предоплату при покупке квартиры?",
+    "question_normalized": "как правильно оформить предоплату при покупке квартиры",
+    "slug": "prepayment-agreement"
+  },
+  {
+    "category": "sale-purchase-agreement",
+    "question": "Какие обязанности у продавца квартиры по закону?",
+    "question_normalized": "какие обязанности у продавца квартиры по закону",
+    "slug": "seller-obligations"
+  },
+  {
+    "category": "taxes-consultation",
+    "question": "Как обжаловать решение налоговой проверки?",
+    "question_normalized": "как обжаловать решение налоговой проверки",
+    "slug": "appeal-tax-audit"
+  },
+  {
+    "category": "taxes-consultation",
+    "question": "Когда нужно подавать декларацию 3-НДФЛ?",
+    "question_normalized": "когда нужно подавать декларацию 3ндфл",
+    "slug": "ndfl-declaration"
+  },
+  {
+    "category": "taxes-consultation",
+    "question": "Можно ли уменьшить или отменить пеню по налогам?",
+    "question_normalized": "можно ли уменьшить или отменить пеню по налогам",
+    "slug": "penalty-interest-waiver"
+  },
+  {
+    "category": "taxes-consultation",
+    "question": "Как получить имущественный вычет при продаже квартиры?",
+    "question_normalized": "как получить имущественный вычет при продаже квартиры",
+    "slug": "property-tax-deduction"
+  },
+  {
+    "category": "taxes-consultation",
+    "question": "Как оформить самозанятость и какие налоги платить?",
+    "question_normalized": "как оформить самозанятость и какие налоги платить",
+    "slug": "self-employed-registration"
+  },
+  {
+    "category": "taxes-consultation",
+    "question": "Как обжаловать решение налоговой инспекции?",
+    "question_normalized": "как обжаловать решение налоговой инспекции",
+    "slug": "tax-audit-appeal"
+  },
+  {
+    "category": "taxes-consultation",
+    "question": "Какие налоговые льготы есть у физических лиц?",
+    "question_normalized": "какие налоговые льготы есть у физических лиц",
+    "slug": "tax-benefits"
+  },
+  {
+    "category": "taxes-consultation",
+    "question": "Что будет, если не подать налоговую декларацию в срок?",
+    "question_normalized": "что будет если не подать налоговую декларацию в срок",
+    "slug": "tax-declaration-deadline"
+  },
+  {
+    "category": "taxes-consultation",
+    "question": "Как получить налоговый вычет при покупке квартиры?",
+    "question_normalized": "как получить налоговый вычет при покупке квартиры",
+    "slug": "tax-deduction-purchase"
+  }
+]

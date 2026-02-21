@@ -43,6 +43,8 @@
 - **Категория**: Проверка квартиры / продажа
 - **Страница**: `/apartment-check-sale/`
 
-## Остальные категории
+## Остальные категории (всего 60)
 
-Аналогично: `/housing-disputes/`, `/consumer-rights-protection/`, `/labor-disputes/`, `/personal-bankruptcy/`, `/administrative-offenses/`, `/criminal-lawyer/`, `/notary-powers-of-attorney/`, `/child-support/`, `/property-division-mortgage/`, `/land-disputes/`, `/inheritance-without-will/`, `/taxes-consultation/`, `/compensations-benefits/`, `/property-division-divorce/`
+**20 основных:** `/housing-disputes/`, `/consumer-rights-protection/`, `/labor-disputes/`, `/personal-bankruptcy/`, `/administrative-offenses/`, `/criminal-lawyer/`, `/notary-powers-of-attorney/`, `/child-support/`, `/property-division-mortgage/`, `/land-disputes/`, `/inheritance-without-will/`, `/taxes-consultation/`, `/compensations-benefits/`, `/property-division-divorce/` и др.
+
+**40 дополнительных (сгенерированы `generate_60_categories.py`):** `/dolevoe-stroitelstvo/`, `/migration-law/`, `/copyright-law/`, `/personal-data-protection/`, `/medical-disputes/`, `/insurance-disputes/`, `/auto-loan/`, `/debt-collection/`, `/credit-holidays/`, `/microfinance/`, `/gift-agreement/`, `/lease-agreement/`, `/housing-privatization/`, `/maternity-payments/`, `/pension-disputes/`, `/military-mortgage/`, `/traffic-accident-osago/`, `/moral-damage-compensation/`, `/remote-work/`, `/self-employment/`, `/ip-registration/`, `/contract-work/`, `/service-agreement/`, `/enforcement-proceedings/`, `/appeal-cassation/`, `/mediation/`, `/disability-rights/`, `/veteran-benefits/`, `/developer-disputes/`, `/cadastral-registration/`, `/redevelopment/`, `/pledge-guarantee/`, `/credit-agreement/`, `/goods-return/`, `/shareholder-rights/`, `/employment-contract/`, `/business-trips/`, `/registration-residence/`, `/transaction-contest/`, `/rent-agreement/`

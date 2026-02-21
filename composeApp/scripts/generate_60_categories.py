@@ -64,6 +64,7 @@ def build_faq_ldjson(articles: list) -> str:
 
 def generate_index_html(slug: str, name: str, intro: str, articles: list) -> str:
     cat_path = f"/{slug}/"
+    name_escaped = json.dumps(name)
     faq_json = build_faq_ldjson(articles) if articles else ""
     toc_items = "\n".join(
         f'                <li><a href="#{a["slug"]}">{a["question"][:80]}{"…" if len(a["question"]) > 80 else ""}</a></li>'
@@ -118,6 +119,17 @@ def generate_index_html(slug: str, name: str, intro: str, articles: list) -> str
         "@type": "FAQPage",
         "mainEntity": [
 {faq_json}
+        ]
+    }}
+    </script>
+    <script type="application/ld+json">
+    {{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://pravochat.ru/"}},
+            {{"@type": "ListItem", "position": 2, "name": "Юридические вопросы и ответы", "item": "https://pravochat.ru/legal-questions-answers.html"}},
+            {{"@type": "ListItem", "position": 3, "name": {name_escaped}, "item": "https://pravochat.ru{cat_path}"}}
         ]
     }}
     </script>
